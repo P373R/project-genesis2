@@ -195,32 +195,57 @@ echo $res->owner;
        case 'n':
 	if($this->player->y > 1){
 	  $this->db->execute("UPDATE `players` SET `y`=`y`-1 WHERE `id`='".$this->player->id."'");
-          redNrg($this->player->id,$this->db,1);
-	  addLog($this->player->id,"moved north",$this->db);
 	} 
        break;
        case 'e':
 	if($this->player->x < MAX_X){
 	  $this->db->execute("UPDATE `players` SET `x`=`x`+1 WHERE `id`='".$this->player->id."'");
-          redNrg($this->player->id,$this->db,1);
-	  addLog($this->player->id,"moved east",$this->db);
 	} 
        break;
        case 'w':
 	if($this->player->x > 1){
 	  $this->db->execute("UPDATE `players` SET `x`=`x`-1 WHERE `id`='".$this->player->id."'");
-          redNrg($this->player->id,$this->db,1);
-	  addLog($this->player->id,"moved west",$this->db);
 	} 
        break;
        case 's':
 	if($this->player->y < MAX_Y){
 	  $this->db->execute("UPDATE `players` SET `y`=`y`+1 WHERE `id`='".$this->player->id."'");
-          redNrg($this->player->id,$this->db,1);
-	  addLog($this->player->id,"moved south",$this->db);
 	} 
        break;
+       case 'ne':
+        if($this->player->y > 1){
+          $this->db->execute("UPDATE `players` SET `y`=`y`-1 WHERE `id`='".$this->player->id."'");
+        }
+        if($this->player->x < MAX_X){
+          $this->db->execute("UPDATE `players` SET `x`=`x`+1 WHERE `id`='".$this->player->id."'");
+        }
+       break;
+       case 'nw':
+        if($this->player->y > 1){
+          $this->db->execute("UPDATE `players` SET `y`=`y`-1 WHERE `id`='".$this->player->id."'");
+        }
+        if($this->player->x > 1){
+          $this->db->execute("UPDATE `players` SET `x`=`x`-1 WHERE `id`='".$this->player->id."'");
+        }
+       break;
+       case 'se':
+        if($this->player->y < MAX_Y){
+          $this->db->execute("UPDATE `players` SET `y`=`y`+1 WHERE `id`='".$this->player->id."'");
+        }
+        if($this->player->x < MAX_X){
+          $this->db->execute("UPDATE `players` SET `x`=`x`+1 WHERE `id`='".$this->player->id."'");
+        }
+       break;
+       case 'sw':
+        if($this->player->y < MAX_Y){
+          $this->db->execute("UPDATE `players` SET `y`=`y`+1 WHERE `id`='".$this->player->id."'");
+        }
+        if($this->player->x > 1){
+          $this->db->execute("UPDATE `players` SET `x`=`x`-1 WHERE `id`='".$this->player->id."'");
+        }
+       break;
       }
+      redNrg($this->player->id,$this->db,1);
       header('Location: index.php?mod=Map');
     }
 }

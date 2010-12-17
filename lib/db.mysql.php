@@ -64,7 +64,6 @@ class Db_Mysql
         $this->dbname = $dbname;
         $this->username = $username;
         $this->password = $password;
-	if(TEST_ENVIRONMENT)$this->connect();
     }
 	
     /*
