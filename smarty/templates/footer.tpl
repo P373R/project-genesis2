@@ -1,7 +1,7 @@
 </div>
 
 <div id="footer">
-	Copyright &copy; 2010 <a href="http://www.yourgame.com/" target="_parent"><strong>Your Game</strong></a> | <a href="http://www.ezrpgproject.com/"><strong>ezRPG Project</strong></a>
+	Copyright &copy; 2010 <a href="http://www.project-genesis2.de/" target="_parent"><strong>Project Genesis2</strong></a> Version {$VERSION}
 </div>
 
 </div>

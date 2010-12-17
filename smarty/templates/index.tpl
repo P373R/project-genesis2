@@ -4,7 +4,11 @@
 
 <div class="left">
 <p>
-Welcome to ezRPG! Login now!
+Wilkommen zu Project-Genesis2!
+</p>
+<p>
+<h2>News</h2><br />
+<b>12.12.2010 Start</b><br />
 </p>
 </div>
 

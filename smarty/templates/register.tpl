@@ -1,4 +1,4 @@
-{include file="header.tpl" TITLE="Register"}
+{include file="header.tpl" TITLE="Registrieren"}
 
 <h1>Register</h1>
 

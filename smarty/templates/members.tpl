@@ -1,4 +1,4 @@
-{include file="header.tpl" TITLE="Members"}
+{include file="header.tpl" TITLE="Spieler"}
 
 <table width="90%">
   <tr>
@@ -15,11 +15,12 @@
 </table>
 
 <span class="space"></span>
-
+{if $browse == true}
 <span style="display: block; width: 90%; text-align: center;">
 <strong>
 <a href="index.php?mod=Members&page={$prevpage}">Previous Page</a> | <a href="index.php?mod=Members&page={$nextpage}">Next Page</a>
 </strong>
 </span>
+{/if}
 
 {include file="footer.tpl"}

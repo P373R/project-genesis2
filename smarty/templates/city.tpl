@@ -1,33 +1,32 @@
-{include file="header.tpl" TITLE="City"}
+{include file="header.tpl" TITLE="Atlantis"}
 
 <h1>City</h1>
 
 <div class="left">
 
-<h3>Player</h3>
+<h3>Spieler</h3>
 <p>
-<a href="index.php">Home</a><br />
 <a href="index.php?mod=EventLog">Event Log</a><br />
-Mail Box<br />
-Inventory<br />
+<a href="index.php?mod=Mail">Mail Box</a><br />
+<a href="index.php?mod=Inventory">Inventory</a><br />
 <a href="index.php?mod=AccountSettings">Account Settings</a><br />
 </p>
 
 </div>
 <div class="right">
 
-<h3>World</h3>
+<h3>Welt</h3>
 <p>
 <a href="index.php?mod=Members">Members List</a><br />
-Top Players<br />
+<a href="index.php?mod=Members&amp;sort=top">Top Players</a><br />
 Game Statistics<br />
 Forum<br />
 </p>
 
 
-<h3>City</h3>
+<h3>Stadt</h3>
 <p>
-Battle<br />
+Arena<br />
 Item Shop<br />
 </p>
 
