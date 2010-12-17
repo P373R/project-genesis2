@@ -1,44 +1,38 @@
 <?php
 defined('IN_EZRPG') or exit;
 
-/*
+/**
   Class: Hooks
   A class to handle adding/running hooks
 */
 class Hooks
 {
-    /*
-      Variable: $db
+    /**
       Contains the database object.
     */
     protected $db;
     
-    /*
-      Variable: $tpl
+    /**
       The smarty template object.
     */
     protected $tpl;
     
-    /*
-      Variable: $player
+    /**
       The currently logged in player. Value is 0 if no user is logged in.
     */
     protected $player;
     
-    /*
-      Variable: $hooks
+    /**
       An array of all hooks, ordered by priority.
     */
     protected $hooks;
     
-    /*
-      Function: __construct
+    /**
       The constructor takes in database, template and player variables to pass onto any hook functions called.
       
-      Parameters:
-      $db - An instance of the database class.
-      $tpl - A smarty object.
-      $player - A player result set from the database, or 0 if not logged in.
+      @param $db     An instance of the database class.
+      @param $tpl    A smarty object.
+      @param $player A player result set from the database, or 0 if not logged in.
     */
     public function __construct(&$db, &$tpl, &$player = 0)
     {
@@ -49,14 +43,12 @@ class Hooks
         $this->hooks = array();
     }
     
-    /*
-      Function: add_hook
+    /**
       Adds a function to the list of hooks.
       
-      Parameters:
-      $hook_name - The name of the hook to add the function to.
-      $function_name - The name of the hook function, minus the hook_ prefix.
-      $priority - The priority of the hook function. Higher priority (0) gets called first. Default is 5.
+      @param $hook_name - The name of the hook to add the function to.
+      @param $function_name - The name of the hook function, minus the hook_ prefix.
+      @param $priority - The priority of the hook function. Higher priority (0) gets called first. Default is 5.
       
       Example:
       This adds a hook to check the user session data to the 'login' hook, with priority 0 so it will run first.
@@ -67,13 +59,11 @@ class Hooks
         $this->hooks[$hook_name][$priority][] = $function_name;
     }
     
-    /*
-      Function: run_hooks
+    /**
       This will run all the functions added to a particular hook. Functions called are ordered by priority.
       
-      Parameters:
-      $hook_name - The name of the hook to run functions for.
-      $func_args - An array of arguments to pass to the hook functions. Optional.
+      @param $hook_name - The name of the hook to run functions for.
+      @param $func_args - An array of arguments to pass to the hook functions. Optional.
     */
     public function run_hooks()
     {
@@ -90,7 +80,7 @@ class Hooks
         
         if ($num_args == 2)
         {
-            //Single argument or an rrray of arguments to pass to hook functions
+            //Single argument or an array of arguments to pass to hook functions
             $func_args = $arg_list[1];
         }
         

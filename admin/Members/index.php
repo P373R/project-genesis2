@@ -1,14 +1,21 @@
 <?php
+/**
+ *Members page for the admin panel.
+ *
+ * @category   AdminModules
+ * @author     Bastian Neumann <neumann.bastian@gmail.com>
+ *
+ * @license    GPL3.0
+ * @link       http://dev.project-genesis2.de
+ *
+ * @package    Modules
+ * @subpackage Admin
+ */
 defined('IN_EZRPG') or exit;
 
-/*
-  Class: Admin_Members
-  Admin page for managing members
-*/
 class Admin_Members extends Base_Module
 {
-    /*
-      Function: start
+    /**
       Displays the list of members or a member edit form.
     */
     public function start()
@@ -30,8 +37,7 @@ class Admin_Members extends Base_Module
         }
     }
     
-    /*
-      Function: listMembers
+    /**
       Gets a list of all members and displays them in a paginated format.
     */
     private function listMembers()
@@ -44,9 +50,9 @@ class Admin_Members extends Base_Module
         $query = $this->db->execute('SELECT `id`, `username`, `email` FROM `<ezrpg>players` ORDER BY `id` ASC LIMIT ?,50', array($page * 50));
         
         $members = Array();
-        while ($m = $this->db->fetch($query))
+        while ($member = $this->db->fetch($query))
         {
-            $members[] = $m;
+            $members[] = $member;
         }
         
         $query = $this->db->fetchRow('SELECT COUNT(`id`) AS `count` FROM `<ezrpg>players`');
@@ -62,8 +68,7 @@ class Admin_Members extends Base_Module
         $this->tpl->display('admin/members.tpl');
     }
     
-    /*
-      Function: editMember
+    /**
       Displays a form to edit a player, and processes the form submissions.
     */
     private function editMember()
@@ -152,7 +157,7 @@ class Admin_Members extends Base_Module
         else
         {
             //No errors, update player info
-            $query = $this->db->execute('UPDATE `<ezrpg>players` SET `email`=?, `rank`=?, `money`=?, `level`=? WHERE `id`=?', array($_POST['email'], $_POST['rank'], $_POST['money'], $_POST['level'], $member->id));
+            $this->db->execute('UPDATE `<ezrpg>players` SET `email`=?, `rank`=?, `money`=?, `level`=? WHERE `id`=?', array($_POST['email'], $_POST['rank'], $_POST['money'], $_POST['level'], $member->id));
             
             $msg = 'You have updated the player\'s info.';
             header('Location: index.php?mod=Members&msg=' . urlencode($msg));
@@ -160,8 +165,7 @@ class Admin_Members extends Base_Module
         }
     }
     
-    /*
-      Function: deleteMember
+    /**
       Deletes a member from the database. Asks for confirmation first.
     */
     private function deleteMember()
@@ -190,7 +194,7 @@ class Admin_Members extends Base_Module
         }
         else
         {
-            $query = $this->db->execute('DELETE FROM `<ezrpg>players` WHERE `id`=?', array($member->id));
+            $this->db->execute('DELETE FROM `<ezrpg>players` WHERE `id`=?', array($member->id));
             $msg = 'You have deleted <strong>' . $member->username . '</strong>.';
             header('Location: index.php?mod=Members&msg=' . urlencode($msg));
             exit;

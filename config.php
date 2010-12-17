@@ -20,7 +20,7 @@ defined('IN_EZRPG') or exit;
 $config_server = 'localhost';
 $config_dbname = 'ezrpg';
 $config_username = 'root';
-$config_password = '';
+$config_password = 'root';
 $config_driver = 'mysql';
 
 /*
@@ -33,7 +33,7 @@ $config_driver = 'mysql';
   
   SECRET_KEY - A long string of random characters.
 */
-define('SECRET_KEY', '692SdIZ3wVm?xzCod9r:zK]#');
+define('SECRET_KEY', '47EIsE4xi=Bb&YdB(nUJehe=');
 
 
 /*
@@ -45,8 +45,31 @@ define('SECRET_KEY', '692SdIZ3wVm?xzCod9r:zK]#');
   SHOW_ERRORS - Turn on to show PHP errors.
   DEBUG_MODE - Turn on to show database errors and debug information.
 */
-define('DB_PREFIX', 'ezrpg_');
+define('DB_PREFIX', '');
 define('VERSION', '1.0');
-define('SHOW_ERRORS', 0);
+define('SHOW_ERRORS', 1);
 define('DEBUG_MODE', 0);
+define('MAX_X', 10); // Kartengröße
+define('MAX_Y', 10);
+define('SYS_VERSION',"0.2.1");
+
+// Koordinaten auf denen Atlantis gebaut wurde
+define('ATLANTIS_X',6);
+define('ATLANTIS_Y',7);
+
+/*
+  Variables:
+  These Variables are used to translate ids in the database to human readable names
+*/
+
+$id2names = array(
+  "field"=>array("Unbekannt","Seichts Wasser (50m)","Wasser (100m)","Wasser (200m)","Wasser (500m)","Tiefsee (1000m)",99=>"Atlantis"),
+  "items"=>array("Nichts","Wasser","Eisen","Aluminium","Titan","oxygen"),
+  "db_fields"=>array("","water","iron","aluminium","titan","oxygen")
+);
+
+$shop = array(
+  array("name"=>"Miene", "price"=>10, "weight"=>10),
+  array("name"=>"Große Miene", "price"=>10, "weight"=>10)
+);
 ?>

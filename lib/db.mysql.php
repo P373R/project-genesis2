@@ -2,48 +2,43 @@
 //This file cannot be viewed, it must be included
 defined('IN_EZRPG') or exit;
 
-/*
-  Class: Db_mysql
+/**
   Database abstraction class for MySQL.
 
   See Also:
   - <DbFactory>
   - <DbException>
+
+  @todo Refactor mit aufspalten der Funktionen in kleinere Klassen
 */
-class Db_mysql
+class Db_Mysql
 {
-    /*
-      Integer: $query_count
+    /**
       Keeps track of number of queries made in this database connection.
     */
     public $query_count = 0;
 	
-    /*
-      String: $error
+    /**
       Contains the last SQL error.
     */
     public $error;
 	
-    /*
-      String: $query
+    /**
       Contains the last query executed.
     */
     public $query;
 	
-    /*
-      Boolean: $isConnected
+    /**
       A boolean showing the status of the database connection.
     */
     public $isConnected = false;
 	
-    /*
-      Variable: $db
+    /**
       Contains a MySQL link identifier.
     */
     protected $db;
 	
-    /*
-      Variables: Connection Details
+    /**
       $host - Host name of database server.
       $dbname - Name of the database.
       $username - Username to connect with.
@@ -55,15 +50,13 @@ class Db_mysql
     protected $password;
 	
 	
-    /*
-      Constructor: __construct
-      Saves the connection data for later use. Does not start a connection yet.
+    /**
+      Saves the connection data for later use. Does not start a connection yet if not in Test Environment
 	
-      Parameters:
-      $host - Database server
-      $username - Username to login with
-      $password - Password to login with
-      $dbname - Name of database
+      @param $host - Database server
+      @param $username - Username to login with
+      @param $password - Password to login with
+      @param $dbname - Name of database
     */
     public function __construct($host='localhost', $username='root', $password='', $dbname='')
     {
@@ -71,6 +64,7 @@ class Db_mysql
         $this->dbname = $dbname;
         $this->username = $username;
         $this->password = $password;
+	if(TEST_ENVIRONMENT)$this->connect();
     }
 	
     /*
@@ -165,7 +159,7 @@ class Db_mysql
                     else
                     {
                         //Parameter is not a valid type.
-                        $val = '?';
+                        $val = '\'?\'';
                         //OR throw an SQL exception?
                     }
                     
@@ -381,7 +375,7 @@ class Db_mysql
             $this->connect();
 
         $table = str_replace('<ezrpg>', DB_PREFIX, $table);
-        $query = 'INSERT INTO ' . mysql_real_escape_string($table, $this->db) . ' (';
+        $query = 'INSERT INTO `' . mysql_real_escape_string($table, $this->db) . '` (';
 		
         $cols = count($data);
         $part1 = ''; //List of column names
@@ -391,7 +385,7 @@ class Db_mysql
         foreach ($data as $col=>$val)
         {
             //Append column name
-            $part1 .= mysql_real_escape_string($col, $this->db);
+            $part1 .= "`".mysql_real_escape_string($col, $this->db)."`";
             
             //Append a question mark and leave sanitation to the <execute> method through variable binding.
             $part2 .= '?';
@@ -447,7 +441,7 @@ class Db_mysql
     {
         if ($this->isConnected === false)
         {
-            $this->db = mysql_connect($this->host, $this->username, $this->password);
+	    $this->db = mysql_connect($this->host, $this->username, $this->password);
             if (!$this->db)
             {
                 throw new DbException($this->db, SERVER_ERROR);

@@ -1,15 +1,27 @@
 <?php
+/**
+ * INFO
+ *
+ * @category   AdminModules
+ *
+ *
+ * @author     Bastian Neumann <neumann.bastian@gmail.com>
+ * @license    http://www.opensource.org/licenses/gpl-license.php GPL
+ *
+ * @version    SVN: <svn_id>
+ * @link       http://dev.project-genesis2.de
+ */
 defined('IN_EZRPG') or exit;
-
-/*
-  Class: Admin_Index
-  Home page for the admin panel.
-*/
+/**
+ * Index for the Admin Website
+ * @package    Modules
+ * @subpackage Admin
+ */
 class Admin_Index extends Base_Module
 {
-    /*
-      Function: start
+    /**
       Displays admin/index.tpl
+      @return null
     */
     public function start()
     {

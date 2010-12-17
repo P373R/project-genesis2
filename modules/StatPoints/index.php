@@ -51,6 +51,7 @@ class Module_StatPoints extends Base_Module
 				strength=strength+1
 				WHERE id=?', array($this->player->id));
               $msg = 'You have increased your strength!';
+	      addLog($this->player->id, $msg, $this->db);
               break;
           case 'Vitality':
               //Add to hp and max_hp
@@ -62,6 +63,7 @@ class Module_StatPoints extends Base_Module
 				WHERE id=?', array($this->player->id));
               
               $msg = 'You have increased your vitality!';
+	      addLog($this->player->id, $msg, $this->db);
               break;
           case 'Agility':
               $query = $this->db->execute('UPDATE <ezrpg>players SET
@@ -70,6 +72,7 @@ class Module_StatPoints extends Base_Module
 				WHERE id=?', array($this->player->id));
               
               $msg = 'You have increased your agility!';
+	      addLog($this->player->id, $msg, $this->db);
               break;
           case 'Dexterity':
               $query = $this->db->execute('UPDATE <ezrpg>players SET
@@ -78,6 +81,7 @@ class Module_StatPoints extends Base_Module
 				WHERE id=?', array($this->player->id));
               
               $msg = 'You have increased your dexterity!';
+	      addLog($this->player->id, $msg, $this->db);
               break;
           default:
               break;

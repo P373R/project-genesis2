@@ -1,4 +1,7 @@
 <?php
+/**
+ @package Scripts
+*/
 define('IN_EZRPG', true);
 
 require_once('init.php');

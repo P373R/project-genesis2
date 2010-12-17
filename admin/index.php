@@ -1,4 +1,11 @@
 <?php
+/**
+ * Admin Runner
+ * 
+ * @author Bastian Neumann <neumann.bastian@gmail.com>
+ * @version SVN: <svn_id>
+ * @package <PACKAGE>
+ */
 define('IN_EZRPG', true);
 
 require_once '../init.php';

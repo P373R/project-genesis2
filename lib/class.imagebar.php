@@ -110,6 +110,10 @@ class ImageBar
         $this->bar_w = $value;
     }
     
+    public function  getWidth()
+    {
+	return $this->bar_w;
+    }
     /*
       Function: setHeight
       Sets the value of <$bar_h>.
@@ -120,6 +124,10 @@ class ImageBar
     public function setHeight($value)
     {
         $this->bar_h = $value;
+    }
+    public function  getHeight()
+    {
+	return $this->bar_h;
     }
     
     /*
@@ -143,7 +151,7 @@ class ImageBar
     */
     public function setFileType($value)
     {
-        $this->fileType = $value;
+        $this->fileType = $value;            
     }
     
     /*
@@ -226,11 +234,13 @@ class ImageBar
         $this->setBackColor();
     }
 	
-    /*
+    /**
       Function: generateBar
       Generates the image file, outputs it, then destroys the image.
+      
+      @param $test  false wenn Standertbetrieb und true wenn Testbetrieb
     */
-    public function generateBar()
+    public function generateBar($test=false)
     {		
         $white 	= imagecolorallocate($this->bar, 255, 255, 255);
         $grey 	= imagecolorallocate($this->bar, 180, 180, 180);
@@ -250,18 +260,24 @@ class ImageBar
         // Output, check for various image type support
         if ((imagetypes() & IMG_PNG) && $this->fileType == "PNG")
         {
-            header('Content-type: image/png');
-            imagepng($this->bar, "", 9);
+            if(!$test){
+		header('Content-type: image/png');
+		imagepng($this->bar, "", 9);
+	    }
         }
         else if ((imagetypes() & IMG_GIF) && $this->fileType == "GIF")
         {
-            header ("Content-type: image/gif");
-            imagegif($this->bar);
+            if(!$test){
+		header ("Content-type: image/gif");
+		imagegif($this->bar);
+	    }
         }
         else if ((imagetypes() & IMG_JPG) && $this->fileType == "JPG")
         {
-            header("Content-type: image/jpeg");
-            imagejpeg($this->bar);
+            if(!$test){
+		header("Content-type: image/jpeg");
+		imagejpeg($this->bar);
+	    }
         }
         else
         {

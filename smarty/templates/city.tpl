@@ -7,7 +7,7 @@
 <h3>Spieler</h3>
 <p>
 <a href="index.php?mod=EventLog">Event Log</a><br />
-<a href="index.php?mod=Mail">Mail Box</a><br />
+<a href="index.php?mod=MailBox">Mail Box</a><br />
 <a href="index.php?mod=Inventory">Inventory</a><br />
 <a href="index.php?mod=AccountSettings">Account Settings</a><br />
 </p>

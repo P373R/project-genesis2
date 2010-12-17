@@ -44,4 +44,10 @@ function shorten($text, $length = 50)
         return $text;
     }
 }
+
+function id2name($type,$id)
+{
+  global $id2names;
+  return $id2names[$type][$id];
+}
 ?>

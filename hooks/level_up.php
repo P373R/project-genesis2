@@ -1,8 +1,30 @@
 <?php
+/**
+ * Check if there is a level up
+ *
+ * @category   AdminModules
+ *
+ * @package    Modules
+ * @subpackage Admin
+ *
+ * @author     Bastian Neumann <neumann.bastian@gmail.com>
+ * @license    http://www.opensource.org/licenses/gpl-license.php GPL
+ *
+ * @version    SVN: <svn_id>
+ * @link       http://dev.project-genesis2.de
+ */
 defined('IN_EZRPG') or exit;
 
 $hooks->add_hook('player', 'level_up', 2);
 
+/**
+  Add Level if enough exp
+  @param  DB_mysql  $db Database object
+  @param  Smarty    &$tpl Global template object
+  @param  StdObject $player Player row from Database
+  @param  mixed     $args  Other arguments
+  @return StdObject 
+*/
 function hook_level_up($db, &$tpl, $player, $args = 0)
 {
     //No player data

@@ -1,10 +1,34 @@
 <?php
+/**
+ * Chekcs Session and assign if none is found.
+ *
+ * @category   Hooks
+ *
+ * @package    Hooks
+ *
+ * @author     Bastian Neumann <neumann.bastian@gmail.com>
+ * @license    http://www.opensource.org/licenses/gpl-license.php GPL
+ *
+ * @version    SVN: <svn_id>
+ * @link       http://dev.project-genesis2.de
+ */
 defined('IN_EZRPG') or exit;
-
+/**
+ Checking if session is running
+  @package Hooks
+*/
 //Add a player object hook - check the user session, priority 0
 $hooks->add_hook('player', 'check_session', 0);
 
-//Player hook to check the session and get player data
+/**
+  Player hook to check the session and get player data
+
+  @param  DB_mysql  $db Database object
+  @param  Smarty    &$tpl Global template object
+  @param  StdObject $player Player row from Database
+  @param  mixed     $args  Other arguments
+  @return StdObject 
+*/
 function hook_check_session($db, &$tpl, $player, $args = 0)
 {
     if (isset($_SESSION['userid']) && isset($_SESSION['hash']))

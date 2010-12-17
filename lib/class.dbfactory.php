@@ -42,9 +42,10 @@ class DbFactory
     */
     public static function factory($type='mysql', $host='localhost', $username='root', $password='', $db='ezrpg')
     {
-        if (include_once(LIB_DIR . '/db.' . $type . '.php'))
+        if (file_exists(LIB_DIR . '/db.' . $type . '.php'))
         {
-            $classname = 'Db_' . $type;
+	    include_once LIB_DIR . '/db.' . $type . '.php';
+            $classname = 'Db_' . ucfirst($type);
             return new $classname($host, $username, $password, $db);
         }
         else

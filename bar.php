@@ -1,4 +1,7 @@
 <?php
+/**
+ @package Scripts
+*/
 define('IN_EZRPG', true);
 
 require_once('init.php');
@@ -20,7 +23,7 @@ switch($_GET['type'])
   case "exp":
       $bar->setFillColor('blue'); //EXP is a blue bar
       $bar->setData($player->max_exp, $player->exp);	// Give the bar some values
-      $bar->setTitle('EXP: ');
+      $bar->setTitle('Level: ');
       break;
   case "hp":
       $percentage = ($player->hp / $player->max_hp) * 100;
@@ -34,7 +37,7 @@ switch($_GET['type'])
           $bar->setFillColor('green');
       
       $bar->setData($player->max_hp, $player->hp);	// Give the bar some values
-      $bar->setTitle('HP: ');
+      $bar->setTitle('Schild: ');
       break;
   case "energy":
       $percentage = ($player->energy / $player->max_energy) * 100;
@@ -48,7 +51,18 @@ switch($_GET['type'])
           $bar->setFillColor('green');
       
       $bar->setData($player->max_energy, $player->energy);	// Give the bar some values
-      $bar->setTitle('Energy: ');
+      $bar->setTitle('Energie: ');
+      break;
+  case "oxygen":
+      $percentage = ($player->oxygen / $player->max_oxygen) * 100;
+
+      if($percentage <= 77)
+          $bar->setFillColor('green');
+      else
+          $bar->setFillColor('red');
+
+      $bar->setData($player->max_oxygen, $player->oxygen);
+      $bar->setTitle('Sauerstoff: ');
       break;
   default:
       break;

@@ -29,7 +29,7 @@
 	<li><a href="index.php?mod=EventLog">Logbuch</a></li>
 	<li><a href="index.php?mod=Map">Karte</a></li>
 	<li><a href="index.php?mod=Ship">Schiff</a></li>
-	<li><a href="index.php?mod=Mail">Mail</a></li>
+	<li><a href="index.php?mod=MailBox">Mail</a></li>
 	<li><a href="index.php?mod=City">City</a></li>
 	<li><a href="index.php?mod=Logout">Log Out</a></li>
 	{else}
