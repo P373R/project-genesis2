@@ -48,7 +48,7 @@ define('SECRET_KEY', '47EIsE4xi=Bb&YdB(nUJehe=');
 define('DB_PREFIX', '');
 define('VERSION', '1.0');
 define('SHOW_ERRORS', 1);
-define('DEBUG_MODE', 0);
+define('DEBUG_MODE', 1);
 define('MAX_X', 10); // Kartengröße
 define('MAX_Y', 10);
 define('SYS_VERSION',"0.2.1");

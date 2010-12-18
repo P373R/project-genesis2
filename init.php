@@ -55,7 +55,6 @@ $tpl->compile_dir  = CUR_DIR . '/smarty/templates_c/';
 $tpl->config_dir   = CUR_DIR . '/smarty/configs/';
 $tpl->cache_dir    = CUR_DIR . '/smarty/cache/';
 $tpl->assign('VERSION',SYS_VERSION);
-if(DEBUG_MODE)$tpl->debugging    = true;
 
 //Initialize $player
 $player = 0;
