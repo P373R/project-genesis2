@@ -14,7 +14,7 @@ class Module_About extends Base_Module
     */
     public function start()
     {
-        $this->tpl->display('home.tpl');
+        $this->tpl->display('credits.tpl');
     }
 
     
