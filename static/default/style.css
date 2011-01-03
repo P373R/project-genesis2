@@ -193,6 +193,31 @@ img {
 	float: right;
 }
 
+#game-left {
+        display: block;
+        float: left;
+        width: 40%;
+        margin: 0px;
+        margin-top: 5px;
+        padding: 3px;
+        padding-left: 8px;
+        border: 1px solid #3399FF;
+        border-top: 3px solid #3399FF;
+}
+
+#game-right {
+        display: block;
+        float: left;
+        width: 40%;
+        margin: 0px;
+        margin-top: 5px;
+        margin-left: 25px;
+        padding: 3px;
+        padding-left: 8px;
+        border: 1px solid #3399FF;
+        border-top: 3px solid #3399FF;
+}
+
 .block {
 	width: 90%;
 	border: 1px solid #3399FF;

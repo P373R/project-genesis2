@@ -15,6 +15,12 @@ class Module_Ship extends Base_Module
     public function start()
     {
       requireLogin(); // Nur wenn eingelogt
+
+     // $db->execute("SELECT `weapon1`,`weapon2`,`weapon3`,`weapon4` FROM `ships` WHERE `id`='".$player->id."'");
+
+      $this->tpl->assign('weapons', $this->db->fetchAll($this->db->execute("SELECT `weapon1`,`weapon2`,`weapon3`,`weapon4` FROM `ships` WHERE `id`='".$this->player->id."'")));
+      $this->tpl->assign('cargo', $this->db->fetchAll($this->db->execute("SELECT * FROM `cargo` WHERE `id`='".$this->player->id."'")));
+
       $this->tpl->display('ship.tpl');
     }
 }

@@ -6,11 +6,11 @@
 <a href="http://www.ezrpgproject.com/">ezRPG</a><br />
 <br />
 <b>Bibliotheken</b><br />
-htmlpurfier<br />
-smarty<br />
+<a href="http://htmlpurifier.org/">htmlpurfier</a><br />
+<a href="http://www.smarty.net">smarty</a><br />
 <br />
 <b>Hintergrundbild</b><br />
-Flickr: <a href="http://www.flickr.com/photos/oddsock/">Oddsock</a><br />
+<a href="http://www.flickr.com/photos/oddsock/">Oddsock</a><br />
 </center>
 
 {include file="footer.tpl"}

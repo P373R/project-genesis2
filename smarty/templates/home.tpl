@@ -6,7 +6,6 @@
 <p>
 <strong>Benutzer</strong>: {$player->username}<br />
 <strong>Level</strong>: {$player->level}<br />
-<strong>Email</strong>: {$player->email}<br />
 <strong>Registriert</strong>: {$player->registered|date_format:'%B %e, %Y %l:%M %p'}<br />
 <strong>Siege/Niederlagen</strong>: {$player->kills}/{$player->deaths}<br />
 <br />

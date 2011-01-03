@@ -48,10 +48,10 @@ define('SECRET_KEY', '47EIsE4xi=Bb&YdB(nUJehe=');
 define('DB_PREFIX', '');
 define('VERSION', '1.0');
 define('SHOW_ERRORS', 1);
-define('DEBUG_MODE', 1);
+define('DEBUG_MODE', 0);
 define('MAX_X', 10); // Kartengröße
 define('MAX_Y', 10);
-define('SYS_VERSION',"0.2.1");
+define('SYS_VERSION',"0.2.3");
 
 // Koordinaten auf denen Atlantis gebaut wurde
 define('ATLANTIS_X',6);
@@ -65,7 +65,8 @@ define('ATLANTIS_Y',7);
 $id2names = array(
   "field"=>array("Unbekannt","Seichts Wasser (50m)","Wasser (100m)","Wasser (200m)","Wasser (500m)","Tiefsee (1000m)",99=>"Atlantis"),
   "items"=>array("Nichts","Wasser","Eisen","Aluminium","Titan","oxygen"),
-  "db_fields"=>array("","water","iron","aluminium","titan","oxygen")
+  "db_fields"=>array("","water","iron","aluminium","titan","oxygen"),
+  "waepons"=>array("","Miene")
 );
 
 $shop = array(
