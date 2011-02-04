@@ -87,15 +87,7 @@ class Module_Map extends Base_Module
     */
     public function attack()
     {
-
-      $x_cord = $this->player->x;
-      $y_cord = $this->player->y;
-
-      $field = $this->db->fetchRow("SELECT * FROM `map` WHERE `x`='$x_cord' AND `y`='$y_cord'"); 
-      // we will have a fight
-      if($field->owner !=0 && $field->owner != $this->player->id){
-	header('Location: index.php?mod=Fight&op='.$field->owner);
-      }
+        $this->tpl->display('coming_soon.tpl');
     }
 
     /* 
