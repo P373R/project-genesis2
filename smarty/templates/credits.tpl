@@ -5,11 +5,11 @@
 <b>Original Software</b><br />
 <a href="http://www.ezrpgproject.com/">ezRPG</a><br />
 <br />
-<b>Bibliotheken</b><br />
+<b>Libraries</b><br />
 <a href="http://htmlpurifier.org/">htmlpurfier</a><br />
 <a href="http://www.smarty.net">smarty</a><br />
 <br />
-<b>Hintergrundbild</b><br />
+<b>Background</b><br />
 <a href="http://www.flickr.com/photos/oddsock/">Oddsock</a><br />
 </center>
 

@@ -1,13 +1,13 @@
-{include file="header.tpl" TITLE="Gebäude"}
+{include file="header.tpl" TITLE="Buidings"}
 
-<h1>Infrastruktur auf {$player->x}/{$player->y}</h1>
+<h1>Buildings on {$player->x}/{$player->y}</h1>
 
 <table>
 {foreach from=$buildings item=build}
 <tr>
-  <td>Bild</td>
+  <td>Picture</td>
   <td>{$build->name}</td>
 </tr>
 {/foreach}
 </table>
-{include file="footer.tpl" TITLE="Home"}
+{include file="footer.tpl"}

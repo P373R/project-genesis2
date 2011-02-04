@@ -1,6 +1,6 @@
-{include file="header.tpl" TITLE="Karte"}
+{include file="header.tpl" TITLE="Map"}
 
-<h1>Karte</h1>
+<h1>MAp</h1>
 
 <div class="left">
   <table id="map">
@@ -19,16 +19,16 @@
 </div>
 
 <div class="right">
-<small>Koordinaten: {$player->x}/{$player->y} <br />
-Umgebung: {$fieldinfo->name}<br />
+<small>Coordinates: {$player->x}/{$player->y} <br />
+Area: {$fieldinfo->name}<br />
 Resource: {$fieldinfo->res}<br />
-Zugeordnet: {$fieldinfo->owner_db->username}<br />
+Claimed by: {$fieldinfo->owner_db->username}<br />
 </small>
-<strong>Aktionen</strong><br />
+<strong>Actions</strong><br />
 <ul>
  {if $fieldinfo->owner == $player->id || $fieldinfo->owner == 0}
-  <li><a href="index.php?mod=Map&amp;act=seek">Umgebung untersuchen</a></li>
-  <li><a href="index.php?mod=Map&amp;act=gather">Resource abbauen</a></li>
+  <li><a href="index.php?mod=Map&amp;act=seek">search area</a></li>
+  <li><a href="index.php?mod=Map&amp;act=gather">gather resource</a></li>
  {/if}
 </ul>
 <table>
@@ -54,10 +54,10 @@ Zugeordnet: {$fieldinfo->owner_db->username}<br />
   <td><a href="index.php?mod=Map&amp;act=go&amp;dir=se"><img src="static/images/gui/rightdown.png" /></a></td>
 </tr>
 </table>
-Spieler auf diesem Feld:<br />
+Player on this field:<br />
 <ul>
 {foreach from=$player_list item=pl}
-<li><a href="index.php?mod=Mail&amp;rec={$pl->username}">{$pl->username}</a></li>
+<li><a href="index.php?mod=MailBox&amp;act=compose&amp;rec={$pl->username}">{$pl->username}</a></li>
 {/foreach}
 </ul>
 </div>

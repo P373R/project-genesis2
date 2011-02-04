@@ -37,7 +37,7 @@ switch($_GET['type'])
           $bar->setFillColor('green');
       
       $bar->setData($player->max_hp, $player->hp);	// Give the bar some values
-      $bar->setTitle('Schild: ');
+      $bar->setTitle('Shield: ');
       break;
   case "energy":
       $percentage = ($player->energy / $player->max_energy) * 100;
@@ -51,7 +51,7 @@ switch($_GET['type'])
           $bar->setFillColor('green');
       
       $bar->setData($player->max_energy, $player->energy);	// Give the bar some values
-      $bar->setTitle('Energie: ');
+      $bar->setTitle('Energy: ');
       break;
   case "oxygen":
       $percentage = ($player->oxygen / $player->max_oxygen) * 100;
@@ -62,7 +62,7 @@ switch($_GET['type'])
           $bar->setFillColor('red');
 
       $bar->setData($player->max_oxygen, $player->oxygen);
-      $bar->setTitle('Sauerstoff: ');
+      $bar->setTitle('Oxygen: ');
       break;
   default:
       break;

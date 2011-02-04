@@ -50,4 +50,23 @@ function id2name($type,$id)
   global $id2names;
   return $id2names[$type][$id];
 }
+
+/**
+ * Build a Text out f an serialized Array
+ */
+function itemInfo($info = array())
+{
+    if(count($info) == 0) return "";
+    $text = "";
+    foreach($info as $key => $value) {
+        if($value != 0) {
+            $text.= ucfirst($key). " ";
+            if(is_int($value) && $value < 0) $text.= "-"; else $text.= "+";
+            $text.= $value."<br />";
+        }
+    }
+    // This is an evil hack :(
+    $text = str_replace(array("Agility","Dexterity","Vitality"),array("Speed", "Accuracy", "Shield"),$text);
+    return $text;
+}
 ?>

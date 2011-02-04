@@ -3,7 +3,7 @@ body {
 	font-size: 0.8em;
 	background-color: #F7F7F7;
 	color: #444444;
-	background-image: url(/static/images/gui/back.jpg);
+	/*background-image: url(/static/images/gui/back.jpg);*/
 }
 
 h1 {
@@ -130,6 +130,7 @@ img {
 	width: 72%;
 	margin: 0px;
 	padding: 3px;
+        overflow: auto;
 }
 
 #body {
@@ -225,4 +226,9 @@ img {
 	padding: 5px;
 	margin: 2px;
 	margin-bottom: 10px;
+}
+
+#shiptable {
+        width: 100%;
+        border: 0px;
 }

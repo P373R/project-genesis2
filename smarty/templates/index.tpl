@@ -4,7 +4,7 @@
 
 <div class="left">
 <p>
-Wilkommen zu Project-Genesis2!
+Welcome to Project-Genesis2!
 </p>
 <p>
 <h2>News</h2><br />

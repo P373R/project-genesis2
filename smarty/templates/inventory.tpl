@@ -1,6 +1,6 @@
 {include file="header.tpl" TITLE="Inventar"}
 
-<h1>Inventar</h1>
+<h1>Inventory</h1>
 
 <table>
 {foreach from=$inventory item=item}
@@ -10,4 +10,4 @@
 </tr>
 {/foreach}
 </table>
-{include file="footer.tpl" TITLE="Home"}
+{include file="footer.tpl"}

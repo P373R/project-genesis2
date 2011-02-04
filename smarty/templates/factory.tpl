@@ -1,10 +1,10 @@
-{include file="header.tpl" TITLE="Modifikationen"}
+{include file="header.tpl" TITLE="Factory"}
 
 <h1>Factory</h1>
 
 <table>
 <tr>
-  <td colspan="2" align="center"><b>Modifikationen</b></td>
+  <td colspan="2" align="center"><b>Modifications</b></td>
 </tr>
 {if $mods}
   {foreach from=$mods item=mod}
@@ -20,8 +20,8 @@
   {/foreach} 
 {else}
 <tr>
-  <td colspan="2">keine Modifikationen verf&uuml;gbar</td>
+  <td colspan="2">No modifications available</td>
 </tr>
 {/if}
 </table>
-{include file="footer.tpl" TITLE="Home"}
+{include file="footer.tpl"}

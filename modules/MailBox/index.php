@@ -98,6 +98,8 @@ class Module_MailBox extends Base_Module
     
     private function compose()
     {
+        if (isset($_GET['rec'])) $this->tpl->assign('rec',$_GET['rec']);
+        else $this->tpl->assign('rec','Name');
     	$this->tpl->display('sendmail.tpl');
     }
     

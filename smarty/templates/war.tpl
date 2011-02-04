@@ -1,6 +1,6 @@
-{include file="header.tpl" TITLE="Kampf"}
+{include file="header.tpl" TITLE="Fight"}
 
-<h1>Kampflog</h1>
+<h1>Fight</h1>
 
 {$warlog}
 

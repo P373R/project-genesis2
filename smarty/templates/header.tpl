@@ -19,22 +19,22 @@
 	<span id="title"><img src="static/images/gui/header.png" alt="Project Genesis2" /></span>
 	<span id="time">{$smarty.now|date_format:'%A %T'}
 	<br />
-	<strong>Spieler Online</strong>: {$ONLINE}</span>
+	<strong>Player online</strong>: {$ONLINE}</span>
 </div>
 
 <div id="nav">
 	<ul>
 	{if $LOGGED_IN == 'TRUE'}
 	<li><a href="index.php">Home</a></li>
-	<li><a href="index.php?mod=EventLog">Logbuch</a></li>
-	<li><a href="index.php?mod=Map">Karte</a></li>
-	<li><a href="index.php?mod=Ship">Schiff</a></li>
+	<li><a href="index.php?mod=EventLog">Log</a></li>
+	<li><a href="index.php?mod=Map">Map</a></li>
+	<li><a href="index.php?mod=Ship">Ship</a></li>
 	<li><a href="index.php?mod=MailBox">Mail</a></li>
 	<li><a href="index.php?mod=City">City</a></li>
 	<li><a href="index.php?mod=Logout">Log Out</a></li>
 	{else}
 	<li><a href="index.php">Home</a></li>
-	<li><a href="index.php?mod=Register">Registrieren</a></li>
+	<li><a href="index.php?mod=Register">Register</a></li>
 	{/if}
 	</ul>
 </div>
@@ -45,15 +45,15 @@
 <div id="sidebar">
 <img src="bar.php?width=165&type=exp" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
 <img src="bar.php?width=165&type=hp" alt="HP: {$player->hp} / {$player->max_hp}" /><br />
-<img src="bar.php?width=165&type=energy" alt="Energie: {$player->energy} / {$player->max_energy}" /><br />
-<img src="bar.php?width=165&type=oxygen" alt="Sauerstoff: {$player->oxygen} / {$player->max_oxygen}" /><br />
+<img src="bar.php?width=165&type=energy" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
+<img src="bar.php?width=165&type=oxygen" alt="Oxigen: {$player->oxygen} / {$player->max_oxygen}" /><br />
 <table>
 <tr>
-  <td><strong>Geld</strong>      </td><td> {$player->money}</td>
+  <td><strong>Gold</strong>      </td><td> {$player->money}</td>
 </tr><tr>
-  <td><strong>Wasser</strong>    </td><td> {$player->water}</td>
+  <td><strong>Water</strong>    </td><td> {$player->water}</td>
 </tr><tr>
-  <td><strong>Eisen</strong>     </td><td> {$player->iron}</td>
+  <td><strong>Iron</strong>     </td><td> {$player->iron}</td>
 </tr><tr>
   <td><strong>Aluminium</strong> </td><td> {$player->aluminium}</td>
 </tr><tr>

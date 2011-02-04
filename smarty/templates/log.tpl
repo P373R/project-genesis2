@@ -1,6 +1,6 @@
-{include file="header.tpl" TITLE="Logbuch"}
+{include file="header.tpl" TITLE="Log"}
 
-<h1>Logbuch</h1>
+<h1>Log</h1>
 
 {if $logs}
 	<!--<form method="post" action="index.php?mod=EventLog&act=clear">
@@ -24,13 +24,13 @@
 	{if $next != 0}
 	<a href="index.php?mod=EventLog&page={$page+1}">&lt;&lt; vorherige</a>
 	{else}
-	vorherige
+	older
 	{/if}
 	|
 	{if $page != 0}
 	<a href="index.php?mod=EventLog&page={$page-1}">neuere &gt;&gt;</a>
 	{else}
-	neuere
+	newer
 	{/if}
 	</center>
 {else}

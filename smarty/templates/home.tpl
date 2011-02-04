@@ -4,14 +4,14 @@
 
 <div class="left">
 <p>
-<strong>Benutzer</strong>: {$player->username}<br />
+<strong>User</strong>: {$player->username}<br />
 <strong>Level</strong>: {$player->level}<br />
-<strong>Registriert</strong>: {$player->registered|date_format:'%B %e, %Y %l:%M %p'}<br />
-<strong>Siege/Niederlagen</strong>: {$player->kills}/{$player->deaths}<br />
+<strong>Registered</strong>: {$player->registered|date_format:'%B %e, %Y %l:%M %p'}<br />
+<strong>Wins/Looses</strong>: {$player->kills}/{$player->deaths}<br />
 <br />
 {if $player->stat_points > 0}
-Du hast noch Statuspunkte zu vergeben!<br />
-<a href="index.php?mod=StatPoints"><strong>Jetzt verteilen!</strong></a>
+You can upgrade your ship!<br />
+<a href="index.php?mod=Ship"><strong>Spend now!</strong></a>
 {/if}
 </p>
 </div>
@@ -20,12 +20,12 @@ Du hast noch Statuspunkte zu vergeben!<br />
 <div class="right">
 <p>
 <strong>Level</strong>: {$player->level}<br />
-<strong>Geld</strong>: {$player->money}<br />
+<strong>Gold</strong>: {$player->money}<br />
 <br />
-<strong>Stärke</strong>: {$player->strength}<br />
-<strong>Schild</strong>: {$player->vitality}<br />
-<strong>Geschwindigkeit</strong>: {$player->agility}<br />
-<strong>Genauigkeit</strong>: {$player->dexterity}<br />
+<strong>Strengthe</strong>: {$player->strength}<br />
+<strong>Shield</strong>: {$player->vitality}<br />
+<strong>Speed</strong>: {$player->agility}<br />
+<strong>Accuracy</strong>: {$player->dexterity}<br />
 </p>
 </div>
 
