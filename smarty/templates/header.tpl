@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Distribution" content="Global" />
 <meta name="Robots" content="index,follow" />
-<link rel="stylesheet" href="static/default/style.css" type="text/css" />	
+<link rel="stylesheet" href="static/default/style.css" type="text/css" />       
 <script type="text/javascript" src="static/default/jquery-1.4.3.js"></script>    
 <script type="text/javascript" src="static/default/system.js"></script>    
 <title>Project-Genesis2 :: {$TITLE|default:""}</title>
@@ -16,28 +16,28 @@
 <div id="wrapper">
 
 <div id="header">
-	<span id="title"><img src="static/images/gui/header.png" alt="Project Genesis2" /></span>
-	<span id="time">
+        <span id="title"><img src="static/images/gui/header.png" alt="Project Genesis2" /></span>
+        <span id="time">
         <table><tr><td>Server time</td><td>{$smarty.now|date_format:'%T'}</td></tr>
-               <tr><td>Next Round</td><td>{$TICK|date_format:'%T'}</td></tr></table>
-	<strong>Player online</strong>: {$ONLINE}</span>
+               <tr><td>Next round</td><td>{$TICK|date_format:'%T'}</td></tr></table>
+        <strong>Player online</strong>: {$ONLINE}</span>
 </div>
 
 <div id="nav">
-	<ul>
-	{if $LOGGED_IN == 'TRUE'}
-	<li><a href="index.php">Home</a></li>
-	<li><a href="index.php?mod=EventLog">Log</a></li>
-	<li><a href="index.php?mod=Map">Map</a></li>
-	<li><a href="index.php?mod=Ship">Ship</a></li>
-	<li><a href="index.php?mod=MailBox">Mail</a></li>
-	<li><a href="index.php?mod=City">City</a></li>
-	<li><a href="index.php?mod=Logout">Log Out</a></li>
-	{else}
-	<li><a href="index.php">Home</a></li>
-	<li><a href="index.php?mod=Register">Register</a></li>
-	{/if}
-	</ul>
+        <ul>
+        {if $LOGGED_IN == 'TRUE'}
+        <li><a href="index.php">Home</a></li>
+        <li><a href="index.php?mod=EventLog">Log</a></li>
+        <li><a href="index.php?mod=Map">Map</a></li>
+        <li><a href="index.php?mod=Ship">Ship</a></li>
+        <li><a href="index.php?mod=MailBox">Mail</a></li>
+        <li><a href="index.php?mod=City">City</a></li>
+        <li><a href="index.php?mod=Logout">Log Out</a></li>
+        {else}
+        <li><a href="index.php">Home</a></li>
+        <li><a href="index.php?mod=Register">Register</a></li>
+        {/if}
+        </ul>
 </div>
 
 <span class="space"></span>
@@ -67,11 +67,9 @@
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
 {/if}
+{if $GET_MSG != ''}<span class="red"><strong>{$GET_MSG}</strong></span>{/if}
 </div>
 {/if}
 
 <div id="{if $LOGGED_IN == 'TRUE'}gamebody{else}body{/if}">
-	{if $GET_MSG != ''}<div class="msg">
-	<span class="red"><strong>{$GET_MSG}</strong></span>
-	</div>
-	<span class="space"></span>{/if}
+

@@ -25,12 +25,6 @@ Resource: {$fieldinfo->res}<br />
 Claimed by: {$fieldinfo->owner_db->username}<br />
 </small>
 <strong>Actions</strong><br />
-<ul>
- {if $fieldinfo->owner == $player->id || $fieldinfo->owner == 0}
-  <li><a href="index.php?mod=Map&amp;act=seek">search area</a></li>
-  <li><a href="index.php?mod=Map&amp;act=gather">gather resource</a></li>
- {/if}
-</ul>
 <table>
 <tr>
   <td><a href="index.php?mod=Map&amp;act=go&amp;dir=nw"><img src="static/images/gui/leftup.png" /></a></td>
@@ -54,6 +48,13 @@ Claimed by: {$fieldinfo->owner_db->username}<br />
   <td><a href="index.php?mod=Map&amp;act=go&amp;dir=se"><img src="static/images/gui/rightdown.png" /></a></td>
 </tr>
 </table>
+<ul>
+ {if $fieldinfo->owner == $player->id || $fieldinfo->owner == 0}
+  <li><a href="index.php?mod=Map&amp;act=seek">search area</a></li>
+  <li><a href="index.php?mod=Map&amp;act=gather">gather resource</a></li>
+ {/if}
+</ul>
+
 Player on this field:<br />
 <ul>
 {foreach from=$player_list item=pl}

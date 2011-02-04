@@ -27,6 +27,8 @@ class Module_Map extends Base_Module
 
 	(isset($_GET['act']))?$act=$_GET['act']:$act='default';
 
+        if ($this->player->energy == 0) $act="sleep";
+        
 	switch($act)
         {
           case 'attack':
@@ -43,6 +45,9 @@ class Module_Map extends Base_Module
               break;
           case 'go': 
 	      if(isset($_GET['dir']))$this->move($_GET['dir']);
+              break;
+          case 'sleep':
+              $this->sleep();
               break;
           default:
               $this->render();
@@ -239,6 +244,11 @@ echo $res->owner;
       }
       redNrg($this->player->id,$this->db,1);
       header('Location: index.php?mod=Map');
+    }
+
+    private function sleep()
+    {
+        $this->tpl->display('tired.tpl');
     }
 }
 ?>
