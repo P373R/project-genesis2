@@ -10,7 +10,7 @@
 <strong>Wins/Looses</strong>: {$player->kills}/{$player->deaths}<br />
 <br />
 {if $player->stat_points > 0}
-You can upgrade your ship!<br />
+You can upgrade your ship! You have {$player->stat_points} points left.
 <a href="index.php?mod=Ship"><strong>Spend now!</strong></a>
 {/if}
 </p>

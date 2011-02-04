@@ -17,8 +17,9 @@
 
 <div id="header">
 	<span id="title"><img src="static/images/gui/header.png" alt="Project Genesis2" /></span>
-	<span id="time">{$smarty.now|date_format:'%A %T'}
-	<br />
+	<span id="time">
+        <table><tr><td>Server time</td><td>{$smarty.now|date_format:'%T'}</td></tr>
+               <tr><td>Next Round</td><td>{$TICK|date_format:'%T'}</td></tr></table>
 	<strong>Player online</strong>: {$ONLINE}</span>
 </div>
 
@@ -44,9 +45,8 @@
 {if $LOGGED_IN == 'TRUE'}
 <div id="sidebar">
 <img src="bar.php?width=165&type=exp" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
-<img src="bar.php?width=165&type=hp" alt="HP: {$player->hp} / {$player->max_hp}" /><br />
+<img src="bar.php?width=165&type=hp" alt="HP: {$player->hp} / {$player->vitality}" /><br />
 <img src="bar.php?width=165&type=energy" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
-<img src="bar.php?width=165&type=oxygen" alt="Oxigen: {$player->oxygen} / {$player->max_oxygen}" /><br />
 <table>
 <tr>
   <td><strong>Gold</strong>      </td><td> {$player->money}</td>

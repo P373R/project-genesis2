@@ -32,9 +32,9 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
     
     $changed = false;
     //Check if player's stats are above the limit
-    if ($args->hp > $args->max_hp)
+    if ($args->hp > $args->vitality)
     {
-        $args->hp = $args->max_hp;
+        $args->hp = $args->vitality;
         $changed = true;
     }
 

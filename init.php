@@ -12,7 +12,7 @@ session_start();
 require_once 'config.php';
 
 //Show errors?
-(SHOW_ERRORS == 0)?error_reporting(0):error_reporting(E_ALL);
+(SHOW_ERRORS == 0)?error_reporting(0):error_reporting(E_ALL & ~E_NOTICE);
 
 //Constants
 define('CUR_DIR', realpath(dirname(__FILE__)));
@@ -55,7 +55,7 @@ $tpl->compile_dir  = CUR_DIR . '/smarty/templates_c/';
 $tpl->config_dir   = CUR_DIR . '/smarty/configs/';
 $tpl->cache_dir    = CUR_DIR . '/smarty/cache/';
 $tpl->assign('VERSION',SYS_VERSION);
-$tpl->debugging = true;
+if(DEBUG_MODE) $tpl->debugging = true;
 
 //Initialize $player
 $player = 0;

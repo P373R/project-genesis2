@@ -23,10 +23,10 @@ switch($_GET['type'])
   case "exp":
       $bar->setFillColor('blue'); //EXP is a blue bar
       $bar->setData($player->max_exp, $player->exp);	// Give the bar some values
-      $bar->setTitle('Level: ');
+      $bar->setTitle('Exp: ');
       break;
   case "hp":
-      $percentage = ($player->hp / $player->max_hp) * 100;
+      $percentage = ($player->hp / $player->vitality) * 100;
       
       //Set the colour according to how much is left
       if ($percentage <= 10)
@@ -36,7 +36,7 @@ switch($_GET['type'])
       else
           $bar->setFillColor('green');
       
-      $bar->setData($player->max_hp, $player->hp);	// Give the bar some values
+      $bar->setData($player->vitality, $player->hp);	// Give the bar some values
       $bar->setTitle('Shield: ');
       break;
   case "energy":

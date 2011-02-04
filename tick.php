@@ -28,9 +28,12 @@ catch (DbException $e)
 }
 
 
-$db->execute("UPDATE `players` SET `energy`=`energy`+1, `hp`=`hp`+1");
+$db->execute("UPDATE `players` SET `energy`=`energy`+1, `hp`=`hp`+2");
 
 $tk = file_get_contents('tickcount');
 $tk++;
 file_put_contents('tickcount',$tk);
+$tk = time();
+file_put_contents('ticktime',$tk);
+
 ?>

@@ -87,7 +87,9 @@ class Module_Ship extends Base_Module
                                                             `vitality`='$result[vitality]',
                                                             `agility`='$result[agility]',
                                                             `dexterity`='$result[dexterity]',
-                                                            `max_energy`='$result[energy]'");
+                                                            `max_energy`='$result[energy]',
+                                                            `energy` = `max_energy`
+                                WHERE `id`=?", array($this->player->id));
             
             header("Location: index.php?mod=Ship");
         } else {
