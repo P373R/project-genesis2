@@ -22,7 +22,7 @@ You can upgrade your ship!<br />
 <strong>Level</strong>: {$player->level}<br />
 <strong>Gold</strong>: {$player->money}<br />
 <br />
-<strong>Strengthe</strong>: {$player->strength}<br />
+<strong>Strength</strong>: {$player->strength}<br />
 <strong>Shield</strong>: {$player->vitality}<br />
 <strong>Speed</strong>: {$player->agility}<br />
 <strong>Accuracy</strong>: {$player->dexterity}<br />

@@ -63,6 +63,32 @@ class Module_Ship extends Base_Module
         if ($this->player->stat_points > 0){
             $this->db->execute("UPDATE `<ezrpg>ships` SET `$part`=`$part`+1 WHERE `id`=?",array($this->player->id));
             $this->db->execute("UPDATE `<ezrpg>players` SET `stat_points`=`stat_points`-1 WHERE `id`=?",array($this->player->id));
+
+            // Recompute the players values not elegant but working ;)
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.propulsion AND type = 'propulsion'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.gearbox AND type = 'gearbox'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.energy AND type = 'energy'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.engine AND type = 'engine'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.navigation AND type = 'navigation'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.sonar AND type = 'sonar'",array($this->player->id));
+
+            $result= array();
+            
+            foreach($compute as $part) {
+                $part = unserialize($part->properties);
+                $result['strength'] += $part['strength'];
+                $result['vitality'] += $part['vitality'];
+                $result['agility'] += $part['agility'];
+                $result['dexterity'] += $part['dexterity'];
+                $result['energy'] += $part['energy'];
+            }
+
+            $this->db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]',
+                                                            `vitality`='$result[vitality]',
+                                                            `agility`='$result[agility]',
+                                                            `dexterity`='$result[dexterity]',
+                                                            `max_energy`='$result[energy]'");
+            
             header("Location: index.php?mod=Ship");
         } else {
             header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible"));

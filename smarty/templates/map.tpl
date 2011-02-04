@@ -1,6 +1,6 @@
 {include file="header.tpl" TITLE="Map"}
 
-<h1>MAp</h1>
+<h1>Map</h1>
 
 <div class="left">
   <table id="map">

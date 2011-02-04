@@ -161,7 +161,8 @@ class Module_Register extends Base_Module
             
             $new_player = $this->db->insert('<ezrpg>players', $insert);
             //Use $new_player to find their new ID number.
-
+            $this->db->insert('<ezrpg>ships', array('id' => $new_player));
+            
             $hooks->run_hooks('register_after', $new_player);
             
             $msg = 'Congratulations, you have registered! Please login now to play!';
