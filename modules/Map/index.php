@@ -76,7 +76,7 @@ class Module_Map extends Base_Module
 	if($field->owner != 0)	$field->owner_db = $this->db->fetchRow("SELECT * FROM `players` WHERE `id`='".$field->owner."'");
 	else $field->owner_db->username = "nobody";
 
-	$query = $this->db->execute("SELECT `id`, `username` from `players` WHERE `x` = '$x_cord' AND `y` = '$y_cord' AND `username`!='".$this->player->username."'");
+	$query = $this->db->execute("SELECT `id`, `username` from `players` WHERE `x` = '$x_cord' AND `y` = '$y_cord' AND `username`!='".$this->player->username."' LIMIT 10");
 	$this->tpl->assign('player_list', $this->db->fetchAll($query));
 	$this->tpl->assign('fieldinfo', $field);
 	$this->tpl->assign('map', $map);

@@ -4,10 +4,13 @@
 
 <div class="left">
 <p>
-<strong>User</strong>: {$player->username}<br />
-<strong>Level</strong>: {$player->level}<br />
-<strong>Registered</strong>: {$player->registered|date_format:'%B %e, %Y %l:%M %p'}<br />
-<strong>Wins/Looses</strong>: {$player->kills}/{$player->deaths}<br />
+<b>News</b>
+<ul>
+<li><small>02/04/2011</small><br />
+    Introducing ship upgrades. Spend your Levelponits improving your <a href="index.php?mod=Ship">ship</a></li>
+<li><small>12/10/2010</small><br />
+    Introducing the world. Go and look what you can <a href="index.php?mod=Map">find</a></li>
+</ul>
 <br />
 {if $player->stat_points > 0}
 You can upgrade your ship! You have {$player->stat_points} points left.
