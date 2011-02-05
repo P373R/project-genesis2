@@ -1,4 +1,7 @@
 <?php
+$pro_mtime = microtime();
+$pro_time  = time();
+
 define('IN_EZRPG', true);
 
 require_once 'init.php';
@@ -16,4 +19,10 @@ $module->start();
 
 //Footer hooks
 $hooks->run_hooks('footer', $module_name);
+
+$timediv = (time()-$pro_time)+(microtime()-$pro_mtime);
+
+$profiler = file_get_contents('profilertime');
+$profiler.= $_SERVER['REQUEST_URI']." .. ".$timediv."\n";
+file_put_contents('profilertime',$profiler);
 ?>

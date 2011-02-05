@@ -2,7 +2,8 @@
 /**
  @package Scripts
 */
-define('IN_EZRPG', true);
+define('IN_EZRPG_IMAGE', true);
+define('EZRPG_BAR', true);
 
 require_once('init.php');
 

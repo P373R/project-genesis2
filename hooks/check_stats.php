@@ -49,6 +49,8 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
         $db->execute('UPDATE `<ezrpg>players` SET `energy`=?, `hp`=? WHERE `id`=?', array($args->energy, $args->hp, $args->id));
     }
 
+
+
     return $args;
 }
 ?>
