@@ -9,8 +9,9 @@
 <a href="http://htmlpurifier.org/">htmlpurfier</a><br />
 <a href="http://www.smarty.net">smarty</a><br />
 <br />
-<b>Background</b><br />
+<b>Pictures</b><br />
 <a href="http://www.flickr.com/photos/oddsock/">Oddsock</a><br />
+<a href="http://www.flickr.com/photos/patdavid/4403874969/">avhell</b><br />
 </center>
 
 {include file="footer.tpl"}

@@ -51,7 +51,7 @@ define('SHOW_ERRORS', 0);
 define('DEBUG_MODE', 0);
 define('MAX_X', 10); // Kartengröße
 define('MAX_Y', 10);
-define('SYS_VERSION',"0.2.3");
+define('SYS_VERSION',"0.3.0");
 
 // Koordinaten auf denen Atlantis gebaut wurde
 define('ATLANTIS_X',6);
