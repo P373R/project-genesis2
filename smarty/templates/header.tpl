@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Distribution" content="Global" />
 <meta name="Robots" content="index,follow" />
+{if $reload != ''} <meta http-equiv="refresh" content="{$reload}" > {/if}
 <link rel="stylesheet" href="static/default/style.css" type="text/css" />       
 <script type="text/javascript" src="static/default/jquery-1.4.3.js"></script>    
 <script type="text/javascript" src="static/default/system.js"></script>    

@@ -14,7 +14,8 @@ class Module_Ship extends Base_Module
     public function start()
     {
         if(isset($_GET['upgrade'])) $this->upgrade($_GET['upgrade']);
-        else if(isset($_GET['doupgrade'])) $this->doupgrade($_GET['doupgrade']);
+        else if(isset($_GET['doupgrade']) && !isBusy($this->player)) $this->doupgrade($_GET['doupgrade']);
+        else if(isset($_GET['doupgrade'])) header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible while busy!"));
         else $this->display();
     }
 
@@ -74,13 +75,13 @@ class Module_Ship extends Base_Module
 
             $result= array();
             
-            foreach($compute as $part) {
-                $part = unserialize($part->properties);
-                $result['strength'] += $part['strength'];
-                $result['vitality'] += $part['vitality'];
-                $result['agility'] += $part['agility'];
-                $result['dexterity'] += $part['dexterity'];
-                $result['energy'] += $part['energy'];
+            foreach($compute as $com) {
+                $com = unserialize($com->properties);
+                $result['strength'] += $com['strength'];
+                $result['vitality'] += $com['vitality'];
+                $result['agility'] += $com['agility'];
+                $result['dexterity'] += $com['dexterity'];
+                $result['energy'] += $com['energy'];
             }
 
             $this->db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]',
@@ -90,7 +91,8 @@ class Module_Ship extends Base_Module
                                                             `max_energy`='$result[energy]',
                                                             `energy` = `max_energy`
                                 WHERE `id`=?", array($this->player->id));
-            
+            $level = $this->db->fetchArray($this->db->execute("SELECT `$part` FROM `ships` WHERE `id`=?",array($this->player->id)));
+            setBusy($this->player->id,$this->db,$level[0]*600);
             header("Location: index.php?mod=Ship");
         } else {
             header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible"));

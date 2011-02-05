@@ -5,8 +5,7 @@
 <img src="static/images/gui/sub/{$part}.png" width="550" height="350" />
 
 {if $partHave->name != ''}
-Your ship has a <b>{$partHave->name}</b> and can be upgraded to a <b>{$partNew->name}</b>.<br />
-
+Your ship has a <b>{$partHave->name}</b> and can be upgraded to a <b>{$partNew->name}</b>.
 <p>
 <table id="shiptable">
 <tr>
@@ -17,7 +16,10 @@ Your ship has a <b>{$partHave->name}</b> and can be upgraded to a <b>{$partNew->
  <td>{$partNew->properties}</td>
 </tr>
 </table>
+<br />
+The Upgrade will take <b>{$partNew->id*10}</b> minutes and you can not move or use the map during that time!<br />
 </p>
+<br />
 {if $player->stat_points > 0}
 <a href="index.php?mod=Ship&amp;doupgrade={$part}">Upgrade now</a>
 {else}

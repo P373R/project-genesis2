@@ -28,6 +28,7 @@ class Module_Map extends Base_Module
 	(isset($_GET['act']))?$act=$_GET['act']:$act='default';
 
         if ($this->player->energy == 0) $act="sleep";
+        else if (isBusy($this->player)) $act="busy";
         
 	switch($act)
         {
@@ -48,6 +49,9 @@ class Module_Map extends Base_Module
               break;
           case 'sleep':
               $this->sleep();
+              break;
+          case 'busy':
+              $this->busy();
               break;
           default:
               $this->render();
@@ -243,12 +247,19 @@ echo $res->owner;
        break;
       }
       redNrg($this->player->id,$this->db,1);
+      setBusy($this->player->id,$this->db,(100-$this->player->agility));
       header('Location: index.php?mod=Map');
     }
 
     private function sleep()
     {
         $this->tpl->display('tired.tpl');
+    }
+
+    private function busy()
+    {
+        $this->tpl->assign('reload',$this->player->ship->busy-time());
+        $this->tpl->display('busy.tpl');
     }
 }
 ?>

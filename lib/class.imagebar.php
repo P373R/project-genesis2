@@ -203,10 +203,10 @@ class ImageBar
       $max - The maximum value of the data.
       $value - The current value of the data.
     */
-    public function setData($max, $value)
+    public function setData($max, $value, $text=true)
     {
         $this->dataPercent = intval(($value / $max) * 100);
-        $this->text = $value . " / " . $max;
+        if($text) $this->text = $value . " / " . $max;
     }
 	
     /*

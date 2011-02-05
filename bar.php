@@ -13,9 +13,11 @@ requireLogin();
 error_reporting(0);
 
 $width = (isset($_GET['width']))?intval($_GET['width']):100;
+$height = (isset($_GET['height']))?intval($_GET['height']):15;
 
 $bar = new ImageBar(); // Load the class
 $bar->setWidth($width); // Set the width
+$bar->setHeight($height);
 $bar->makeBar(); // Start the bar
 
 switch($_GET['type'])
@@ -41,7 +43,7 @@ switch($_GET['type'])
       break;
   case "energy":
       $percentage = ($player->energy / $player->max_energy) * 100;
-      
+
       //Set the colour according to how much is left
       if ($percentage <= 10)
           $bar->setFillColor('red');
@@ -49,7 +51,7 @@ switch($_GET['type'])
           $bar->setFillColor('yellow');
       else
           $bar->setFillColor('green');
-      
+
       $bar->setData($player->max_energy, $player->energy);	// Give the bar some values
       $bar->setTitle('Energy: ');
       break;
@@ -63,6 +65,12 @@ switch($_GET['type'])
 
       $bar->setData($player->max_oxygen, $player->oxygen);
       $bar->setTitle('Oxygen: ');
+      break;
+  case 'busy':
+      $bar->setData($player->ship->busy-$player->ship->start, $player->ship->busy-time(), false);
+
+      $bar->setTitle('Ship is busy until '.date("H:m:i",$player->ship->busy));
+      $bar->setFillColor('blue');
       break;
   default:
       break;

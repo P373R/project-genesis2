@@ -58,7 +58,7 @@ function itemInfo($info = array())
 {
     if(count($info) == 0) return "";
     $text = "";
-    foreach($info as $key => $value) {
+    if(is_array($info)) foreach($info as $key => $value) {
         if($value != 0) {
             $text.= ucfirst($key). " ";
             if(is_int($value) && $value < 0) $text.= "-"; else $text.= "+";
