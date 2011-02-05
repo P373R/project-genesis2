@@ -65,12 +65,12 @@ class Module_Ship extends Base_Module
             $this->db->execute("UPDATE `<ezrpg>ships` SET `$part`=`$part`+1 WHERE `id`=?",array($this->player->id));
             $this->db->execute("UPDATE `<ezrpg>players` SET `stat_points`=`stat_points`-1 WHERE `id`=?",array($this->player->id));
     // Recompute the players values not elegant but working ;)
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.propulsion AND type = 'propulsion'",array($player->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.gearbox AND type = 'gearbox'",array($player->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.energy AND type = 'energy'",array($player->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.engine AND type = 'engine'",array($player->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.navigation AND type = 'navigation'",array($player->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.sonar AND type = 'sonar'",array($player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.propulsion AND type = 'propulsion'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.gearbox AND type = 'gearbox'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.energy AND type = 'energy'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.engine AND type = 'engine'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.navigation AND type = 'navigation'",array($this->player->id));
+            $compute[] = $this->db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.sonar AND type = 'sonar'",array($this->player->id));
 
             $result= array();
 
@@ -83,7 +83,7 @@ class Module_Ship extends Base_Module
                 $result['energy'] += $com['energy'];
             }
 
-            $db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]',
+            $this->db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]',
                                                             `vitality`='$result[vitality]',
                                                             `agility`='$result[agility]',
                                                             `dexterity`='$result[dexterity]',
