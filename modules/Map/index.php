@@ -191,63 +191,91 @@ echo $res->owner;
 
     */
     public function move($dir)
-    { 
+    {
+      $error1 = false;
+      $error2 = false;
       switch ($dir) {
        case 'n':
 	if($this->player->y > 1){
 	  $this->db->execute("UPDATE `players` SET `y`=`y`-1 WHERE `id`='".$this->player->id."'");
-	} 
+	} else {
+            $error1 = true; $error2 = true;
+        }
        break;
        case 'e':
 	if($this->player->x < MAX_X){
 	  $this->db->execute("UPDATE `players` SET `x`=`x`+1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error1 = true; $error2 = true;
 	} 
        break;
        case 'w':
 	if($this->player->x > 1){
 	  $this->db->execute("UPDATE `players` SET `x`=`x`-1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error1 = true; $error2 = true;
 	} 
        break;
        case 's':
 	if($this->player->y < MAX_Y){
 	  $this->db->execute("UPDATE `players` SET `y`=`y`+1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error1 = true; $error2 = true;
 	} 
        break;
        case 'ne':
         if($this->player->y > 1){
           $this->db->execute("UPDATE `players` SET `y`=`y`-1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error1 = true;
         }
         if($this->player->x < MAX_X){
           $this->db->execute("UPDATE `players` SET `x`=`x`+1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error2 = true;
         }
        break;
        case 'nw':
         if($this->player->y > 1){
           $this->db->execute("UPDATE `players` SET `y`=`y`-1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error1 = true;
         }
         if($this->player->x > 1){
           $this->db->execute("UPDATE `players` SET `x`=`x`-1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error2 = true;
         }
        break;
        case 'se':
         if($this->player->y < MAX_Y){
           $this->db->execute("UPDATE `players` SET `y`=`y`+1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error1 = true;
         }
         if($this->player->x < MAX_X){
           $this->db->execute("UPDATE `players` SET `x`=`x`+1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error2 = true;
         }
        break;
        case 'sw':
         if($this->player->y < MAX_Y){
           $this->db->execute("UPDATE `players` SET `y`=`y`+1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error1 = true;
         }
         if($this->player->x > 1){
           $this->db->execute("UPDATE `players` SET `x`=`x`-1 WHERE `id`='".$this->player->id."'");
+        } else {
+            $error2 = true;
         }
        break;
       }
-      redNrg($this->player->id,$this->db,1);
-      setBusy($this->player->id,$this->db,(100-$this->player->agility));
+      if(!$error1 && !$error2) {
+        redNrg($this->player->id,$this->db,1);
+        setBusy($this->player->id,$this->db,(100-$this->player->agility));
+      }
       header('Location: index.php?mod=Map');
     }
 

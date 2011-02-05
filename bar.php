@@ -69,7 +69,7 @@ switch($_GET['type'])
   case 'busy':
       $bar->setData($player->ship->busy-$player->ship->start, $player->ship->busy-time(), false);
 
-      $bar->setTitle('Ship is busy until '.date("H:m:i",$player->ship->busy));
+      $bar->setTitle('Ship is busy');
       $bar->setFillColor('blue');
       break;
   default:
