@@ -40,13 +40,13 @@ unset($config_password);
 
 
 //HTML Purifier Config
-/*$purifier_config = HTMLPurifier_Config::createDefault();
+$purifier_config = HTMLPurifier_Config::createDefault();
 $purifier_config->set('HTML.Allowed', 'b,a[href],i,br,em,strong,ul,li');
 $purifier_config->set('URI.Base', $_SERVER['DOCUMENT_ROOT']);
 $purifier_config->set('URI.MakeAbsolute', true);
 $purifier_config->set('URI.DisableExternal', true);
 $purifier = new HTMLPurifier($purifier_config);
-*/
+
 
 //Smarty
 if(!defined('EZRPG_BAR')) {
