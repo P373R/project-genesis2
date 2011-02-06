@@ -16,68 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `buildings`
---
-
-DROP TABLE IF EXISTS `buildings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `buildings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` int(11) NOT NULL,
-  `level` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL,
-  `cost_money` int(11) NOT NULL,
-  `cost_water` int(11) NOT NULL,
-  `cost_iron` int(11) NOT NULL,
-  `cost_aluminium` int(11) NOT NULL,
-  `cost_titan` int(11) NOT NULL,
-  `gives_money` int(11) NOT NULL,
-  `gives_water` int(11) NOT NULL,
-  `gives_iron` int(11) NOT NULL,
-  `gives_aluminium` int(11) NOT NULL,
-  `gives_titan` int(11) NOT NULL,
-  `gives_exp` int(11) NOT NULL,
-  `gives_energy` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `buildings`
---
-
-LOCK TABLES `buildings` WRITE;
-/*!40000 ALTER TABLE `buildings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `buildings` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cargo`
---
-
-DROP TABLE IF EXISTS `cargo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cargo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `item` int(11) NOT NULL,
-  `count` int(11) NOT NULL,
-  `function` varchar(25) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cargo`
---
-
-LOCK TABLES `cargo` WRITE;
-/*!40000 ALTER TABLE `cargo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cargo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `items`
 --
 
@@ -203,7 +141,7 @@ CREATE TABLE `player_log` (
   PRIMARY KEY (`id`),
   KEY `player_log` (`player`,`time`),
   KEY `new_logs` (`player`,`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=313 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +150,6 @@ CREATE TABLE `player_log` (
 
 LOCK TABLES `player_log` WRITE;
 /*!40000 ALTER TABLE `player_log` DISABLE KEYS */;
-INSERT INTO `player_log` VALUES (101,1,1286443010,'You have leveled up! You gained +2 stat points and +1 max energy!',1),(102,1,1286443010,'You have leveled up! You gained +2 stat points and +1 max energy!',1),(103,1,1286443010,'You have leveled up! You gained +2 stat points and +1 max energy!',1),(104,1,1286443076,'You have increased your strength!',1),(105,1,1286443079,'You have increased your strength!',1),(106,1,1286443080,'You have increased your strength!',1),(107,1,1286443081,'You have increased your strength!',1),(108,1,1286443081,'You have increased your strength!',1),(109,1,1286443082,'You have increased your strength!',1),(110,2,1286443165,'<strong>Kampfbereicht:</strong><br /><strong>Basti</strong> hat mit <strong>13</strong> Schaden getroffen<br /><strong>Bastian</strong> hat mit <strong>10</strong> Schaden getroffen<br /><strong>Basti</strong> hat mit <strong>12</strong> Schaden getroffen<br /><strong>Bastian</strong> hat mit <strong>10</strong> Schaden getroffen<br /><strong>Basti</strong> hat mit <strong>11</strong> Schaden getroffen<br /><strong>Bastian</strong> hat nicht getroffen<br />Bastian hat keine Lebenspunkte mehr<br /><strong>Basti hat gewonnen</strong><br />',1),(111,1,1286443206,'test',1),(112,1,1286443206,'test2',1),(113,1,1286443233,'test3',1),(114,1,1286443233,'test4',1),(115,1,1286443282,'test3',1),(116,1,1286443282,'test4',1),(117,1,1287095839,'You have leveled up! You gained +2 stat points and +1 max energy!',1),(118,1,1287095877,'You have increased your agility!',1),(119,1,1287095880,'You have increased your strength!',1),(120,1,1289000527,'moved north',1),(121,1,1289000560,'moved north',1),(122,1,1289000593,'moved south',1),(123,1,1289000595,'moved south',1),(124,1,1289000596,'moved south',1),(125,1,1292065323,'moved east',1),(126,1,1292065328,'moved east',1),(127,1,1292065330,'moved south',1),(128,2,1292067747,'moved east',1),(129,2,1292067754,'moved east',1),(130,2,1292067757,'moved east',1),(131,2,1292067759,'moved east',1),(132,2,1292067763,'moved west',1),(133,2,1292067765,'moved west',1),(134,2,1292067767,'moved west',1),(135,2,1292067770,'moved west',1),(136,2,1292067773,'moved west',1),(137,2,1292067775,'moved west',1),(138,2,1292067777,'moved west',1),(139,2,1292067779,'moved west',1),(140,2,1292067785,'moved south',1),(141,2,1292067790,'moved south',1),(142,2,1292067821,'moved south',1),(143,2,1292067823,'moved south',1),(144,2,1292067826,'moved east',1),(145,2,1292067829,'moved east',1),(146,2,1292067832,'moved east',1),(147,2,1292067837,'moved east',1),(148,2,1292067843,'moved north',1),(149,1,1292067863,'<strong>Kampfbereicht:</strong><br /><strong>Bastian</strong> hat nicht getroffen<br /><strong>Genesis Foundation</strong> hat mit <strong>11</strong> Schaden getroffen<br /><strong>Bastian</strong> hat nicht getroffen<br /><strong>Genesis Foundation</strong> hat mit <strong>11</strong> Schaden getroffen<br /><strong>Bastian</strong> hat nicht getroffen<br /><strong>Genesis Foundation</strong> hat mit <strong>11</strong> Schaden getroffen<br /><strong>Bastian</strong> hat mit <strong>11</strong> Schaden getroffen<br /><strong>Genesis Foundation</strong> hat mit <strong>11</strong> Schaden getroffen<br />Bastian hat keine Lebenspunkte mehr<br /><strong>Genesis Foundation hat gewonnen</strong><br />',1),(150,2,1292117175,'moved north',1),(151,2,1292117178,'moved north',1),(152,2,1292117180,'moved west',1),(153,2,1292117359,'moved south',1),(154,2,1292117361,'moved west',1),(155,2,1292117363,'moved south',1),(156,2,1292117366,'moved west',1),(157,2,1292117369,'moved west',1),(158,2,1292117370,'moved west',1),(159,2,1292117394,'moved east',1),(160,2,1292117396,'moved east',1),(161,2,1292117397,'moved east',1),(162,2,1292117399,'moved east',1),(163,2,1292117401,'moved east',1),(164,2,1292118554,'moved west',1),(165,2,1292118556,'moved east',1),(166,2,1292120494,'moved east',1),(167,2,1292120496,'moved east',1),(168,1,1292133363,'<strong>Kampfbereicht:</strong><br /><strong>Bastian</strong> hat mit <strong>10</strong> Schaden getroffen<br /><strong>Genesis Foundation</strong> hat mit <strong>11</strong> Schaden getroffen<br /><strong>Bastian</strong> hat mit <strong>12</strong> Schaden getroffen<br /><strong>Genesis Foundation</strong> hat mit <strong>11</strong> Schaden getroffen<br />Bastian hat keine Lebenspunkte mehr<br /><strong>Genesis Foundation hat gewonnen</strong><br />',1),(169,2,1292487257,'moved east',1),(170,1,1292488159,'<strong>Kampfbereicht:</strong><br />Bastian hat keine Lebenspunkte mehr<br /><strong>Genesis Foundation hat gewonnen</strong><br />',0),(171,2,1292488176,'moved north',1),(172,2,1292488180,'moved east',1),(173,2,1292488216,'moved east',1),(174,2,1292489662,'moved north',1),(175,2,1292489664,'moved west',1),(176,2,1292489666,'moved south',1),(177,2,1292489667,'moved south',1),(178,2,1292489668,'moved west',1),(179,2,1292489671,'moved west',1),(180,2,1296795439,'You have leveled up! You gained +1 stat point!',1),(181,2,1296795439,'You have leveled up! You gained +1 stat point!',1),(182,2,1296795439,'You have leveled up! You gained +1 stat point!',1),(183,2,1296795439,'You have leveled up! You gained +1 stat point!',1),(184,2,1296795445,'You have leveled up! You gained +1 stat point!',1),(185,2,1296795445,'You have leveled up! You gained +1 stat point!',1),(186,2,1296795445,'You have leveled up! You gained +1 stat point!',1),(187,2,1296795445,'You have leveled up! You gained +1 stat point!',1),(188,2,1296795453,'You have leveled up! You gained +1 stat point!',1),(189,2,1296795453,'You have leveled up! You gained +1 stat point!',1),(190,2,1296795454,'You have leveled up! You gained +1 stat point!',1),(191,2,1296795454,'You have leveled up! You gained +1 stat point!',1),(192,2,1296795455,'You have leveled up! You gained +1 stat point!',1),(193,2,1296795455,'You have leveled up! You gained +1 stat point!',1),(194,2,1296795455,'You have leveled up! You gained +1 stat point!',1),(195,2,1296795456,'You have leveled up! You gained +1 stat point!',1),(196,2,1296795457,'You have leveled up! You gained +1 stat point!',1),(197,2,1296795457,'You have leveled up! You gained +1 stat point!',1),(198,2,1296795457,'You have leveled up! You gained +1 stat point!',1),(199,2,1296795458,'You have leveled up! You gained +1 stat point!',1),(200,2,1296795459,'You have leveled up! You gained +1 stat point!',1),(201,2,1296795459,'You have leveled up! You gained +1 stat point!',1),(202,2,1296795459,'You have leveled up! You gained +1 stat point!',1),(203,2,1296795459,'You have leveled up! You gained +1 stat point!',1),(204,2,1296795460,'You have leveled up! You gained +1 stat point!',1),(205,2,1296795461,'You have leveled up! You gained +1 stat point!',1),(206,2,1296795461,'You have leveled up! You gained +1 stat point!',1),(207,2,1296795461,'You have leveled up! You gained +1 stat point!',1),(208,2,1296795462,'You have leveled up! You gained +1 stat point!',1),(209,2,1296795462,'You have leveled up! You gained +1 stat point!',1),(210,2,1296795462,'You have leveled up! You gained +1 stat point!',1),(211,2,1296795462,'You have leveled up! You gained +1 stat point!',1),(212,2,1296795464,'You have leveled up! You gained +1 stat point!',1),(213,2,1296795464,'You have leveled up! You gained +1 stat point!',1),(214,2,1296795464,'You have leveled up! You gained +1 stat point!',1),(215,2,1296795464,'You have leveled up! You gained +1 stat point!',1),(216,2,1296795467,'You have leveled up! You gained +1 stat point!',1),(217,2,1296795467,'You have leveled up! You gained +1 stat point!',1),(218,2,1296795468,'You have leveled up! You gained +1 stat point!',1),(219,2,1296795468,'You have leveled up! You gained +1 stat point!',1),(220,2,1296795470,'You have leveled up! You gained +1 stat point!',1),(221,2,1296795470,'You have leveled up! You gained +1 stat point!',1),(222,2,1296795470,'You have leveled up! You gained +1 stat point!',1),(223,2,1296795470,'You have leveled up! You gained +1 stat point!',1),(224,2,1296795478,'You have leveled up! You gained +1 stat point!',1),(225,2,1296795478,'You have leveled up! You gained +1 stat point!',1),(226,2,1296795478,'You have leveled up! You gained +1 stat point!',1),(227,2,1296795478,'You have leveled up! You gained +1 stat point!',1),(228,2,1296795753,'You have leveled up! You gained +1 stat point!',1),(229,2,1296795753,'You have leveled up! You gained +1 stat point!',1),(230,2,1296795753,'You have leveled up! You gained +1 stat point!',1),(231,2,1296795753,'You have leveled up! You gained +1 stat point!',1),(232,2,1296795756,'You have leveled up! You gained +1 stat point!',1),(233,2,1296795756,'You have leveled up! You gained +1 stat point!',1),(234,2,1296795756,'You have leveled up! You gained +1 stat point!',1),(235,2,1296795756,'You have leveled up! You gained +1 stat point!',1),(236,2,1296795758,'You have leveled up! You gained +1 stat point!',1),(237,2,1296795758,'You have leveled up! You gained +1 stat point!',1),(238,2,1296795758,'You have leveled up! You gained +1 stat point!',1),(239,2,1296795758,'You have leveled up! You gained +1 stat point!',1),(240,2,1296795759,'You have leveled up! You gained +1 stat point!',1),(241,2,1296795759,'You have leveled up! You gained +1 stat point!',1),(242,2,1296795759,'You have leveled up! You gained +1 stat point!',1),(243,2,1296795759,'You have leveled up! You gained +1 stat point!',1),(244,2,1296795760,'You have leveled up! You gained +1 stat point!',1),(245,2,1296795760,'You have leveled up! You gained +1 stat point!',1),(246,2,1296795760,'You have leveled up! You gained +1 stat point!',1),(247,2,1296795760,'You have leveled up! You gained +1 stat point!',1),(248,2,1296795765,'You have leveled up! You gained +1 stat point!',1),(249,2,1296795765,'You have leveled up! You gained +1 stat point!',1),(250,2,1296795765,'You have leveled up! You gained +1 stat point!',1),(251,2,1296795765,'You have leveled up! You gained +1 stat point!',1),(252,2,1296795897,'You have leveled up! You gained +1 stat point!',1),(253,2,1296795897,'You have leveled up! You gained +1 stat point!',1),(254,2,1296795897,'You have leveled up! You gained +1 stat point!',1),(255,2,1296795897,'You have leveled up! You gained +1 stat point!',1),(256,2,1296795899,'You have leveled up! You gained +1 stat point!',1),(257,2,1296795900,'You have leveled up! You gained +1 stat point!',1),(258,2,1296795900,'You have leveled up! You gained +1 stat point!',1),(259,2,1296795900,'You have leveled up! You gained +1 stat point!',1),(260,2,1296795902,'You have leveled up! You gained +1 stat point!',1),(261,2,1296795902,'You have leveled up! You gained +1 stat point!',1),(262,2,1296795902,'You have leveled up! You gained +1 stat point!',1),(263,2,1296795902,'You have leveled up! You gained +1 stat point!',1),(264,2,1296795904,'You have leveled up! You gained +1 stat point!',1),(265,2,1296795904,'You have leveled up! You gained +1 stat point!',1),(266,2,1296795904,'You have leveled up! You gained +1 stat point!',1),(267,2,1296795904,'You have leveled up! You gained +1 stat point!',1),(268,2,1296795951,'You have leveled up! You gained +1 stat point!',1),(269,2,1296795952,'You have leveled up! You gained +1 stat point!',1),(270,2,1296795952,'You have leveled up! You gained +1 stat point!',1),(271,2,1296795952,'You have leveled up! You gained +1 stat point!',1),(272,2,1296796001,'You have leveled up! You gained +1 stat point!',1),(273,2,1296796002,'You have leveled up! You gained +1 stat point!',1),(274,2,1296796002,'You have leveled up! You gained +1 stat point!',1),(275,2,1296796002,'You have leveled up! You gained +1 stat point!',1),(276,2,1296796003,'You have leveled up! You gained +1 stat point!',1),(277,2,1296796003,'You have leveled up! You gained +1 stat point!',1),(278,2,1296796004,'You have leveled up! You gained +1 stat point!',1),(279,2,1296796004,'You have leveled up! You gained +1 stat point!',1),(280,2,1296796005,'You have leveled up! You gained +1 stat point!',1),(281,2,1296796005,'You have leveled up! You gained +1 stat point!',1),(282,2,1296796005,'You have leveled up! You gained +1 stat point!',1),(283,2,1296796005,'You have leveled up! You gained +1 stat point!',1),(284,2,1296796006,'You have leveled up! You gained +1 stat point!',1),(285,2,1296796007,'You have leveled up! You gained +1 stat point!',1),(286,2,1296796007,'You have leveled up! You gained +1 stat point!',1),(287,2,1296796007,'You have leveled up! You gained +1 stat point!',1),(288,2,1296796008,'You have leveled up! You gained +1 stat point!',1),(289,2,1296796008,'You have leveled up! You gained +1 stat point!',1),(290,2,1296796008,'You have leveled up! You gained +1 stat point!',1),(291,2,1296796008,'You have leveled up! You gained +1 stat point!',1),(292,2,1296796009,'You have leveled up! You gained +1 stat point!',1),(293,2,1296796009,'You have leveled up! You gained +1 stat point!',1),(294,2,1296796009,'You have leveled up! You gained +1 stat point!',1),(295,2,1296796010,'You have leveled up! You gained +1 stat point!',1),(296,2,1296796180,'You have leveled up! You gained +1 stat point!',1),(297,2,1296796184,'You have leveled up! You gained +1 stat point!',1),(298,2,1296796184,'You have leveled up! You gained +1 stat point!',1),(299,2,1296796184,'You have leveled up! You gained +1 stat point!',1),(300,2,1296796184,'You have leveled up! You gained +1 stat point!',1),(301,2,1296796200,'You have leveled up! You gained +1 stat point!',1),(302,2,1296796201,'You have leveled up! You gained +1 stat point!',1),(303,2,1296796201,'You have leveled up! You gained +1 stat point!',1),(304,2,1296796202,'You have leveled up! You gained +1 stat point!',1),(305,2,1296796247,'You have leveled up! You gained +1 stat point!',1),(306,2,1296798421,'You have leveled up! You gained +1 stat point!',1),(307,2,1296798492,'You have leveled up! You gained +1 stat point!',1),(308,2,1296798545,'You have leveled up! You gained +1 stat point!',1),(309,2,1296798653,'You have leveled up! You gained +1 stat point!',1),(310,2,1296798725,'You have leveled up! You gained +1 stat point!',1),(311,4,1296799252,'You have leveled up! You gained +1 stat point!',1),(312,4,1296800659,'You have leveled up! You gained +1 stat point!',1);
 /*!40000 ALTER TABLE `player_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,10 +182,10 @@ CREATE TABLE `players` (
   `hp` int(11) unsigned DEFAULT '20',
   `energy` int(11) unsigned NOT NULL DEFAULT '10',
   `max_energy` int(11) unsigned NOT NULL DEFAULT '10',
-  `strength` int(11) unsigned DEFAULT '5',
-  `vitality` int(11) unsigned DEFAULT '5',
-  `agility` int(11) unsigned DEFAULT '5',
-  `dexterity` int(11) unsigned DEFAULT '5',
+  `strength` int(11) unsigned DEFAULT '0',
+  `vitality` int(11) unsigned DEFAULT '15',
+  `agility` int(11) unsigned DEFAULT '2',
+  `dexterity` int(11) unsigned DEFAULT '2',
   `damage` int(11) unsigned DEFAULT '0',
   `kills` int(11) unsigned NOT NULL DEFAULT '0',
   `deaths` int(11) unsigned NOT NULL DEFAULT '0',
@@ -259,7 +196,7 @@ CREATE TABLE `players` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -268,7 +205,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g',10,1286231120,1292231872,1292231872,146,56,82,70,130,17,0,32,330,185,245,200,0,100,20,25,0,18,21,8,8,0,0),(2,'Bastian','2e6c0ca265be5863883940f3102116a33eb72812','bastian.neumann@devcoding.com','Ab+G:d3m+y%@nak}',1,1286238668,1296798653,1296792332,100,3,0,0,0,13,96,5,250,550,245,200,0,100,20,25,0,22,18,6,7,0,0),(3,'TestUser','e56c9eced94d2776191145826cea2bbecc4cf266','test@userland.ohg','^:ZS+vXI:e%]C#(b',1,1296790646,1296799132,1296798768,100,0,0,0,0,1,0,0,10,70,245,200,0,100,20,25,0,0,0,0,0,0,0),(4,'Test2','b2a15b65af0e613d9ed46a5cbb8c21c99e7fd059','test@userland.ohgt','2+|PGGs.m#EQ=Q1|',1,1296799178,1296806384,1296799189,100,0,0,0,395,3,0,19,50,20,30,30,0,20,12,2,0,0,0,6,7,0,0);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g',10,1286231120,1296875871,1296874926,146,56,82,70,130,17,991,32,330,88,64,30,0,20,27,3,0,18,21,7,9,0,0),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk',1,1296895561,1296978210,1296975717,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,6 +253,8 @@ CREATE TABLE `ships` (
   `sonar` tinyint(4) NOT NULL DEFAULT '1',
   `weapon1` tinyint(4) NOT NULL DEFAULT '1',
   `weapon2` tinyint(4) NOT NULL DEFAULT '0',
+  `busy` int(11) NOT NULL,
+  `start` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -326,41 +265,8 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (2,3,3,1,8,4,4,1,0),(3,1,1,1,1,1,1,1,0),(4,1,1,1,3,1,1,1,0);
+INSERT INTO `ships` VALUES (1000,1,1,1,1,1,1,1,0,0,0);
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `technology`
---
-
-DROP TABLE IF EXISTS `technology`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `technology` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `depend` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL,
-  `type` varchar(25) NOT NULL,
-  `add` int(11) NOT NULL,
-  `level` int(11) NOT NULL,
-  `gold` int(11) NOT NULL,
-  `water` int(11) NOT NULL,
-  `iron` int(11) NOT NULL,
-  `aluminium` int(11) NOT NULL,
-  `titan` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `technology`
---
-
-LOCK TABLES `technology` WRITE;
-/*!40000 ALTER TABLE `technology` DISABLE KEYS */;
-INSERT INTO `technology` VALUES (1,0,'Tank','max_energy',10,1,500,0,20,100,5),(2,1,'Tank','max_energy',15,2,1500,0,40,300,50),(3,2,'Tank','max_energy',20,3,15000,0,60,500,120),(4,0,'Schild','max_hp',20,1,100,0,0,0,20),(5,4,'Schild','max_hp',50,2,1000,0,0,20,50),(6,5,'Schild','max_hp',50,3,3000,0,0,200,100);
-/*!40000 ALTER TABLE `technology` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -372,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-02-04 21:05:16
+-- Dump completed on 2011-02-06 20:49:21

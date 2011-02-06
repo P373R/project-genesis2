@@ -7,3 +7,6 @@ syntax: glob
 *.ser
 *~
 *.swp
+tickcount
+profilertime
+ticktime
