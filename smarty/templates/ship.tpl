@@ -37,8 +37,8 @@
  <td><b></b></td>
 </tr>
 <tr>
- <td>{$navigation.name}<p>{$navigation.desc}</p><a href="index.php?mod=Ship&amp;upgrade=navigation">upgrade</a><br /></td>
- <td>{$sonar.name}<p>{$sonar.desc}</p><a href="index.php?mod=Ship&amp;upgrade=sonar">upgrade</a><br /></td>
+ <td>{$harvester.name}<p>{$harvester.desc}</p><a href="index.php?mod=Ship&amp;upgrade=harvester">upgrade</a><br /></td>
+ <td>&nbsp;</td>
 </tr>
 
 <tr>
