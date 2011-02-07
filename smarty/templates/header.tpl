@@ -68,9 +68,11 @@
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
 {/if}
-{if $GET_MSG != ''}<span class="red"><strong>{$GET_MSG}</strong></span>{/if}
 </div>
 {/if}
+
+{if $GET_MSG != ''}<span class="red"><strong>{$GET_MSG}</strong></span>{/if}
+
 
 <div id="{if $LOGGED_IN == 'TRUE'}gamebody{else}body{/if}">
 

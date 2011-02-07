@@ -33,6 +33,15 @@
 </tr>
 
 <tr>
+ <td><b>Harvester</b></td>
+ <td><b></b></td>
+</tr>
+<tr>
+ <td>{$navigation.name}<p>{$navigation.desc}</p><a href="index.php?mod=Ship&amp;upgrade=navigation">upgrade</a><br /></td>
+ <td>{$sonar.name}<p>{$sonar.desc}</p><a href="index.php?mod=Ship&amp;upgrade=sonar">upgrade</a><br /></td>
+</tr>
+
+<tr>
  <td><b>Primary Weapon</b></td>
  <td><b>Secondary Weapon</b></td>
 </tr>

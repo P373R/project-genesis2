@@ -20,9 +20,12 @@ $module->start();
 //Footer hooks
 $hooks->run_hooks('footer', $module_name);
 
-$timediv = (time()-$pro_time)+(microtime()-$pro_mtime);
 
-$profiler = file_get_contents('profilertime');
-$profiler.= $_SERVER['REQUEST_URI']." .. ".$timediv."\n";
-file_put_contents('profilertime',$profiler);
+if(DEBUG_MODE == 1) {
+    $timediv = (time()-$pro_time)+(microtime()-$pro_mtime);
+    $profiler = file_get_contents('profilertime');
+    $profiler.= $_SERVER['REQUEST_URI']." .. ".$timediv."\n";
+    file_put_contents('profilertime',$profiler);
+}
+
 ?>
