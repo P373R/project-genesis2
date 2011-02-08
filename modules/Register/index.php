@@ -127,6 +127,7 @@ class Module_Register extends Base_Module
             $error = 1;
         }
 		
+/* Memory Leaks in GD lib makes the captcha obsolete and not working
         //Check verification code
         if (empty($_POST['reg_verify']))
         {
@@ -138,7 +139,7 @@ class Module_Register extends Base_Module
             $errors[] = 'You didn\'t enter the correct verification code!';
             $error = 1;
         }
-		
+*/		
         //verify_code must NOT be used again.
         session_unset();
         session_destroy();

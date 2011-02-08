@@ -23,10 +23,10 @@ Want to join the fun? Fill out the form below to register!
 <label>Verify Email</label>
 <input type="text" size="40" name="email2"{if $GET_EMAIL2 != ""} value="{$GET_EMAIL2}"{/if} />
 
-<label>Enter The Code</label>
+{*<label>Enter The Code</label>
 <img src="./captcha.php" /><br />
 <input type="text" size="40" name="reg_verify" autocomplete="off" />
-
+*}
 <br />
 <input name="register" type="submit" value="Register!" class="button" />
 </form>
