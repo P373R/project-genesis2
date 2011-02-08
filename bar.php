@@ -7,7 +7,7 @@ define('IN_EZRPG', true);
 require_once('init.php');
 
 //User must be logged in
-requireLogin();
+//requireLogin();
 
 //Don't show errors or notices, or it breaks the image
 error_reporting(0);
@@ -73,6 +73,15 @@ switch($_GET['type'])
       $bar->setFillColor('blue');
       break;
   default:
+      if(isset($_GET['val1'])) $val1 = $_GET['val1'];
+      if(isset($_GET['val2'])) $val2 = $_GET['val2'];
+      if(isset($_GET['color'])) $color = $_GET['color'];
+      if(isset($_GET['title'])) $title = $_GET['title'];
+      if(isset($_GET['numbers'])) $text = $_GET['numbers'];
+
+      $bar->setData($val1,$val2,$text);
+      $bar->setFillColor($color);
+      $bar->setTitle($title.' ');
       break;
 }
 
