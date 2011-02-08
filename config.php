@@ -63,7 +63,7 @@ define('ATLANTIS_Y',7);
 */
 
 $id2names = array(
-  "field"=>array("Unbekannt","Seichts Wasser (50m)","Wasser (100m)","Wasser (200m)","Wasser (500m)","Tiefsee (1000m)",99=>"Atlantis"),
+  "field"=>array("Unbekannt","Shallow water (50m)","Water (100m)","Water (200m)","Water (500m)","Deep sea (1000m)",99=>"Atlantis"),
   "items"=>array("Nichts","Wasser","Eisen","Aluminium","Titan","oxygen"),
   "db_fields"=>array("","water","iron","aluminium","titan","oxygen"),
   "waepons"=>array("","Miene")
