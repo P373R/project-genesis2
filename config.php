@@ -19,8 +19,8 @@ defined('IN_EZRPG') or exit;
 */
 $config_server = 'localhost';
 $config_dbname = 'ezrpg';
-$config_username = 'root';
-$config_password = 'root';
+$config_username = 'ezrpg';
+$config_password = '';
 $config_driver = 'mysql';
 
 /*
