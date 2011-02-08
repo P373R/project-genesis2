@@ -17,7 +17,7 @@
 <div id="wrapper">
 
 <div id="header">
-        <span id="title"><img src="static/images/gui/header.png" alt="Project Genesis2" /></span>
+        <span id="title"><img src="static/images/gui/header_beta.png" alt="Project Genesis2" /></span>
         <span id="time">
         <table><tr><td>Server time</td><td>{$smarty.now|date_format:'%T'}</td></tr>
                <tr><td>Next round</td><td>{$TICK|date_format:'%T'}</td></tr></table>
