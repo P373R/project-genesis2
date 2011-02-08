@@ -59,7 +59,8 @@ $textColor = ImageColorAllocate($captchaImage, $rred, $rgreen, $rblue);
 imagefttext($captchaImage, $fontSize, 0, $textX, $textY, $textColor, $font, $verify_string);
 
 $angle = mt_rand(-3, 3);
-$captchaImage = imagerotate($captchaImage, $angle, $backgroundColor);
+//left out due to memory leak problems
+//$captchaImage = imagerotate($captchaImage, $angle, $backgroundColor);
 
 
 $line = ImageColorAllocate($captchaImage, $rred, $rgreen, $rblue);
