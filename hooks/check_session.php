@@ -42,6 +42,7 @@ function hook_check_session($db, &$tpl, $player, $args = 0)
             $player = $db->fetchRow('SELECT * FROM `<ezrpg>players` WHERE `id`=?', array($_SESSION['userid']));
             $player->ship = $db->fetchRow('SELECT * FROM `<ezrpg>ships` WHERE `id`=?', array($_SESSION['userid']));
             $tpl->assign('player', $player);
+            $_SESSION['language'] = $player->language;
 
             //Set logged-in flag
             define('LOGGED_IN', true);

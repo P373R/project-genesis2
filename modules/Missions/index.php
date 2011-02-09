@@ -17,7 +17,11 @@ class Module_Missions extends Base_Module
 	//Require the user to be logged in
         requireLogin();
 
-        $this->tpl->display('coming_soon.tpl');
+        if(isset($_GET['domission'])) {
+            
+        }
+
+        $this->tpl->display('missions/list.tpl');
 	
     }
 }

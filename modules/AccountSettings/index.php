@@ -30,11 +30,7 @@ class Module_AccountSettings extends Base_Module
     private function changePassword()
     {
         $msg = '';
-        if (empty($_POST['current_password']) || empty($_POST['new_password']) || empty($_POST['new_password2']))
-        {
-            $msg = 'You forgot to fill in something!';
-        }
-        else
+        if (!empty($_POST['current_password']))
         {
             $check = sha1($this->player->secret_key . $_POST['current_password'] . SECRET_KEY);
             if ($check != $this->player->password)
@@ -56,8 +52,9 @@ class Module_AccountSettings extends Base_Module
                 $msg = 'You have changed your password.';
             }
         }
+        $this->db->execute('UPDATE `<ezrpg>players` SET `language`=? WHERE `id`=?', array($_POST['language'], $this->player->id));
         
-        header('Location: index.php?mod=AccountSettings&msg=' . urlencode($msg));
+        //header('Location: index.php?mod=AccountSettings&msg=' . urlencode($msg));
     }
 }
 ?>

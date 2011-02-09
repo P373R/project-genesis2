@@ -3,7 +3,7 @@
  * This file contains the language array for the German translation
  */
 
-$ezTranslateLanguage = array();
+
 $ezTranslateLanguage['Project-Genesis2 :: Home'] = 'DNT';
 $ezTranslateLanguage['Server time'] = 'Server Zeit';
 $ezTranslateLanguage['Next round'] = 'Nächste Runde';
@@ -57,7 +57,6 @@ $ezTranslateLanguage['Date'] = 'Datum';
 $ezTranslateLanguage['Compose mail'] = 'Nachricht verfassen';
 $ezTranslateLanguage['To'] = 'An';
 
-
 $ezTranslateLanguage['Player'] = 'Spieler';
 $ezTranslateLanguage['Event Log'] = 'Ereignisse';
 $ezTranslateLanguage['Account Settings'] = 'Kontoeinstellungen';
@@ -67,4 +66,11 @@ $ezTranslateLanguage['Top Players'] = 'Top Spieler';
 $ezTranslateLanguage['Game Statistics'] = 'Spielstatistiken';
 $ezTranslateLanguage['Library'] = 'Bibliothek';
 
+$ezTranslateLanguage['Here you can change your password.'] = 'Hier kannst du dein Passwort ändern.';
+$ezTranslateLanguage['Current Password'] = 'Aktuelles Passwort';
+$ezTranslateLanguage['New Password'] = 'Neues Passwort';
+$ezTranslateLanguage['Verify New Password'] = 'Neues Passwort bestätigen';
+$ezTranslateLanguage['Language'] = 'Sprache';
+$ezTranslateLanguage['English'] = 'Englisch';
+$ezTranslateLanguage['German'] = 'Deutsch';
 ?>

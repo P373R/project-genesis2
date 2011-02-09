@@ -17,7 +17,7 @@ class Module_Library extends Base_Module
       if (isset($_GET['book'])) $this->show($_GET['book'],$_GET['chapter']);
       else {
           $this->tpl->assign('books',$this->db->fetchAll($this->db->execute("SELECT name,id FROM `<ezrpg>library`")));
-          $this->tpl->display('book_library.tpl');
+          $this->tpl->display('library/book_library.tpl');
       }
     }
 
@@ -34,9 +34,9 @@ class Module_Library extends Base_Module
             $book->chapterId = $chapterId;
             $book->chapterCount = count($book->chapters)-1;
             $this->tpl->assign('book',$book);
-            $this->tpl->display('book.tpl');
+            $this->tpl->display('library/book.tpl');
         } else {
-            $this->tpl->display('book_not_found.tpl');
+            $this->tpl->display('library/book_not_found.tpl');
         }
     }
 

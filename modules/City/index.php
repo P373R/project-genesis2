@@ -22,9 +22,9 @@ class Module_City extends Base_Module
 	//Require the user to be logged in
         requireLogin();
 	if($this->player->x != ATLANTIS_X || $this->player->y != ATLANTIS_Y){ // Wir sind nicht in Atlantis
-	  $this->tpl->display('city_na.tpl');
+	  $this->tpl->display('city/city_na.tpl');
 	} else { // wir sind in Atlantis
-	  $this->tpl->display('city.tpl');
+	  $this->tpl->display('city/city.tpl');
 	}
     }
 }

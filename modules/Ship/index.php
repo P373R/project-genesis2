@@ -33,7 +33,7 @@ class Module_Ship extends Base_Module
             $ship[$field]['desc'] = itemInfo(unserialize($part->properties));
         }
         $this->tpl->assign($ship,'ship');
-        $this->tpl->display('ship.tpl');
+        $this->tpl->display('ship/ship.tpl');
     }
 
     /**
@@ -53,7 +53,7 @@ class Module_Ship extends Base_Module
             $this->tpl->assign("msg","No upgrade available for ".ucfirst($part));
         }
         $this->tpl->assign('part',$part);
-        $this->tpl->display('ship_upgrade.tpl');
+        $this->tpl->display('ship/ship_upgrade.tpl');
     }
 
     /**

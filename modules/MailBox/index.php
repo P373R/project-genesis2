@@ -58,7 +58,7 @@ class Module_MailBox extends Base_Module
         }
         
         $this->tpl->assign('mailbox', $mailbox);
-        $this->tpl->display('listmail.tpl');
+        $this->tpl->display('mail/listmail.tpl');
     }
     
     private function delete()
@@ -92,7 +92,7 @@ class Module_MailBox extends Base_Module
     		$mailbox2 = $this->db->fetchRow('SELECT `id`, `to`, `from`, `subject`, `date`, `isread`, `message` FROM `<ezrpg>mail` WHERE `id`=?', array($_GET['id']));
 	    	
 	        $this->tpl->assign('mailbox2', $mailbox2);
-	        $this->tpl->display('readmail.tpl');
+	        $this->tpl->display('mail/readmail.tpl');
     	}
     }
     
@@ -100,7 +100,7 @@ class Module_MailBox extends Base_Module
     {
         if (isset($_GET['rec'])) $this->tpl->assign('rec',$_GET['rec']);
         else $this->tpl->assign('rec','Name');
-    	$this->tpl->display('sendmail.tpl');
+    	$this->tpl->display('mail/sendmail.tpl');
     }
     
     private function send()
@@ -154,7 +154,7 @@ class Module_MailBox extends Base_Module
         }
         
         $this->tpl->assign('outbox', $outbox);
-        $this->tpl->display('outbox.tpl');
+        $this->tpl->display('mail/outbox.tpl');
    	}
    	
    	private function deleteall()

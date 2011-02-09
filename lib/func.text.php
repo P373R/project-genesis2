@@ -73,7 +73,7 @@ function itemInfo($info = array())
  */
 function translateText($tpl_output, &$tpl)
 {
-    if(isset($_SESSION['language'])) {
+    if(isset($_SESSION['language']) && $_SESSION['language'] != '') {
         $striped = array();
         foreach(preg_split('/<.*?>/',$tpl_output,null,PREG_SPLIT_NO_EMPTY) as $phrase) {
             if(trim($phrase) != '') $striped[] = trim($phrase);
@@ -85,7 +85,7 @@ function translateText($tpl_output, &$tpl)
         for($iterator = 0; $iterator < count($striped); $iterator++) {
             // there is a translation for that token!
             if(isset($ezTranslateLanguage[$striped[$iterator]]) && $ezTranslateLanguage[$striped[$iterator]] != 'DNT') {
-                $tpl_output = preg_replace('/>'.$striped[$iterator].'</', '>'.$ezTranslateLanguage[$striped[$iterator]].'<', $tpl_output);
+                $tpl_output = preg_replace('/>\s*?'.$striped[$iterator].'\s*?</', '>'.$ezTranslateLanguage[$striped[$iterator]].'<', $tpl_output);
             } elseif($ezTranslateLanguage[$striped[$iterator]] != 'DNT'){
                 if(DEBUG_MODE) echo "\$ezTranslateLanguage['".$striped[$iterator]."'] = '';<br />";
             }

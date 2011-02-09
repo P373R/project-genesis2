@@ -17,6 +17,10 @@ Here you can change your password.
 <label>Verify New Password</label>
 <input type="password" size="40" name="new_password2" autocomplete="off" />
 
+<label>Language</label>
+<input type="radio" name="language" value=""{if $player->language == ''} checked{/if}>English<br />
+<input type="radio" name="language" value="de"{if $player->language == 'de'} checked{/if}>German<br />
+
 <br />
 <input name="change_password" type="submit" value="Change Password" class="button" />
 
