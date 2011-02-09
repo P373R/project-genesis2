@@ -2,30 +2,29 @@
 //This file cannot be viewed, it must be included
 defined('IN_EZRPG') or exit;
 
-/*
-  Title: Text Functions
-  This file contains functions that deal with manipulating pieces of text.
-*/
+/**
+ * This file contains functions that deal with manipulating pieces of text.
+ */
 
-/*
-  Function: shorten
-  Shortens a text to a specified length.
-
-  This will keep shortening the text until it finds a space, so that it won't cut off words.
-
-  Parameters:
-  $text - The text to shorten.
-  $length - The number of characters the text must be shortened to.
-
-  Returns:
-  The shortened text, or the full text if the text was already short enough.
-
-  Example Usage:
-  > $str = 'blablabla long string here';
-  > $new_str = shorten($str, 15);
-  > echo $new_str;
-  > //Outputs: 'blablabla long...'
-*/
+/**
+ * Function: shorten
+ * Shortens a text to a specified length.
+ *
+ * This will keep shortening the text until it finds a space, so that it won't cut off words.
+ *
+ * Parameters:
+ * $text - The text to shorten.
+ * $length - The number of characters the text must be shortened to.
+ *
+ * Returns:
+ * The shortened text, or the full text if the text was already short enough.
+ *
+ * Example Usage:
+ * > $str = 'blablabla long string here';
+ * > $new_str = shorten($str, 15);
+ * > echo $new_str;
+ * > //Outputs: 'blablabla long...'
+ */
 function shorten($text, $length = 50)
 {	
     if (strlen($text) > $length)
@@ -52,7 +51,7 @@ function id2name($type,$id)
 }
 
 /**
- * Build a Text out f an serialized Array
+ * Build a Text out of an serialized array of modificators
  */
 function itemInfo($info = array())
 {
@@ -65,8 +64,33 @@ function itemInfo($info = array())
             $text.= $value."<br />";
         }
     }
-    // This is an evil hack :(
+    // This is an evil hack :( done since I do not want to change the table headers
     $text = str_replace(array("Agility","Dexterity","Vitality"),array("Speed", "Accuracy", "Shield"),$text);
     return $text;
+}
+/**
+ * Fetches an array of Text phrases in HTML
+ */
+function translateText($tpl_output, &$tpl)
+{
+    if(isset($_SESSION['language'])) {
+        $striped = array();
+        foreach(preg_split('/<.*?>/',$tpl_output,null,PREG_SPLIT_NO_EMPTY) as $phrase) {
+            if(trim($phrase) != '') $striped[] = trim($phrase);
+        }
+        // get language file
+        $ezTranslateLanguage = array();
+        include 'static/languages/'.$_SESSION['language'].'.php';
+
+        for($iterator = 0; $iterator < count($striped); $iterator++) {
+            // there is a translation for that token!
+            if(isset($ezTranslateLanguage[$striped[$iterator]]) && $ezTranslateLanguage[$striped[$iterator]] != 'DNT') {
+                $tpl_output = preg_replace('/>'.$striped[$iterator].'</', '>'.$ezTranslateLanguage[$striped[$iterator]].'<', $tpl_output);
+            } elseif($ezTranslateLanguage[$striped[$iterator]] != 'DNT'){
+                if(DEBUG_MODE) echo "\$ezTranslateLanguage['".$striped[$iterator]."'] = '';<br />";
+            }
+        }
+    }
+    return $tpl_output;
 }
 ?>

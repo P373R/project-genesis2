@@ -2,8 +2,7 @@
 <head>
 <h1>Mailbox</h1>
 
-<p><br><a href="index.php?mod=MailBox&act=compose">[Write]</a> | <a href="index.php?mod=MailBox&act=outbox">
-[Outbox]</a> | <a href="index.php?mod=MailBox&act=delall">[Delete All]</a></p>
+<p><br>[<a href="index.php?mod=MailBox&act=compose">Write</a>] | [<a href="index.php?mod=MailBox&act=outbox">Outbox</a>] | [<a href="index.php?mod=MailBox&act=delall">Delete All</a>]</p>
 
 <table width="90%">
   <tr>

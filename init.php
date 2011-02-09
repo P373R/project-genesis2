@@ -55,6 +55,9 @@ $tpl->compile_dir  = CUR_DIR . '/smarty/templates_c/';
 $tpl->config_dir   = CUR_DIR . '/smarty/configs/';
 $tpl->cache_dir    = CUR_DIR . '/smarty/cache/';
 $tpl->assign('VERSION',SYS_VERSION);
+// Postgeneration Filter to get translateable Phrases
+$tpl->register_outputfilter('translateText');
+
 if(DEBUG_MODE) $tpl->debugging = true;
 
 //Initialize $player
