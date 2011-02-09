@@ -28,9 +28,9 @@
         <ul>
         {if $LOGGED_IN == 'TRUE'}
         <li><a href="index.php">Home</a></li>
-        <li><a href="index.php?mod=EventLog">Log</a></li>
         <li><a href="index.php?mod=Map">Map</a></li>
         <li><a href="index.php?mod=Ship">Ship</a></li>
+        <li><a href="index.php?mod=Missions">Missions</a></li>
         <li><a href="index.php?mod=MailBox">Mail</a></li>
         <li><a href="index.php?mod=City">City</a></li>
         <li><a href="index.php?mod=Logout">Log Out</a></li>
@@ -62,9 +62,10 @@
 </tr>
 </table>
 
+{* Disabling new Log messages. Importent messages willbe received by mail
 {if $new_logs > 0}
 <a href="index.php?mod=EventLog" class="red"><strong>{$new_logs} New Log Events</strong></a>
-{/if}
+{/if}*}
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
 {/if}
