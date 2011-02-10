@@ -78,12 +78,9 @@ function translateText($tpl_output, &$tpl)
         foreach(preg_split('/<.*?>/',$tpl_output,null,PREG_SPLIT_NO_EMPTY) as $phrase) {
             if(trim($phrase) != '') $striped[] = trim($phrase);
         }
-        // get language file
-        $ezTranslateLanguage = array();
-        include 'static/languages/'.$_SESSION['language'].'.php';
 
         $translation = "";
-
+        global $ezTranslateLanguage;
         for($iterator = 0; $iterator < count($striped); $iterator++) {
             // there is a translation for that token!
             if(isset($ezTranslateLanguage[$striped[$iterator]]) && $ezTranslateLanguage[$striped[$iterator]] != 'DNT') {

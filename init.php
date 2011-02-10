@@ -62,7 +62,8 @@ if(DEBUG_MODE) $tpl->debugging = true;
 
 //Initialize $player
 $player = 0;
-
+// Create Language array
+$ezTranslateLanguage = array();
 //Create a hooks object
 $hooks = new Hooks($db, $tpl, $player);
 

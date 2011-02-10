@@ -5,7 +5,7 @@
 <table>
 <tr>
  <td><small>Description</small></td>
- <td>{$mission->description}</td>
+ <td><i>{$mission->description}</i></td>
 </tr>
 <tr><th colspan="2">Requires</th></tr>
 <tr>

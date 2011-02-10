@@ -18,8 +18,10 @@ class Module_Missions extends Base_Module
         requireLogin();
 
         if(isset($_GET['domission'])) {
-
+            global $ezTranslateLanguage;
             $mission =  $this->db->fetchRow("SELECT * FROM `<ezrpg>missions` WHERE `id`=?",array($_GET['domission']));
+            echo $ezTranslateLanguage['TRANSLATION_MISSION_'.$mission->id];
+            if(isset($ezTranslateLanguage['TRANSLATION_MISSION_'.$mission->id])) $mission->description = $ezTranslateLanguage['TRANSLATION_MISSION_'.$mission->id];
             $this->tpl->assign('mission',$mission);
             $this->tpl->display('missions/mission.tpl');
 

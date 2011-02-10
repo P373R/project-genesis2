@@ -234,10 +234,9 @@ img {
 }
 
 table.list {
-        border-width: 1px;
+        border: 1px solid #3399FF;
+        border-top: solid 3px #3399FF;
         border-spacing: 2px;
-        border-style: solid;
-        border-color: black;
         border-collapse: collapse;
         background-color: white;
 }
@@ -248,7 +247,7 @@ table.list th {
         border-width: 1px;
         padding: 4px;
         border-style: solid;
-        border-color: black;
+        border-color: #3399FF;
         background-color: white;
         -moz-border-radius: 0px 0px 0px 0px;
 }
@@ -256,7 +255,7 @@ table.list td {
         border-width: 1px;
         padding: 4px;
         border-style: solid;
-        border-color: black;
+        border-color: #3399FF;
         background-color: white;
         -moz-border-radius: 0px 0px 0px 0px;
 }

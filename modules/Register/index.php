@@ -146,7 +146,7 @@ class Module_Register extends Base_Module
                                 $_SERVER["REMOTE_ADDR"],
                                 $_POST["recaptcha_challenge_field"],
                                 $_POST["recaptcha_response_field"]);
-        if (!$resp->is_valid && $_SERVER['ERVER_ADDR'] != '127.0.0.1') // test for captcha only if not on lokalhost
+        if (!$resp->is_valid && !LOCAL_SERVER) // test for captcha only if not on lokalhost
         {
             $errors[] = 'You didn\'t enter the correct verification code!';
         }

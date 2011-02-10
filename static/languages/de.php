@@ -3,6 +3,11 @@
  * This file contains the language array for the German translation
  */
 
+/**
+ * get special translations for missions
+ */
+
+include 'static/languages/missions/de.php';
 
 $ezTranslateLanguage['Project-Genesis2 :: Home'] = 'DNT';
 $ezTranslateLanguage['Server time'] = 'Server Zeit';
@@ -82,4 +87,5 @@ $ezTranslateLanguage['Duration'] = 'Dauer';
 $ezTranslateLanguage['seconds'] = 'Sekunden';
 
 $ezTranslateLanguage['Minimal GWP'] = 'Mindestens GWP';
+$ezTranslateLanguage['Accept Mission'] = 'Mission Annehmen';
 ?>
