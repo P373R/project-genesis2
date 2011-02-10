@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: ezrpg
 -- ------------------------------------------------------
--- Server version	5.1.49-1ubuntu8.1
+-- Server version	5.1.49-1ubuntu8.1-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -126,6 +126,39 @@ INSERT INTO `map` VALUES (1,0,0,0,0,0,1,0,''),(2,1,0,0,0,0,0,0,''),(3,2,0,0,0,0,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `missions`
+--
+
+DROP TABLE IF EXISTS `missions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `missions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `description` text NOT NULL,
+  `min_gwp` int(11) NOT NULL,
+  `energy` int(11) NOT NULL,
+  `exp` int(11) NOT NULL,
+  `gwp` int(11) NOT NULL,
+  `gold` int(11) NOT NULL,
+  `shield` int(11) NOT NULL,
+  `duration` int(11) NOT NULL,
+  `accuracy` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `missions`
+--
+
+LOCK TABLES `missions` WRITE;
+/*!40000 ALTER TABLE `missions` DISABLE KEYS */;
+INSERT INTO `missions` VALUES (1,'Welcome to Genesis2','The Genesis Foundation welcomes you as a new member on Taranus.<br />\r\nWe have a lot of work to do and so we would be happy if you want to join the good thing and help us building up a new foundation for humanity.<br />\r\nThe first step is to see if your equipment is sufficient. Therefor we will stress your ship with a special treatment. This will coast you 5 energy and 5 shield. Do not worry. This will built up after a while.<br />\r\n<br />\r\nWe are looking forward to hear from you.',50,5,15,5,10,5,10,0),(2,'Border Patrol','With the big unknown sea surrounding us we have to be prepared to fight against what ever may come. It is essential that someone is having an eye on the borders. Yu can earn yourself some money by spending some time doing it.',55,5,10,1,10,0,60,0),(3,'Fetch Oxygen','We know that there are several sources of oxygen in the south west of our city. Go there and fetch some.',60,20,50,2,30,2,600,5);
+/*!40000 ALTER TABLE `missions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `player_log`
 --
 
@@ -141,7 +174,7 @@ CREATE TABLE `player_log` (
   PRIMARY KEY (`id`),
   KEY `player_log` (`player`,`time`),
   KEY `new_logs` (`player`,`status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +183,7 @@ CREATE TABLE `player_log` (
 
 LOCK TABLES `player_log` WRITE;
 /*!40000 ALTER TABLE `player_log` DISABLE KEYS */;
+INSERT INTO `player_log` VALUES (1,1002,1297310107,'You have leveled up! You gained +1 stat point!',0),(2,1002,1297330960,'You have leveled up! You gained +1 stat point!',0);
 /*!40000 ALTER TABLE `player_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,11 +227,12 @@ CREATE TABLE `players` (
   `x` tinyint(4) NOT NULL DEFAULT '6',
   `y` tinyint(4) NOT NULL DEFAULT '7',
   `infight` tinyint(1) NOT NULL,
-  `missions` int(11) NOT NULL,
+  `missions` text NOT NULL,
+  `gwp` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +241,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1296875871,1296874926,146,56,82,70,130,17,991,32,330,378,209,30,0,20,27,3,0,18,21,7,9,0,0),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1297246314,1297244269,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,0),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297233717,1297228537,100,0,0,0,0,1,0,0,10,57,31,10,0,15,2,2,0,0,0,7,7,0,0);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1296875871,1296874926,146,56,82,70,130,17,991,32,330,562,301,30,0,20,27,3,0,18,21,7,9,0,'0',100),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1297247452,1297244269,100,0,0,0,0,1,0,0,10,185,100,10,5,5,5,5,0,0,0,6,7,0,'0',50),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,195,100,10,0,15,2,2,0,0,0,7,7,0,'0',50),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1297331309,1297330664,130,0,0,0,0,3,0,0,50,5,6,10,0,5,2,2,0,0,0,6,7,0,'0',50);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +301,7 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (1000,1,1,1,1,1,1,1,0,0,0),(1001,1,1,1,1,1,1,1,0,1297231021,1297230923);
+INSERT INTO `ships` VALUES (1000,1,1,1,1,1,1,1,0,0,0),(1001,1,1,1,1,1,1,1,0,1297231021,1297230923),(1002,1,1,2,2,1,1,1,0,1297332179,1297330979);
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -279,4 +314,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-02-09 23:15:29
+-- Dump completed on 2011-02-10 22:57:35
