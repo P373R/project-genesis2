@@ -92,4 +92,17 @@ function translateText($tpl_output, &$tpl)
     }
     return $tpl_output.$translation;
 }
+
+/**
+ * generates an error block
+ */
+function errorBlock($errors){
+    $msg = '<p>';
+    foreach($errors as $errmsg)
+    {
+        $msg .= $errmsg . '<br />';
+    }
+    $msg .= '</p>';
+    return $msg;
+}
 ?>

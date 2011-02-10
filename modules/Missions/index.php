@@ -52,12 +52,7 @@ class Module_Missions extends Base_Module
                     $msg = 'You completed this Mission';
                 } else {
                     $msg = 'Sorry, there are some problems with this mission:<br />';
-                    $msg .= '<ul>';
-                    foreach($error as $errmsg)
-                    {
-                        $msg .= '<li>' . $errmsg . '</li>';
-                    }
-                    $msg .= '</ul>';
+                    $msg .= errorBlock($error);
                 }
 
                 header('Location: index.php?mod=Missions&msg=' . urlencode($msg));

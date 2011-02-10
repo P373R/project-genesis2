@@ -184,12 +184,8 @@ class Module_Register extends Base_Module
         else
         {
             $msg = 'Sorry, there were some mistakes in your registration:<br />';
-            $msg .= '<ul>';
-            foreach($errors as $errmsg)
-            {
-                $msg .= '<li>' . $errmsg . '</li>';
-            }
-            $msg .= '</ul>';
+
+            $msg .= errorBlock($errors);
             
             $url = 'index.php?mod=Register&msg=' . urlencode($msg)
                 . '&username=' . urlencode($_POST['username'])
