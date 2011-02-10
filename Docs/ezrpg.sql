@@ -174,7 +174,7 @@ CREATE TABLE `player_log` (
   PRIMARY KEY (`id`),
   KEY `player_log` (`player`,`time`),
   KEY `new_logs` (`player`,`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `player_log` (
 
 LOCK TABLES `player_log` WRITE;
 /*!40000 ALTER TABLE `player_log` DISABLE KEYS */;
-INSERT INTO `player_log` VALUES (1,1002,1297310107,'You have leveled up! You gained +1 stat point!',0),(2,1002,1297330960,'You have leveled up! You gained +1 stat point!',0);
+INSERT INTO `player_log` VALUES (1,1002,1297310107,'You have leveled up! You gained +1 stat point!',0),(2,1002,1297330960,'You have leveled up! You gained +1 stat point!',0),(3,1002,1297333179,'You have leveled up! You gained +1 stat point!',0);
 /*!40000 ALTER TABLE `player_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +241,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1296875871,1296874926,146,56,82,70,130,17,991,32,330,562,301,30,0,20,27,3,0,18,21,7,9,0,'0',100),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1297247452,1297244269,100,0,0,0,0,1,0,0,10,185,100,10,5,5,5,5,0,0,0,6,7,0,'0',50),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,195,100,10,0,15,2,2,0,0,0,7,7,0,'0',50),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1297331309,1297330664,130,0,0,0,0,3,0,0,50,5,6,10,0,5,2,2,0,0,0,6,7,0,'0',50);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1296875871,1296874926,146,56,82,70,130,17,991,32,330,20,30,30,0,20,27,3,0,18,21,7,9,0,'0',100),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1297247452,1297244269,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,'0',50),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,7,7,0,'0',50),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1297333348,1297330664,190,0,0,0,0,4,1,35,70,0,5,10,0,5,2,2,0,0,0,6,7,0,'0',76);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,7 +301,7 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (1000,1,1,1,1,1,1,1,0,0,0),(1001,1,1,1,1,1,1,1,0,1297231021,1297230923),(1002,1,1,2,2,1,1,1,0,1297332179,1297330979);
+INSERT INTO `ships` VALUES (1000,1,1,1,1,1,1,1,0,0,0),(1001,1,1,1,1,1,1,1,0,1297231021,1297230923),(1002,1,1,2,2,1,1,1,0,1297333377,1297333367);
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -314,4 +314,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-02-10 22:57:35
+-- Dump completed on 2011-02-10 23:24:53

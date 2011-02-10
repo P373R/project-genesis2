@@ -6,7 +6,7 @@ define('IN_EZRPG', true);
 require_once 'config.php';
 
 //Show errors?
-(SHOW_ERRORS == 0)?error_reporting(0):error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 //Constants
 define('CUR_DIR', realpath(dirname(__FILE__)));
@@ -28,7 +28,20 @@ catch (DbException $e)
 }
 
 
-$db->execute("UPDATE `players` SET `energy`=`energy`+1, `hp`=`hp`+2");
+$query = $db->execute("SELECT * FROM `<ezrpg>players`");
+$result = $db->fetchAll($query);
+
+
+foreach($result as $player) {
+    $insert = array();
+    $insert[] = $player->hp+$player->vitality;
+    if($insert[0] > $player->vitality) $insert[0] = $player->vitality;
+    $insert[] = $player->energy+$player->vitality;
+    if($insert[1] > $player->max_energy) $insert[1] = $player->max_energy;
+    $insert[] = $player->id;
+    $db->execute("UPDATE `<ezrpg>players` SET `hp`=?, `energy`=? WHERE `id`=?",$insert);
+}
+
 
 $tk = file_get_contents('tickcount');
 $tk++;

@@ -44,9 +44,15 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
         $changed = true;
     }
 
+    if ($args->gwp > 100)
+    {
+        $args->energy = 100;
+        $changed = true;
+    }
+
     if ($changed === true)
     {
-        $db->execute('UPDATE `<ezrpg>players` SET `energy`=?, `hp`=? WHERE `id`=?', array($args->energy, $args->hp, $args->id));
+        $db->execute('UPDATE `<ezrpg>players` SET `energy`=?, `hp`=?, `gwp`=? WHERE `id`=?', array($args->energy, $args->hp, $args->gwp, $args->id));
     }
 
 
