@@ -3,7 +3,7 @@ body {
 	font-size: 0.8em;
 	background-color: #F7F7F7;
 	color: #444444;
-	background-image: url(/static/images/gui/back.jpg);
+	/*background-image: url(/static/images/gui/back.jpg);*/
 }
 
 h1 {
@@ -231,4 +231,35 @@ img {
 #shiptable {
         width: 100%;
         border: 0px;
+}
+
+table.list {
+        border-width: 1px;
+        border-spacing: 2px;
+        border-style: solid;
+        border-color: black;
+        border-collapse: collapse;
+        background-color: white;
+}
+table.list tr {
+        vertical-align: top;
+}
+table.list th {
+        border-width: 1px;
+        padding: 4px;
+        border-style: solid;
+        border-color: black;
+        background-color: white;
+        -moz-border-radius: 0px 0px 0px 0px;
+}
+table.list td {
+        border-width: 1px;
+        padding: 4px;
+        border-style: solid;
+        border-color: black;
+        background-color: white;
+        -moz-border-radius: 0px 0px 0px 0px;
+}
+table.inlist td{
+    border:0px;
 }

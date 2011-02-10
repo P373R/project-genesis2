@@ -18,10 +18,18 @@ class Module_Missions extends Base_Module
         requireLogin();
 
         if(isset($_GET['domission'])) {
-            
-        }
 
-        $this->tpl->display('missions/list.tpl');
+            $mission =  $this->db->fetchRow("SELECT * FROM `<ezrpg>missions` WHERE `id`=?",array($_GET['domission']));
+            $this->tpl->assign('mission',$mission);
+            $this->tpl->display('missions/mission.tpl');
+
+        } else {
+
+            $missions = $this->db->fetchAll($this->db->execute("SELECT * FROM `<ezrpg>missions`"));
+            $this->tpl->assign('missions',$missions);
+            $this->tpl->display('missions/list.tpl');
+
+        }
 	
     }
 }

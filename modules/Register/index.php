@@ -25,6 +25,7 @@ class Module_Register extends Base_Module
         }
         else
         {
+            include 'lib/ext/recaptcha/recaptchalib.php';
             //If the form was submitted, process it in register().
             if (isset($_POST['register']))
                 $this->register();
@@ -48,7 +49,7 @@ class Module_Register extends Base_Module
             $this->tpl->assign('GET_EMAIL', $_GET['email']);
         if (!empty($_GET['email2']))
             $this->tpl->assign('GET_EMAIL2', $_GET['email2']);
-		
+	$this->tpl->assign('recaptcha',recaptcha_get_html(RECAPTCHA_KEY));
         $this->tpl->display('register.tpl');
     }
 	
@@ -139,7 +140,17 @@ class Module_Register extends Base_Module
             $errors[] = 'You didn\'t enter the correct verification code!';
             $error = 1;
         }
-*/		
+*/
+
+        $resp = recaptcha_check_answer (RECAPTCHA_PRIVATE,
+                                $_SERVER["REMOTE_ADDR"],
+                                $_POST["recaptcha_challenge_field"],
+                                $_POST["recaptcha_response_field"]);
+        if (!$resp->is_valid && $_SERVER['ERVER_ADDR'] != '127.0.0.1') // test for captcha only if not on lokalhost
+        {
+            $errors[] = 'You didn\'t enter the correct verification code!';
+        }
+
         //verify_code must NOT be used again.
         session_unset();
         session_destroy();

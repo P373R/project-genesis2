@@ -82,15 +82,17 @@ function translateText($tpl_output, &$tpl)
         $ezTranslateLanguage = array();
         include 'static/languages/'.$_SESSION['language'].'.php';
 
+        $translation = "";
+
         for($iterator = 0; $iterator < count($striped); $iterator++) {
             // there is a translation for that token!
             if(isset($ezTranslateLanguage[$striped[$iterator]]) && $ezTranslateLanguage[$striped[$iterator]] != 'DNT') {
                 $tpl_output = preg_replace('/>\s*?'.$striped[$iterator].'\s*?</', '>'.$ezTranslateLanguage[$striped[$iterator]].'<', $tpl_output);
             } elseif($ezTranslateLanguage[$striped[$iterator]] != 'DNT'){
-                if(DEBUG_MODE) echo "\$ezTranslateLanguage['".$striped[$iterator]."'] = '';<br />";
+                if(DEBUG_MODE) $translation.= "\$ezTranslateLanguage['".$striped[$iterator]."'] = '';<br />\n";
             }
         }
     }
-    return $tpl_output;
+    return $tpl_output.$translation;
 }
 ?>

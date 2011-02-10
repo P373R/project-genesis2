@@ -10,7 +10,6 @@
 	<td background="static/images/map/{$field->type}.png" width="80" height="80" valign="middle" align="center">
 	  <img src="static/images/fields/{$field->res}.png" alt="{$field->x}/{$field->y}" /><br />
 	  {if $field->owner != 0}<small>{$field->owner}</small>{/if}
-	  <!--<small>{$field->x}/{$field->y}</small>-->
 	</td>
       {/foreach}
       </tr>
@@ -19,10 +18,10 @@
 </div>
 
 <div class="right">
-<small>Coordinates: {$player->x}/{$player->y} <br />
-Area: {$fieldinfo->name}<br />
-Resource: {$fieldinfo->res}<br />
-Claimed by: {$fieldinfo->owner_db->username}<br />
+<small>Coordinates<span>: {$player->x}/{$player->y} </span><br />
+Area<span>: {$fieldinfo->name}</span><br />
+Resource<span>: {$fieldinfo->res}</span><br />
+Claimed by<span>: {$fieldinfo->owner_db->username}</span><br />
 </small>
 <strong>Actions</strong><br />
 <table>
@@ -55,7 +54,7 @@ Claimed by: {$fieldinfo->owner_db->username}<br />
  {/if}
 </ul>
 
-Player on this field:<br />
+Player on this field<span>:</span><br />
 <ul>
 {foreach from=$player_list item=pl}
 <li><a href="index.php?mod=MailBox&amp;act=compose&amp;rec={$pl->username}">{$pl->username}</a></li>

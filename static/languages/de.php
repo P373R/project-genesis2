@@ -73,4 +73,13 @@ $ezTranslateLanguage['Verify New Password'] = 'Neues Passwort bestätigen';
 $ezTranslateLanguage['Language'] = 'Sprache';
 $ezTranslateLanguage['English'] = 'Englisch';
 $ezTranslateLanguage['German'] = 'Deutsch';
+
+$ezTranslateLanguage['Titel'] = 'Titel';
+$ezTranslateLanguage['Description'] = 'Beschreibung';
+$ezTranslateLanguage['Requires'] = 'Benötigt';
+$ezTranslateLanguage['Reward'] = 'Belohnung';
+$ezTranslateLanguage['Duration'] = 'Dauer';
+$ezTranslateLanguage['seconds'] = 'Sekunden';
+
+$ezTranslateLanguage['Minimal GWP'] = 'Mindestens GWP';
 ?>

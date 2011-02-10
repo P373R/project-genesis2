@@ -27,6 +27,9 @@ Want to join the fun? Fill out the form below to register!
 <img src="./captcha.php" /><br />
 <input type="text" size="40" name="reg_verify" autocomplete="off" />
 *}
+
+{$recaptcha}
+
 <br />
 <input name="register" type="submit" value="Register!" class="button" />
 </form>
