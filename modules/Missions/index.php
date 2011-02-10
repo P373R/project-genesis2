@@ -17,6 +17,9 @@ class Module_Missions extends Base_Module
 	//Require the user to be logged in
         requireLogin();
 
+        if(isBusy($player)) {
+            $this->tpl->display('busy.tpl');
+        } else {
         if(isset($_GET['domission'])) {
             global $ezTranslateLanguage;
             $mission =  $this->db->fetchRow("SELECT * FROM `<ezrpg>missions` WHERE `id`=?",array($_GET['domission']));
@@ -54,7 +57,7 @@ class Module_Missions extends Base_Module
                     // mark ship as busy
                     setBusy($this->player->id,$this->db,$mission->duration);
 
-                    $msg = 'You completed this Mission';
+                    $msg = 'You started this Mission';
                 } else {
                     $msg = 'Sorry, there are some problems with this mission:<br />';
                     $msg .= errorBlock($error);
@@ -76,6 +79,7 @@ class Module_Missions extends Base_Module
             $this->tpl->assign('missions',$missions);
             $this->tpl->display('missions/list.tpl');
 
+        }
         }
 	
     }
