@@ -1,12 +1,8 @@
 {include file="header.tpl" TITLE="Missions"}
 
 <h1>{$mission->name}</h1>
-
-<table>
-<tr>
- <td><small>Description</small></td>
- <td><i>{$mission->description}</i></td>
-</tr>
+<i>{$mission->description}</i>
+<table width="100%">
 <tr><th colspan="2">Requires</th></tr>
 <tr>
  <td><small>Minimal GWP</small></td>
@@ -34,5 +30,6 @@
  <td>{$mission->exp}</td>
 </tr>
 <tr><th colspan="2">Duration<span> : {$mission->duration} </span> seconds</th></tr>
+<tr><th colspan="2"><a href="index.php?mod=Missions&amp;domission={$mission->id}&amp;accept">Accept Mission</a></th></tr>
 </table>
 {include file="footer.tpl"}
