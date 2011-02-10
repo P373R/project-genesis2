@@ -22,7 +22,7 @@ Here you can change your password.
 <input type="radio" name="language" value="de"{if $player->language == 'de'} checked{/if}>German<br />
 
 <br />
-<input name="change_password" type="submit" value="Change Password" class="button" />
+<input name="change_password" type="submit" value="Change" class="button" />
 
 </form>
 

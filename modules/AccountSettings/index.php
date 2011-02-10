@@ -54,7 +54,7 @@ class Module_AccountSettings extends Base_Module
         }
         $this->db->execute('UPDATE `<ezrpg>players` SET `language`=? WHERE `id`=?', array($_POST['language'], $this->player->id));
         
-        //header('Location: index.php?mod=AccountSettings&msg=' . urlencode($msg));
+        header('Location: index.php?mod=AccountSettings&msg=' . urlencode($msg));
     }
 }
 ?>
