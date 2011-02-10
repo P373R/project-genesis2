@@ -16,6 +16,10 @@
  <td><small>Shield</small></td>
  <td>{$mission->shield}</td>
 </tr>
+<tr>
+ <td><small>Accuracy</small></td>
+ <td>{$mission->accuracy}</td>
+</tr>
 <tr><th colspan="2">Reward</th></tr>
 <tr>
  <td><small>Gold</small></td>

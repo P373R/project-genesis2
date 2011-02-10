@@ -45,9 +45,10 @@
 
 {if $LOGGED_IN == 'TRUE'}
 <div id="sidebar">
-<img src="bar.php?width=165&type=exp" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
-<img src="bar.php?width=165&type=hp" alt="HP: {$player->hp} / {$player->vitality}" /><br />
-<img src="bar.php?width=165&type=energy" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
+<img src="bar.php?width=165&amp;type=exp" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
+<img src="bar.php?width=165&amp;type=hp" alt="HP: {$player->hp} / {$player->vitality}" /><br />
+<img src="bar.php?width=165&amp;type=energy" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
+<img src="bar.php?width=165&amp;type=manual&amp;val1=100&amp;val2={$player->gwp}&amp;color={if $player->gwp >= 50}green{else}red{/if}&amp;title=GWP&amp;numbers=true" alt="GWP: {$player->gwp}" /><br />
 <table>
 <tr>
   <td><strong>Gold</strong>      </td><td> {$player->money}</td>
@@ -62,10 +63,6 @@
 </tr>
 </table>
 
-{* Disabling new Log messages. Importent messages willbe received by mail
-{if $new_logs > 0}
-<a href="index.php?mod=EventLog" class="red"><strong>{$new_logs} New Log Events</strong></a>
-{/if}*}
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
 {/if}

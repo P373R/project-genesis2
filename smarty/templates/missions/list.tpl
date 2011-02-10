@@ -14,15 +14,16 @@
 <tr>
  <td>{$mission->name}</td>
  <td>
-<table class="inlist"><tr><td>Energy <span>:</span></td><td>{$mission->energy}</td></tr>
-       <tr><td>Shield <span>:</span></td><td>{$mission->shield}</td></tr>
-       <tr><td>Minimal GWP <span>:</span></td><td>{$mission->min_gwp}</td></tr>
+<table class="inlist"><tr><td>Energy</td><td>{$mission->energy}</td></tr>
+       <tr><td>Shield</td><td>{$mission->shield}</td></tr>
+       <tr><td>Minimal GWP </td><td>{$mission->min_gwp}</td></tr>
+       <tr><td>Minimal Accuracy </td><td>{$mission->accuracy}</td></tr>
 </table>
  </td>
  <td>
-<table class="inlist"><tr><td>GWP <span>:</span></td><td>{$mission->gwp}</td></tr>
-       <tr><td>Gold <span>:</span></td><td>{$mission->gold}</td></tr>
-       <tr><td>EXP <span>:</span></td><td>{$mission->exp}</td></tr>
+<table class="inlist"><tr><td>GWP</td><td>{$mission->gwp}</td></tr>
+       <tr><td>Gold</td><td>{$mission->gold}</td></tr>
+       <tr><td>EXP</td><td>{$mission->exp}</td></tr>
 </table>
  <td><span>{$mission->duration} </span>seconds</td>
   <td><a href="index.php?mod=Missions&amp;domission={$mission->id}">Accept Mission</a></td>

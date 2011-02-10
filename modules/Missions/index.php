@@ -37,10 +37,12 @@ class Module_Missions extends Base_Module
                     $errno++;
                     $error[] = "Your shield is to weak you need <span>$mission->shield</span> and you have <span>".$this->player->hp."</span>";
                 }
+                if($this->player->dexterity < $mission->accuracy) {
+                    $errno++;
+                    $error[] = "Your accuracy is to weak you need <span>$mission->accuracy</span> and you have <span>".$this->player->dexterity."</span>";
+                }
 
                 if($errno == 0) {
-                    $missions = unserialize($this->player->missions);
-                    $missions[] = $mission->id;
                     $params = array($this->player->energy-$mission->energy,
                                     $this->player->hp-$mission->shield,
                                     $this->player->gwp+$mission->gwp,
@@ -48,7 +50,10 @@ class Module_Missions extends Base_Module
                                     $this->player->exp+$mission->exp,
                                     $this->player->id);
                     $this->db->execute("UPDATE `<ezrpg>players` SET `energy`=?, `hp`=?, `gwp`=?, `money`=?, `exp`=? WHERE `id`=?",$params);
-                    
+
+                    // mark ship as busy
+                    setBusy($this->player->id,$this->db,$mission->duration);
+
                     $msg = 'You completed this Mission';
                 } else {
                     $msg = 'Sorry, there are some problems with this mission:<br />';
