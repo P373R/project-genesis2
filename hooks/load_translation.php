@@ -37,6 +37,6 @@ function hook_load_translation($db, &$tpl, $player, $args = 0)
         include 'static/languages/'.$args->language.'.php';
     }
     
-    return $player;
+    return $args;
 }
 ?>

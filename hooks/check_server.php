@@ -32,6 +32,6 @@ function hook_check_server($db, &$tpl, $player, $args = 0)
 {
     ($_SERVER['SERVER_ADDR'] == '127.0.0.1')? define('LOCAL_SERVER',1): define('LOCAL_SERVER',0);
     if (LOCAL_SERVER) $tpl->assign('SERVER','local');
-    return $player;
+    return $args;
 }
 ?>

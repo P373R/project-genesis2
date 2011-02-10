@@ -10,7 +10,7 @@ require_once('init.php');
 //requireLogin();
 
 //Don't show errors or notices, or it breaks the image
-error_reporting(0);
+//error_reporting(0);
 
 $width = (isset($_GET['width']))?intval($_GET['width']):100;
 $height = (isset($_GET['height']))?intval($_GET['height']):15;

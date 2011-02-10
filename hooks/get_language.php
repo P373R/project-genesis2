@@ -34,6 +34,6 @@ function hook_get_language($db, &$tpl, $player, $args = 0)
     $query = $db->fetchRow('SELECT `language` FROM `<ezrpg>players` WHERE `id`=?',array($args->id));
     $_SESSION['language'] = $query->language;
 
-    return $player;
+    return $args;
 }
 ?>
