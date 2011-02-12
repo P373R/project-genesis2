@@ -27,15 +27,31 @@ $hooks->add_hook('header', 'header_msg', 1);
 function hook_header_msg(&$db, &$tpl, &$player, $args = 0)
 {
     global $purifier;
-    
+
     if (isset($_GET['msg']) && is_string($_GET['msg']))
     {
         $_msg = trim(stripslashes($_GET['msg']));
         $_msg = $purifier->purify($_msg);
-        if (!empty($_msg))
-            $tpl->assign('GET_MSG', $_msg);
+
+        if (!empty($_msg))  $_SESSION['msg'] = $_msg;
+        $_url=explode("&",$_SERVER['REQUEST_URI']);
+
+        $url=$_url[0];
+
+        for ($iterator = 1; $iterator < (count($_url)-1); $iterator++)
+        {
+            $url.= "&".$_url[$iterator];
+        }
+        //Relaod without msg in url
+        header ("Location: $url"); die();
     }
-    
+
+    if (isset($_SESSION['msg']))
+    {
+        $tpl->assign('GET_MSG', $_SESSION['msg']);
+        unset($_SESSION['msg']);
+    }
+    $tpl->assign('SESS',$_SESSION);
     return $args;
 }
 ?>
