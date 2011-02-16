@@ -28,7 +28,13 @@ function hook_header_msg(&$db, &$tpl, &$player, $args = 0)
 {
     global $purifier;
 
-    if (isset($_GET['msg']) && is_string($_GET['msg']))
+    if (isset($_SESSION['msg']))
+    {
+        $tpl->assign('GET_MSG', $_SESSION['msg']);
+        unset($_SESSION['msg']);
+    }
+
+if (isset($_GET['msg']) && is_string($_GET['msg']))
     {
         $_msg = trim(stripslashes($_GET['msg']));
         $_msg = $purifier->purify($_msg);
@@ -46,11 +52,6 @@ function hook_header_msg(&$db, &$tpl, &$player, $args = 0)
         header ("Location: $url"); die();
     }
 
-    if (isset($_SESSION['msg']))
-    {
-        $tpl->assign('GET_MSG', $_SESSION['msg']);
-        unset($_SESSION['msg']);
-    }
     $tpl->assign('SESS',$_SESSION);
     return $args;
 }
