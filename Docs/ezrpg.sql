@@ -174,7 +174,7 @@ CREATE TABLE `player_log` (
   PRIMARY KEY (`id`),
   KEY `player_log` (`player`,`time`),
   KEY `new_logs` (`player`,`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `player_log` (
 
 LOCK TABLES `player_log` WRITE;
 /*!40000 ALTER TABLE `player_log` DISABLE KEYS */;
-INSERT INTO `player_log` VALUES (1,1002,1297310107,'You have leveled up! You gained +1 stat point!',0),(2,1002,1297330960,'You have leveled up! You gained +1 stat point!',0),(3,1002,1297333179,'You have leveled up! You gained +1 stat point!',0);
+INSERT INTO `player_log` VALUES (1,1002,1297310107,'You have leveled up! You gained +1 stat point!',0),(2,1002,1297330960,'You have leveled up! You gained +1 stat point!',0),(3,1002,1297333179,'You have leveled up! You gained +1 stat point!',0),(4,1002,1297500867,'You have leveled up! You gained +1 stat point!',0);
 /*!40000 ALTER TABLE `player_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,7 +232,7 @@ CREATE TABLE `players` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +241,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1296875871,1296874926,146,56,82,70,130,17,991,32,330,20,30,30,0,20,27,3,0,18,21,7,9,0,'0',100),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1297247452,1297244269,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,'0',50),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,7,7,0,'0',50),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1297333348,1297330664,190,0,0,0,0,4,1,35,70,0,5,10,0,5,2,2,0,0,0,6,7,0,'0',76);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1297916977,1297916977,146,56,82,70,130,17,991,32,330,20,30,30,0,20,27,3,0,18,21,7,9,0,'0',100),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1297583838,1297244269,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,'0',50),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,7,7,0,'0',50),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1297916947,1297916967,250,0,0,0,0,5,0,50,90,5,10,10,0,5,2,2,0,0,0,6,7,0,'0',102),(1003,'Bastitest','cf8888f08f8a208513555bc53ba80085b65166be','basti@localhost.de','{_t2]Eqq61r@z!5`','',1,1297585076,1297589581,1297587525,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,6,7,0,'',0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,6 +258,7 @@ CREATE TABLE `ship_parts` (
   `name` text NOT NULL,
   `desc` text NOT NULL,
   `properties` text NOT NULL,
+  `depend` text NOT NULL,
   KEY `id` (`id`,`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -268,7 +269,7 @@ CREATE TABLE `ship_parts` (
 
 LOCK TABLES `ship_parts` WRITE;
 /*!40000 ALTER TABLE `ship_parts` DISABLE KEYS */;
-INSERT INTO `ship_parts` VALUES (1,'propulsion','Basic propeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:1;s:9:\"dexterity\";i:0;}'),(2,'propulsion','Big propeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:3;s:9:\"dexterity\";i:0;}'),(3,'propulsion','Advanced propeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:5;s:9:\"dexterity\";i:0;}'),(4,'propulsion','Basic impeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:6;s:9:\"dexterity\";i:1;}'),(5,'propulsion','Big impeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:8;s:9:\"dexterity\";i:2;}'),(6,'propulsion','Advanced impeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:10;s:9:\"dexterity\";i:4;}'),(7,'propusion','Small jet','','a:4:{s:8:\"strength\";i:1;s:8:\"vitality\";i:0;s:7:\"agility\";i:13;s:9:\"dexterity\";i:5;}'),(8,'propulsion','Big jet','','a:4:{s:8:\"strength\";i:2;s:8:\"vitality\";i:0;s:7:\"agility\";i:15;s:9:\"dexterity\";i:5;}'),(9,'propulsion','Advanced jet','','a:4:{s:8:\"strength\";i:4;s:8:\"vitality\";i:0;s:7:\"agility\";i:20;s:9:\"dexterity\";i:7;}'),(10,'propulsion','Highspeed jet','','a:4:{s:8:\"strength\";i:5;s:8:\"vitality\";i:0;s:7:\"agility\";i:25;s:9:\"dexterity\";i:10;}'),(1,'gearbox','Iron cog wheels','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:1;s:9:\"dexterity\";i:0;}'),(2,'gearbox','Steel cog wheels','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:2;s:9:\"dexterity\";i:0;}'),(3,'gearbox','Hard steel cog wheles','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:5;s:9:\"dexterity\";i:0;}'),(4,'gearbox','Titanium cog wheels','','a:4:{s:8:\"strength\";i:2;s:8:\"vitality\";i:0;s:7:\"agility\";i:7;s:9:\"dexterity\";i:0;}'),(1,'energy','Small nuclear plant','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:5;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:10;}'),(2,'energy','Medium nuclear plant','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:10;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:20;}'),(3,'energy','Big nuclear plant','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:20;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:30;}'),(5,'energy','Small fusion reactor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:40;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:50;}'),(6,'energy','Medium fusion reactor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:80;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:70;}'),(7,'energy','Huge fusion reactor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:100;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:100;}'),(8,'energy','Perpetuum Mobile','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:100;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:200;}'),(1,'engine','Small Motor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:10;s:9:\"dexterity\";i:0;s:6:\"energy\";i:0;}'),(2,'engine','Medium Motor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:20;s:9:\"dexterity\";i:0;s:6:\"energy\";i:0;}'),(3,'engine','Big Motor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:30;s:9:\"dexterity\";i:0;s:6:\"energy\";i:0;}'),(4,'engine','Twin Motor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:50;s:9:\"dexterity\";i:0;s:6:\"energy\";i:0;}'),(1,'navigation','Pen and paper','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:1;s:6:\"energy\";i:0;}'),(2,'navigation','Calulator','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:5;s:6:\"energy\";i:0;}'),(3,'navigation','Computer','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:8;s:6:\"energy\";i:0;}'),(4,'navigation','Super copmuter','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:10;s:6:\"energy\";i:0;}'),(5,'navigation','Autopilot','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:15;s:6:\"energy\";i:0;}'),(1,'sonar','Small sonar','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:1;s:6:\"energy\";i:0;}'),(2,'sonar','Medium sonar','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:5;s:6:\"energy\";i:0;}'),(3,'sonar','Large sonar','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:10;s:6:\"energy\";i:0;}'),(4,'sonar','Sonar array','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:15;s:6:\"energy\";i:0;}'),(4,'energy','Tiny fusion reactor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:45;}');
+INSERT INTO `ship_parts` VALUES (1,'propulsion','Basic propeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:1;s:9:\"dexterity\";i:0;}',''),(2,'propulsion','Big propeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:3;s:9:\"dexterity\";i:0;}',''),(3,'propulsion','Advanced propeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:5;s:9:\"dexterity\";i:0;}',''),(4,'propulsion','Basic impeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:6;s:9:\"dexterity\";i:1;}',''),(5,'propulsion','Big impeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:8;s:9:\"dexterity\";i:2;}',''),(6,'propulsion','Advanced impeller','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:10;s:9:\"dexterity\";i:4;}',''),(7,'propusion','Small jet','','a:4:{s:8:\"strength\";i:1;s:8:\"vitality\";i:0;s:7:\"agility\";i:13;s:9:\"dexterity\";i:5;}',''),(8,'propulsion','Big jet','','a:4:{s:8:\"strength\";i:2;s:8:\"vitality\";i:0;s:7:\"agility\";i:15;s:9:\"dexterity\";i:5;}',''),(9,'propulsion','Advanced jet','','a:4:{s:8:\"strength\";i:4;s:8:\"vitality\";i:0;s:7:\"agility\";i:20;s:9:\"dexterity\";i:7;}',''),(10,'propulsion','Highspeed jet','','a:4:{s:8:\"strength\";i:5;s:8:\"vitality\";i:0;s:7:\"agility\";i:25;s:9:\"dexterity\";i:10;}',''),(1,'gearbox','Iron cog wheels','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:1;s:9:\"dexterity\";i:0;}',''),(2,'gearbox','Steel cog wheels','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:2;s:9:\"dexterity\";i:0;}',''),(3,'gearbox','Hard steel cog wheles','','a:4:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:5;s:9:\"dexterity\";i:0;}',''),(4,'gearbox','Titanium cog wheels','','a:4:{s:8:\"strength\";i:2;s:8:\"vitality\";i:0;s:7:\"agility\";i:7;s:9:\"dexterity\";i:0;}',''),(1,'energy','Small nuclear plant','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:5;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:10;}',''),(2,'energy','Medium nuclear plant','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:10;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:20;}',''),(3,'energy','Big nuclear plant','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:20;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:30;}',''),(5,'energy','Small fusion reactor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:40;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:50;}',''),(6,'energy','Medium fusion reactor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:80;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:70;}',''),(7,'energy','Huge fusion reactor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:100;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:100;}',''),(8,'energy','Perpetuum Mobile','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:100;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:200;}',''),(1,'engine','Small Motor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:10;s:9:\"dexterity\";i:0;s:6:\"energy\";i:0;}',''),(2,'engine','Medium Motor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:20;s:9:\"dexterity\";i:0;s:6:\"energy\";i:0;}',''),(3,'engine','Big Motor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:30;s:9:\"dexterity\";i:0;s:6:\"energy\";i:0;}',''),(4,'engine','Twin Motor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:50;s:9:\"dexterity\";i:0;s:6:\"energy\";i:0;}',''),(1,'navigation','Pen and paper','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:1;s:6:\"energy\";i:0;}',''),(2,'navigation','Calulator','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:5;s:6:\"energy\";i:0;}',''),(3,'navigation','Computer','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:8;s:6:\"energy\";i:0;}',''),(4,'navigation','Super copmuter','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:10;s:6:\"energy\";i:0;}',''),(5,'navigation','Autopilot','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:15;s:6:\"energy\";i:0;}',''),(1,'sonar','Small sonar','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:1;s:6:\"energy\";i:0;}',''),(2,'sonar','Medium sonar','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:5;s:6:\"energy\";i:0;}',''),(3,'sonar','Large sonar','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:10;s:6:\"energy\";i:0;}',''),(4,'sonar','Sonar array','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:15;s:6:\"energy\";i:0;}',''),(4,'energy','Tiny fusion reactor','','a:5:{s:8:\"strength\";i:0;s:8:\"vitality\";i:0;s:7:\"agility\";i:0;s:9:\"dexterity\";i:0;s:6:\"energy\";i:45;}','');
 /*!40000 ALTER TABLE `ship_parts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,6 +292,7 @@ CREATE TABLE `ships` (
   `weapon2` tinyint(4) NOT NULL DEFAULT '0',
   `busy` int(11) NOT NULL,
   `start` int(11) NOT NULL,
+  `harvester` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -301,7 +303,7 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (1000,1,1,1,1,1,1,1,0,0,0),(1001,1,1,1,1,1,1,1,0,1297231021,1297230923),(1002,1,1,2,2,1,1,1,0,1297333377,1297333367);
+INSERT INTO `ships` VALUES (1000,1,1,1,1,1,1,1,0,0,0,0),(1001,1,1,1,1,1,1,1,0,1297231021,1297230923,0),(1002,1,1,2,4,1,1,1,0,1297916416,1297916406,0);
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -314,4 +316,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-02-10 23:24:53
+-- Dump completed on 2011-02-17 18:29:28

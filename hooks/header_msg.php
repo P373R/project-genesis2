@@ -28,29 +28,33 @@ function hook_header_msg(&$db, &$tpl, &$player, $args = 0)
 {
     global $purifier;
 
-    if (isset($_SESSION['msg']))
-    {
-        $tpl->assign('GET_MSG', $_SESSION['msg']);
-        unset($_SESSION['msg']);
-    }
 
-if (isset($_GET['msg']) && is_string($_GET['msg']))
+    if (!isset($_SESSION['msg']) && isset($_GET['msg']) && is_string($_GET['msg']))
     {
         $_msg = trim(stripslashes($_GET['msg']));
         $_msg = $purifier->purify($_msg);
 
         if (!empty($_msg))  $_SESSION['msg'] = $_msg;
-        $_url=explode("&",$_SERVER['REQUEST_URI']);
-
-        $url=$_url[0];
-
-        for ($iterator = 1; $iterator < (count($_url)-1); $iterator++)
+	$_url = parse_url($_SERVER['REQUEST_URI']);
+	$url = $_url['path'];
+	$_url=explode("&",$_url['query']);
+	$iterator = 0;
+	foreach ($_url as $token)
         {
-            $url.= "&".$_url[$iterator];
+	    if($iterator == 0) $del = '?';
+	    else $del = '&';
+            if(substr($token,3)!="msg") $url.= $del.$token;
+	    $iterator++;
         }
         //Relaod without msg in url
         header ("Location: $url"); die();
+    } 
+    else if (isset($_SESSION['msg']))
+    {
+        $tpl->assign('GET_MSG', $_SESSION['msg']);
+        unset($_SESSION['msg']);
     }
+
 
     $tpl->assign('SESS',$_SESSION);
     return $args;

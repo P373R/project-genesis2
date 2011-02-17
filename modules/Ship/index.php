@@ -26,7 +26,7 @@ class Module_Ship extends Base_Module
     {
         requireLogin(); // Nur wenn eingelogt
         $ship = array();
-        $shipdb = $this->db->fetchRow('SELECT `propulsion`,`gearbox`,`engine`,`energy`,`navigation`,`sonar`,`weapon1`,`weapon2` FROM `<ezrpg>ships` WHERE id=?',array($this->player->id));
+        $shipdb = $this->db->fetchRow('SELECT `propulsion`,`gearbox`,`engine`,`energy`,`navigation`,`sonar`,`weapon1`,`weapon2`,`harvester` FROM `<ezrpg>ships` WHERE id=?',array($this->player->id));
         foreach ($shipdb as $field => $value) {
             $part = $this->db->fetchRow('SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?',array($value,$field));
             $ship[$field]['name'] = $part->name;
