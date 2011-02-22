@@ -54,8 +54,8 @@ function id2name($type,$id)
  * Build a Text out of an serialized array of modificators
  */
 function itemInfo($info = array())
-{
-    if(count($info) == 0) return "";
+{print_r($info);
+    if(count($info) == 0) return "nothing";
     $text = "";
     if(is_array($info)) foreach($info as $key => $value) {
         if($value != 0) {

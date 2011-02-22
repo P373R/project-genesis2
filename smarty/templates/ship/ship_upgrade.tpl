@@ -16,14 +16,16 @@ Your ship has a <b>{$partHave->name}</b> and can be upgraded to a <b>{$partNew->
  <td>{$partNew->properties}</td>
 </tr>
 </table>
+<p><b>This upgrade depends on</b><br >
+{$partNew->depend}</p>
 <br />
 The Upgrade will take <b>{$partNew->id*10}</b> minutes and you can not move or use the map during that time!<br />
 </p>
 <br />
-{if $player->stat_points > 0}
+{if $player->stat_points > 0 && !$notPossible}
 <a href="index.php?mod=Ship&amp;doupgrade={$part}">Upgrade now</a>
 {else}
-Not enough points to upgrade.
+No upgrade possible.
 {/if}
 {/if}
 <b>{$msg}</b>

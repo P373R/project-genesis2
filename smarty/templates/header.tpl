@@ -62,7 +62,9 @@
   <td><strong>Titan</strong>      </td><td> {$player->titan}</td>
 </tr>
 </table>
-
+{if $BUSY}
+<img src="bar.php?width=165&amp;height=15&amp;type=busy" alt="Ship is busy"/>
+{/if}
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
 {/if}

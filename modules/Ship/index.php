@@ -41,17 +41,37 @@ class Module_Ship extends Base_Module
      */
     private function upgrade($part)
     {
-        $id   = $this->db->fetch($this->db->execute("SELECT `$part` FROM `<ezrpg>ships` WHERE id=?", array($this->player->id)));
+        $id = $this->db->fetch($this->db->execute("SELECT `$part` FROM `<ezrpg>ships` WHERE id=?", array($this->player->id)));
         $partNew = $this->db->fetchRow('SELECT * FROM `<ezrpg>ship_parts` WHERE type=? AND id=?', array($part, ($id->$part+1)));
         $partHave= $this->db->fetchRow('SELECT * FROM `<ezrpg>ship_parts` WHERE type=? AND id=?', array($part, ($id->$part)));
         if($partNew->properties != '') {
             $partNew->properties = itemInfo(unserialize($partNew->properties));
+          
+            // Look if the dependecies are met
+            $dep = unserialize($partNew->depend);
+            $notPossible = false;
+            if (isset($dep['propulsion']) && $this->player->ship->propulsion < $dep['propulsion']) $notPossible = true;
+            else if (isset($dep['gearbox'])    && $this->player->ship->propulsion < $dep['gearbox'])    $notPossible = true;
+            else if (isset($dep['engine'])     && $this->player->ship->propulsion < $dep['engine'])     $notPossible = true;
+            else if (isset($dep['energy'])     && $this->player->ship->propulsion < $dep['energy'])     $notPossible = true;
+            else if (isset($dep['navigation']) && $this->player->ship->propulsion < $dep['navigation']) $notPossible = true;
+            else if (isset($dep['sonar'])      && $this->player->ship->propulsion < $dep['sonar'])      $notPossible = true;
+            else if (isset($dep['harvester'])  && $this->player->ship->propulsion < $dep['harvester'])  $notPossible = true;
+
+	    $partNew->depend = itemInfo($dep);
             $partHave->properties= itemInfo(unserialize($partHave->properties));
+
             $this->tpl->assign('partNew',$partNew);
             $this->tpl->assign('partHave',$partHave);
+
+	    if ($notPossible) {
+		$this->tpl->assign('msg', 'Dependencies are not met!');
+	    }
         } else {
-            $this->tpl->assign("msg","No upgrade available for ".ucfirst($part));
+            $this->tpl->assign('msg', 'No upgrade available for '.ucfirst($part));
+            $notPossible = false;
         }
+        $this->tpl->assign('notPossible', $notPossible);
         $this->tpl->assign('part',$part);
         $this->tpl->display('ship/ship_upgrade.tpl');
     }
@@ -61,7 +81,19 @@ class Module_Ship extends Base_Module
      */
     private function doupgrade($part)
     {
-        if ($this->player->stat_points > 0){
+	$partNew = $this->db->fetchRow('SELECT depend FROM `<ezrpg>ship_parts` WHERE type=? AND id=?', array($part, $this->player->ship->$part));
+	$dep = unserialize($partNew->depend);print_r($dep);
+	$possible = true;
+	
+	if (isset($dep['propulsion']) && $this->player->ship->propulsion < $dep['propulsion']) $possible = false;
+	else if (isset($dep['gearbox'])    && $this->player->ship->propulsion < $dep['gearbox'])    $possible = false;
+	else if (isset($dep['engine'])     && $this->player->ship->propulsion < $dep['engine'])     $possible = false;
+	else if (isset($dep['energy'])     && $this->player->ship->propulsion < $dep['energy'])     $possible = false;
+	else if (isset($dep['navigation']) && $this->player->ship->propulsion < $dep['navigation']) $possible = false;
+	else if (isset($dep['sonar'])      && $this->player->ship->propulsion < $dep['sonar'])      $possible = false;
+	else if (isset($dep['harvester'])  && $this->player->ship->propulsion < $dep['harvester'])  $possible = false;
+        
+	if ($this->player->stat_points > 0 && $possible){
             $this->db->execute("UPDATE `<ezrpg>ships` SET `$part`=`$part`+1 WHERE `id`=?",array($this->player->id));
             $this->db->execute("UPDATE `<ezrpg>players` SET `stat_points`=`stat_points`-1 WHERE `id`=?",array($this->player->id));
     // Recompute the players values not elegant but working ;)
@@ -76,11 +108,11 @@ class Module_Ship extends Base_Module
 
             foreach($compute as $com) {
                 $com = unserialize($com->properties);
-                $result['strength'] += $com['strength'];
-                $result['vitality'] += $com['vitality'];
-                $result['agility'] += $com['agility'];
+                $result['strength']  += $com['strength'];
+                $result['vitality']  += $com['vitality'];
+                $result['agility']   += $com['agility'];
                 $result['dexterity'] += $com['dexterity'];
-                $result['energy'] += $com['energy'];
+                $result['energy']    += $com['energy'];
             }
 
             $this->db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]',
@@ -93,9 +125,9 @@ class Module_Ship extends Base_Module
 
             $level = $this->db->fetchArray($this->db->execute("SELECT `$part` FROM `ships` WHERE `id`=?",array($this->player->id)));
             setBusy($this->player->id,$this->db,$level[0]*600);
-            header("Location: index.php?mod=Ship");
+            //header("Location: index.php?mod=Ship");
         } else {
-            header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible"));
+            //header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible"));
         }
     }
 

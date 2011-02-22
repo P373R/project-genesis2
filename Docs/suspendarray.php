@@ -1,9 +1,11 @@
 <?
 echo serialize(array(
-"strength" => 0,
-"vitality" => 0,
-"agility" => 0,
-"dexterity" => 1,
-"energy" => 0,
+"propulsion" => 111,
+"gearbox" => 222,
+"engine" => 333,
+"energy" => 444,
+"navigation" => 555,
+"sonar" => 666,
+"harvester" => 777,
     ));
 ?>

@@ -67,10 +67,12 @@ switch($_GET['type'])
       $bar->setTitle('Oxygen: ');
       break;
   case 'busy':
-      $bar->setData($player->ship->busy-$player->ship->start, $player->ship->busy-time(), false);
+      if ($player->ship->busy-time() > 0) {
+	$bar->setData($player->ship->busy-$player->ship->start, $player->ship->busy-time(), false);
 
-      $bar->setTitle('Ship is busy');
-      $bar->setFillColor('blue');
+	$bar->setTitle('Ship is busy');
+	$bar->setFillColor('blue');
+      }
       break;
   default:
       if(isset($_GET['val1'])) $val1 = $_GET['val1'];
