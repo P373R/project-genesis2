@@ -46,7 +46,7 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
 
     if ($args->gwp > 100)
     {
-        $args->energy = 100;
+        $args->gwp = 100;
         $changed = true;
     }
 
