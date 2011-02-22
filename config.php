@@ -51,8 +51,8 @@ define('SHOW_ERRORS', 1);
 
 (!isset($_REQUEST['DEBUG_MODE']))? define('DEBUG_MODE', 0) : define('DEBUG_MODE', 1);
 
-define('MAX_X', 10); // Kartengröße
-define('MAX_Y', 10);
+define('MAX_X', 30); // Kartengröße
+define('MAX_Y', 30);
 define('SYS_VERSION',"0.3.0");
 
 // Koordinaten auf denen Atlantis gebaut wurde

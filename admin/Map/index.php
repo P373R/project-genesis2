@@ -24,7 +24,7 @@ class Admin_Map extends Base_Module
 	$x = 5;
 	$y = 1;
 
-	for($i=0; $i<12; $i++){
+	for($i=0; $i<=(MAX_Y+1); $i++){
 	  $query = $this->db->execute("SELECT * FROM `map` WHERE `y`=($y-1+$i)");
 	  $map[$i] = $this->db->fetchAll($query);
 	}
