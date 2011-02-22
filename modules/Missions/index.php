@@ -58,13 +58,14 @@ class Module_Missions extends Base_Module
                     // mark ship as busy
                     setBusy($this->player->id,$this->db,$mission->duration);
 
-                    $msg = 'You started this Mission';
+                    
+		    header('Location: index.php?mod=Missions');
                 } else {
                     $msg = 'Sorry, there are some problems with this mission:<br />';
                     $msg .= errorBlock($error);
+		    header('Location: index.php?mod=Missions&msg=' . urlencode($msg));
                 }
 
-                header('Location: index.php?mod=Missions&msg=' . urlencode($msg));
 
             } else {
 

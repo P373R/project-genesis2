@@ -125,9 +125,9 @@ class Module_Ship extends Base_Module
 
             $level = $this->db->fetchArray($this->db->execute("SELECT `$part` FROM `ships` WHERE `id`=?",array($this->player->id)));
             setBusy($this->player->id,$this->db,$level[0]*600);
-            //header("Location: index.php?mod=Ship");
+            header("Location: index.php?mod=Ship");
         } else {
-            //header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible"));
+            header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible"));
         }
     }
 
