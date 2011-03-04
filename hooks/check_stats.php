@@ -55,6 +55,38 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
         $db->execute('UPDATE `<ezrpg>players` SET `energy`=?, `hp`=?, `gwp`=? WHERE `id`=?', array($args->energy, $args->hp, $args->gwp, $args->id));
     }
 
+    // Recompute the players values not elegant but working ;)
+            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.propulsion AND type = 'propulsion'",array($args->id));
+            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.gearbox AND type = 'gearbox'",array($args->id));
+            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.energy AND type = 'energy'",array($args->id));
+            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.engine AND type = 'engine'",array($args->id));
+            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.navigation AND type = 'navigation'",array($args->id));
+            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.sonar AND type = 'sonar'",array($args->id));
+
+            $result= array();
+
+            foreach($compute as $com) {
+                $com = unserialize($com->properties);
+                $result['strength']  += $com['strength'];
+                $result['vitality']  += $com['vitality'];
+                $result['agility']   += $com['agility'];
+                $result['dexterity'] += $com['dexterity'];
+                $result['energy']    += $com['energy'];
+            }
+
+    //Add basic values
+    $result['vitality'] += 15;
+    $result['agility']  += 2;
+    $result['dexterity']+= 2;
+    $result['energy']   += 10;
+
+            $db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]',
+                                                            `vitality`='$result[vitality]',
+                                                            `agility`='$result[agility]',
+                                                            `dexterity`='$result[dexterity]',
+                                                            `max_energy`='$result[energy]',
+                                                            `energy` = `max_energy`
+                                WHERE `id`=?", array($args->id));
 
 
     return $args;

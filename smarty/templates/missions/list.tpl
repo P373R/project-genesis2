@@ -12,7 +12,10 @@
 </tr>
 {foreach from=$missions item=mission}
 <tr>
- <td>{$mission->name}</td>
+ <td>{$mission->name}<br /><i>
+ {if $mission->redo == '1'}redoable{else}one time{/if}
+ </i>
+ </td>
  <td>
 <table class="inlist"><tr><td>Energy</td><td>{$mission->energy}</td></tr>
        <tr><td>Shield</td><td>{$mission->shield}</td></tr>
