@@ -54,9 +54,13 @@ class Module_Missions extends Base_Module
                                     $this->player->exp+$mission->exp,
                                     $this->player->id);
                     $this->db->execute("UPDATE `<ezrpg>players` SET `energy`=?, `hp`=?, `gwp`=?, `money`=?, `exp`=? WHERE `id`=?",$params);
-		    $arr = unserialize($this->player->ship->missions);
-		    $arr[] = $_GET['domission'];
-		    $this->db->execute("UPDATE `<ezrpg>ships` SET `missions`=? WHERE `id`=?",array(serialize($arr),$this->player->id));
+		    // if mission should be done only once
+		    if($mission->redo != 1)
+		    {
+			$arr = unserialize($this->player->ship->missions);
+			$arr[] = $_GET['domission'];
+			$this->db->execute("UPDATE `<ezrpg>ships` SET `missions`=? WHERE `id`=?",array(serialize($arr),$this->player->id));
+		    }
                     // mark ship as busy
                     setBusy($this->player->id,$this->db,$mission->duration);
 
