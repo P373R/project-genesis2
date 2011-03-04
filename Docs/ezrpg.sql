@@ -145,7 +145,7 @@ CREATE TABLE `missions` (
   `accuracy` int(11) NOT NULL,
   `redo` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `missions` (
 
 LOCK TABLES `missions` WRITE;
 /*!40000 ALTER TABLE `missions` DISABLE KEYS */;
-INSERT INTO `missions` VALUES (1,'Welcome to Genesis2','The Genesis Foundation welcomes you as a new member on Taranus.<br />\r\nWe have a lot of work to do and so we would be happy if you want to join the good thing and help us building up a new foundation for humanity.<br />\r\nThe first step is to see if your equipment is sufficient. Therefor we will stress your ship with a special treatment. This will coast you 5 energy and 5 shield. Do not worry. This will built up after a while.<br />\r\n<br />\r\nWe are looking forward to hear from you.',50,5,15,5,10,5,10,0,0),(2,'Border Patrol','With the big unknown sea surrounding us we have to be prepared to fight against what ever may come. It is essential that someone is having an eye on the borders. Yu can earn yourself some money by spending some time doing it.',55,5,10,1,10,0,60,0,0),(3,'Fetch Oxygen','We know that there are several sources of oxygen in the south west of our city. Go there and fetch some.',60,20,50,2,30,2,600,5,1);
+INSERT INTO `missions` VALUES (1,'Welcome to Genesis2','The Genesis Foundation welcomes you as a new member on Taranus.<br />\r\nWe have a lot of work to do and so we would be happy if you want to join the good thing and help us building up a new foundation for humanity.<br />\r\nThe first step is to see if your equipment is sufficient. Therefor we will stress your ship with a special treatment. This will coast you 5 energy and 5 shield. Do not worry. This will built up after a while.<br />\r\n<br />\r\nWe are looking forward to hear from you.',50,5,15,5,10,5,10,0,0),(2,'Border Patrol','With the big unknown sea surrounding us we have to be prepared to fight against what ever may come. It is essential that someone is having an eye on the borders. Yu can earn yourself some money by spending some time doing it.',55,5,10,1,10,0,60,0,0),(3,'Fetch Oxygen','We know that there are several sources of oxygen in the south west of our city. Go there and fetch some.',60,20,50,2,30,2,600,5,1),(4,'Patrol','Get out there and see if you can find out what\'s happening out there.',0,10,5,2,5,3,600,1,1);
 /*!40000 ALTER TABLE `missions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +241,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1298360066,1298360071,166,56,82,70,130,17,989,62,330,20,30,30,0,20,27,3,0,18,21,7,9,0,'0',100),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1298334062,1298334062,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,'0',50),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,7,7,0,'0',50),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1299209136,1299208670,260,0,0,0,0,5,0,65,90,0,5,10,0,5,2,2,0,0,0,6,7,0,'0',100),(1003,'Bastitest','cf8888f08f8a208513555bc53ba80085b65166be','basti@localhost.de','{_t2]Eqq61r@z!5`','',1,1297585076,1297589581,1297587525,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,6,7,0,'',0);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1298360066,1298360071,166,56,82,70,130,17,989,62,330,20,30,30,0,20,27,3,0,18,21,7,9,0,'0',100),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1298334062,1298334062,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,'0',50),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,7,7,0,'0',50),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1299225226,1299224498,270,0,0,0,0,5,0,75,90,15,55,55,0,15,24,3,0,0,0,6,7,0,'0',100),(1003,'Bastitest','cf8888f08f8a208513555bc53ba80085b65166be','basti@localhost.de','{_t2]Eqq61r@z!5`','',1,1297585076,1297589581,1297587525,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,6,7,0,'',0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,7 +304,7 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (1,1,3,1,1,1,1,1,0,1298359965,1298359955,0,'a:0:{}'),(1000,1,1,1,1,1,1,1,0,0,0,0,'a:0:{}'),(1001,1,1,1,1,1,1,1,0,0,0,0,'a:0:{}'),(1002,1,1,2,4,1,1,1,0,1299209148,1299209138,0,'a:1:{i:0;s:1:\"1\";}');
+INSERT INTO `ships` VALUES (1,1,3,1,1,1,1,1,0,1298359965,1298359955,0,'a:0:{}'),(1000,1,1,1,1,1,1,1,0,0,0,0,'a:0:{}'),(1001,1,1,1,1,1,1,1,0,0,0,0,'a:0:{}'),(1002,1,1,2,4,1,1,1,0,1299209576,1299209516,0,'a:0:{}');
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -317,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-03-04 16:29:47
+-- Dump completed on 2011-03-04 20:57:42
