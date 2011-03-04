@@ -43,7 +43,7 @@ class Module_Missions extends Base_Module
                 }
                 if($this->player->dexterity < $mission->accuracy) {
                     $errno++;
-                    $error[] = "Your accuracy is to weak you need <span>$mission->accuracy</span> and you have <span>".$this->player->dexterity."</span>";
+                    $error[] = "Your accuracy is to small you need <span>$mission->accuracy</span> and you have <span>".$this->player->dexterity."</span>";
                 }
 
                 if($errno == 0) {
@@ -83,7 +83,7 @@ class Module_Missions extends Base_Module
 
         } else {
 
-            $missions = $this->db->fetchAll($this->db->execute("SELECT * FROM `<ezrpg>missions`"));
+            $missions = $this->db->fetchAll($this->db->execute("SELECT * FROM `<ezrpg>missions` WHERE `min_gwp`<=?", array($this->player->gwp)));
             foreach ($missions as $mission)
 	    {
 		if($mission->redo == 1 || !in_array($mission->id,unserialize($this->player->ship->missions))) 

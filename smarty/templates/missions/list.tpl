@@ -24,7 +24,7 @@
 </table>
  </td>
  <td>
-<table class="inlist"><tr><td>GWP</td><td>{$mission->gwp}</td></tr>
+<table class="inlist"><tr><td>GWP</td><td>{if $mission->gwp > 0}{$mission->gwp}{else}<b>{$mission->gwp}</b>{/if}</td></tr>
        <tr><td>Gold</td><td>{$mission->gold}</td></tr>
        <tr><td>EXP</td><td>{$mission->exp}</td></tr>
 </table>
