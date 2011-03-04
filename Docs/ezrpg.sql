@@ -230,6 +230,7 @@ CREATE TABLE `players` (
   `infight` tinyint(1) NOT NULL,
   `missions` text NOT NULL,
   `gwp` int(11) NOT NULL,
+  `facebook` bigint(15) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
@@ -242,7 +243,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1299229130,1299229130,166,56,82,70,130,17,989,62,330,20,20,20,0,20,18,3,0,18,21,7,9,0,'0',100),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1298334062,1298334062,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,'0',50),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,7,7,0,'0',50),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1299229657,1299229183,270,0,0,0,0,5,0,75,90,15,55,55,0,15,24,3,0,0,0,6,7,0,'0',50),(1003,'Bastitest','cf8888f08f8a208513555bc53ba80085b65166be','basti@localhost.de','{_t2]Eqq61r@z!5`','',1,1297585076,1297589581,1297587525,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,6,7,0,'',0);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1299229130,1299229130,166,56,82,70,130,17,989,62,330,20,20,20,0,20,18,3,0,18,21,7,9,0,'0',100,0),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1298334062,1298334062,100,0,0,0,0,1,0,0,10,5,10,10,5,5,5,5,0,0,0,6,7,0,'0',50,0),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,7,7,0,'0',50,0),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1299229657,1299229183,270,0,0,0,0,5,0,75,90,15,55,55,0,15,24,3,0,0,0,6,7,0,'0',50,0),(1003,'Bastitest','cf8888f08f8a208513555bc53ba80085b65166be','basti@localhost.de','{_t2]Eqq61r@z!5`','',1,1297585076,1297589581,1297587525,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,6,7,0,'',0,0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,4 +319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-03-04 22:08:11
+-- Dump completed on 2011-03-04 23:14:58

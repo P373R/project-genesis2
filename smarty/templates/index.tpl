@@ -28,6 +28,7 @@ Grabing live by it's balls you used the ticket and left earth for good. Looking 
 
 <input name="login" type="submit" class="button" value="Login!">
 </form>
+<a href="index.php?mod=FBLogin">Login using Facebook</a>
 </div>
 
 {include file="footer.tpl"}
