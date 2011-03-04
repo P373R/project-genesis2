@@ -18,10 +18,9 @@
 
 <div id="header">
         <span id="title"><img src="static/images/gui/header_beta.png" alt="Project Genesis2" /></span>
-        <span id="time">
-        <table><tr><td>Server time</td><td>{$smarty.now|date_format:'%T'}</td></tr>
-               <tr><td>Next round</td><td>{$TICK|date_format:'%T'}</td></tr></table>
-        <strong>Player online</strong>: {$ONLINE}</span>
+        <center>Server time {$smarty.now|date_format:'%T'} | 
+		Next round {$TICK|date_format:'%T'} |
+		<strong>Player online</strong>: {$ONLINE}</center>
 </div>
 
 <div id="nav">
@@ -31,7 +30,7 @@
         <li><a href="index.php?mod=Map">Map</a></li>
         <li><a href="index.php?mod=Ship">Ship</a></li>
         <li><a href="index.php?mod=Missions">Missions</a></li>
-        <li><a href="index.php?mod=MailBox">Mail</a></li>
+        <!--<li><a href="index.php?mod=MailBox">Mail</a></li>-->
         <li><a href="index.php?mod=City">City</a></li>
         <li><a href="index.php?mod=Logout">Log Out</a></li>
         {else}
@@ -45,10 +44,10 @@
 
 {if $LOGGED_IN == 'TRUE'}
 <div id="sidebar">
-<img src="bar.php?width=165&amp;type=exp" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
-<img src="bar.php?width=165&amp;type=hp" alt="HP: {$player->hp} / {$player->vitality}" /><br />
-<img src="bar.php?width=165&amp;type=energy" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
-<img src="bar.php?width=165&amp;type=manual&amp;val1=100&amp;val2={$player->gwp}&amp;color={if $player->gwp >= 50}green{else}red{/if}&amp;title=GWP&amp;numbers=true" alt="GWP: {$player->gwp}" /><br />
+<img src="bar.php?width=135&amp;type=exp" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
+<img src="bar.php?width=135&amp;type=hp" alt="HP: {$player->hp} / {$player->vitality}" /><br />
+<img src="bar.php?width=135&amp;type=energy" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
+<img src="bar.php?width=135&amp;type=manual&amp;val1=100&amp;val2={$player->gwp}&amp;color={if $player->gwp >= 50}green{else}red{/if}&amp;title=GWP&amp;numbers=true" alt="GWP: {$player->gwp}" /><br />
 <table>
 <tr>
   <td><strong>Gold</strong>      </td><td> {$player->money}</td>
@@ -63,7 +62,7 @@
 </tr>
 </table>
 {if $BUSY}
-<img src="bar.php?width=165&amp;height=15&amp;type=busy" alt="Ship is busy"/>
+<img src="bar.php?width=135&amp;height=15&amp;type=busy" alt="Ship is busy"/>
 {/if}
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>

@@ -2,10 +2,10 @@
 
 <h1>Ship</h1>
 
-<img src="static/images/gui/sub/{$part}.png" width="550" height="350" />
+<img src="static/images/gui/sub/{$part}.png" width="330" height="219" />
 
 {if $partHave->name != ''}
-Your ship has a <b>{$partHave->name}</b> and can be upgraded to a <b>{$partNew->name}</b>.
+<p>Your ship has a <b>{$partHave->name}</b> and can be upgraded to a <b>{$partNew->name}</b>.
 <p>
 <table id="shiptable">
 <tr>
@@ -27,6 +27,7 @@ The Upgrade will take <b>{$partNew->id*10}</b> minutes and you can not move or u
 {else}
 No upgrade possible.
 {/if}
+</p>
 {/if}
 <b>{$msg}</b>
 

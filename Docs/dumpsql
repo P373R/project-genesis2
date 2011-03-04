@@ -1,2 +1,2 @@
 #!/bin/bash
-mysqldump -uroot -proot ezrpg > ezrpg.sql
+mysqldump -uroot -proot ezrpg > Docs/ezrpg.sql

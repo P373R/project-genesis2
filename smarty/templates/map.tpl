@@ -7,7 +7,7 @@
     {foreach from=$map item=mapline}
       <tr>
       {foreach from=$mapline item=field}
-	<td background="static/images/map/{$field->type}.png" width="80" height="80" valign="middle" align="center">
+	<td background="static/images/map/{$field->type}.png" width="65" height="65" valign="middle" align="center">
 	  <img src="static/images/fields/{$field->res}.png" alt="{$field->x}/{$field->y}" /><br />
 	  {if $field->owner != 0}<small>{$field->owner}</small>{/if}
 	</td>
@@ -18,11 +18,6 @@
 </div>
 
 <div class="right">
-<small>Coordinates<span>: {$player->x}/{$player->y} </span><br />
-Area<span>: {$fieldinfo->name}</span><br />
-Resource<span>: {$fieldinfo->res}</span><br />
-Claimed by<span>: {$fieldinfo->owner_db->username}</span><br />
-</small>
 <strong>Actions</strong><br />
 <table>
 <tr>
@@ -47,6 +42,11 @@ Claimed by<span>: {$fieldinfo->owner_db->username}</span><br />
   <td><a href="index.php?mod=Map&amp;act=go&amp;dir=se"><img src="static/images/gui/rightdown.png" /></a></td>
 </tr>
 </table>
+<small>Coordinates<span>: {$player->x}/{$player->y} </span><br />
+Area<span>: {$fieldinfo->name}</span><br />
+Resource<span>: {$fieldinfo->res}</span><br />
+Claimed by<span>: {$fieldinfo->owner_db->username}</span><br />
+</small>
 <ul>
  {if $fieldinfo->owner == $player->id || $fieldinfo->owner == 0}
   <li><a href="index.php?mod=Map&amp;act=seek">search area</a></li>

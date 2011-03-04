@@ -2,7 +2,7 @@
 
 <h1>Ship</h1>
 
-<img src="static/images/gui/sub.png" width="550" height="124" />
+<img src="static/images/gui/sub.png" width="330" height="74" />
 
 <table id="shiptable">
 <tr>
