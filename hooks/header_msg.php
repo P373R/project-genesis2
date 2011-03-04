@@ -17,7 +17,9 @@ defined('IN_EZRPG') or exit;
 $hooks->add_hook('header', 'header_msg', 1);
 
 /**
-  If msg is in POST purify and put it in the Template
+  If msg is in POST purify and put it in the Session and redirect to the same 
+  url without the msg part
+  
   @param  DB_mysql  $db Database object
   @param  Smarty    &$tpl Global template object
   @param  StdObject $player Player row from Database

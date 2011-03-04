@@ -54,7 +54,9 @@ class Module_Missions extends Base_Module
                                     $this->player->exp+$mission->exp,
                                     $this->player->id);
                     $this->db->execute("UPDATE `<ezrpg>players` SET `energy`=?, `hp`=?, `gwp`=?, `money`=?, `exp`=? WHERE `id`=?",$params);
-
+		    $arr = unserialize($this->player->ship->missions);
+		    $arr[] = $_GET['domission'];
+		    $this->db->execute("UPDATE `<ezrpg>ships` SET `missions`=? WHERE `id`=?",array(serialize($arr),$this->player->id));
                     // mark ship as busy
                     setBusy($this->player->id,$this->db,$mission->duration);
 
@@ -78,7 +80,13 @@ class Module_Missions extends Base_Module
         } else {
 
             $missions = $this->db->fetchAll($this->db->execute("SELECT * FROM `<ezrpg>missions`"));
-            $this->tpl->assign('missions',$missions);
+            foreach ($missions as $mission)
+	    {
+		if($mission->redo == 1 || !in_array($mission->id,unserialize($this->player->ship->missions))) 
+		{
+		    $this->tpl->append('missions',$mission);
+		}
+	    }
             $this->tpl->display('missions/list.tpl');
 
         }
