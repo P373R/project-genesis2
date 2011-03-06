@@ -30,7 +30,7 @@ class Module_FBLogin extends Base_Module
           This URI is called after you redirected to facebook. You must direct it to YOURPROJECTSITE.COM/index.php?mod=FBLogin&return=true
           YOURPROJECTSITE.COM has to be registered with facebook.
         */
-        $redirect_uri = 'http://YOURPROJECTSITE.COM/index.php?mod=FBLogin&return=true';
+        $redirect_uri = 'http://project-genesis2.de/index.php?mod=FBLogin&return=true';
         /*
           This can be set in the app center, too
         */
