@@ -56,8 +56,8 @@ define('MAX_Y', 30);
 define('SYS_VERSION',"0.3.0");
 
 // Koordinaten auf denen Atlantis gebaut wurde
-define('ATLANTIS_X',6);
-define('ATLANTIS_Y',7);
+define('ATLANTIS_X',15);
+define('ATLANTIS_Y',15);
 
 define('RECAPTCHA_KEY','6Lf8YsESAAAAAKDSjCPqC5-JwepeeYsDB9Hnetlz');
 define('RECAPTCHA_PRIVATE','6Lf8YsESAAAAAJ5meoyIjm94OI2iSXEYLhBa900C');

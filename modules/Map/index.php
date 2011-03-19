@@ -274,7 +274,7 @@ echo $res->owner;
       }
       if(!$error1 && !$error2) {
         redNrg($this->player->id,$this->db,1);
-        setBusy($this->player->id,$this->db,(100-$this->player->agility));
+        setBusy($this->player->id,$this->db,(60-$this->player->agility));
       }
       header('Location: index.php?mod=Map');
     }
