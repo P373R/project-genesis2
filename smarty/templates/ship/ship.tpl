@@ -31,7 +31,7 @@
  <td>{$navigation.name}<p>{$navigation.desc}</p><a href="index.php?mod=Ship&amp;upgrade=navigation">upgrade</a><br /></td>
  <td>{$sonar.name}<p>{$sonar.desc}</p><a href="index.php?mod=Ship&amp;upgrade=sonar">upgrade</a><br /></td>
 </tr>
-
+{*
 <tr>
  <td><b>Harvester</b></td>
  <td><b></b></td>
@@ -49,12 +49,18 @@
  <td>{$priweapon.name}<br />{$priweapon.desc}<br /></td>
  <td>{$secweapon.name}<br />{$secweapon.desc}<br /></td>
 </tr>
-
+*}
 <tr>
  <td clospan="2"><b>Cargo</b></td>
 </tr>
 <tr>
- <td clospan="2">Cargolist?</td>
+ <td clospan="2">
+ <ul>
+ {foreach from=$cargolist item=cargo}
+ <li>{$cargo.name}</li>
+ {/foreach}
+ </ul>
+ </td>
 </tr>
 
 </table>

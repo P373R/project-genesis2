@@ -19,7 +19,7 @@
 <div id="header">
         <span id="title"><img src="static/images/gui/header_beta.png" alt="Project Genesis2" /></span>
         <center>Server time {$smarty.now|date_format:'%T'} | 
-		Next round {$TICK|date_format:'%T'} |
+		Next round {$TICK|date_format:'%T'} | Round {$TICKCOUNT} |
 		<strong>Player online</strong>: {$ONLINE}</center>
 </div>
 

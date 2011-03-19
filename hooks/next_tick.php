@@ -17,6 +17,7 @@ $hooks->add_hook('header', 'next_tick');
 function hook_next_tick(&$db, &$tpl, &$player, $args = 0)
 {
     $tpl->assign('TICK', file_get_contents('ticktime')+600);
+    $tpl->assign('TICKCOUNT',file_get_contents('tickcount'));
     return $args;
 }
 ?>
