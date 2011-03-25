@@ -15,7 +15,7 @@
       </tr>
     {/foreach}
   </table>
-  <form action="index.php?mod=Map" method="POST">
+  <form action="index.php?mod=Map&amp;act=godir" method="POST">
     Drive to <input class="smallinput" type="text" name="newX" size="2" /> / <input class="smallinput" type="text" name="newY" size="2" />
     <input class="smallinput" type="submit" value="go" />
   <form>

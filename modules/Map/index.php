@@ -53,6 +53,9 @@ class Module_Map extends Base_Module
           case 'busy':
               $this->busy();
               break;
+	  case 'godir':
+	      if(isset($_POST['newX']) && isset($_POST['newY'])) $this->godir(intval($_POST['newX']),intval($_POST['newY']));
+	      break;
           default:
               $this->render();
               break;
@@ -288,6 +291,17 @@ echo $res->owner;
     {
         $this->tpl->assign('reload',$this->player->ship->busy-time());
         $this->tpl->display('busy.tpl');
+    }
+    
+    private function godir($x,$y)
+    {
+	if($x< 0 || $x > MAX_X) header("Location: index.php?mod=Map&msg=". urlencode("Your X Value is not in a reachable area. Please stay between 0 and ".MAX_X."."));
+	if($y< 0 || $y > MAX_Y) header("Location: index.php?mod=Map&msg=". urlencode("Your Y Value is not in a reachable area. Please stay between 0 and ".MAX_Y."."));
+	$distance = abs($this->player->x - $x) + abs($this->player->y - $y);
+	if($distance > $this->player->energy)
+	{
+	    header("Location: index.php?mod=Map&msg=". urlencode("Not enough energy. Need at least $distance."));
+	}
     }
 }
 ?>
