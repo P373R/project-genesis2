@@ -68,14 +68,14 @@ define('RECAPTCHA_PRIVATE','6Lf8YsESAAAAAJ5meoyIjm94OI2iSXEYLhBa900C');
 */
 
 $id2names = array(
-  "field"=>array("Unbekannt","Shallow water (50m)","Water (100m)","Water (200m)","Water (500m)","Deep sea (1000m)",99=>"Atlantis"),
-  "items"=>array("Nichts","Wasser","Eisen","Aluminium","Titan","oxygen"),
+  "field"=>array("Unknown","Shallow water (50m)","Water (100m)","Water (200m)","Water (500m)","Deep sea (1000m)",99=>"Atlantis"),
+  "items"=>array("Nothing","Water","Iron","Aluminium","Titan","Oxygen"),
   "db_fields"=>array("","water","iron","aluminium","titan","oxygen"),
-  "waepons"=>array("","Miene")
+  "weapons"=>array("","Mine")
 );
 
 $shop = array(
-  array("name"=>"Miene", "price"=>10, "weight"=>10),
-  array("name"=>"Große Miene", "price"=>10, "weight"=>10)
+  array("name"=>"Mine", "price"=>10, "weight"=>10),
+  array("name"=>"Big Mine", "price"=>20, "weight"=>15)
 );
 ?>
