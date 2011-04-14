@@ -279,3 +279,8 @@ table.list td {
 table.inlist td{
     border:0px;
 }
+
+#shoutbox {
+    overflow: true;
+    height:200px;
+}

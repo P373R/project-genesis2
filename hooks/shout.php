@@ -36,7 +36,7 @@ function hook_shout($db, &$tpl, $player, $args = 0)
 	    $db->insert('<ezrpg>shouts', $insert);
 	}
 	
-	$shouts = $db->fetchAll($db->execute("SELECT * FROM `<ezrpg>shouts` ORDER By `time` DESC LIMIT 5"),true);
+	$shouts = $db->fetchAll($db->execute("SELECT * FROM `<ezrpg>shouts` ORDER By `time` DESC LIMIT 10"),true);
 	$tpl->assign('shouts', $shouts);
 	
 	return $args;
