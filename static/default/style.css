@@ -52,6 +52,16 @@ input.smallinput {
 	padding-bottom: 5px;    
 }
 
+input.shortinput {
+	font-family: Verdana,Tahoma, Arial,sans-serif;
+	width: 130px;
+	border: 1px solid #3366FF;
+	/*border-bottom: 5px solid #3366FF;*/
+	background-color: #F7F7F7;
+	padding: 2px;
+	padding-bottom: 5px;    
+}
+
 img {
 	border: 0px;
 	margin: 3px;
