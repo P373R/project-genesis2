@@ -61,7 +61,7 @@ function requireAdmin($player = 0)
  */
 function addExp($player, &$db, $count = 0)
 {
-  $db->execute("UPDATE `players` SET `exp` = `exp`+".$count." WHERE `id`='".$player."'");
+  $db->execute("UPDATE `<ezrpg>players` SET `exp` = `exp`+".$count." WHERE `id`='".$player."'");
 }
 
 /**
@@ -73,7 +73,7 @@ function addExp($player, &$db, $count = 0)
  */
 function redNrg($player, &$db, $count = 0)
 {
-  $db->execute("UPDATE `players` SET `energy` = `energy`-".$count." WHERE `id`='".$player."'");
+  $db->execute("UPDATE `<ezrpg>players` SET `energy` = `energy`-".$count." WHERE `id`='".$player."'");
 }
 
 /** 

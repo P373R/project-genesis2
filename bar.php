@@ -4,7 +4,8 @@
 */
 define('IN_EZRPG', true);
 
-require_once('init.php');
+//require_once('init.php');
+require_once 'lib/class.imagebar.php';
 
 //User must be logged in
 //requireLogin();
@@ -24,11 +25,11 @@ switch($_GET['type'])
 {
   case "exp":
       $bar->setFillColor('blue'); //EXP is a blue bar
-      $bar->setData($player->max_exp, $player->exp);	// Give the bar some values
+      $bar->setData($_GET['max_exp'], $_GET['exp']);	// Give the bar some values
       $bar->setTitle('Exp: ');
       break;
   case "hp":
-      $percentage = ($player->hp / $player->vitality) * 100;
+      $percentage = ($_GET['hp'] / $_GET['vitality']) * 100;
       
       //Set the colour according to how much is left
       if ($percentage <= 10)
@@ -38,11 +39,11 @@ switch($_GET['type'])
       else
           $bar->setFillColor('green');
       
-      $bar->setData($player->vitality, $player->hp);	// Give the bar some values
+      $bar->setData($_GET['vitality'], $_GET['hp']);	// Give the bar some values
       $bar->setTitle('Shield: ');
       break;
   case "energy":
-      $percentage = ($player->energy / $player->max_energy) * 100;
+      $percentage = ($_GET['energy'] / $_GET['max_energy']) * 100;
 
       //Set the colour according to how much is left
       if ($percentage <= 10)
@@ -52,26 +53,28 @@ switch($_GET['type'])
       else
           $bar->setFillColor('green');
 
-      $bar->setData($player->max_energy, $player->energy);	// Give the bar some values
+      $bar->setData($_GET['max_energy'], $_GET['energy']);	// Give the bar some values
       $bar->setTitle('Energy: ');
       break;
   case "oxygen":
-      $percentage = ($player->oxygen / $player->max_oxygen) * 100;
+      $percentage = ($_GET['oxygen'] / $_GET['max_oxygen']) * 100;
 
       if($percentage <= 77)
           $bar->setFillColor('green');
       else
           $bar->setFillColor('red');
 
-      $bar->setData($player->max_oxygen, $player->oxygen);
+      $bar->setData($_GET['max_oxygen'], $_GET['oxygen']);
       $bar->setTitle('Oxygen: ');
       break;
   case 'busy':
-      if ($player->ship->busy-time() > 0) {
-	$bar->setData($player->ship->busy-$player->ship->start, $player->ship->busy-time(), false);
+      if ($_GET['busy']-time() > 0) {
+	$bar->setData($_GET['busy']-$_GET['start'], $_GET['busy']-time(), false);
 
 	$bar->setTitle('Ship is busy');
 	$bar->setFillColor('blue');
+      } else {
+	exit();
       }
       break;
   default:

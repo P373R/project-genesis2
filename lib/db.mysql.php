@@ -105,6 +105,7 @@ class Db_Mysql
 		
         try
         {
+	    //file_put_contents('mysql.log',$query."\n",FILE_APPEND);
             //SQL queries should query for tables with <ezrpg>tablename so that <ezrpg> is replaced with the table prefix.
             $query = str_replace('<ezrpg>', DB_PREFIX, $query);
             

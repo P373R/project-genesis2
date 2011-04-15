@@ -42,9 +42,9 @@
 
 {if $LOGGED_IN == 'TRUE'}
 <div id="sidebar">
-<img src="bar.php?width=135&amp;type=exp" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
-<img src="bar.php?width=135&amp;type=hp" alt="HP: {$player->hp} / {$player->vitality}" /><br />
-<img src="bar.php?width=135&amp;type=energy" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
+<img src="bar.php?width=135&amp;type=exp&amp;max_exp={$player->max_exp}&amp;exp={$player->exp}" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
+<img src="bar.php?width=135&amp;type=hp&amp;hp={$player->hp}&amp;vitality={$player->vitality}" alt="HP: {$player->hp} / {$player->vitality}" /><br />
+<img src="bar.php?width=135&amp;type=energy&amp;energy={$player->energy}&amp;max_energy={$player->max_energy}" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
 <img src="bar.php?width=135&amp;type=manual&amp;val1=100&amp;val2={$player->gwp}&amp;color={if $player->gwp >= 50}green{else}red{/if}&amp;title=GWP&amp;numbers=true" alt="GWP: {$player->gwp}" /><br />
 <table>
 <tr>
@@ -60,7 +60,7 @@
 </tr>
 </table>
 {if $BUSY}
-<img src="bar.php?width=135&amp;height=15&amp;type=busy" alt="Ship is busy"/>
+<img src="bar.php?width=135&amp;height=15&amp;type=busy&amp;busy={$player->ship->busy}&amp;start={$player->ship->start}" alt="Ship is busy"/>
 {/if}
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>

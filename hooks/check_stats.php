@@ -80,14 +80,7 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
     $result['dexterity']+= 2;
     $result['energy']   += 10;
 
-            $db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]',
-                                                            `vitality`='$result[vitality]',
-                                                            `agility`='$result[agility]',
-                                                            `dexterity`='$result[dexterity]',
-                                                            `max_energy`='$result[energy]',
-                                                            `energy` = `max_energy`
-                                WHERE `id`=?", array($args->id));
-
+    $db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]', `vitality`='$result[vitality]', `agility`='$result[agility]', `dexterity`='$result[dexterity]', `max_energy`='$result[energy]' WHERE `id`=?", array($args->id));
 
     return $args;
 }
