@@ -7,8 +7,8 @@
 <hr />
 <table id="shiptable">
 <tr>
- <td><b>Propulsion</b></td>
- <td><b>Gearbox</b></td>
+ <td><b>Propulsion +{$player->ship->propulsion}</b></td>
+ <td><b>Gearbox +{$player->ship->gearbox}</b></td>
 </tr>
 <tr>
  <td>{$propulsion.name}<p>{$propulsion.desc}</p><a href="index.php?mod=Ship&amp;upgrade=propulsion">upgrade</a><br /></td>
@@ -16,8 +16,8 @@
 </tr>
 
 <tr>
- <td><b>Energy</b></td>
- <td><b>Engine</b></td>
+ <td><b>Energy +{$player->ship->energy}</b></td>
+ <td><b>Engine +{$player->ship->engine}</b></td>
 </tr>
 <tr>
  <td>{$energy.name}<p>{$energy.desc}</p><a href="index.php?mod=Ship&amp;upgrade=energy">upgrade</a><br /></td>
@@ -25,8 +25,8 @@
 </tr>
 
 <tr>
- <td><b>Navigation</b></td>
- <td><b>Sonar</b></td>
+ <td><b>Navigation +{$player->ship->navigation}</b></td>
+ <td><b>Sonar +{$player->ship->sonar}</b></td>
 </tr>
 <tr>
  <td>{$navigation.name}<p>{$navigation.desc}</p><a href="index.php?mod=Ship&amp;upgrade=navigation">upgrade</a><br /></td>

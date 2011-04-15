@@ -56,13 +56,13 @@ class Module_Ship extends Base_Module
             // Look if the dependecies are met
             $dep = unserialize($partNew->depend);
             $notPossible = false;
-            if (isset($dep['propulsion']) && $this->player->ship->propulsion < $dep['propulsion']) $notPossible = true;
-            else if (isset($dep['gearbox'])    && $this->player->ship->propulsion < $dep['gearbox'])    $notPossible = true;
-            else if (isset($dep['engine'])     && $this->player->ship->propulsion < $dep['engine'])     $notPossible = true;
-            else if (isset($dep['energy'])     && $this->player->ship->propulsion < $dep['energy'])     $notPossible = true;
-            else if (isset($dep['navigation']) && $this->player->ship->propulsion < $dep['navigation']) $notPossible = true;
-            else if (isset($dep['sonar'])      && $this->player->ship->propulsion < $dep['sonar'])      $notPossible = true;
-            else if (isset($dep['harvester'])  && $this->player->ship->propulsion < $dep['harvester'])  $notPossible = true;
+            if (isset($dep['propulsion'])      && $this->player->ship->propulsion < $dep['propulsion']) $notPossible = true;
+            else if (isset($dep['gearbox'])    && $this->player->ship->gearbox    < $dep['gearbox'])    $notPossible = true;
+            else if (isset($dep['engine'])     && $this->player->ship->engine     < $dep['engine'])     $notPossible = true;
+            else if (isset($dep['energy'])     && $this->player->ship->energy     < $dep['energy'])     $notPossible = true;
+            else if (isset($dep['navigation']) && $this->player->ship->navigation < $dep['navigation']) $notPossible = true;
+            else if (isset($dep['sonar'])      && $this->player->ship->sonar      < $dep['sonar'])      $notPossible = true;
+            else if (isset($dep['harvester'])  && $this->player->ship->harvester  < $dep['harvester'])  $notPossible = true;
 
 	    $partNew->depend = itemInfo($dep);
             $partHave->properties= itemInfo(unserialize($partHave->properties));
