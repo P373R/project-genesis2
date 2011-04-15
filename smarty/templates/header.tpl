@@ -67,14 +67,15 @@
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
 {/if}
-<div id="shoutbox">
 <h3>Shout:</h3>
 <form method="POST">
 <input class="shortinput" type="text" name="shout" /><br />
 <input class="shortinput" type="submit" value="SHOUT"/>
 </form>
+<div id="shoutbox">
 {foreach from=$shouts item=shout}
-<b>{$shout.from}</b>:
+<small>{$shout.time|date_format:'%m/%d/%y %R'}</small><br/>
+<b><a href="http://genesis/index.php?mod=MailBox&act=compose&rec={$shout.from}">{$shout.from}</a></b>:
 {$shout.text}<br />
 {/foreach}
 </div>

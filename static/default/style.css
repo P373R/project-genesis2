@@ -54,12 +54,13 @@ input.smallinput {
 
 input.shortinput {
 	font-family: Verdana,Tahoma, Arial,sans-serif;
-	width: 130px;
+	width: 120px;
 	border: 1px solid #3366FF;
 	/*border-bottom: 5px solid #3366FF;*/
 	background-color: #F7F7F7;
 	padding: 2px;
-	padding-bottom: 5px;    
+	padding-bottom: 5px;  
+	font-size: 0.7em;
 }
 
 img {
@@ -281,6 +282,6 @@ table.inlist td{
 }
 
 #shoutbox {
-    overflow: true;
-    height:200px;
+    overflow-y: scroll;
+    height:130px;
 }

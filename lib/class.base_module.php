@@ -12,7 +12,7 @@ abstract class Base_Module
     /**
      * Contains the database object.
      */
-    protected $db;
+    protected $db = Db_mysql;
     
     /**
      * The smarty template object.
