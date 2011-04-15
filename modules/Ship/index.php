@@ -38,7 +38,7 @@ class Module_Ship extends Base_Module
             }
         }
         $this->tpl->assign($ship,'ship');
-        $this->tpl->assign('shipvalues',itemInfo($shipvalues, true));
+        $this->tpl->assign('shipvalues',itemInfo($shipvalues, true, false));
         $this->tpl->display('ship/ship.tpl');
     }
 

@@ -53,14 +53,14 @@ function id2name($type,$id)
 /**
  * Build a Text out of an serialized array of modificators
  */
-function itemInfo($info = array(), $full = false)
+function itemInfo($info = array(), $full = false, $plusminus = true)
 {
     if(count($info) == 0) return "nothing";
     $text = "<table>";
     if(is_array($info)) foreach($info as $key => $value) {
         if($value != 0 || $full) {
             $text.= "<tr><td>".ucfirst($key). "</td><td>";
-            if(is_int($value) && $value < 0) $text.= "-"; else $text.= "+";
+            if($plusminus && is_int($value) && $value != 0) if($value < 0) $text.= "-"; else $text.= "+";
             $text.= $value."</td></tr>";
         }
     }
