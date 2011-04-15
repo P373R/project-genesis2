@@ -53,17 +53,18 @@ function id2name($type,$id)
 /**
  * Build a Text out of an serialized array of modificators
  */
-function itemInfo($info = array())
+function itemInfo($info = array(), $full = false)
 {
     if(count($info) == 0) return "nothing";
-    $text = "";
+    $text = "<table>";
     if(is_array($info)) foreach($info as $key => $value) {
-        if($value != 0) {
-            $text.= ucfirst($key). " ";
+        if($value != 0 || $full) {
+            $text.= "<tr><td>".ucfirst($key). "</td><td>";
             if(is_int($value) && $value < 0) $text.= "-"; else $text.= "+";
-            $text.= $value."<br />";
+            $text.= $value."</td></tr>";
         }
     }
+    $text.= "</table>";
     // This is an evil hack :( done since I do not want to change the table headers
     $text = str_replace(array("Agility","Dexterity","Vitality"),array("Speed", "Accuracy", "Shield"),$text);
     return $text;

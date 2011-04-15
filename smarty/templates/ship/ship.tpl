@@ -2,8 +2,9 @@
 
 <h1>Ship</h1>
 
-<img src="static/images/gui/sub.png" width="330" height="74" />
-
+<img src="static/images/gui/sub.png" width="330" height="74" align="left"/>
+{$shipvalues}
+<hr />
 <table id="shiptable">
 <tr>
  <td><b>Propulsion</b></td>

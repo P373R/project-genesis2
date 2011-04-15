@@ -13,6 +13,7 @@ class Module_Ship extends Base_Module
      */
     public function start()
     {
+        requireLogin(); // Nur wenn eingelogt
         if(isset($_GET['upgrade'])) $this->upgrade($_GET['upgrade']);
         else if(isset($_GET['doupgrade']) && !isBusy($this->player)) $this->doupgrade($_GET['doupgrade']);
         else if(isset($_GET['doupgrade'])) header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible while busy!"));
@@ -24,15 +25,20 @@ class Module_Ship extends Base_Module
      */
     private function display()
     {
-        requireLogin(); // Nur wenn eingelogt
         $ship = array();
+        $shipvalues = array();
         $shipdb = $this->db->fetchRow('SELECT `propulsion`,`gearbox`,`engine`,`energy`,`navigation`,`sonar`,`weapon1`,`weapon2`,`harvester` FROM `<ezrpg>ships` WHERE id=?',array($this->player->id));
         foreach ($shipdb as $field => $value) {
             $part = $this->db->fetchRow('SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?',array($value,$field));
             $ship[$field]['name'] = $part->name;
-            $ship[$field]['desc'] = itemInfo(unserialize($part->properties));
+	    $props = unserialize($part->properties);
+            $ship[$field]['desc'] = itemInfo($props);
+            if(is_array($props)) foreach($props as $key => $prop) {
+		$shipvalues[$key] += $prop;
+            }
         }
         $this->tpl->assign($ship,'ship');
+        $this->tpl->assign('shipvalues',itemInfo($shipvalues, true));
         $this->tpl->display('ship/ship.tpl');
     }
 

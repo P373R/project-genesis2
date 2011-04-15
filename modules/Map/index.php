@@ -289,7 +289,7 @@ echo $res->owner;
 
     private function busy()
     {
-        $this->tpl->assign('reload',$this->player->ship->busy-time());
+        $this->tpl->assign('reload',5);
         $this->tpl->display('busy.tpl');
     }
     
