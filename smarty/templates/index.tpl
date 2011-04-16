@@ -35,4 +35,22 @@ In the year 2530 humanity nearly drained the resources mother earth could give t
 Grabing live by it's balls you used the ticket and left earth for good. Looking forward to an unkonwn future on an nearly undiscovered planet. After you woken up from the long jurney in your cryogenic tank you are equiped with a submarine style ship and a pass to enter Atlantis. The capital underwater city on Taranus. Now you can explore the planet and help Atlantis to grow and be open to more people or you can join the pirates that run away from duty and take advantage of the weak.
 </div>
 
+<div class="space"> </div>
+<div>
+<h2>Features</h2><br />
+<ul>
+ <li>Big World (1000+ fields)</li>
+ <li>Upgrade your ship</li>
+ <li>Gather materials</li>
+ <li>Accept missions</li>
+ <li>Be good or evil</li>
+</ul>
+<b>Future</b>
+<ul>
+ <li>Find awesome items</li>
+ <li>Build your own city</li>
+ <li>Own more than one ship</li>
+</ul>
+</div>
+
 {include file="footer.tpl"}

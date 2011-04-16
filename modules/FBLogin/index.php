@@ -41,6 +41,12 @@ class Module_FBLogin extends Base_Module
         */
         $scope        = '';
 
+	if($client_id == '') {
+            $msg = 'You have to configure your FBLogin Plugin to use it!';
+            header('Location: index.php?msg='.urlencode($msg));
+	    exit;
+	}
+
         if(isset($_GET['connect'])){$_SESSION['fbconnect'] = true;}
         if(isset($_GET['return']) && $_GET['return'] != '') $this->login($client_id, $redirect_uri, $client_secret);
         else $this->redirect($client_id, $redirect_uri, $scope);
