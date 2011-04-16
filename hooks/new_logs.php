@@ -27,7 +27,7 @@ $hooks->add_hook('header', 'new_logs');
 */
 function hook_new_logs(&$db, &$tpl, &$player, $args = 0)
 {
-    if (LOGGED_IN == true)
+    if (LOGGED_IN == true && !$_GET['mod'] == 'EventLog')
         $tpl->assign('new_logs', checkLog($player->id, $db));
 	//$tpl->assign('new_mail', checkMail($player->username, $db));
     return $args;

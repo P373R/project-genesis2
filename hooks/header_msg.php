@@ -28,7 +28,13 @@ $hooks->add_hook('header', 'header_msg', 1);
 */
 function hook_header_msg(&$db, &$tpl, &$player, $args = 0)
 {
-    global $purifier;
+    //HTML Purifier Config
+    $purifier_config = HTMLPurifier_Config::createDefault();
+    $purifier_config->set('HTML.Allowed', 'b,a[href],i,br,em,strong,ul,li,font');
+    $purifier_config->set('URI.Base', $_SERVER['DOCUMENT_ROOT']);
+    $purifier_config->set('URI.MakeAbsolute', true);
+    $purifier_config->set('URI.DisableExternal', true);
+    $purifier = new HTMLPurifier($purifier_config);
 
     if (!isset($_SESSION['msg']) && isset($_GET['msg']) && is_string($_GET['msg']))
     {
@@ -44,11 +50,12 @@ function hook_header_msg(&$db, &$tpl, &$player, $args = 0)
         {
 	    if($iterator == 0) $del = '?';
 	    else $del = '&';
-            if(substr($token,3)!="msg") $url.= $del.$token;
+            if(substr($token,0,3)!="msg") $url.= $del.$token;
 	    $iterator++;
         }
         //Relaod without msg in url
-        header ("Location: $url"); die();
+        header ("Location: $url"); 
+        exit();
     } 
     else if (isset($_SESSION['msg']))
     {

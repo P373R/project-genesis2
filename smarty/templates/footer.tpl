@@ -4,6 +4,7 @@
         <strong><a href="https://code.google.com/p/project-genesis2/">Project</a> | <a href="https://code.google.com/p/project-genesis2/w/list">Wiki</a> | <a href="https://code.google.com/p/project-genesis2/issues/list">Forum</a></strong><br />
 	Copyright &copy; 2010 <a href="index.php?mod=About" target="_parent"><strong>Project Genesis2</strong></a> Version {$VERSION}<br />
 <hr />
+
 {if $SERVER != 'local'}
 {literal}
 <script type="text/javascript">
@@ -37,6 +38,13 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 </div>
 
+{if $GET_MSG != ''}
+ {include file='msg.tpl'}
+{/if}
+
+{if $tutorial != ''}
+ {include file='tutorial.tpl'}
+{/if}
 
 </body>
 

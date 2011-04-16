@@ -113,23 +113,23 @@ class Module_Map extends Base_Module
       $rnd = rand(1,3);
       switch($luck){
 	case 1:	  
-	  header('Location: index.php?mod=Map&msg=' . urlencode("You found <b>$rnd</b> gold"));
+	  header('Location: index.php?mod=Map&msg=' . urlencode("You found <b>$rnd</b> gold."));
 	  $item = 'money';
 	break;
 	case 5: case 6: case 7:
-	  header('Location: index.php?mod=Map&msg=' . urlencode("You found <b>$rnd</b> aluminium"));
+	  header('Location: index.php?mod=Map&msg=' . urlencode("You found <b>$rnd</b> aluminium."));
 	  $item = 'aluminium';
 	break;
 	case 11: case 12: case 13: case 14: case 15: case 16:
-	  header('Location: index.php?mod=Map&msg=' . urlencode("You found <b>$rnd</b> water"));
+	  header('Location: index.php?mod=Map&msg=' . urlencode("You found <b>$rnd</b> water."));
 	  $item = 'water';
 	break;
 	case 17: case 18: case 19:	
-	  header('Location: index.php?mod=Map&msg=' . urlencode("You found <b>$rnd</b> iron"));
+	  header('Location: index.php?mod=Map&msg=' . urlencode("You found <b>$rnd</b> iron."));
 	  $item = 'iron';
 	break;
 	default:
-	  header('Location: index.php?mod=Map&msg=' . urlencode("You haven't found anything"));
+	  header('Location: index.php?mod=Map&msg=' . urlencode("You haven't found anything."));
 	break;
       }
       if(isset($item)){

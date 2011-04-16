@@ -87,10 +87,3 @@
 
 <div id="{if $LOGGED_IN == 'TRUE'}gamebody{else}body{/if}">
 
-{if $GET_MSG != ''}
- {include file='msg.tpl'}
-{/if}
-
-{if $tutorial != ''}
- {include file='tutorial.tpl'}
-{/if}
