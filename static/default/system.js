@@ -32,3 +32,4 @@ function reloadBar(url,name) {
 
     setTimeout("reloadBar('"+url+"','"+name+"');", 5000);
 }
+
