@@ -18,7 +18,7 @@ class Module_Missions extends Base_Module
         requireLogin();
 
         if(isBusy($this->player)) {
-            $this->tpl->assign('reload',$this->player->ship->busy-time());
+            $this->tpl->assign('reload',5);
             $this->tpl->display('busy.tpl');
         } else {
         if(isset($_GET['domission'])) {
@@ -62,7 +62,7 @@ class Module_Missions extends Base_Module
 			$this->db->execute("UPDATE `<ezrpg>ships` SET `missions`=? WHERE `id`=?",array(serialize($arr),$this->player->id));
 		    }
                     // mark ship as busy
-                    setBusy($this->player->id,$this->db,5);
+                    setBusy($this->player->id,$this->db,$mission->duration);
 
                     
 		    header('Location: index.php?mod=Missions');
