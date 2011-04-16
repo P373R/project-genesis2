@@ -15,7 +15,7 @@
 defined('IN_EZRPG') or exit;
 
 //Header hook to check for new logs, default priority (5)
-//$hooks->add_hook('header', 'new_logs');
+$hooks->add_hook('header', 'new_logs');
 
 /**
   Check the DB for new Logs

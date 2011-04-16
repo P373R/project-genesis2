@@ -86,7 +86,7 @@ class Module_Missions extends Base_Module
             $missions = $this->db->fetchAll($this->db->execute("SELECT * FROM `<ezrpg>missions` WHERE `min_gwp`<=?", array($this->player->gwp)));
             foreach ($missions as $mission)
 	    {
-		if($mission->redo == 1 || !in_array($mission->id,unserialize($this->player->ship->missions))) 
+		if($mission->redo == 1 || $this->player->ship->missions == '' || !in_array($mission->id,unserialize($this->player->ship->missions))) 
 		{
 		    $this->tpl->append('missions',$mission);
 		}

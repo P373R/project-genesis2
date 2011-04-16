@@ -91,6 +91,11 @@ class Module_Ship extends Base_Module
      */
     private function doupgrade($part)
     {
+	if($this->player->x != ATLANTIS_X || $this->player->y != ATLANTIS_Y) {
+	    header("Location: index.php?mod=Ship&msg=" . urlencode("You have to visit the docks in Atlantis to upgrade your ship!"));
+	    exit;
+	}
+	    
 	$partNew = $this->db->fetchRow('SELECT depend FROM `<ezrpg>ship_parts` WHERE type=? AND id=?', array($part, $this->player->ship->$part));
 	$dep = unserialize($partNew->depend);print_r($dep);
 	$possible = true;

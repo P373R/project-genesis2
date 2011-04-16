@@ -176,7 +176,7 @@ CREATE TABLE `player_log` (
   PRIMARY KEY (`id`),
   KEY `player_log` (`player`,`time`),
   KEY `new_logs` (`player`,`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +185,7 @@ CREATE TABLE `player_log` (
 
 LOCK TABLES `player_log` WRITE;
 /*!40000 ALTER TABLE `player_log` DISABLE KEYS */;
-INSERT INTO `player_log` VALUES (1,1002,1297310107,'You have leveled up! You gained +1 stat point!',0),(2,1002,1297330960,'You have leveled up! You gained +1 stat point!',0),(3,1002,1297333179,'You have leveled up! You gained +1 stat point!',0),(4,1002,1297500867,'You have leveled up! You gained +1 stat point!',0),(5,1002,1300689005,'You have leveled up! You gained +1 stat point!',0),(6,1002,1302904475,'You have leveled up! You gained +1 stat point!',0),(7,1002,1302906263,'You have leveled up! You gained +1 stat point!',0),(8,1000,1302912870,'You have leveled up! You gained +1 stat point!',0),(9,1000,1302915275,'You have leveled up! You gained +1 stat point!',0),(10,1000,1302921487,'You have leveled up! You gained +1 stat point!',0),(11,1000,1302924049,'You have leveled up! You gained +1 stat point!',0),(12,1000,1302935818,'You have leveled up! You gained +1 stat point!',0);
+INSERT INTO `player_log` VALUES (1,1002,1297310107,'You have leveled up! You gained +1 stat point!',1),(2,1002,1297330960,'You have leveled up! You gained +1 stat point!',1),(3,1002,1297333179,'You have leveled up! You gained +1 stat point!',1),(4,1002,1297500867,'You have leveled up! You gained +1 stat point!',1),(5,1002,1300689005,'You have leveled up! You gained +1 stat point!',1),(6,1002,1302904475,'You have leveled up! You gained +1 stat point!',1),(7,1002,1302906263,'You have leveled up! You gained +1 stat point!',1),(8,1000,1302912870,'You have leveled up! You gained +1 stat point!',1),(9,1000,1302915275,'You have leveled up! You gained +1 stat point!',1),(10,1000,1302921487,'You have leveled up! You gained +1 stat point!',1),(11,1000,1302924049,'You have leveled up! You gained +1 stat point!',1),(12,1000,1302935818,'You have leveled up! You gained +1 stat point!',1),(13,1001,1302947901,'You have leveled up! You gained +1 stat point!',1),(14,1005,1302948284,'You have leveled up! You gained +1 stat point!',0);
 /*!40000 ALTER TABLE `player_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,17 +226,18 @@ CREATE TABLE `players` (
   `damage` int(11) unsigned DEFAULT '0',
   `kills` int(11) unsigned NOT NULL DEFAULT '0',
   `deaths` int(11) unsigned NOT NULL DEFAULT '0',
-  `x` tinyint(4) NOT NULL DEFAULT '6',
-  `y` tinyint(4) NOT NULL DEFAULT '7',
+  `x` tinyint(4) NOT NULL DEFAULT '15',
+  `y` tinyint(4) NOT NULL DEFAULT '15',
   `infight` tinyint(1) NOT NULL,
   `missions` text NOT NULL,
-  `gwp` int(11) NOT NULL,
-  `facebook` bigint(15) NOT NULL,
-  `tutorial` tinyint(4) NOT NULL,
+  `gwp` int(11) NOT NULL DEFAULT '50',
+  `facebook` bigint(15) NOT NULL DEFAULT '0',
+  `tutorial` tinyint(4) NOT NULL DEFAULT '0',
+  `ban` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +246,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1300603731,1300562123,166,56,82,70,130,17,989,62,330,20,20,20,0,20,18,3,0,18,21,7,10,0,'0',100,0,0),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',1,1296895561,1302945298,1302935805,291,13,22,0,6,6,1,50,110,25,30,30,0,25,17,7,0,0,0,15,15,0,'0',84,0,-1),(1001,'TestUser','622f381b3428c648cd5974adda303deef6c7e9c7','test@userland.ohg','H8_m,P.r<%{K:?Ji','',1,1296979017,1297247481,1297247481,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,7,7,0,'0',50,0,0),(1002,'test','d3527e5c09b197204578da73255b24195681391d','test@project-genesis2.de','}!_ND*c(V&H?RoJv','',1,1297280744,1302920340,1302920340,422,204,103,0,85,8,0,53,150,15,55,55,0,15,26,8,0,0,0,17,16,0,'0',26,0,0),(1003,'Bastitest','cf8888f08f8a208513555bc53ba80085b65166be','basti@localhost.de','{_t2]Eqq61r@z!5`','',1,1297585076,1297589581,1297587525,100,0,0,0,0,1,0,0,10,15,10,10,0,15,2,2,0,0,0,6,7,0,'',0,0,0);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','',10,1286231120,1300603731,1300562123,166,56,82,70,130,17,989,62,330,20,20,20,0,20,18,3,0,18,21,7,10,0,'0',100,0,0,0),(1000,'Bastian','2f4b11d85236ff03507452616556303911edf2b8','einfachsaufen@gmail.com','t_foCz>+Ob!#x-sk','de',10,1296895561,1302948746,1302948746,291,13,22,0,6,6,1,50,110,25,30,30,0,25,17,7,0,0,0,15,15,0,'0',84,0,-1,0),(1001,'test','eebe8ab6b8957ac04dd26e650e075a0c4f96aff4','test@test.de','gn}Yazm+O,NZWx:3','',1,1302948933,1302949023,1302949023,100,0,0,0,0,1,0,0,10,20,20,20,0,20,14,3,0,0,0,15,15,0,'',50,0,0,0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,7 +308,7 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (1,1,3,1,1,1,1,1,0,1300563009,1300562927,0,'a:0:{}'),(1000,2,2,1,2,2,1,1,0,1302944975,1302944932,0,'a:2:{i:0;s:1:\"1\";i:1;s:1:\"2\";}'),(1001,1,1,1,1,1,1,1,0,0,0,0,'a:0:{}'),(1002,1,2,2,4,2,2,1,0,1302914602,1302914302,0,'a:3:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"5\";}');
+INSERT INTO `ships` VALUES (1,1,3,1,1,1,1,1,0,1300563009,1300562927,0,'a:0:{}'),(1000,2,2,1,2,2,1,1,0,1302944975,1302944932,0,'a:2:{i:0;s:1:\"1\";i:1;s:1:\"2\";}'),(1001,1,1,1,1,1,1,1,0,0,0,0,'');
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -332,7 +333,7 @@ CREATE TABLE `shouts` (
 
 LOCK TABLES `shouts` WRITE;
 /*!40000 ALTER TABLE `shouts` DISABLE KEYS */;
-INSERT INTO `shouts` VALUES (1302817944,'?','test'),(1302817957,'?','test'),(1302817976,'test','test'),(1302818844,'test','jetzt gehts!'),(1302818886,'test','und auch zu langer text wird gekÃ¼rzt, weil sonst die shoutbox Ã¼berlÃ¤uft und das will ja auch keine, muss ja auhc net...'),(1302818929,'test','bin mal gespannt, wie es aussieht, wenn man das alles mit maximalen shouts vollpackt, das ist bestimmt mahr als erwartet'),(1302818947,'test','und wenn jetzt noch ein dritter dazu kommt, dann hÃ¤tt ich doch gerne einen Ã¼berlauf drin'),(1302818957,'test','ja, scrollbars werden wohl reinkommen'),(1302823709,'test','schon besser :)'),(1302901310,'Bastian','ui');
+INSERT INTO `shouts` VALUES (1302817944,'?','test'),(1302817957,'?','test'),(1302817976,'test','test'),(1302818844,'test','jetzt gehts!'),(1302818886,'test','und auch zu langer text wird gekÃ¼rzt, weil sonst die shoutbox Ã¼berlÃ¤uft und das will ja auch keine, muss ja auhc net...'),(1302818929,'test','bin mal gespannt, wie es aussieht, wenn man das alles mit maximalen shouts vollpackt, das ist bestimmt mahr als erwartet'),(1302818947,'test','und wenn jetzt noch ein dritter dazu kommt, dann hÃ¤tt ich doch gerne einen Ã¼berlauf drin'),(1302818957,'test','ja, scrollbars werden wohl reinkommen'),(1302823709,'test','schon besser :)'),(1302901310,'Bastian','ui'),(1302947503,'test','this version is ready for testing!');
 /*!40000 ALTER TABLE `shouts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +357,7 @@ CREATE TABLE `tutorial` (
 
 LOCK TABLES `tutorial` WRITE;
 /*!40000 ALTER TABLE `tutorial` DISABLE KEYS */;
-INSERT INTO `tutorial` VALUES (1,'Welcome to <b>Project Genesis 2</b>!\r\nThis little tutorial will show you the basic way to play this game. You will learn how to explore the world, gather resources, solve missions and get ready for battle. You can skip the tutorial whenever you want. Just click on \'skip\'. If you want to continue klick \'next\''),(2,'At first you will learn what the basic interface offers you. You can see the functions that are always available at the top row. To learn more about these functions click \'next\''),(3,'To come to your dashboard simply click <b>Start</b> wherever you are.\r\n\r\nTo see where you are in the world klick <b>Map</b>. That shows you the world map if your ship is not busy doning something.\r\n\r\nIf you want to see how far your ship is upgraded and what kind of status upgrades are available for you click on <b>Ship</b>\r\n\r\nClick \'next\' to learn more about missions and the city.'),(4,'To keep you and your ship busy you can accept several missions. These missions are available on the <b>Missions</b> page.\r\n\r\nThere are several things you can access from the main city. Click on <b>City</b> whenever you feel like you should update your profile, read some information in the library or want to view the scoreboard.'),(5,'');
+INSERT INTO `tutorial` VALUES (1,'Welcome to <b>Project Genesis 2</b>!\r\nThis little tutorial will show you the basic way to play this game. You will learn how to explore the world, gather resources, solve missions and get ready for battle. You can skip the tutorial whenever you want. Just click on \'skip\'. If you want to continue klick \'next\''),(2,'At first you will learn what the basic interface offers you. You can see the functions that are always available at the top row. To learn more about these functions click \'next\''),(3,'To come to your dashboard simply click <b>Home</b> wherever you are.\r\n\r\nTo see where you are in the world klick <b>Map</b>. That shows you the world map if your ship is not busy doning something.\r\n\r\nIf you want to see how far your ship is upgraded and what kind of status upgrades are available for you click on <b>Ship</b>\r\n\r\nClick \'next\' to learn more about missions and the city.'),(4,'To keep you and your ship busy you can accept several missions. These missions are available on the <b>Missions</b> page.\r\n\r\nThere are several things you can access from the main city. Click on <b>City</b> whenever you feel like you should update your profile, read some information in the library or want to view the scoreboard.');
 /*!40000 ALTER TABLE `tutorial` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -369,4 +370,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-04-16 21:19:24
+-- Dump completed on 2011-04-16 22:20:21
