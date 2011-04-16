@@ -65,7 +65,7 @@
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
 {/if}
-<h3>Shout:</h3>
+<h3>Shortmessages</h3>
 <form method="POST">
 <input class="shortinput" type="text" name="shout" /><br />
 <input class="shortinput" type="submit" value="SHOUT"/>

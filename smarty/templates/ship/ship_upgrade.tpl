@@ -16,8 +16,10 @@
  <td>{$partNew->properties}</td>
 </tr>
 </table>
+{if $partNew->depend !=''}
 <p><b>This upgrade depends on</b><br >
 {$partNew->depend}</p>
+{/if}
 <br />
 The Upgrade will take <b>{$partNew->id*10}</b> minutes and you can not move or use the map during that time!<br />
 </p>

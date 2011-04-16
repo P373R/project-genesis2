@@ -65,6 +65,12 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
 
             $result= array();
 
+	    //Add basic values
+	    $result['vitality'] = 15;
+	    $result['agility']  = 2;
+	    $result['dexterity']= 2;
+	    $result['energy']   = 10;
+	    
             foreach($compute as $com) {
                 $com = unserialize($com->properties);
                 $result['strength']  += $com['strength'];
@@ -74,11 +80,8 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
                 $result['energy']    += $com['energy'];
             }
 
-    //Add basic values
-    $result['vitality'] += 15;
-    $result['agility']  += 2;
-    $result['dexterity']+= 2;
-    $result['energy']   += 10;
+ 
+
 
     $db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]', `vitality`='$result[vitality]', `agility`='$result[agility]', `dexterity`='$result[dexterity]', `max_energy`='$result[energy]' WHERE `id`=?", array($args->id));
 

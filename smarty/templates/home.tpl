@@ -6,6 +6,8 @@
 <p>
 <b>News</b>
 <ul>
+<li><small>04/16/2011</small><br />
+    Have a look at the <a href="index.php?mod=Ship">ship upgrades</a>! They have been improoved a lot.</li>
 <li><small>02/04/2011</small><br />
     Introducing ship upgrades. Spend your Levelponits improving your <a href="index.php?mod=Ship">ship</a></li>
 <li><small>12/10/2010</small><br />

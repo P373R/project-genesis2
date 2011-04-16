@@ -57,8 +57,9 @@ function itemInfo($info = array(), $full = false, $plusminus = true)
 {
     if(count($info) == 0) return "nothing";
     $text = "<table>";
-    if(is_array($info)) foreach($info as $key => $value) {
-        if($value != 0 || $full) {
+    if(is_array($info)) 
+     foreach($info as $key => $value) {
+        if($full || $value != 0) {
             $text.= "<tr><td>".ucfirst($key). "</td><td>";
             if($plusminus && is_int($value) && $value != 0) if($value < 0) $text.= "-"; else $text.= "+";
             $text.= $value."</td></tr>";

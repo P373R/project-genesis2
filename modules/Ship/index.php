@@ -27,6 +27,10 @@ class Module_Ship extends Base_Module
     {
         $ship = array();
         $shipvalues = array();
+        $shipvalues['vitality'] = 15;
+	$shipvalues['agility']  = 2;
+	$shipvalues['dexterity']= 2;
+	$shipvalues['energy']   = 10;
         $shipdb = $this->db->fetchRow('SELECT `propulsion`,`gearbox`,`engine`,`energy`,`navigation`,`sonar`,`weapon1`,`weapon2`,`harvester` FROM `<ezrpg>ships` WHERE id=?',array($this->player->id));
         foreach ($shipdb as $field => $value) {
             $part = $this->db->fetchRow('SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?',array($value,$field));

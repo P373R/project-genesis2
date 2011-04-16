@@ -88,4 +88,7 @@ $ezTranslateLanguage['seconds'] = 'Sekunden';
 
 $ezTranslateLanguage['Minimal GWP'] = 'Mindestens GWP';
 $ezTranslateLanguage['Accept Mission'] = 'Mission Annehmen';
+
+
+$ezTranslateLanguage['Shortmessages'] = 'Kurzmitteilungen';
 ?>
