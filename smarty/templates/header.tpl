@@ -62,7 +62,7 @@
 </table>
 {if $BUSY}
 <img src="/static/images/loading.gif" width=0 height=0 onload="reloadBar('bar.php?width=135&height=15&type=busy&busy={$player->ship->busy}&start={$player->ship->start}','busyBarSmall');">
-<img id="busyBarSmall" src="bar.php?width=135&amp;height=15&amp;type=busy&amp;busy={$player->ship->busy}&amp;start={$player->ship->start}" alt="Ship is busy"/>
+<img onerror="alert('ohoh');" id="busyBarSmall" src="bar.php?width=135&amp;height=15&amp;type=busy&amp;busy={$player->ship->busy}&amp;start={$player->ship->start}" alt="Ship is busy"/>
 {/if}
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
