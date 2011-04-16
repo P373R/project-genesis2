@@ -9,7 +9,6 @@
 
 include 'static/languages/missions/de.php';
 
-$ezTranslateLanguage['Project-Genesis2 :: Home'] = 'DNT';
 $ezTranslateLanguage['Server time'] = 'Server Zeit';
 $ezTranslateLanguage['Next round'] = 'Nächste Runde';
 $ezTranslateLanguage['Player online'] = 'Spieler Online';
@@ -91,4 +90,19 @@ $ezTranslateLanguage['Accept Mission'] = 'Mission Annehmen';
 
 
 $ezTranslateLanguage['Shortmessages'] = 'Kurzmitteilungen';
+
+$ezTranslateLanguage['Medium nuclear plant'] = 'Mittlerer Atomreaktor';
+$ezTranslateLanguage['Small Microphone'] = 'Kleines Mirkofon';
+$ezTranslateLanguage['Project'] = 'Projekt';
+$ezTranslateLanguage['Wiki'] = 'DNT';
+$ezTranslateLanguage['Forum'] = 'DNT';
+
+$ezTranslateLanguage['Your ship has a'] = 'Das Schiff ist mit ';
+$ezTranslateLanguage['and can be upgraded to a'] = ' ausgerüstet. Die Verbesserung währe: ';
+$ezTranslateLanguage['Values now'] = 'Werte jetzt';
+$ezTranslateLanguage['Values then'] = 'Werte dann';
+$ezTranslateLanguage['This upgrade depends on'] = 'Diese Aufrüstung benötigt';
+$ezTranslateLanguage['The Upgrade will take'] = 'Das Aufrüsten wird ';
+$ezTranslateLanguage['minutes and you can not move or use the map during that time!'] = ' Minuten benötigen. Das Schiff ist in der Zeit nicht manövrierfähig!';
+$ezTranslateLanguage['No upgrade possible.'] = 'Keine Aufrüstung möglich.';
 ?>
