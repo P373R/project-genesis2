@@ -62,7 +62,7 @@ class Module_Missions extends Base_Module
 			$this->db->execute("UPDATE `<ezrpg>ships` SET `missions`=? WHERE `id`=?",array(serialize($arr),$this->player->id));
 		    }
                     // mark ship as busy
-                    setBusy($this->player->id,5);
+                    setBusy($this->player->id,$this->db,5);
 
                     
 		    header('Location: index.php?mod=Missions');
