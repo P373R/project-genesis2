@@ -30,6 +30,20 @@ function hook_tutorial($db, $tpl, $player, $args = 0)
     if ($args === 0 || LOGGED_IN == false)
        return $args;
 
+    if(isset($_POST['tutorial'])) switch($_POST['tutorial']) {
+	case 'skip':
+	    $db->execute("UPDATE `<ezrpg>players` SET `tutorial`='-1' WHERE `id`=".$args->id);
+	    $args->tutorial = -1;
+	    break;
+	case 'next':
+	    $db->execute("UPDATE `<ezrpg>players` SET `tutorial`=`tutorial`+1 WHERE `id`=".$args->id);
+	    $args->tutorial += 1;
+	    break;
+	case 'reset':
+	    $db->execute("UPDATE `<ezrpg>players` SET `tutorial`= 0 WHERE `id`=".$args->id);
+	    break;
+    }
+    
     if($args->tutorial >= 0) {
 	$res = $db->execute("SELECT `text` FROM `<ezrpg>tutorial` WHERE `id` = ".$args->tutorial."+1");
 	$tutorial = $db->fetch($res);

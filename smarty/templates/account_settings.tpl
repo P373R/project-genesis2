@@ -2,9 +2,7 @@
 
 <h1>Account Settings</h1>
 
-<p>
-Here you can change your password.
-</p>
+<h2>Change your password</h2>
 
 <form method="post" action="index.php?mod=AccountSettings">
 
@@ -17,14 +15,16 @@ Here you can change your password.
 <label>Verify New Password</label>
 <input type="password" size="40" name="new_password2" autocomplete="off" />
 
-<label>Language</label>
+<h2>Language</h2>
+
 <input type="radio" name="language" value=""{if $player->language == ''} checked{/if}>English<br />
 <input type="radio" name="language" value="de"{if $player->language == 'de'} checked{/if}>German<br />
 
 
 <br />
 <input name="change_password" type="submit" value="Change" class="button" />
-<h1>Connect with Facebook</h1>
+
+<h2>Connect with Facebook</h2>
 
 <p>
 Here you can connect your account with Facebook so you can log in with your Facebook account.
@@ -35,6 +35,11 @@ Here you can connect your account with Facebook so you can log in with your Face
 Your account is allready connected to {$player->facebook}.
 {/if}
 
-</form>
 
+</form>
+<form method="POST">
+<h2>Reset tutorial</h2>
+If you want to reset the tutorial simply click on reset.
+<input type="submit" name="tutorial" value="reset" />
+</form>
 {include file="footer.tpl"}
