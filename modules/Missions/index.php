@@ -18,7 +18,7 @@ class Module_Missions extends Base_Module
         requireLogin();
 
         if(isBusy($this->player)) {
-            $this->tpl->assign('reload',5);
+            $this->tpl->assign('reload',$this->player->ship->busy-time());
             $this->tpl->display('busy.tpl');
         } else {
         if(isset($_GET['domission'])) {

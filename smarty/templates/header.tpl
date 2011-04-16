@@ -7,6 +7,7 @@
 <meta name="Distribution" content="Global" />
 <meta name="Robots" content="index,follow" />
 {if $reload != ''} <meta http-equiv="refresh" content="{$reload}" > {/if}
+<script src="/static/default/system.js" type="text/javascript"></script>
 <link rel="stylesheet" href="static/default/style.css" type="text/css" />       
 <title>Project-Genesis2 :: {$TITLE|default:""}</title>
 </head>
@@ -16,7 +17,7 @@
 
 <div id="header">
         <span id="title"><img src="static/images/gui/header_beta.png" alt="Project Genesis2" /></span>
-        <center>Server time {$smarty.now|date_format:'%T'} | 
+        <center>Time <span id="theTime"></span> | 
 		Next round {$TICK|date_format:'%T'} | Round {$TICKCOUNT} |
 		<strong>Player online</strong>: {$ONLINE}</center>
 </div>
@@ -60,7 +61,8 @@
 </tr>
 </table>
 {if $BUSY}
-<img src="bar.php?width=135&amp;height=15&amp;type=busy&amp;busy={$player->ship->busy}&amp;start={$player->ship->start}" alt="Ship is busy"/>
+<img src="/static/images/loading.gif" width=0 height=0 onload="reloadBar('bar.php?width=135&height=15&type=busy&busy={$player->ship->busy}&start={$player->ship->start}','busyBarSmall');">
+<img id="busyBarSmall" src="bar.php?width=135&amp;height=15&amp;type=busy&amp;busy={$player->ship->busy}&amp;start={$player->ship->start}" alt="Ship is busy"/>
 {/if}
 {if $new_mail > 0}
 <a href="index.php?mod=Mail" class="red"><strong>{$new_mail} unread Mail</strong></a>
