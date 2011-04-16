@@ -7,30 +7,30 @@
 <hr />
 <table id="shiptable">
 <tr>
- <td><b>Propulsion {$player->ship->propulsion}</b></td>
- <td><b>Gearbox {$player->ship->gearbox}</b></td>
+ <td><b>Propulsion {$player->ship->propulsion}</b> <a href="index.php?mod=Ship&amp;upgrade=propulsion">upgrade</a></td>
+ <td><b>Gearbox {$player->ship->gearbox}</b> <a href="index.php?mod=Ship&amp;upgrade=gearbox">upgrade</a></td>
 </tr>
 <tr>
- <td>{$propulsion.name}<p>{$propulsion.desc}</p><a href="index.php?mod=Ship&amp;upgrade=propulsion">upgrade</a><br /></td>
- <td>{$gearbox.name}<p>{$gearbox.desc}</p><a href="index.php?mod=Ship&amp;upgrade=gearbox">upgrade</a><br /></td>
-</tr>
-
-<tr>
- <td><b>Energy {$player->ship->energy}</b></td>
- <td><b>Engine {$player->ship->engine}</b></td>
-</tr>
-<tr>
- <td>{$energy.name}<p>{$energy.desc}</p><a href="index.php?mod=Ship&amp;upgrade=energy">upgrade</a><br /></td>
- <td>{$engine.name}<p>{$engine.desc}</p><a href="index.php?mod=Ship&amp;upgrade=engine">upgrade</a><br /></td>
+ <td>{$propulsion.name}<p>{$propulsion.desc}</p></td>
+ <td>{$gearbox.name}<p>{$gearbox.desc}</p></td>
 </tr>
 
 <tr>
- <td><b>Navigation {$player->ship->navigation}</b></td>
- <td><b>Sonar {$player->ship->sonar}</b></td>
+ <td><b>Energy {$player->ship->energy}</b> <a href="index.php?mod=Ship&amp;upgrade=energy">upgrade</a></td>
+ <td><b>Engine {$player->ship->engine}</b> <a href="index.php?mod=Ship&amp;upgrade=engine">upgrade</a></td>
 </tr>
 <tr>
- <td>{$navigation.name}<p>{$navigation.desc}</p><a href="index.php?mod=Ship&amp;upgrade=navigation">upgrade</a><br /></td>
- <td>{$sonar.name}<p>{$sonar.desc}</p><a href="index.php?mod=Ship&amp;upgrade=sonar">upgrade</a><br /></td>
+ <td>{$energy.name}<p>{$energy.desc}</p></td>
+ <td>{$engine.name}<p>{$engine.desc}</p></td>
+</tr>
+
+<tr>
+ <td><b>Navigation {$player->ship->navigation}</b> <a href="index.php?mod=Ship&amp;upgrade=navigation">upgrade</a></td>
+ <td><b>Sonar {$player->ship->sonar}</b> <a href="index.php?mod=Ship&amp;upgrade=sonar">upgrade</a></td>
+</tr>
+<tr>
+ <td>{$navigation.name}<p>{$navigation.desc}</p></td>
+ <td>{$sonar.name}<p>{$sonar.desc}</p></td>
 </tr>
 {*
 <tr>
