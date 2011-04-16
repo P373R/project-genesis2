@@ -1,0 +1,50 @@
+SELECT * FROM `<ezrpg>players` WHERE `id`=?
+SELECT * FROM `<ezrpg>ships` WHERE `id`=?
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.propulsion AND type = 'propulsion'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.gearbox AND type = 'gearbox'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.energy AND type = 'energy'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.engine AND type = 'engine'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.navigation AND type = 'navigation'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.sonar AND type = 'sonar'
+UPDATE `<ezrpg>players` SET `strength`='0', `vitality`='25', `agility`='17', `dexterity`='7', `max_energy`='30' WHERE `id`=?
+SELECT * FROM `<ezrpg>shouts` ORDER By `time` DESC LIMIT 10
+SELECT `text` FROM `<ezrpg>tutorial` WHERE `id` = '0+1'
+SELECT COUNT(`id`) AS `count` FROM `<ezrpg>players` WHERE `last_active`>?
+SELECT `propulsion`,`gearbox`,`engine`,`energy`,`navigation`,`sonar`,`weapon1`,`weapon2`,`harvester` FROM `<ezrpg>ships` WHERE id=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>players` WHERE `id`=?
+SELECT * FROM `<ezrpg>ships` WHERE `id`=?
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.propulsion AND type = 'propulsion'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.gearbox AND type = 'gearbox'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.energy AND type = 'energy'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.engine AND type = 'engine'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.navigation AND type = 'navigation'
+SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.sonar AND type = 'sonar'
+UPDATE `<ezrpg>players` SET `strength`='0', `vitality`='25', `agility`='17', `dexterity`='7', `max_energy`='30' WHERE `id`=?
+SELECT * FROM `<ezrpg>shouts` ORDER By `time` DESC LIMIT 10
+SELECT `text` FROM `<ezrpg>tutorial` WHERE `id` = 0+1
+SELECT COUNT(`id`) AS `count` FROM `<ezrpg>players` WHERE `last_active`>?
+SELECT `propulsion`,`gearbox`,`engine`,`energy`,`navigation`,`sonar`,`weapon1`,`weapon2`,`harvester` FROM `<ezrpg>ships` WHERE id=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?
+SELECT * FROM `<ezrpg>players`
+UPDATE `<ezrpg>players` SET `hp`=?, `energy`=? WHERE `id`=?
+UPDATE `<ezrpg>players` SET `hp`=?, `energy`=? WHERE `id`=?
+UPDATE `<ezrpg>players` SET `hp`=?, `energy`=? WHERE `id`=?
+UPDATE `<ezrpg>players` SET `hp`=?, `energy`=? WHERE `id`=?
+UPDATE `<ezrpg>players` SET `hp`=?, `energy`=? WHERE `id`=?
