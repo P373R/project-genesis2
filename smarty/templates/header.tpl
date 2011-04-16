@@ -19,7 +19,7 @@
 <div id="wrapper">
 
 <div id="header">
-        <span id="title"><img src="static/images/gui/header_beta.png" alt="Project Genesis2" /></span>
+        <span id="title"><img src="static/images/gui/header_beta.png" alt="Project Genesis2" width="565" height="55"/></span>
         <center>Time <span id="theTime"></span> | 
 		Next round {$TICK|date_format:'%T'} | Round {$TICKCOUNT} |
 		<strong>Player online</strong>: {$ONLINE}</center>
@@ -46,10 +46,10 @@
 
 {if $LOGGED_IN == 'TRUE'}
 <div id="sidebar">
-<img src="bar.php?width=135&amp;type=exp&amp;max_exp={$player->max_exp}&amp;exp={$player->exp}" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
-<img src="bar.php?width=135&amp;type=hp&amp;hp={$player->hp}&amp;vitality={$player->vitality}" alt="HP: {$player->hp} / {$player->vitality}" /><br />
-<img src="bar.php?width=135&amp;type=energy&amp;energy={$player->energy}&amp;max_energy={$player->max_energy}" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
-<img src="bar.php?width=135&amp;type=manual&amp;val1=100&amp;val2={$player->gwp}&amp;color={if $player->gwp >= 50}green{else}red{/if}&amp;title=GWP&amp;numbers=true" alt="GWP: {$player->gwp}" /><br />
+<img width="135" height="15" src="bar.php?width=135&amp;type=exp&amp;max_exp={$player->max_exp}&amp;exp={$player->exp}" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
+<img width="135" height="15" src="bar.php?width=135&amp;type=hp&amp;hp={$player->hp}&amp;vitality={$player->vitality}" alt="HP: {$player->hp} / {$player->vitality}" /><br />
+<img width="135" height="15" src="bar.php?width=135&amp;type=energy&amp;energy={$player->energy}&amp;max_energy={$player->max_energy}" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
+<img width="135" height="15" src="bar.php?width=135&amp;type=manual&amp;val1=100&amp;val2={$player->gwp}&amp;color={if $player->gwp >= 50}green{else}red{/if}&amp;title=GWP&amp;numbers=true" alt="GWP: {$player->gwp}" /><br />
 <table>
 <tr>
   <td><strong>Gold</strong>      </td><td> {$player->money}</td>
@@ -65,7 +65,7 @@
 </table>
 {if $BUSY}
 <img src="/static/images/loading.gif" width=0 height=0 onload="reloadBar('bar.php?width=135&height=15&type=busy&busy={$player->ship->busy}&start={$player->ship->start}','busyBarSmall');">
-<img onerror="document.getElementById('busyBarSmall').style.display = 'none';" id="busyBarSmall" src="bar.php?width=135&amp;height=15&amp;type=busy&amp;busy={$player->ship->busy}&amp;start={$player->ship->start}" alt="Ship is busy"/>
+<img width="135" height="15" onerror="document.getElementById('busyBarSmall').style.display = 'none';" id="busyBarSmall" src="bar.php?width=135&amp;height=15&amp;type=busy&amp;busy={$player->ship->busy}&amp;start={$player->ship->start}" alt="Ship is busy"/>
 {/if}
 {if $new_logs > 0}
 <a href="index.php?mod=EventLog" class="red"><strong>{$new_logs} new Events</strong></a>
@@ -88,12 +88,9 @@
 <div id="{if $LOGGED_IN == 'TRUE'}gamebody{else}body{/if}">
 
 {if $GET_MSG != ''}
-<div class="msg">
-    <span class="red"><strong>{$GET_MSG}</strong></span>
-</div>
-<span class="space"></span>
+ {include file='msg.tpl'}
 {/if}
 
-{if $tutorial}
+{if $tutorial != ''}
  {include file='tutorial.tpl'}
 {/if}
