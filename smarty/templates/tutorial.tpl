@@ -1,12 +1,11 @@
 <div id="tutorialBox">
+<a href="javascript:document.getElementById('tutorialNext').submit()" style="float:right;">next</a>
+<a href="javascript:document.getElementById('tutorialSkip').submit()" style="float:left;">skip</a> <br />
 {$tutorial}
-<hr />
-<form method="POST" id="tutorialSkip" style="float:left;">
+<form method="POST" id="tutorialSkip">
 <input type="hidden" name="tutorial" value="skip" />
-<a href="javascript:document.getElementById('tutorialSkip').submit()">skip</a> 
 </form>
-<form method="POST" id="tutorialNext" style="float:right;">
+<form method="POST" id="tutorialNext">
 <input type="hidden" name="tutorial" value="next" />
-<a href="javascript:document.getElementById('tutorialNext').submit()">next</a>
 </form>
 </div>

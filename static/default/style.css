@@ -4,6 +4,7 @@ body {
 	background-color: #F7F7F7;
 	color: #444444;
 	background-image: url(/static/images/gui/back.jpg);
+	background-repeat:no-repeat;
 }
 
 h1 {
@@ -284,4 +285,8 @@ table.inlist td{
 #shoutbox {
     overflow-y: scroll;
     height:130px;
+}
+
+#tutorialBox {
+    border: solid black 1px;
 }
