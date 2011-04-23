@@ -466,5 +466,33 @@ class Db_Mysql
             return true;
         }
     }
+    
+    /**
+     * Update a row
+     * 
+     * Updates the row given in $where with the values in $values
+     * 
+     * Example:
+     * $values['msg'] = 'outdated';
+     * $values['read'] = '1';
+     * $where['read'] = 0;
+     * $where[] = 'time < '.(time()-1000);
+     * $db->update('<ezrpg>msg',$values,$where);
+     * 
+     * @param string $table Tablename
+     * @param array $values Values to set
+     * @param array $where Where conditions 
+     */
+    public function update($table, $values, $where) {
+	$query = "UPDATE ".$table." SET ";
+	foreach($values as $field => $value) {
+	    $query.= "`$field` = '$value'";
+	}
+	$query.= " WHERE ";
+	foreach($where as $field => $value) {
+	    $query.=(ctype_alnum($field))? "`$field` = '$value'" : "$value";
+	}
+	$this->execute($query);
+    }
 }
 ?>
