@@ -19,10 +19,12 @@
 <div id="wrapper">
 
 <div id="header">
-        <span id="title"><img src="static/images/gui/header_beta.png" alt="Project Genesis2" width="565" height="55"/></span>
+        <span id="title"><img src="static/images/gui/header_beta.png" alt="Project Genesis2" width="565" height="55"/>
+			 <img id="ajaxLoading" src="/static/images/loading.gif" width="15" heigth="15" /></span>
         <center>Time <span id="theTime"></span> | 
 		Next round {$TICK|date_format:'%T'} | Round {$TICKCOUNT} |
-		<strong>Player online</strong>: {$ONLINE}</center>
+		<strong>Player online</strong>: {$ONLINE}
+	</center>
 </div>
 
 <div id="nav">

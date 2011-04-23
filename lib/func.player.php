@@ -24,6 +24,10 @@ function requireLogin($msg='')
 {
     if (!LOGGED_IN)
     {
+	if (AJAX) { // No AJAX requests alowed if not logged in
+	    header("Status: 403");
+	    exit;
+	}
         if (!empty($msg))
             header('Location: index.php?msg=' . urlencode($msg));
         else

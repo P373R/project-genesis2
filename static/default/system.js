@@ -33,3 +33,27 @@ function reloadBar(url,name) {
     setTimeout("reloadBar('"+url+"','"+name+"');", 5000);
 }
 
+
+
+$(document).ready(function() {
+    // Hide loading globe
+   
+   $.ajaxStart(function() {
+    $("img#ajaxLoading").css('display','inline');
+    });
+   
+   $.ajaxComplete(function() {
+    $("img#ajaxLoading").css('display','none');
+    });
+  
+   // if any error occours reload the entire page
+    $("body").ajaxError(
+        function(e,request) {
+            if (request.status == 403) {
+                window.location.reload();
+            }
+        }
+    );
+
+});
+

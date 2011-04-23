@@ -71,5 +71,7 @@ foreach($hook_files as $hook_file)
 }
 
 //Run login hooks on player variable
+if(!defined('AJAX') || isset($_REQUEST['hookPlayer'])) {
 $player = $hooks->run_hooks('player', 0);
+}
 ?>
