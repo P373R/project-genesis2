@@ -7,11 +7,15 @@
 <meta name="Distribution" content="Global" />
 <meta name="Robots" content="index,follow" />
 {if $reload != ''} <meta http-equiv="refresh" content="{$reload}" > {/if}
-<link rel="stylesheet" href="static/default/style.css" type="text/css" />       
-<link rel="stylesheet" href="static/default/default-jquery-ui-1.8.9.custom.css" type="text/css" />       
-<script src="/static/default/jquery-1.5.js" type="text/javascript"></script>
-<script src="/static/default/jquery-ui-1.8.9.custom.min.js" type="text/javascript"></script>
-<script src="/static/default/system.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="static/css/style.css" type="text/css" />       
+<link rel="stylesheet" href="static/css/default/jquery-ui-1.8.12.custom.css" type="text/css" />       
+
+<script src="/static/js/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script src="/static/js/jquery-ui-1.8.12.custom.min.js" type="text/javascript"></script>
+<script src="/static/js/jquery.MapScroller.js" type="text/javascript"></script>
+<script src="/static/js/system.js" type="text/javascript"></script>
+
 <title>Project-Genesis2 :: {$TITLE|default:""}</title>
 </head>
 <body>
