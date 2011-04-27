@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Genesis2" default="dist">
+
+    <!-- ============================================ -->
+    <!-- Prepare httpdocs folder for installation     -->
+    <!-- ============================================ -->
+    <target name="prepare">
+	<echo msg="Preparing deployment folder for installation" />
+	
+	<copy file="Docs/deploy.html" tofile="index.html" />
+	
+	<delete>
+	    <fileset dir="~/httpdocs">
+		<include name="**" />
+		<exclude name="index.html" />
+	    </fileset>
+	</delete>
+	
+	
+    </target>
+    
+    <!-- ============================================  -->
+    <!-- Target: copy the important files              -->
+    <!-- ============================================  -->
+    <target name="build" depends="">
+        <echo msg="Copying files to game directory..." />
+
+	<copy todir="~/httpdocs" >
+	    <fileset dir="." id="baseSet">
+		<include name="bar.php" />
+		<include name="config.php" />
+		<include name="favicon.ico" />
+		<include name="index.php" />
+		<include name="init.php" />
+		<include name="lib.php" />
+		<include name="tick.php" />
+		<include name="static/default/images/**" />
+		<include name="static/default/default-jquery-ui-1.8.9.custom.css" />
+		<include name="static/default/jquery-1.5.js" />
+		<include name="static/default/jquery-ui-1.8.9.custom.min.js" />
+		<include name="static/default/style.css" />
+		<include name="static/default/system.js" />
+		<include name="static/images/**" />
+		<include name="static/languages/**" />
+		<include name="smarty/templates/**" />
+		<include name="modules/**" />
+		<include name="lib/**" />
+		<include name="hooks/**" />
+		<include name="admin/**" />	    
+	    </fileset>
+	</copy>
+    </target>
+
+    <!-- ============================================  -->
+    <!-- (DEFAULT)  Target: dist                       --> 
+    <!-- ============================================  -->
+    <target name="dist" depends="build">
+        <echo msg="Created needed files" />
+
+	<touch file="ticktime" />
+	<touch file="tickcount" />
+	<touch file="profilertime" />
+	<touch file="mysql.log" />
+	
+	<chmod file="ticktime" mode="0666" />
+	<chmod file="tickcount" mode="0666" />
+	<chmod file="profilertime" mode="0666" />
+	<chmod file="mysql.log" mode="0666" />
+	
+	<!-- set the correct keys to the FB Login Module -->
+    </target>
+</project>
