@@ -2,30 +2,43 @@
 
 <h1>City</h1>
 
-<div class="left">
+{literal}
+	<script> 
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script> 
+{/literal}
 
-<h3>Player</h3>
-<p>
-<a href="index.php?mod=EventLog">Event Log</a><br />
-<a href="index.php?mod=AccountSettings">Account Settings</a><br />
-</p>
+<div id="tabs">
 
-</div>
-<div class="right">
+	<ul> 
+		<li><a href="#tabs-player">Player</a></li> 
+		<li><a href="#tabs-world">World</a></li> 
+		<li><a href="#tabs-mining">Mining</a></li> 
+	</ul> 
 
-<h3>World</h3>
-<p>
-<a href="index.php?mod=Members">Members List</a><br />
-<a href="index.php?mod=Members&amp;sort=top">Top Players</a><br />
-Game Statistics<br />
-</p>
+    <div id="tabs-player">
+	<p>
+	<a href="index.php?mod=EventLog">Event Log</a><br />
+	<a href="index.php?mod=AccountSettings">Account Settings</a><br />
+	</p>
+    </div>
 
+    <div id="tabs-world">
+	<p>
+	<a href="index.php?mod=Library">Library</a>
+	<a href="index.php?mod=Members">Members List</a><br />
+	<a href="index.php?mod=Members&amp;sort=top">Top Players</a><br />
+	Game Statistics<br />
+	</p>
+    </div>
 
-<h3>City</h3>
-<p>
-<a href="index.php?mod=Library">Library</a><br />
-<br />
-</p>
+    <div id="tabs-mining">
+	<p>
+		Mining content...
+	</p>
+    </div>
 
 </div>
 
