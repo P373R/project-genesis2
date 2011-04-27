@@ -29,16 +29,13 @@ You can upgrade your ship! You have {$player->stat_points} points left.
 <td><strong>Level</strong></td><td>{$player->level}</td>
 </tr>
 <tr>
-<td><strong>Strength</strong></td><td>{$player->strength}</td>
+<td><strong>Speed</strong></td><td>{$player->ship->speed}</td>
 </tr>
 <tr>
-<td><strong>Shield</strong></td><td>{$player->vitality}</td>
+<td><strong>Accuracy</strong></td><td>{$player->ship->accuracy}</td>
 </tr>
 <tr>
-<td><strong>Speed</strong></td><td>{$player->agility}</td>
-</tr>
-<tr>
-<td><strong>Accuracy</strong></td><td>{$player->dexterity}</td>
+<td><strong>Shield</strong></td><td>{$player->ship->shield}/{$player->ship->max_shield}</td>
 </tr>
 </table>
 <h2>City</h2>
@@ -51,6 +48,9 @@ You can upgrade your ship! You have {$player->stat_points} points left.
 </tr>
 <tr>
 <td><strong>Inhabitants</strong></td><td>{$player->city->inhabitants}</td>
+</tr>
+<tr>
+<td><strong>Shield</strong></td><td>{$player->city->shield}</td>
 </tr>
 <tr>
 <th colspan="2">Mining</th>

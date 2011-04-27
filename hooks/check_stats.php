@@ -31,7 +31,7 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
         return $args;
     
     // fetch the current boni from ship parts
-    $row = $db->fetchRow("SELECT SUM(ship_parts.shield) as shield, 
+    $row = $db->fetchRow("SELECT SUM(ship_parts.shield) as max_shield, 
 				 SUM(ship_parts.speed) as speed, 
 				 SUM(ship_parts.accuracy) as accuracy, 
 				 SUM(ship_parts.energy) as energy 
@@ -44,24 +44,27 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
 			      (ships.sonar = ship_parts.id AND ship_parts.type='sonar')
 			)");
 
-    $row->shield   += 15;
-    $shield = intval($row->shield);
-    unset($row->shield);
-    
-    $row->speed    += 2;
-    $row->accuracy += 2;
-    $row->energy   += 10;
+    $row->max_shield += 15;    
+    $row->speed      += 2;
+    $row->accuracy   += 2;
+    $row->energy     += 10;
     
     $db->update('<ezrpg>ships', (array)$row, array("id" => $args->id));
-    $db->update('<ezrpg>map_cities', array("max_shield"=>$shield), array("owner"=>$args->id));
 
     $changedcity = false;
-    //Check if player's stats are above the limit
     if ($args->city->shield > $args->city->max_shield)
     {
         $args->city->shield = $args->city->max_shield;
         $changedcity = true;
     }
+
+    $changedship = false;
+    if ($args->ship->shield > $args->ship->max_shield)
+    {
+        $args->ship->shield = $args->ship->max_shield;
+        $changedship = true;
+    }
+    
     $changed = false;
     if ($args->energy > $args->max_energy)
     {
@@ -78,6 +81,11 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
     if ($changedcity === true)
     {
 	$db->execute('UPDATE `<ezrpg>map_cities` SET `shield`=? WHERE `owner`=?', array($args->city->shield, $args->id));
+    }
+
+    if ($changedship === true)
+    {
+	$db->execute('UPDATE `<ezrpg>ships` SET `shield`=? WHERE `id`=?', array($args->ship->shield, $args->id));
     }
 
     if ($changed === true)

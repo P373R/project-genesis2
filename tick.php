@@ -29,23 +29,28 @@ catch (DbException $e)
 
 
 $query = $db->execute("SELECT * FROM `<ezrpg>players`");
+ 
 $result = $db->fetchAll($query);
 
 
 foreach($result as $player) {
-    $insert = array();
-    $insert[] = $player->ship->shield+$player->vitality;
-    if($insert[0] > $player->vitality) $insert[0] = $player->vitality;
-    $insert[] = $player->energy+1;
-    if($insert[1] > $player->max_energy) $insert[1] = $player->max_energy;
-    $insert[] = $player->id;
-    $db->execute("UPDATE `<ezrpg>players` SET `hp`=?, `energy`=? WHERE `id`=?",$insert);
-    $city = $db->fetchRow("SELECT * FROM `<ezrpg>map_cities` WHERE `owner` =?",array($player->id));
-    $calc['water'] = $city->water + $city->mine_water;
-    $calc['oxygen'] = $city->oxygen + $city->mine_oxygen;
-    $calc['iron'] = $city->iron + $city->mine_iron;
-    $calc['titan'] = $city->titan + $city->mine_titan;
-    $calc['aluminium'] = $city->aluminium + $city->mine_aluminium;
+    $player->ship = $db->fetchRow('SELECT * FROM `<ezrpg>ships` WHERE `id`=?', array($player->id));
+    $player->city = $db->fetchRow('SELECT * FROM map_cities WHERE `owner`=?',array($player->id));
+    
+    // Formular for shield regen: 1 + city inhabs/1000
+    $update_city['shield'] = $player->city->shield + 1 + intval($player->city->inhabitants/1000);
+    if($update_city['shield'] > $player->city->max_shield) $update_city['shield'] = $player->city->max_shield;
+    $update_player['energy'] = $player->energy+1;
+    if($update_player['energy'] > $player->max_energy) $update_player['energy'] = $player->max_energy;
+      
+    $update_city['water']     = $player->player->city->water + ($player->city->mine_water     / 6);
+    $update_city['oxygen']    = $player->city->oxygen        + ($player->city->mine_oxygen    / 6);
+    $update_city['iron']      = $player->city->iron          + ($player->city->mine_iron      / 6);
+    $update_city['titan']     = $player->city->titan         + ($player->city->mine_titan     / 6);
+    $update_city['aluminium'] = $player->city->aluminium     + ($player->city->mine_aluminium / 6);
+
+    $db>update('<ezrpg>map_city', $update_city,   array("owner" => $player->id));
+    $db>update('<ezrpg>player',   $update_player, array("id" => $player->id));
 
 }
 
