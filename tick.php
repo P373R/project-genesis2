@@ -1,6 +1,5 @@
 <?
 define('IN_EZRPG', true);
-
 //require_once('init.php');
 
 require_once 'config.php';
@@ -39,6 +38,8 @@ foreach($result as $player) {
     // Formular for shield regen: 1 + city inhabs/1000
     $update_city['shield'] = $player->city->shield + 1 + intval($player->city->inhabitants/1000);
     if($update_city['shield'] > $player->city->max_shield) $update_city['shield'] = $player->city->max_shield;
+    $update_ship['shield'] = $player->ship->shield + 1;
+    if($update_ship['shield'] > $player->ship->max_shield) $update_city['shield'] = $player->ship->max_shield;
     $update_player['energy'] = $player->energy+1;
     if($update_player['energy'] > $player->max_energy) $update_player['energy'] = $player->max_energy;
       
@@ -49,7 +50,8 @@ foreach($result as $player) {
     $update_city['aluminium'] = $player->city->aluminium + ($player->city->mine_aluminium / 6);
 
     $db->update('<ezrpg>map_cities', $update_city,   array("owner" => $player->id));
-    $db->update('<ezrpg>players',   $update_player, array("id" => $player->id));
+    $db->update('<ezrpg>players',    $update_player, array("id" => $player->id));
+    $db->update('<ezrpg>ships',      $update_ship,   array("id" => $player->id));
 
 }
 
