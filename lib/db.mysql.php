@@ -502,12 +502,18 @@ class Db_Mysql
      */
     public function update($table, $values, $where) {
 	$query = "UPDATE ".$table." SET ";
+	$i=0;
 	foreach($values as $field => $value) {
+	    $i++;
 	    $query.= "`$field` = '$value'";
+	    if($i!=count($values)) $query.=", ";
 	}
 	$query.= " WHERE ";
+	$i=0;
 	foreach($where as $field => $value) {
+	    $i++;
 	    $query.=(ctype_alnum($field))? "`$field` = '$value'" : "$value";
+	    if($i!=count($where)) $query.=" AND ";
 	}
 	$this->execute($query);
     }

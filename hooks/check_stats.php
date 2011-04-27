@@ -30,14 +30,39 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
     if ($args === 0 || LOGGED_IN == false)
         return $args;
     
-    $changed = false;
-    //Check if player's stats are above the limit
-    if ($args->hp > $args->vitality)
-    {
-        $args->hp = $args->vitality;
-        $changed = true;
-    }
+    // fetch the current boni from ship parts
+    $row = $db->fetchRow("SELECT SUM(ship_parts.shield) as shield, 
+				 SUM(ship_parts.speed) as speed, 
+				 SUM(ship_parts.accuracy) as accuracy, 
+				 SUM(ship_parts.energy) as energy 
+			  FROM  ships, ship_parts
+			  WHERE ships.id=1003 AND (
+			      (ships.propulsion = ship_parts.id AND ship_parts.type='propulsion') OR
+			      (ships.engine = ship_parts.id AND ship_parts.type='engine') OR
+			      (ships.energy = ship_parts.id AND ship_parts.type='energy') OR
+			      (ships.navigation = ship_parts.id AND ship_parts.type='navigation') OR
+			      (ships.sonar = ship_parts.id AND ship_parts.type='sonar')
+			)");
 
+    $row->shield   += 15;
+    $shield = intval($row->shield);
+    unset($row->shield);
+    
+    $row->speed    += 2;
+    $row->accuracy += 2;
+    $row->energy   += 10;
+    
+    $db->update('<ezrpg>ships', (array)$row, array("id" => $args->id));
+    $db->update('<ezrpg>map_cities', array("max_shield"=>$shield), array("owner"=>$args->id));
+
+    $changedcity = false;
+    //Check if player's stats are above the limit
+    if ($args->city->shield > $args->city->max_shield)
+    {
+        $args->city->shield = $args->city->max_shield;
+        $changedcity = true;
+    }
+    $changed = false;
     if ($args->energy > $args->max_energy)
     {
         $args->energy = $args->max_energy;
@@ -50,40 +75,17 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
         $changed = true;
     }
 
-    if ($changed === true)
+    if ($changedcity === true)
     {
-        $db->execute('UPDATE `<ezrpg>players` SET `energy`=?, `hp`=?, `gwp`=? WHERE `id`=?', array($args->energy, $args->hp, $args->gwp, $args->id));
+	$db->execute('UPDATE `<ezrpg>map_cities` SET `shield`=? WHERE `owner`=?', array($args->city->shield, $args->id));
     }
 
-    // Recompute the players values not elegant but working ;)
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.propulsion AND type = 'propulsion'",array($args->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.gearbox AND type = 'gearbox'",array($args->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.energy AND type = 'energy'",array($args->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.engine AND type = 'engine'",array($args->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.navigation AND type = 'navigation'",array($args->id));
-            $compute[] = $db->fetchRow("SELECT ship_parts.properties FROM ship_parts LEFT JOIN ships ON ships.id=? where ship_parts.id=ships.sonar AND type = 'sonar'",array($args->id));
-
-            $result= array();
-
-	    //Add basic values
-	    $result['shield'] = 15;
-	    $result['speed']  = 2;
-	    $result['accuracy']= 2;
-	    $result['energy']   = 10;
-	    
-            foreach($compute as $com) {
-                if(is_string($com->properties)) $com = unserialize($com->properties);
-                else $com = array();
-                $result['shield']  += $com['shield'];
-                $result['speed']   += $com['speed'];
-                $result['accuracy'] += $com['acuracy'];
-                $result['energy']    += $com['energy'];
-            }
-
- 
-
-
-    $db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]', `vitality`='$result[vitality]', `agility`='$result[agility]', `dexterity`='$result[dexterity]', `max_energy`='$result[energy]' WHERE `id`=?", array($args->id));
+    if ($changed === true)
+    {
+	$db->execute('UPDATE `<ezrpg>players` SET `energy`=?, `gwp`=? WHERE `id`=?', array($args->energy, $args->gwp, $args->id));
+    }
+    
+    //$db->execute("UPDATE `<ezrpg>players` SET `strength`='$result[strength]', `vitality`='$result[vitality]', `agility`='$result[agility]', `dexterity`='$result[dexterity]', `max_energy`='$result[energy]' WHERE `id`=?", array($args->id));
 
     return $args;
 }
