@@ -37,18 +37,18 @@ class Module_Missions extends Base_Module
                     $errno++;
                     $error[] = "Your have not enough energy left you need <span>$mission->energy</span> and you have <span>".$this->player->energy."</span>";
                 }
-                if($this->player->hp < $mission->shield) {
+                if($this->player->ship->shield < $mission->shield) {
                     $errno++;
-                    $error[] = "Your shield is to weak you need <span>$mission->shield</span> and you have <span>".$this->player->hp."</span>";
+                    $error[] = "Your shield is to weak you need <span>$mission->shield</span> and you have <span>".$this->player->ship->shield."</span>";
                 }
-                if($this->player->dexterity < $mission->accuracy) {
+                if($this->player->ship->accuracy < $mission->accuracy) {
                     $errno++;
-                    $error[] = "Your accuracy is to small you need <span>$mission->accuracy</span> and you have <span>".$this->player->dexterity."</span>";
+                    $error[] = "Your accuracy is to small you need <span>$mission->accuracy</span> and you have <span>".$this->player->ship->accuracy."</span>";
                 }
 
                 if($errno == 0) {
                     $params = array($this->player->energy-$mission->energy,
-                                    $this->player->hp-$mission->shield,
+                                    $this->player->ship->shield-$mission->shield,
                                     $this->player->gwp+$mission->gwp,
                                     $this->player->money+$mission->gold,
                                     $this->player->exp+$mission->exp,

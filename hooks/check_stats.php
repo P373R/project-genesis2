@@ -66,17 +66,17 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
             $result= array();
 
 	    //Add basic values
-	    $result['vitality'] = 15;
-	    $result['agility']  = 2;
-	    $result['dexterity']= 2;
+	    $result['shield'] = 15;
+	    $result['speed']  = 2;
+	    $result['accuracy']= 2;
 	    $result['energy']   = 10;
 	    
             foreach($compute as $com) {
-                $com = unserialize($com->properties);
-                $result['strength']  += $com['strength'];
-                $result['vitality']  += $com['vitality'];
-                $result['agility']   += $com['agility'];
-                $result['dexterity'] += $com['dexterity'];
+                if(is_string($com->properties)) $com = unserialize($com->properties);
+                else $com = array();
+                $result['shield']  += $com['shield'];
+                $result['speed']   += $com['speed'];
+                $result['accuracy'] += $com['acuracy'];
                 $result['energy']    += $com['energy'];
             }
 

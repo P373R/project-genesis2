@@ -34,12 +34,19 @@ $result = $db->fetchAll($query);
 
 foreach($result as $player) {
     $insert = array();
-    $insert[] = $player->hp+$player->vitality;
+    $insert[] = $player->ship->shield+$player->vitality;
     if($insert[0] > $player->vitality) $insert[0] = $player->vitality;
-    $insert[] = $player->energy+$player->vitality;
+    $insert[] = $player->energy+1;
     if($insert[1] > $player->max_energy) $insert[1] = $player->max_energy;
     $insert[] = $player->id;
     $db->execute("UPDATE `<ezrpg>players` SET `hp`=?, `energy`=? WHERE `id`=?",$insert);
+    $city = $db->fetchRow("SELECT * FROM `<ezrpg>map_cities` WHERE `owner` =?",array($player->id));
+    $calc['water'] = $city->water + $city->mine_water;
+    $calc['oxygen'] = $city->oxygen + $city->mine_oxygen;
+    $calc['iron'] = $city->iron + $city->mine_iron;
+    $calc['titan'] = $city->titan + $city->mine_titan;
+    $calc['aluminium'] = $city->aluminium + $city->mine_aluminium;
+
 }
 
 

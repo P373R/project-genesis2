@@ -11,7 +11,7 @@ Welcome to Project-Genesis2!
 You are welcome to have a look at the features.
 Try logging in with the test account or register your own. Be aware, that every new feature pull all accounts will be deleted.
 <br /><br />
-<img src="bar.php?width=200&amp;height=25&amp;type=manual&amp;val1=100&amp;val2=50&amp;color=blue&amp;title=Over%20all%20Progress&amp;numbers=true" alt="Progressbar" />
+<img src="bar.php?width=200&amp;height=25&amp;type=manual&amp;val1=100&amp;val2=55&amp;color=blue&amp;title=Over%20all%20Progress&amp;numbers=true" alt="Progressbar" />
 </p>
 </div>
 

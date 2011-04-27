@@ -51,13 +51,14 @@ define('SHOW_ERRORS', 1);
 
 (!isset($_REQUEST['DEBUG_MODE']))? define('DEBUG_MODE', 0) : define('DEBUG_MODE', 1);
 
-define('MAX_X', 1000); // Kartengröße
-define('MAX_Y', 1000);
-define('SYS_VERSION',"0.4.0");
+define('MAX_X', 10000); // Cardsize is dominated by the image available.
+define('MAX_Y', 3200);
+define('SYS_VERSION',"0.5.0");
 
-// Koordinaten auf denen Atlantis gebaut wurde
-define('ATLANTIS_X',50);
+/* DEPRECATED: As no local city is supplied anymore
+define('ATLANTIS_X',500);
 define('ATLANTIS_Y',50);
+*/
 
 define('RECAPTCHA_KEY','6Lf8YsESAAAAAKDSjCPqC5-JwepeeYsDB9Hnetlz');
 define('RECAPTCHA_PRIVATE','6Lf8YsESAAAAAJ5meoyIjm94OI2iSXEYLhBa900C');
@@ -74,8 +75,4 @@ $id2names = array(
   "weapons"=>array("","Mine")
 );
 
-$shop = array(
-  array("name"=>"Mine", "price"=>10, "weight"=>10),
-  array("name"=>"Big Mine", "price"=>20, "weight"=>15)
-);
 ?>

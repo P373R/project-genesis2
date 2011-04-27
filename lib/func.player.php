@@ -113,4 +113,5 @@ function isBusy($player)
     if($player->ship->busy > time()) return true;
     else return false;
 }
+
 ?>

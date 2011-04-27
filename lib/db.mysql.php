@@ -98,7 +98,7 @@ class Db_Mysql
       See Also:
       - <connect>
     */
-    public function execute($query, $params=0)
+    public function execute($query, $params=0, $onlyCode=false)
     {
         if ($this->isConnected === false)
             $this->connect();
@@ -180,22 +180,29 @@ class Db_Mysql
             if (DEBUG_MODE === 1)
                 echo $query, '<br />';;
             
-            //Execute query
-            $result = mysql_query($query, $this->db);
-            if ($result === false)
-            { //If there was an error with the query
-                $this->error = mysql_error();
-		
-                //If in debug mode, send exception, otherwise ignore
-                if (SHOW_ERRORS === 1)
-                {
-                    //Feature: admin logging of errors?
-                    $error_msg = '<strong>Query:</strong> <em>' . $this->query . '</em><br /><strong>' . $this->error . '</strong>';
-                    throw new DbException($error_msg, SQL_ERROR);
-                }
-		
-                return false;
-            }
+	    if(!$onlyCode)
+	    {
+		//Execute query
+		$result = mysql_query($query, $this->db);
+		if ($result === false)
+		{ //If there was an error with the query
+		    $this->error = mysql_error();
+		    
+		    //If in debug mode, send exception, otherwise ignore
+		    if (SHOW_ERRORS === 1)
+		    {
+			//Feature: admin logging of errors?
+			$error_msg = '<strong>Query:</strong> <em>' . $this->query . '</em><br /><strong>' . $this->error . '</strong>';
+			throw new DbException($error_msg, SQL_ERROR);
+		    }
+		    
+		    return false;
+		}
+	    }
+	    else 
+	    {
+		$result = $query;
+	    }
         }
         catch (SQLException $e)
         {
@@ -206,6 +213,16 @@ class Db_Mysql
         ++$this->query_count;
 		
         return $result;
+    }
+    
+    /**
+     * fetch delayed
+     */
+    public function executeDelayed($query, $params, $delay)
+    {
+	$sql['command'] = $this->execute($query,$parms,true);
+	$sql['when']    = time()+$delay;
+	$this->insert('<ezrpg>delay',$sql);
     }
 	
     /*

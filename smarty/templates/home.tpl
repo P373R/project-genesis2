@@ -23,15 +23,54 @@ You can upgrade your ship! You have {$player->stat_points} points left.
 
 
 <div class="right">
-<p>
-<strong>Level</strong>: {$player->level}<br />
-<strong>Gold</strong>: {$player->money}<br />
-<br />
-<strong>Strength</strong>: {$player->strength}<br />
-<strong>Shield</strong>: {$player->vitality}<br />
-<strong>Speed</strong>: {$player->agility}<br />
-<strong>Accuracy</strong>: {$player->dexterity}<br />
-</p>
+<h2>Ship</h2>
+<table>
+<tr>
+<td><strong>Level</strong></td><td>{$player->level}</td>
+</tr>
+<tr>
+<td><strong>Strength</strong></td><td>{$player->strength}</td>
+</tr>
+<tr>
+<td><strong>Shield</strong></td><td>{$player->vitality}</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td><td>{$player->agility}</td>
+</tr>
+<tr>
+<td><strong>Accuracy</strong></td><td>{$player->dexterity}</td>
+</tr>
+</table>
+<h2>City</h2>
+<table>
+<tr>
+<td><strong>Location</strong></td><td>{$player->city->x}/{$player->city->y}</td>
+</tr>
+<tr>
+<td><strong>Name</strong></td><td>{$player->city->name}</td>
+</tr>
+<tr>
+<td><strong>Inhabitants</strong></td><td>{$player->city->inhabitants}</td>
+</tr>
+<tr>
+<th colspan="2">Mining</th>
+</tr>
+<tr>
+<td><strong>Water</strong></td><td>{$player->city->mine_water}/10min</td>
+</tr>
+<tr>
+<td><strong>Iron</strong></td><td>{$player->city->mine_iron}/10min</td>
+</tr>
+<tr>
+<td><strong>Aluminium</strong></td><td>{$player->city->mine_aluminium}/10min</td>
+</tr>
+<tr>
+<td><strong>Titan</strong></td><td>{$player->city->mine_titan}/10min</td>
+</tr>
+<tr>
+<td><strong>Oxygen</strong></td><td>{$player->city->mine_oxygen}/10min</td>
+</tr>
+</table>
 </div>
 
 {include file="footer.tpl"}

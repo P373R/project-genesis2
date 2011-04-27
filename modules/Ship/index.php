@@ -109,11 +109,14 @@ class Module_Ship extends Base_Module
 	else if (isset($dep['harvester'])  && $this->player->ship->propulsion < $dep['harvester'])  $possible = false;
         
 	if ($this->player->stat_points > 0 && $possible){
-            $this->db->execute("UPDATE `<ezrpg>ships` SET `$part`=`$part`+1 WHERE `id`=?",array($this->player->id));
-            $this->db->execute("UPDATE `<ezrpg>players` SET `stat_points`=`stat_points`-1 WHERE `id`=?",array($this->player->id));
-
+	    
             $level = $this->db->fetchArray($this->db->execute("SELECT `$part` FROM `ships` WHERE `id`=?",array($this->player->id)));
-            setBusy($this->player->id,$this->db,$level[0]*600);
+            $delay = ($level[0]+1)*600;
+            setBusy($this->player->id,$this->db,$delay);
+
+	    $this->db->executeDelayed("UPDATE `<ezrpg>ships` SET `$part`=`$part`+1 WHERE `id`=?",array($this->player->id),$delay);
+            $this->db->executeDelayed("UPDATE `<ezrpg>players` SET `stat_points`=`stat_points`-1 WHERE `id`=?",array($this->player->id),$delay);
+
             header("Location: index.php?mod=Ship");
         } else {
             header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible"));

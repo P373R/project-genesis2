@@ -38,14 +38,14 @@ function reloadBar(url,name) {
 $(document).ready(function() {
     // Hide loading globe
    
-   $.ajaxStart(function() {
+/*   $.ajaxStart(function() {
     $("img#ajaxLoading").css('display','inline');
     });
    
    $.ajaxComplete(function() {
     $("img#ajaxLoading").css('display','none');
     });
-  
+  */
    // if any error occours reload the entire page
     $("body").ajaxError(
         function(e,request) {
