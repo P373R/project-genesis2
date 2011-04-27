@@ -56,6 +56,8 @@
 <tr>
   <td><strong>Gold</strong>      </td><td> {$player->money}</td>
 </tr><tr>
+  <td><strong>Oxygen</strong>    </td><td> {$player->city->oxygen}</td>
+</tr><tr>
   <td><strong>Water</strong>    </td><td> {$player->city->water}</td>
 </tr><tr>
   <td><strong>Iron</strong>     </td><td> {$player->city->iron}</td>
