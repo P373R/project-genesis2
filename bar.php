@@ -30,7 +30,7 @@ switch($_GET['type'])
       $bar->setData($_GET['max_exp'], $_GET['exp']);	// Give the bar some values
       $bar->setTitle('Exp: ');
       break;
-  case "hp":
+  case "hp": case "hp2":
       $percentage = ($_GET['hp'] / $_GET['vitality']) * 100;
       
       //Set the colour according to how much is left
@@ -42,7 +42,8 @@ switch($_GET['type'])
           $bar->setFillColor('green');
       
       $bar->setData($_GET['vitality'], $_GET['hp']);	// Give the bar some values
-      $bar->setTitle('Shield: ');
+      if($_GET['type'] == 'hp') $bar->setTitle('Ship: ');
+      else $bar->setTitle('City: ');
       break;
   case "energy":
       $percentage = ($_GET['energy'] / $_GET['max_energy']) * 100;
