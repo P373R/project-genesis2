@@ -31,24 +31,27 @@ Try logging in with the test account or register your own. Be aware, that every 
 <div class="space"> </div>
 <div>
 <h2>Story</h2><br />
-In the year 2530 humanity nearly drained the resources mother earth could give them so they had to look for alternative places to live. They found a planet not far away covered with water but without a breathable athmosphere. The Genesis Foundation started a mission to discover the planet and the sea on it. A ship with 50 men on it were send to Taranus to complete the mission. One year later another ship with 200 men and a lot more resources was sent. 20 Years later the world received the message, that a base was built and food was available. The military gave away tikets to all soliders who were keen enough to jump into an unknown future. And you got one of them.
+Story goes here...
+{*In the year 2530 humanity nearly drained the resources mother earth could give them so they had to look for alternative places to live. They found a planet not far away covered with water but without a breathable athmosphere. The Genesis Foundation started a mission to discover the planet and the sea on it. A ship with 50 men on it were send to Taranus to complete the mission. One year later another ship with 200 men and a lot more resources was sent. 20 Years later the world received the message, that a base was built and food was available. The military gave away tikets to all soliders who were keen enough to jump into an unknown future. And you got one of them.
 Grabing live by it's balls you used the ticket and left earth for good. Looking forward to an unkonwn future on an nearly undiscovered planet. After you woken up from the long jurney in your cryogenic tank you are equiped with a submarine style ship and a pass to enter Atlantis. The capital underwater city on Taranus. Now you can explore the planet and help Atlantis to grow and be open to more people or you can join the pirates that run away from duty and take advantage of the weak.
+*}
 </div>
 
 <div class="space"> </div>
 <div>
 <h2>Features</h2><br />
 <ul>
- <li>Big World (1000+ fields)</li>
+ <li>Big World (32000000 fields)</li>
  <li>Upgrade your ship</li>
  <li>Gather materials</li>
  <li>Accept missions</li>
+ <li>Solve puzzles</li>
+ <li>Build your own city</li>
  <li>Be good or evil</li>
 </ul>
 <b>Future</b>
 <ul>
  <li>Find awesome items</li>
- <li>Build your own city</li>
  <li>Own more than one ship</li>
 </ul>
 </div>
