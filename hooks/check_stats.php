@@ -48,8 +48,11 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
     $row->speed      += 2;
     $row->accuracy   += 2;
     $row->energy     += 10;
+    $energy = $row->energy;
+    unset($row->energy);
     
     $db->update('<ezrpg>ships', (array)$row, array("id" => $args->id));
+    $db->update('<ezrpg>players', array("max_energy" => $energy), array("id" => $args->id));
 
     $changedcity = false;
     if ($args->city->shield > $args->city->max_shield)
