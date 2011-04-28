@@ -56,6 +56,9 @@ You can upgrade your ship! You have {$player->stat_points} points left.
 <th colspan="2">Mining</th>
 </tr>
 <tr>
+<td><strong>Oxygen</strong></td><td>{$player->city->mine_oxygen}/10min</td>
+</tr>
+<tr>
 <td><strong>Water</strong></td><td>{$player->city->mine_water}/10min</td>
 </tr>
 <tr>
@@ -65,10 +68,7 @@ You can upgrade your ship! You have {$player->stat_points} points left.
 <td><strong>Aluminium</strong></td><td>{$player->city->mine_aluminium}/10min</td>
 </tr>
 <tr>
-<td><strong>Titan</strong></td><td>{$player->city->mine_titan}/10min</td>
-</tr>
-<tr>
-<td><strong>Oxygen</strong></td><td>{$player->city->mine_oxygen}/10min</td>
+<td><strong>Titanium</strong></td><td>{$player->city->mine_titan}/10min</td>
 </tr>
 </table>
 </div>

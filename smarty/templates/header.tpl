@@ -38,7 +38,6 @@
         <li><a href="index.php?mod=Map">Map</a></li>
         <li><a href="index.php?mod=Ship">Ship</a></li>
         <li><a href="index.php?mod=Missions">Missions</a></li>
-        <!--<li><a href="index.php?mod=MailBox">Mail</a></li>-->
         <li><a href="index.php?mod=City">City</a></li>
         <li><a href="index.php?mod=Logout">Log Out</a></li>
         {else}
@@ -52,14 +51,7 @@
 
 {if $LOGGED_IN == 'TRUE'}
 <div id="sidebar">
-{* to be replaced by jquery-ui progressbar
-<img width="135" height="15" src="bar.php?width=135&amp;type=exp&amp;max_exp={$player->max_exp}&amp;exp={$player->exp}" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
-<img width="135" height="15" src="bar.php?width=135&amp;type=energy&amp;energy={$player->energy}&amp;max_energy={$player->max_energy}" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
-<img width="135" height="15" src="bar.php?width=135&amp;type=manual&amp;val1=100&amp;val2={$player->gwp}&amp;color={if $player->gwp >= 50}green{else}red{/if}&amp;title=GWP&amp;numbers=true" alt="GWP: {$player->gwp}" /><br />
-<b>Shield</b><br />
-<img width="135" height="15" src="bar.php?width=135&amp;type=hp&amp;hp={$player->ship->shield}&amp;vitality={$player->ship->max_shield}" alt="HP: {$player->ship->shield} / {$player->ship->max_shield}" /><br />
-<img width="135" height="15" src="bar.php?width=135&amp;type=hp2&amp;hp={$player->city->shield}&amp;vitality={$player->city->max_shield}" alt="HP: {$player->city->shield} / {$player->city->max_shield}" /><br />
-*}
+
 <style> 
 	#progressEnergy>div { 
 	    {if ($player->energy / $player->max_energy * 100) <= 5} background: red; {else} background: green; {/if} 
