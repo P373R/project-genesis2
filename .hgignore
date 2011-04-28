@@ -1,0 +1,13 @@
+syntax: glob
+
+*.svn
+*.git
+.gitignore
+*.tpl.php
+*.ser
+*~
+*.swp
+tickcount
+profilertime
+ticktime
+*.kdev4

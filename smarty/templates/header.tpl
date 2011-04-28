@@ -9,11 +9,15 @@
 {if $reload != ''} <meta http-equiv="refresh" content="{$reload}" > {/if}
 
 <link rel="stylesheet" href="static/css/style.css" type="text/css" />       
-<link rel="stylesheet" href="static/css/default/jquery-ui-1.8.12.custom.css" type="text/css" />       
+<link rel="stylesheet" href="static/css/default/jquery-ui-1.8.12.custom.css" type="text/css" />    
+<link rel="stylesheet" href="static/css/default/jquery-ui-numeric.css" type="text/css" />    
 
-<script src="/static/js/jquery-1.5.1.min.js" type="text/javascript"></script>
+
+<script src="/static/js/jquery-1.5.2.js" type="text/javascript"></script>
+<script src="/static/js/jquery.MapScroller.js" type="text/javastript"></script>
+{* <script src="/static/js/jquery.cookie.js" type="text/javastript"></script> *}
 <script src="/static/js/jquery-ui-1.8.12.custom.min.js" type="text/javascript"></script>
-<script src="/static/js/jquery.MapScroller.js" type="text/javascript"></script>
+<script src="/static/js/jquery-ui-numeric-min.js" type="text/javastript"></script>
 <script src="/static/js/system.js" type="text/javascript"></script>
 
 <title>Project-Genesis2 :: {$TITLE|default:""}</title>
@@ -32,19 +36,36 @@
 </div>
 
 <div id="nav">
-        <ul>
         {if $LOGGED_IN == 'TRUE'}
+        <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a href="index.php?mod=Map">Map</a></li>
         <li><a href="index.php?mod=Ship">Ship</a></li>
-        <li><a href="index.php?mod=Missions">Missions</a></li>
         <li><a href="index.php?mod=City">City</a></li>
+        <li><a href="index.php?mod=Community">Community</a></li>
+        <li><a href="index.php?mod=AccountSettings">Settings</a></li>
         <li><a href="index.php?mod=Logout">Log Out</a></li>
-        {else}
-        <li><a href="index.php">Home</a></li>
-        <li><a href="index.php?mod=Register">Register</a></li>
-        {/if}
         </ul>
+<span class="space"></span>
+	<ul>
+	{if $NAVIGATION == 'ship'}
+        <li><a href="index.php?mod=Bridge">Bridge</a></li>
+	<li><a href="index.php?mod=Map">Map</a></li>
+        <li><a href="index.php?mod=Missions">Missions</a></li>
+        <li><a href="index.php?mod=Badges">Badges</a></li>
+	{else if $NAVIGATION == 'city'}
+        <li><a href="index.php?mod=Buildings">Buildings</a></li>
+	<li><a href="index.php?mod=Mining">Mining</a></li>
+        <li><a href="index.php?mod=Library">Library</a></li>
+	{else}
+        <li><a href="index.php?mod=Forum">Forum</a></li>
+	{/if}
+	</ul>
+    {else}
+    <ul>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="index.php?mod=Register">Register</a></li>
+    </ul>
+    {/if}
 </div>
 
 <span class="space"></span>
