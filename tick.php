@@ -40,7 +40,7 @@ foreach($result as $player) {
     if($update_city['shield'] > $player->city->max_shield) $update_city['shield'] = $player->city->max_shield;
     $update_ship['shield'] = $player->ship->shield + 1;
     if($update_ship['shield'] > $player->ship->max_shield) $update_city['shield'] = $player->ship->max_shield;
-    $update_player['energy'] = $player->energy+1;
+    $update_player['energy'] = $player->energy+1+$player->level;
     if($update_player['energy'] > $player->max_energy) $update_player['energy'] = $player->max_energy;
       
     $update_city['water']     = $player->city->water     + ($player->city->mine_water     / 6);

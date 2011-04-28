@@ -19,6 +19,8 @@ require_once 'Lib/Func/ValidateTest.php';
 require_once 'Lib/Func/PlayerTest.php';
 require_once 'Lib/Func/LogTest.php';
 require_once 'Lib/Func/MailTest.php';
+require_once 'Lib/Func/CalcTest.php';
+
 
 require_once 'Lib/Class/DbFactoryTest.php';
 require_once 'Lib/Class/HooksTest.php';
@@ -47,6 +49,7 @@ class GenesisTest
         $suite->addTestSuite('Lib_Func_PlayerTest');
         $suite->addTestSuite('Lib_Func_LogTest');
         $suite->addTestSuite('Lib_Func_MailTest');
+        $suite->addTestSuite('Lib_Func_CalcTest');
         // Klassen testen
 	$suite->addTestSuite('Lib_Class_DbFactoryTest');
 	$suite->addTestSuite('Lib_Class_HooksTest');

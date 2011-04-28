@@ -20,23 +20,52 @@
 
     <div id="tabs-player">
 	<p>
-	<a href="index.php?mod=EventLog">Event Log</a><br />
-	<a href="index.php?mod=AccountSettings">Account Settings</a><br />
+	<ul>
+	    <li><a href="index.php?mod=EventLog">Event Log</a></li>
+	    <li><a href="index.php?mod=AccountSettings">Account Settings</a></li>
+	</ul>
 	</p>
     </div>
 
     <div id="tabs-world">
 	<p>
-	<a href="index.php?mod=Library">Library</a>
-	<a href="index.php?mod=Members">Members List</a><br />
-	<a href="index.php?mod=Members&amp;sort=top">Top Players</a><br />
-	Game Statistics<br />
+	<ul>
+	    <li><a href="index.php?mod=Library">Library</a></li>
+	    <li><a href="index.php?mod=Members">Members List</a></li>
+	    <li><a href="index.php?mod=Members&amp;sort=top">Top Players</a></li>
+	    <li>Game Statistics</li>
+	<ul>
 	</p>
     </div>
 
     <div id="tabs-mining">
 	<p>
-		Mining content...
+	    <table>
+	    <th>
+		<td>Mine</td>
+		<td>Actions</td>
+	    </th>
+	    <tr>
+		<td>Oxygen Mine</td>
+		<td></td>
+	    </tr>
+	    <tr>
+		<td>Water Mine</td>
+		<td></td>
+	    </tr>
+	    <tr>
+		<td>Iron Mine</td>
+		<td></td>
+	    </tr>
+	    <tr>
+		<td>Aluminium Mine</td>
+		<td></td>
+	    </tr>
+	    <tr>
+		<td>Titanium Mine</td>
+		<td></td>
+	    </tr>
+	    </table>
 	</p>
     </div>
 

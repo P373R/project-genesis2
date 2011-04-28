@@ -70,7 +70,7 @@ define('RECAPTCHA_PRIVATE','6Lf8YsESAAAAAJ5meoyIjm94OI2iSXEYLhBa900C');
 
 $id2names = array(
   "field"=>array("Unknown","Shallow water (50m)","Water (100m)","Water (200m)","Water (500m)","Deep sea (1000m)",99=>"Atlantis"),
-  "items"=>array("Nothing","Water","Iron","Aluminium","Titan","Oxygen"),
+  "items"=>array("Nothing","Water","Iron","Aluminium","Titanium","Oxygen"),
   "db_fields"=>array("","water","iron","aluminium","titan","oxygen"),
   "weapons"=>array("","Mine")
 );
