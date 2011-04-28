@@ -38,7 +38,6 @@
         <li><a href="index.php?mod=Map">Map</a></li>
         <li><a href="index.php?mod=Ship">Ship</a></li>
         <li><a href="index.php?mod=Missions">Missions</a></li>
-        <!--<li><a href="index.php?mod=MailBox">Mail</a></li>-->
         <li><a href="index.php?mod=City">City</a></li>
         <li><a href="index.php?mod=Logout">Log Out</a></li>
         {else}
@@ -52,12 +51,48 @@
 
 {if $LOGGED_IN == 'TRUE'}
 <div id="sidebar">
-<img width="135" height="15" src="bar.php?width=135&amp;type=exp&amp;max_exp={$player->max_exp}&amp;exp={$player->exp}" alt="EXP: {$player->exp} / {$player->max_exp}" /><br />
-<img width="135" height="15" src="bar.php?width=135&amp;type=energy&amp;energy={$player->energy}&amp;max_energy={$player->max_energy}" alt="Energy: {$player->energy} / {$player->max_energy}" /><br />
-<img width="135" height="15" src="bar.php?width=135&amp;type=manual&amp;val1=100&amp;val2={$player->gwp}&amp;color={if $player->gwp >= 50}green{else}red{/if}&amp;title=GWP&amp;numbers=true" alt="GWP: {$player->gwp}" /><br />
-<b>Shield</b><br />
-<img width="135" height="15" src="bar.php?width=135&amp;type=hp&amp;hp={$player->ship->shield}&amp;vitality={$player->ship->max_shield}" alt="HP: {$player->ship->shield} / {$player->ship->max_shield}" /><br />
-<img width="135" height="15" src="bar.php?width=135&amp;type=hp2&amp;hp={$player->city->shield}&amp;vitality={$player->city->max_shield}" alt="HP: {$player->city->shield} / {$player->city->max_shield}" /><br />
+
+<style> 
+	#progressEnergy>div { 
+	    {if ($player->energy / $player->max_energy * 100) <= 5} background: red; {else} background: green; {/if} 
+	}
+
+	#progressGWP>div { 
+	    {if ($player->gwp) < 50} background: black; {else} background: blue; {/if} 
+	}
+
+	#progressShip>div { 
+	    {if ($player->ship->shield / $player->ship->max_shield * 100) <= 30} background: red; {else} background: green; {/if} 
+	}
+
+	#progressCity>div { 
+	    {if ($player->city->shield / $player->city->max_shield * 100) <= 30} background: red; {else} background: green; {/if} 
+	}
+</style> 
+
+<script> 
+	$(function() {	$( "#progressExp" )   .progressbar({ value: {$player->exp / $player->max_exp * 100} });	});
+	$(function() {	$( "#progressEnergy" ).progressbar({ value: {$player->energy / $player->max_energy * 100} });	});
+	$(function() {	$( "#progressGWP" )   .progressbar({ value: {$player->gwp} });	});
+	$(function() {	$( "#progressShip" )  .progressbar({ value: {$player->ship->shield / $player->ship->max_shield * 100} });	});
+	$(function() {	$( "#progressCity" )  .progressbar({ value: {$player->city->shield / $player->city->max_shield * 100} });	});
+</script> 
+
+EXP: {$player->exp} / {$player->max_exp}<br />
+<div id="progressExp"></div>
+
+Energy: {$player->energy} / {$player->max_energy}<br />
+<div id="progressEnergy"></div>
+
+GWP: {$player->gwp}<br />
+<div id="progressGWP"></div>
+
+Ship: {$player->ship->shield} / {$player->ship->max_shield}<br />
+<div id="progressShip"></div>
+
+City: {$player->city->shield} / {$player->city->max_shield}<br />
+<div id="progressCity"></div>
+
 <table>
 <tr>
   <td><strong>Gold</strong>      </td><td> {$player->money}</td>
@@ -74,8 +109,7 @@
 </tr>
 </table>
 {if $BUSY}
-<img src="/static/images/loading.gif" width=0 height=0 onload="reloadBar('bar.php?width=135&height=15&type=busy&busy={$player->ship->busy}&start={$player->ship->start}','busyBarSmall');">
-<img width="135" height="15" onerror="document.getElementById('busyBarSmall').style.display = 'none';" id="busyBarSmall" src="bar.php?width=135&amp;height=15&amp;type=busy&amp;busy={$player->ship->busy}&amp;start={$player->ship->start}" alt="Ship is busy"/>
+Ship is busy
 {/if}
 {if $new_logs > 0}
 <a href="index.php?mod=EventLog" class="red"><strong>{$new_logs} new Events</strong></a>
