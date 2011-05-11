@@ -8,18 +8,12 @@
 <meta name="Robots" content="index,follow" />
 {if $reload != ''} <meta http-equiv="refresh" content="{$reload}" > {/if}
 
-<link rel="stylesheet" href="static/css/style.css" type="text/css" />       
-<link rel="stylesheet" href="static/css/default/jquery-ui-1.8.12.custom.css" type="text/css" />    
-<link rel="stylesheet" href="static/css/default/jquery-ui-numeric.css" type="text/css" />    
-
-
-<script src="/static/js/jquery-1.5.2.js" type="text/javascript"></script>
-<script src="/static/js/jquery.MapScroller.js" type="text/javastript"></script>
-{* <script src="/static/js/jquery.cookie.js" type="text/javastript"></script> *}
-<script src="/static/js/jquery-ui-1.8.12.custom.min.js" type="text/javascript"></script>
-<script src="/static/js/jquery-ui-numeric-min.js" type="text/javastript"></script>
-<script src="/static/js/system.js" type="text/javascript"></script>
-
+{foreach $stylesheet as $css}
+<link rel="stylesheet" href="static/css/{$css}" type="text/css" />
+{/foreach}
+{foreach $javascript as $js}
+<script src="static/js/{$js}" type="text/javascript"></script>
+{/foreach}
 <title>Project-Genesis2 :: {$TITLE|default:""}</title>
 </head>
 <body>

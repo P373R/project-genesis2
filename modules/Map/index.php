@@ -24,7 +24,7 @@ class Module_Map extends Base_Module
     {
 	// You may call the requireLogin() function if this module is only available to players who are logged in.
         requireLogin();
-
+	header("Location index.php?msg=".urlencode("Map is Deprecated and will not work anymore. Have a look at the World Module."));
 	(isset($_GET['act']))?$act=$_GET['act']:$act='default';
 
         if ($this->player->energy == 0) $act="sleep";

@@ -45,8 +45,7 @@ $(document).ready(function() {
    $.ajaxComplete(function() {
     $("img#ajaxLoading").css('display','none');
     });
-  */
-   // if any error occours reload the entire page
+*/   // if any error occours reload the entire page
     $("body").ajaxError(
         function(e,request) {
             if (request.status == 403) {

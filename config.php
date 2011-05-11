@@ -53,6 +53,12 @@ define('SHOW_ERRORS', 1);
 
 define('MAX_X', 10000); // Cardsize is dominated by the image available.
 define('MAX_Y', 3200);
+define('MAP_PICTURE_WIDTH', 120);
+define('MAP_PICTURE_HEIGHT', 120);
+define('MAP_VISIBLE_ROWS',3);
+define('MAP_VISIBLE_COLS',3);
+define('MAP_MAX_ROWS',3);
+define('MAP_MAX_COLS',3);
 define('SYS_VERSION',"0.5.0");
 
 /* DEPRECATED: As no local city is supplied anymore
