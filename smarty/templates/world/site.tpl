@@ -1,15 +1,15 @@
 {include file="header.tpl" TITLE="Ship is busy"}
 
-<script language="Javascript">
-
-$(document).ready(function() { 
-    console.log("start "+{$player->ship->x}+"/"+{$player->ship->y}); 
-    position({$player->ship->x},{$player->ship->y}); 
-});
-
-</script>
-<div id="world" style="width:360px; height:360px;overflow:hidden;">
-{$world}
+<div class="worldControlls">
+<a href="javascript:parent.worldMap.position({$player->ship->x},{$player->ship->y});">Ship</a>
+{if $player->city->x}
+<a href="javascript:parent.worldMap.position({$player->city->x},{$player->city->y});">City</a>
+{/if}
+{foreach $player->ship->bookmarks as $bookmark}
+<a href="javascript:parent.worldMap.position({$bookmark->x},{$bookmark->y});">{$bookmark->name}</a>
+{/foreach}
 </div>
+
+<object class="worldMap" name="worldMap" data="modules/World/map.php?x={$player->ship->x}&amp;y={$player->ship->y}" type="text/html" width="400" height="400"></object>
 
 {include file="footer.tpl"}

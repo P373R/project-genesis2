@@ -49,7 +49,11 @@ define('DB_PREFIX', '');
 define('VERSION', '1.0');
 define('SHOW_ERRORS', 1);
 
-(!isset($_REQUEST['DEBUG_MODE']))? define('DEBUG_MODE', 0) : define('DEBUG_MODE', 1);
+if(!isset($_REQUEST['DEBUG_MODE'])) {
+    define('DEBUG_MODE', 0) ;
+} else {
+    define('DEBUG_MODE', 1);
+}
 
 define('MAX_X', 10000); // Cardsize is dominated by the image available.
 define('MAX_Y', 3200);

@@ -2,21 +2,21 @@
 //This file cannot be viewed, it must be included
 defined('IN_EZRPG') or exit;
 
-/*
-  Class: Module_Buildings
-  lists the posible buildings you can build on the current field
+/**
+ * Module_Buildings
+ * list all the possible buildings for your city or improve them
 */
 class Module_Buildings extends Base_Module
 {
 
-    /*
-      Function: start
-      Renders  either index.tpl or home.tpl with smarty, depending on if the user is logged in.
+    /**
+     * Renders the building list
     */
     public function start()
     {
       requireLogin(); // Nur wenn eingelogt anzeigen
-      $this->tpl->display('buildings.tpl');
+      $this->tpl->assign('SUBMENU','city');
+      $this->tpl->display('coming_soon.tpl');
     }
 
     

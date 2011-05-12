@@ -2,21 +2,20 @@
 //This file cannot be viewed, it must be included
 defined('IN_EZRPG') or exit;
 
-/*
-  Class: Module_Inventory
-  lists the Inventory you have on your ship
-*/
-class Module_Inventory extends Base_Module
+/**
+ * Mining Module
+ */
+class Module_Mining extends Base_Module
 {
 
-    /*
-      Function: start
-      Renders inventory
+    /**
+     * Renders the mines
     */
     public function start()
     {
       requireLogin(); // Nur wenn eingelogt anzeigen
-
+      $this->tpl->assign('SUBMENU','city');
+      $this->tpl->display('coming_soon.tpl');
     }
 
     

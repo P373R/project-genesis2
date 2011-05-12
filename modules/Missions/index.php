@@ -16,6 +16,7 @@ class Module_Missions extends Base_Module
     {
 	//Require the user to be logged in
         requireLogin();
+        $this->tpl->assign('SUBMENU','ship'); // we are in the Ship sub menu
 
         if(isBusy($this->player)) {
             $this->tpl->assign('reload',$this->player->ship->busy-time());

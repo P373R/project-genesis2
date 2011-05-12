@@ -18,6 +18,7 @@ class Module_World extends Base_Module
     public function start()
     {
 	requireLogin(); // ONly for people loged in
+        $this->tpl->assign('SUBMENU','ship'); // we are in the Ship sub menu
 	
 	switch ($_GET['action']) {
 	    case 'entities':
@@ -37,8 +38,6 @@ class Module_World extends Base_Module
      */
     private function renderWorld() 
     {
-
-	$this->tpl->append('javascript','world.js.php');
 	
 	$rows = 3;
 	$this->tpl->assign('rows',$rows);
@@ -46,18 +45,18 @@ class Module_World extends Base_Module
 	$this->tpl->assign('cols',$cols);
 
 	$maxrows = 23;
-	$this->tpl->assign('maxrows',$maxrows);
+	$this->tpl->assign('maxrows', $maxrows);
 	$maxcols = 74;
-	$this->tpl->assign('maxcols',$maxcols);
+	$this->tpl->assign('maxcols', $maxcols);
 	$width = 120;
-	$this->tpl->assign('width',$width);
+	$this->tpl->assign('width', $width);
 	$height = 120;
-	$this->tpl->assign('height',$height);
+	$this->tpl->assign('height', $height);
 		
 	for( $row = 1; $row < $rows + 2; $row++ ) {
 	    for( $col = 1; $col < $cols + 2; $col++ ) {
 		$id = sprintf( "img%02d_%02d", $row, $col );
-		$list.="<img src=\"http://genesis/static/images/loading.gif\" style=\"position:absolute;left:0;top:0;cursor:hand;\" id=\"$id\" ondblclick=\"worldClick('$id');\"/>\n";
+		$list.="<img src=\"http://genesis/static/images/loading.gif\" style=\"position:absolute;cursor:hand;\" id=\"".$row."_".$col."\" ondblclick=\"worldClick('$id');\"/>\n";
 	    }
 	}
 

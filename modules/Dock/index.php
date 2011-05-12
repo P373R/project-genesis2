@@ -3,10 +3,10 @@
 defined('IN_EZRPG') or exit;
 
 /**
- * Module_Ship
- * Shows the details of your ship
+ * Module_Dock
+ * Shows the details of your ship and improvements possible
  */
-class Module_Ship extends Base_Module
+class Module_Dock extends Base_Module
 {
     /**
      * Renders the Ship overview
@@ -14,6 +14,7 @@ class Module_Ship extends Base_Module
     public function start()
     {
         requireLogin(); // Nur wenn eingelogt
+        $this->tpl->assign('SUBMENU','ship');
         if(isset($_GET['upgrade'])) $this->upgrade($_GET['upgrade']);
         else if(isset($_GET['doupgrade']) && !isBusy($this->player)) $this->doupgrade($_GET['doupgrade']);
         else if(isset($_GET['doupgrade'])) header("Location: index.php?mod=Ship&amp;msg=" . urlencode("Upgrade not possible while busy!"));
@@ -43,7 +44,7 @@ class Module_Ship extends Base_Module
         }
         $this->tpl->assign($ship,'ship');
         $this->tpl->assign('shipvalues',itemInfo($shipvalues, true, false));
-        $this->tpl->display('ship/ship.tpl');
+        $this->tpl->display('ship/dock.tpl');
     }
 
     /**

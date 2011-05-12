@@ -1,13 +1,14 @@
 ﻿{include file="header.tpl" TITLE="Compose mail"}
-		<body>
-		<br>
-		<h1>
-		<strong>Compose mail</strong></h1>
-&nbsp;<form action="index.php?mod=MailBox&act=send" method="post">
-         To<input type="text" name="to" value="{$rec}"><br>
-         Subject<input type="text" name="subject" value="No Subject"><br>
+
+<h1>Messages</h1>
+<h2>Compose Mail</h2>
+<form action="index.php?mod=MailBox&act=send" method="post">
+    <table>
+	<tr><td>To</td><td><input type="text" name="to" value="{$rec}"></td></tr>
+	<tr><td>Subject</td><td><input type="text" name="subject" value="No Subject"></td></tr>
+    </table>
          <textarea name="message" cols="50" rows="10"></textarea><br>
          <input type="submit" value="Send">
-        </form><br>
-        </body>
+</form>
+
 {include file="footer.tpl"}

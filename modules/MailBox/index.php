@@ -56,7 +56,7 @@ class Module_MailBox extends Base_Module
         {
             $mailbox[] = $m;
         }
-        
+
         $this->tpl->assign('mailbox', $mailbox);
         $this->tpl->display('mail/listmail.tpl');
     }
@@ -65,15 +65,15 @@ class Module_MailBox extends Base_Module
     {
     	if (!isset($_GET['id']))
     	{
-    	  	$msg="Next time try and delete mail.";
+    	  	$msg="Next time try the delete button.";
     	  	Header("Location: index.php?mod=MailBox&msg=" . urlencode($msg));
     	  	exit;
     	  	
     	}
     	else
     	{
-			$this->db->execute('DELETE FROM `mail` WHERE `id`=? AND to=?', array($_GET['id']), $this->player->username);
-        	$msg="Message Deleted";
+		$res=$this->db->execute('DELETE FROM `mail` WHERE `id`=? AND `to`=?', array($_GET['id']), $this->player->username);
+        	$msg=$this->db->numRows($res)." Message Deleted";
         	Header("Location: index.php?mod=MailBox&msg=" . urlencode($msg));
         	exit;
     	}  
@@ -129,7 +129,7 @@ class Module_MailBox extends Base_Module
     		$message = str_replace(array("\n"),array("<br />"),strip_tags($_POST['message']));
       		$subject = str_replace(array("\n"),array("<br />"),strip_tags($_POST['subject']));
       		//
-      		$tosql = $this->db->fetchRow('SELECT `id`, `username`, `level`, `hp`, `strength`, `damage`, `exp`, `money` FROM `<ezrpg>players` WHERE `username`=?', array($_POST['to']));
+      		$tosql = $this->db->fetchRow('SELECT `id` FROM `<ezrpg>players` WHERE `username`=?', array($_POST['to']));
     	        if ($tosql == false)
 		        {
 		    		$msg="You can\'t send a message to someone who doesnt exist\!";
@@ -159,7 +159,7 @@ class Module_MailBox extends Base_Module
    	
    	private function deleteall()
    	{
-   			$this->db->execute('DELETE FROM `mail` WHERE `to`=?', array($this->player->username));
+   		$this->db->execute('DELETE FROM `mail` WHERE `to`=?', array($this->player->username));
         	$msg="All Messages Deleted";
         	Header("Location: index.php?mod=MailBox&msg=" . urlencode($msg));
         	exit;

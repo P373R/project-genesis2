@@ -41,6 +41,10 @@ input, select {
 	background-color: #F7F7F7;
 	padding: 2px;
 	padding-bottom: 5px;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 input.smallinput {
@@ -69,19 +73,37 @@ img {
 	margin: 3px;
 }
 
+.ProgressBar {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
 #wrapper {
-	width: 650px;
+	width: 90%;
 	margin: 0px auto;
 	border: 1px solid #3399FF;
 	border-top: solid 3px #3399FF;
 	padding: 15px;
 	background-color: #FFFFFF;
+	position:static;
 }
 
 #header {
-	width: 100%;
+	width: 95%;
 	padding: 5px;
+	position:static;
+	top: 15px;
+	left: 15px;
 	
+}
+
+#headerTimebar {
+	text-align: center;
+}
+
+#ajaxLoading {
+    float: right;
 }
 
 #title {
@@ -123,6 +145,11 @@ img {
 	margin: 1px;
 	font-weight: bold;
 	text-align: center;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
 }
 	
 #nav a:hover {
@@ -134,22 +161,28 @@ img {
 #sidebar {
 	display: block;
 	float: left;
-	width: 145px;
+	width: 15%;
 	border: 1px solid #3399FF;
 	border-top: 3px solid #3399FF;
 	margin: 0px;
 	margin-top: 5px;
 	padding: 3px;
 	padding-left: 8px;
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
 }
 
 #gamebody {
 	display: block;
 	float: right;
-	width: 470px;
-	margin: 0px;
-	padding: 3px;
+	width: 81%;
+	margin: 5px;
+	padding: 5px;
         overflow: auto;
+	position: static;
 }
 
 #body {
@@ -211,6 +244,15 @@ img {
 
 .right {
 	float: right;
+}
+
+.worldMap {
+    display: block;
+    width: 100%;
+}
+
+.worldControlls {
+    position: absolute;
 }
 
 #game-left {

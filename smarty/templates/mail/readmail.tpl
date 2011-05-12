@@ -1,20 +1,13 @@
 {include file="header.tpl" TITLE="Read mail"}
-<head>
 
-
-<th><br><strong>From: </strong>{$mailbox2->subject}</th>
-<strong>
-
-<th><br>Recieved: </strong> {$mailbox2->date}<br /><a href='index.php?mod=MailBox&act=compose&to={$mailbox2->from}'>Answer</a>
-
-<br>
+<h1>Messages</h1>
+<h2>Read Mail</h2>
+<strong>From: </strong>{$mailbox2->subject}<br />
+<strong>Recieved: </strong>{$mailbox2->date}<br />
+<a href='index.php?mod=MailBox&act=compose&to={$mailbox2->from}'>Answer</a> | <a href='index.php?mod=MailBox&act=delete&id={$mailbox2->id}'>Delete</a>
 <br />
-<a href='index.php?mod=MailBox&act=delete&id={$mailbox2->id}'>Delete</a>
-<br />
-<div style="height: 158px">
+<div>
 <tr>{$mailbox2->message}</tr>
 </div>
-<br>
 
-</head>
 {include file="footer.tpl"}

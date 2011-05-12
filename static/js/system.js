@@ -53,6 +53,8 @@ $(document).ready(function() {
             }
         }
     );
+    
+    $("img#ajaxLoading").css('display','none');
 
 });
 
