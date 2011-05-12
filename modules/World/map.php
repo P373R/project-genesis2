@@ -7,9 +7,12 @@ $maxcols = 74;
 $width = 120;
 $height = 120;
 
+
+($_SERVER['SERVER_ADDR'] == '127.0.0.1')?define('URL','genesis'):define('URL','www.project-genesis2.de');
 ?>
 <html>
 <head>
+<script src="http://<?php echo URL ?>/static/js/jquery-1.5.2.js" type="text/javascript"></script>
 <script language="Javascript">
 
 var imgs = [];
@@ -42,7 +45,10 @@ var xpos = <?php echo( intval($_GET['x']) ); ?>;
 var ypos = <?php echo( intval($_GET['y']) ); ?>;
 var offsetx = 0;
 var offsety = 0;
-// var stop = false;
+var oldx = 0;
+var oldy = 0;
+var world = [];
+
 
 document.onmousemove = function(e)
 {
@@ -57,12 +63,12 @@ document.onmousemove = function(e)
     if ( ypos < 0 )
       ypos = 0;
     
-//     if(!stop) 
 	position( xpos, ypos );
 
 	dragx = e.pageX;
 	dragy = e.pageY;
    }
+    
 
 }
 
@@ -71,7 +77,7 @@ document.onmousedown = function(e)
   dragging = true;
   dragx = e.pageX;
   dragy = e.pageY;
-//   console.log("dragx:"+dragx+" dragx:"+dragy);
+
   return false;  
 }
 
@@ -80,7 +86,13 @@ function worldClick(alt){
     var coords = document.getElementById(alt).alt.split('/');
     var xclk = (coords[0]*120)+e.x;
     var yclk = (coords[1]*120)+e.y;
-    // x and y coord of clicked point!
+    // x and y coord of clicked point!    
+}
+
+// draw the entities on the map
+function drawWorld(ent){
+ console.log(ent);   
+ world = ent;
 }
 
 document.onmouseup = function(e)
@@ -90,22 +102,29 @@ document.onmouseup = function(e)
 
 function position( x, y )
 {
+    if(Math.abs(oldx - x) > 150 || Math.abs(oldy - y) > 150) {
+	var url = "http://<?php echo URL; ?>/index.php?mod=World&action=entities&x="+xpos+"&y="+ypos;
+	$.getJSON(url,function(jqhrx,code) {drawWorld(jqhrx);});
+	oldx = x;
+	oldy = y;
+    }
+    
+    $("#entities").empty();
+    if(world.cities) $.each(world.cities, function(i,item){
+	console.log("go");
+	startcol = Math.floor( item.x / width );
+	startrow = Math.floor( item.y / height );
+	offsetx = Math.abs( item.x - ( startcol * width ) ) * -1;
+	offsety = Math.abs( item.y - ( startrow * height ) ) * -1;
+	$("<img/>").attr({"alt": item.name,"top":offsetx,"left":offsety,"src": "http://<?php echo URL ?>/static/images/entities/city.png"}).appendTo("#entities");
+    });
+
+
   if ( x < 0 ) x = 0;
   if ( y < 0 ) y = 0;
 
   startcol = Math.floor( x / width );
   startrow = Math.floor( y / height );
-
-/*  if(startcol >= maxcols-scrollcols) {
-	startcol = maxcols-(scrollcols+1);
-// 	stop = true;
-  }
-  if(startrow >= maxrows-scrollrows) {
-	startrow = maxrows-(scrollrows+1);
-// 	stop = true;
-  }
-*/
-//  console.log("startcol: "+startcol+" startrow: "+startrow);
   
   offsetx = Math.abs( x - ( startcol * width ) ) * -1;
   offsety = Math.abs( y - ( startrow * height ) ) * -1;
@@ -121,8 +140,6 @@ function position( x, y )
 	var left = offsetx + ( col * width );
 	var top = offsety + ( row * height );
 
-//     	    console.log("col: "+startcol+" row: "+startrow);
-
 	    dcol = startcol+col;
 	    drow = startrow+row;
         if(dcol > maxcols) {
@@ -137,9 +154,8 @@ function position( x, y )
 	if(imgs[row][col]) {
 	    imgs[row][col].style.left = left-width;
 	    imgs[row][col].style.top = top-height;
-	    imgs[row][col].src = "http://genesis/static/images/map/"+(dcol)+"-"+(drow)+".gif";
+	    imgs[row][col].src = "http://<?php echo URL ?>/static/images/map/"+(dcol)+"-"+(drow)+".gif";
 	    imgs[row][col].alt = dcol+'/'+drow;
-	    //origimgs[startrow+row][startcol+col];
 
 	    remainderx = viewwidth - ( left + width );
 	    remaindery = viewheight - ( top + height );
@@ -171,10 +187,11 @@ for( $row = 1; $row < $rows + 2; $row++ ) {
 for( $col = 1; $col < $cols + 2; $col++ ) {
   $id = sprintf( "img%02d_%02d", $row, $col );
 ?>
-<img src="http://genesis/static/images/loading.gif" style="position:absolute;left:0;top:0;cursor:hand;" id="<?php echo($id) ?>" ondblclick="worldClick('<?php echo $id;?>');"/>
+<img src="http://<?php echo URL ?>/static/images/loading.gif" style="position:absolute;left:0;top:0;cursor:hand;" id="<?php echo($id) ?>" ondblclick="worldClick('<?php echo $id;?>');"/>
 <?php
 } }
 ?>
 </div>
+<div id="entities"></div>
 </body>
 </html>

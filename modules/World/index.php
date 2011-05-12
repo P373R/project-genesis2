@@ -23,6 +23,7 @@ class Module_World extends Base_Module
 	switch ($_GET['action']) {
 	    case 'entities':
 		// return the entities around the requested area
+		$this->entities();
 		break;
 	    case 'move':
 		// move the ship to this points
@@ -38,32 +39,24 @@ class Module_World extends Base_Module
      */
     private function renderWorld() 
     {
-	
-	$rows = 3;
-	$this->tpl->assign('rows',$rows);
-	$cols = 3;
-	$this->tpl->assign('cols',$cols);
-
-	$maxrows = 23;
-	$this->tpl->assign('maxrows', $maxrows);
-	$maxcols = 74;
-	$this->tpl->assign('maxcols', $maxcols);
-	$width = 120;
-	$this->tpl->assign('width', $width);
-	$height = 120;
-	$this->tpl->assign('height', $height);
-		
-	for( $row = 1; $row < $rows + 2; $row++ ) {
-	    for( $col = 1; $col < $cols + 2; $col++ ) {
-		$id = sprintf( "img%02d_%02d", $row, $col );
-		$list.="<img src=\"http://genesis/static/images/loading.gif\" style=\"position:absolute;cursor:hand;\" id=\"".$row."_".$col."\" ondblclick=\"worldClick('$id');\"/>\n";
-	    }
-	}
-
-
-	
-	$this->tpl->assign('world',$list);
 	$this->tpl->display('world/site.tpl');
+    }
+    
+    /**
+     * return a JSON object of all the entities around the current point of view.
+     */
+    private function entities() 
+    {
+	// search in a 500 pixel area around the map
+	$smallx = $_GET['x']-250;
+	$bigx = $smallx + 500;
+	$smally = $_GET['y']-250;
+	$bigy = $smally + 500;
+	
+	$response['meta'] = array('token'=>$_GET['token']);
+	$response['entities'] = $this->db->fetchAll($this->db->execute("SELECT * FROM `<ezrpg>map_entities` WHERE '$smallx' < `x` < '$bigx' AND '$smally' < `y` < '$bigy'"));
+	$response['cities'] = $this->db->fetchAll($this->db->execute("SELECT `x`,`y`,`name`,`owner` FROM `<ezrpg>map_cities` WHERE `x` > $smallx AND `x` < $bigx AND `y` > $smally AND `y` < $bigy"));
+ 	echo json_encode($response);
     }
 }
 ?>
