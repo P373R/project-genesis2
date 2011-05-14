@@ -1,6 +1,6 @@
 <?php
-$rows = 5;
-$cols = 5;
+$rows = 4;
+$cols = 4;
 
 $maxrows = 23;
 $maxcols = 74;
@@ -174,6 +174,11 @@ function position( x, y )
   } 
 }
 
+function jumpTo(x, y){
+	dragx = x;
+	dragy = y;
+	position(x, y);
+}
 var dragging = false;
 var dragx = 0;
 var dragy = 0;

@@ -11,3 +11,5 @@ tickcount
 profilertime
 ticktime
 *.kdev4
+mysql.log
+.kdev4

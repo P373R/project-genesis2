@@ -12,7 +12,7 @@ class Module_Community extends Base_Module
     */
     public function start()
     {
-        $this->tpl->display('coming_soon.tpl');
+        $this->tpl->display('community.tpl');
     }
 }
 ?>
