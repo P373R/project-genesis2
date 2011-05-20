@@ -11,7 +11,7 @@
 <br />
 <table class="list" width="100%">
 <tr>
-<th colspan="4">{$lastType}</th>
+<th colspan="4">{$lastType|capitalize}</th>
 </tr>
 {/if}
 <tr>

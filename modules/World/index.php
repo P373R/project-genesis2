@@ -17,7 +17,7 @@ class Module_World extends Base_Module
     */
     public function start()
     {
-	requireLogin(); // ONly for people loged in
+	requireLogin(); // Only for people loged in
         $this->tpl->assign('SUBMENU','ship'); // we are in the Ship sub menu
 	
 	switch ($_GET['action']) {

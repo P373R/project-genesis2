@@ -48,6 +48,9 @@ var offsety = 0;
 var oldx = 0;
 var oldy = 0;
 var world = [];
+var dragging = false;
+var dragx = 0;
+var dragy = 0;
 
 
 document.onmousemove = function(e)
@@ -81,11 +84,13 @@ document.onmousedown = function(e)
   return false;  
 }
 
-function worldClick(alt){
+function worldDblClick(alt){
     var e = window.event;
     var coords = document.getElementById(alt).alt.split('/');
     var xclk = (coords[0]*120)+e.x;
     var yclk = (coords[1]*120)+e.y;
+    jumpTo(xclk,yclk);
+    console.log("goto: "+xclk+"/"+yclk);
     // x and y coord of clicked point!    
 }
 
@@ -102,6 +107,9 @@ document.onmouseup = function(e)
 
 function position( x, y )
 {
+    x = x - (<?php echo $cols; ?> * <?php echo $width; ?>);
+    y = y - (<?php echo $rows; ?> * <?php echo $height; ?>);
+    
     if(Math.abs(oldx - x) > 150 || Math.abs(oldy - y) > 150) {
 	var url = "http://<?php echo URL; ?>/index.php?mod=World&action=entities&x="+xpos+"&y="+ypos;
 	$.getJSON(url,function(jqhrx,code) {drawWorld(jqhrx);});
@@ -120,8 +128,10 @@ function position( x, y )
     });
 
 
-  if ( x < 0 ) x = 0;
-  if ( y < 0 ) y = 0;
+    if ( x < 0 ) x = 0;
+    if ( y < 0 ) y = 0;
+    if ( x > 30000 ) x = 30000;
+    if ( y > 9000 ) y = 9000;
 
   startcol = Math.floor( x / width );
   startrow = Math.floor( y / height );
@@ -179,9 +189,6 @@ function jumpTo(x, y){
 	dragy = y;
 	position(x, y);
 }
-var dragging = false;
-var dragx = 0;
-var dragy = 0;
 
 </script>
 </head>
@@ -192,7 +199,7 @@ for( $row = 1; $row < $rows + 2; $row++ ) {
 for( $col = 1; $col < $cols + 2; $col++ ) {
   $id = sprintf( "img%02d_%02d", $row, $col );
 ?>
-<img src="http://<?php echo URL ?>/static/images/loading.gif" style="position:absolute;left:0;top:0;cursor:hand;" id="<?php echo($id) ?>" ondblclick="worldClick('<?php echo $id;?>');"/>
+<img src="http://<?php echo URL ?>/static/images/loading.gif" style="position:absolute;left:0;top:0;cursor:hand;" id="<?php echo($id) ?>" ondblclick="worldDblClick('<?php echo $id;?>');"/>
 <?php
 } }
 ?>

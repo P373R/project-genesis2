@@ -55,7 +55,6 @@ function id2name($type,$id)
  */
 function itemInfo($info = array(), $full = false, $plusminus = true)
 {
-    if(count($info) == 0) return "nothing";
     $text = "<table>";
     if(is_array($info)) 
      foreach($info as $key => $value) {

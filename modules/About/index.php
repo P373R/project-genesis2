@@ -19,8 +19,16 @@ class Module_About extends Base_Module
 	    $res = $this->db->execute("SELECT * FROM `<ezrpg>ship_parts` ORDER BY `type` ASC");
 	    $list = $this->db->fetchAll($res, true);
 	    foreach($list as $item){
-		$item['depend'] = itemInfo(unserialize($item['depend']));
-		$item['properties'] = itemInfo(unserialize($item['properties']));
+		$item['depend'] = itemInfo(array('propulsion' => $item['dep_propulsion'],
+						 'gearbox'    => $item['dep_gearbox'],
+						 'energy'     => $item['dep_energy'],
+						 'engine'     => $item['dep_engine'],
+						 'navigation' => $item['dep_navigation'],
+						 'sonar'      => $item['dep_sonar']),true);
+		$item['properties'] = itemInfo(array('shield'   => $item['shield'],
+						     'speed'    => $item['speed'],
+						     'accuracy' => $item['accuracy'],
+						     'energy'   => $item['energy']),true);
 		$this->tpl->append('items',$item);
 	    }
 	    $this->tpl->display('techtree.tpl');
