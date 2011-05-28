@@ -16,6 +16,7 @@ class Module_City extends Base_Module
     {
 	//Require the user to be logged in
         requireLogin();
+
 	$this->tpl->assign('SUBMENU','city');
 	$this->tpl->display('city/city.tpl');
     }

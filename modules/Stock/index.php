@@ -12,6 +12,9 @@ class Module_Stock extends Base_Module
     */
     public function start()
     {
+        //Require login
+        requireLogin();
+        $this->tpl->assign('feature','Stock Market');
         $this->tpl->display('coming_soon.tpl');
     }
 }

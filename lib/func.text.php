@@ -51,24 +51,30 @@ function id2name($type,$id)
 }
 
 /**
- * Build a Text out of an serialized array of modificators
+ * Build a Text out of an array.
  */
-function itemInfo($info = array(), $full = false, $plusminus = true)
+function itemInfo($info = array(), $full = false, $plusminus = true, $table=true)
 {
-    $text = "<table>";
+    $text = ($table)? '<table>' : '<span>';
     if(is_array($info)) 
      foreach($info as $key => $value) {
         if($full || $value != 0) {
-            $text.= "<tr><td>".ucfirst($key). "</td><td>";
+            if($table) $text.= "<tr><td>";
+	    $text.= ucfirst($key);
+            if($table)$text.= "</td><td>";
+	    else $text.= ': ';
             if($plusminus && is_int($value) && $value != 0) if($value < 0) $text.= "-"; else $text.= "+";
-            $text.= $value."</td></tr>";
+            $text.= $value;
+	    if($table)$text.= "</td></tr>";
+	    else $text.= ' ';
         }
     }
-    $text.= "</table>";
+    $text .= ($table)? '</table>' : '</span>';
     // This is an evil hack :( done since I do not want to change the table headers
-    $text = str_replace(array("Agility","Dexterity","Vitality"),array("Speed", "Accuracy", "Shield"),$text);
+    // $text = str_replace(array("Agility","Dexterity","Vitality"),array("Speed", "Accuracy", "Shield"),$text);
     return $text;
 }
+
 /**
  * Fetches an array of Text phrases in HTML
  */

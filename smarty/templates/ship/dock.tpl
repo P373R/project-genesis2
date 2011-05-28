@@ -11,8 +11,8 @@
  <td><b>Gearbox</b> {$player->ship->gearbox} <a href="index.php?mod=Ship&amp;upgrade=gearbox">upgrade</a></td>
 </tr>
 <tr>
- <td>{$propulsion.name}<p>{$propulsion.desc}</p></td>
- <td>{$gearbox.name}<p>{$gearbox.desc}</p></td>
+ <td>{$propulsion->name}<p>Depend on:{$propulsion->desc}</p></td>
+ <td>{$gearbox->name}<p>Depend on:{$gearbox->desc}</p></td>
 </tr>
 
 <tr>
@@ -20,8 +20,8 @@
  <td><b>Engine</b> {$player->ship->engine} <a href="index.php?mod=Ship&amp;upgrade=engine">upgrade</a></td>
 </tr>
 <tr>
- <td>{$energy.name}<p>{$energy.desc}</p></td>
- <td>{$engine.name}<p>{$engine.desc}</p></td>
+ <td>{$energy->name}<p>Depend on:{$energy->desc}</p></td>
+ <td>{$engine->name}<p>Depend on:{$engine->desc}</p></td>
 </tr>
 
 <tr>
@@ -29,8 +29,8 @@
  <td><b>Sonar</b> {$player->ship->sonar} <a href="index.php?mod=Ship&amp;upgrade=sonar">upgrade</a></td>
 </tr>
 <tr>
- <td>{$navigation.name}<p>{$navigation.desc}</p></td>
- <td>{$sonar.name}<p>{$sonar.desc}</p></td>
+ <td>{$navigation->name}<p>Depend on:{$navigation->desc}</p></td>
+ <td>{$sonar->name}<p>Depend on:{$sonar->desc}</p></td>
 </tr>
 {*
 <tr>
@@ -50,20 +50,20 @@
  <td>{$priweapon.name}<br />{$priweapon.desc}<br /></td>
  <td>{$secweapon.name}<br />{$secweapon.desc}<br /></td>
 </tr>
-*}
+
 <tr>
  <td clospan="2"><b>Cargo</b></td>
 </tr>
 <tr>
  <td clospan="2">
  <ul>
- {foreach from=$cargolist item=cargo}
+ {foreach $cargolist as $cargo}
  <li>{$cargo.name}</li>
  {/foreach}
  </ul>
  </td>
 </tr>
-
+*}
 </table>
 
 {include file="footer.tpl"}

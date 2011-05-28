@@ -13,7 +13,8 @@ class Module_Dock extends Base_Module
      */
     public function start()
     {
-        requireLogin(); // Nur wenn eingelogt
+        //Require login
+        requireLogin();
         $this->tpl->assign('SUBMENU','ship');
         if(isset($_GET['upgrade'])) $this->upgrade($_GET['upgrade']);
         else if(isset($_GET['doupgrade']) && !isBusy($this->player)) $this->doupgrade($_GET['doupgrade']);
@@ -27,24 +28,31 @@ class Module_Dock extends Base_Module
     private function display()
     {
         $ship = array();
-        $shipvalues = array();
-        $shipvalues['vitality'] = 15;
-	$shipvalues['agility']  = 2;
-	$shipvalues['dexterity']= 2;
-	$shipvalues['energy']   = 10;
-        $shipdb = $this->db->fetchRow('SELECT `propulsion`,`gearbox`,`engine`,`energy`,`navigation`,`sonar`,`weapon1`,`weapon2`,`harvester` FROM `<ezrpg>ships` WHERE id=?',array($this->player->id));
-        foreach ($shipdb as $field => $value) {
-            $part = $this->db->fetchRow('SELECT * FROM `<ezrpg>ship_parts` WHERE id=? AND type=?',array($value,$field));
-            $ship[$field]['name'] = $part->name;
-	    $props = unserialize($part->properties);
-            $ship[$field]['desc'] = itemInfo($props);
-            if(is_array($props)) foreach($props as $key => $prop) {
-		$shipvalues[$key] += $prop;
-            }
-        }
+
         $this->tpl->assign($ship,'ship');
-        $this->tpl->assign('shipvalues',itemInfo($shipvalues, true, false));
-        $this->tpl->display('ship/dock.tpl');
+        $this->tpl->assign('shipvalues',itemInfo(array('shield'   => $this->player->ship->shield,
+						       'speed'    => $this->player->ship->speed,
+						       'accuracy' => $this->player->ship->accuracy),
+						       false,
+						       false,
+						       true));
+	$tech = $this->db->fetchRow("SELECT `propulsion`,`gearbox`,`engine`,`energy`,`navigation`,`sonar` FROM ships WHERE id=?",
+				    array($this->player->ship->id));
+	foreach((array)$tech as $tec => $id) {
+	    $part = $this->db->fetchRow("SELECT * FROM `<ezrpg>ship_parts` WHERE `type`=? AND id=?",
+					array($tec,$id));
+	    $part->desc = itemInfo(array('propulsion' => $part->dep_propulsion,
+					 'gearbox'    => $part->dep_gearbox,
+					 'energy'     => $part->dep_energy,
+					 'engine'     => $part->dep_engine,
+					 'navigation' => $part->dep_navigation,
+					 'sonar'      => $part->dep_sonar),
+					 false,
+					 false,
+					 true);
+	    $this->tpl->assign($tec,$part);
+	}
+	$this->tpl->display('ship/dock.tpl');
     }
 
     /**

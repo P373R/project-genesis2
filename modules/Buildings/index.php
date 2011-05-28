@@ -14,9 +14,11 @@ class Module_Buildings extends Base_Module
     */
     public function start()
     {
-      requireLogin(); // Nur wenn eingelogt anzeigen
-      $this->tpl->assign('SUBMENU','city');
-      $this->tpl->display('coming_soon.tpl');
+        //Require login
+        requireLogin();
+        $this->tpl->assign('feature','Buildings');
+	$this->tpl->assign('SUBMENU','city');
+	$this->tpl->display('coming_soon.tpl');
     }
 
     

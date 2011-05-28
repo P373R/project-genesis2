@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `badges`
+--
+
+DROP TABLE IF EXISTS `badges`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `badges` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `description` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `badges`
+--
+
+LOCK TABLES `badges` WRITE;
+/*!40000 ALTER TABLE `badges` DISABLE KEYS */;
+INSERT INTO `badges` VALUES (1,'Unbeatable Bronze','The player was not defeated while doing the first 10 kills.'),(2,'Rich As Bronze','The player owned more than 1.000.000$ once'),(3,'Genesis Foundation','The player once hit the 100 GWP mark'),(4,'Unstopable','The ship has a Perpetuum Mobile as energy source!'),(5,'Levelmaster Bronze','Level 30 was reached within a month'),(6,'The Traveler','The ship did more than 1.000.000 miles'),(7,'Metropolis','One of the players city has 1.000.000 inhabitants'),(8,'Bookworm','The Library contains more than 50 books'),(9,'Busy Typer','The player send more then 100 Messages'),(10,'Puzzle Solver','5 Puzzles have been solved!'),(11,'Rich As Silver','The player owned more than 10.000.000$ once'),(12,'Rich As Gold','The player owned more than 100.000.000$ once'),(13,'Unbeatable Silver','The player was not defeated while doing the first 50 kills.'),(14,'Unbeatable Gold','The player was not defeated while doing the first 100 kills.'),(15,'Levelmaster Silver','Level 50 was reached within a month'),(16,'Levelmaster Gold','Level 80 was reached within a month'),(17,'The Long Traveler','The ship did more than 4.000.000 miles'),(18,'The Incredible Long Traveler','The ship did more than 10.000.000 miles'),(19,'Bookworm Extrem','The Library contains more than 100 books'),(20,'Bookworms Paradies','The Library contains more than 150 books');
+/*!40000 ALTER TABLE `badges` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `delay`
 --
 
@@ -24,9 +49,9 @@ DROP TABLE IF EXISTS `delay`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `delay` (
   `when` int(11) NOT NULL,
-  `command` text NOT NULL,
+  `command` text CHARACTER SET latin1 NOT NULL,
   KEY `when` (`when`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,10 +72,10 @@ DROP TABLE IF EXISTS `items`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(25) NOT NULL,
+  `name` varchar(25) CHARACTER SET latin1 NOT NULL,
   `value` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,12 +96,12 @@ DROP TABLE IF EXISTS `library`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `library` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) CHARACTER SET latin1 NOT NULL,
   `release` int(11) NOT NULL,
-  `author` varchar(50) NOT NULL,
-  `book` text NOT NULL,
+  `author` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `book` text CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,14 +123,14 @@ DROP TABLE IF EXISTS `mail`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `to` varchar(50) NOT NULL,
-  `from` varchar(50) NOT NULL,
-  `subject` varchar(45) NOT NULL,
+  `to` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `from` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `subject` varchar(45) CHARACTER SET latin1 NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `isread` int(1) NOT NULL,
-  `message` text NOT NULL,
+  `message` text CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +153,7 @@ DROP TABLE IF EXISTS `map_cities`;
 CREATE TABLE `map_cities` (
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) CHARACTER SET latin1 NOT NULL,
   `owner` int(11) NOT NULL,
   `inhabitants` int(11) NOT NULL,
   `mine_water` float NOT NULL,
@@ -144,7 +169,7 @@ CREATE TABLE `map_cities` (
   `shield` int(11) NOT NULL,
   `max_shield` int(11) NOT NULL,
   PRIMARY KEY (`x`,`y`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,10 +192,11 @@ DROP TABLE IF EXISTS `map_entities`;
 CREATE TABLE `map_entities` (
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
-  `img` varchar(50) NOT NULL,
+  `img` varchar(50) CHARACTER SET latin1 NOT NULL,
   `id` int(11) NOT NULL,
+  `type` enum('puzzle','place','item') COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`x`,`y`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,8 +217,8 @@ DROP TABLE IF EXISTS `missions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `missions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `description` text NOT NULL,
+  `name` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `description` text CHARACTER SET latin1 NOT NULL,
   `min_gwp` int(11) NOT NULL,
   `energy` int(11) NOT NULL,
   `exp` int(11) NOT NULL,
@@ -203,7 +229,7 @@ CREATE TABLE `missions` (
   `accuracy` int(11) NOT NULL,
   `redo` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,6 +243,30 @@ INSERT INTO `missions` VALUES (1,'Welcome to Genesis2','The Genesis Foundation w
 UNLOCK TABLES;
 
 --
+-- Table structure for table `player_badges`
+--
+
+DROP TABLE IF EXISTS `player_badges`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `player_badges` (
+  `pid` int(11) NOT NULL,
+  `bid` int(11) NOT NULL,
+  KEY `pid` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `player_badges`
+--
+
+LOCK TABLES `player_badges` WRITE;
+/*!40000 ALTER TABLE `player_badges` DISABLE KEYS */;
+INSERT INTO `player_badges` VALUES (1003,1),(1003,2),(1003,3),(1003,4),(1003,5),(1003,6),(1003,7),(1003,8),(1003,9),(1003,10),(1003,11),(1003,12),(1003,13),(1003,14),(1003,15),(1003,16),(1003,17),(1003,18),(1003,19),(1003,20);
+/*!40000 ALTER TABLE `player_badges` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `player_log`
 --
 
@@ -227,12 +277,12 @@ CREATE TABLE `player_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `player` int(11) unsigned NOT NULL,
   `time` int(11) unsigned NOT NULL,
-  `message` text NOT NULL,
+  `message` text CHARACTER SET latin1 NOT NULL,
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `player_log` (`player`,`time`),
   KEY `new_logs` (`player`,`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +291,6 @@ CREATE TABLE `player_log` (
 
 LOCK TABLES `player_log` WRITE;
 /*!40000 ALTER TABLE `player_log` DISABLE KEYS */;
-INSERT INTO `player_log` VALUES (1,1002,1297310107,'You have leveled up! You gained +1 stat point!',1),(2,1002,1297330960,'You have leveled up! You gained +1 stat point!',1),(3,1002,1297333179,'You have leveled up! You gained +1 stat point!',1),(4,1002,1297500867,'You have leveled up! You gained +1 stat point!',1),(5,1002,1300689005,'You have leveled up! You gained +1 stat point!',1),(6,1002,1302904475,'You have leveled up! You gained +1 stat point!',1),(7,1002,1302906263,'You have leveled up! You gained +1 stat point!',1),(8,1000,1302912870,'You have leveled up! You gained +1 stat point!',1),(9,1000,1302915275,'You have leveled up! You gained +1 stat point!',1),(10,1000,1302921487,'You have leveled up! You gained +1 stat point!',1),(11,1000,1302924049,'You have leveled up! You gained +1 stat point!',1),(12,1000,1302935818,'You have leveled up! You gained +1 stat point!',1),(13,1001,1302947901,'You have leveled up! You gained +1 stat point!',1),(14,1005,1302948284,'You have leveled up! You gained +1 stat point!',0),(15,1001,1302952255,'You have leveled up! You gained +1 stat point!',1),(16,0,1303876872,'You have leveled up! You gained +1 stat point!',0),(17,0,1303880204,'You have leveled up! You gained +1 stat point!',0),(18,0,1303880207,'You have leveled up! You gained +1 stat point!',0);
 /*!40000 ALTER TABLE `player_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,12 +303,12 @@ DROP TABLE IF EXISTS `players`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `players` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(30) DEFAULT NULL,
-  `password` varchar(40) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `secret_key` text,
-  `session_id` varchar(30) NOT NULL,
-  `language` varchar(3) NOT NULL,
+  `username` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
+  `password` varchar(40) CHARACTER SET latin1 DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `secret_key` text CHARACTER SET latin1,
+  `session_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `language` varchar(3) CHARACTER SET latin1 NOT NULL,
   `rank` smallint(5) unsigned NOT NULL DEFAULT '1',
   `registered` int(11) unsigned DEFAULT NULL,
   `last_active` int(11) unsigned DEFAULT '0',
@@ -273,7 +322,7 @@ CREATE TABLE `players` (
   `max_energy` int(11) unsigned NOT NULL DEFAULT '10',
   `kills` int(11) unsigned NOT NULL DEFAULT '0',
   `deaths` int(11) unsigned NOT NULL DEFAULT '0',
-  `missions` text NOT NULL,
+  `missions` text CHARACTER SET latin1 NOT NULL,
   `gwp` int(11) NOT NULL DEFAULT '50',
   `facebook` bigint(15) NOT NULL DEFAULT '0',
   `tutorial` tinyint(4) NOT NULL DEFAULT '0',
@@ -281,7 +330,7 @@ CREATE TABLE `players` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,7 +339,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','','',10,1286231120,1300603731,1300562123,166,17,989,62,330,20,20,18,21,'0',100,0,0,0),(1003,'test','64e6526a73933671d06840b017afba65762b3159','test@test.de','wioUQ0kCB,AjveAz','','',1,1303877800,1305185186,1305183040,100,1,0,0,10,20,20,0,0,'',50,0,4,0);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','','',10,1286231120,1300603731,1300562123,166,17,989,62,330,20,20,18,21,'0',100,0,0,0),(1003,'test','64e6526a73933671d06840b017afba65762b3159','test@test.de','wioUQ0kCB,AjveAz','','',1,1303877800,1306624647,1306620652,100,1,0,0,10,10,10,0,0,'',50,0,4,0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,8 +352,8 @@ DROP TABLE IF EXISTS `ship_parts`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ship_parts` (
   `id` int(11) NOT NULL,
-  `type` varchar(25) NOT NULL,
-  `name` text NOT NULL,
+  `type` varchar(25) CHARACTER SET latin1 NOT NULL,
+  `name` text CHARACTER SET latin1 NOT NULL,
   `dep_propulsion` tinyint(4) NOT NULL,
   `dep_gearbox` tinyint(4) NOT NULL,
   `dep_energy` tinyint(4) NOT NULL,
@@ -317,7 +366,7 @@ CREATE TABLE `ship_parts` (
   `energy` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`,`type`),
   KEY `id` (`id`,`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,7 +375,7 @@ CREATE TABLE `ship_parts` (
 
 LOCK TABLES `ship_parts` WRITE;
 /*!40000 ALTER TABLE `ship_parts` DISABLE KEYS */;
-INSERT INTO `ship_parts` VALUES (1,'energy','Small nuclear plant',0,0,0,0,0,0,0,0,0,10),(1,'engine','Small Motor',0,0,0,0,0,0,0,4,0,0),(1,'gearbox','Iron cog wheels',0,0,0,0,0,0,0,2,0,0),(1,'navigation','Pen and paper',0,0,0,0,0,0,0,0,0,0),(1,'propulsion','Basic propeller',0,0,0,0,0,0,0,2,0,0),(1,'sonar','Small Microphone',0,0,0,0,0,0,0,0,2,0),(2,'energy','Medium nuclear plant',0,0,0,0,0,0,10,0,0,20),(2,'engine','Medium Motor',0,0,0,0,0,0,0,6,0,0),(2,'gearbox','Steel cog wheels',0,0,0,0,0,0,0,3,0,0),(2,'navigation','Calulator',0,0,0,0,0,0,0,0,1,0),(2,'propulsion','Big propeller',0,0,0,0,0,0,0,3,0,0),(2,'sonar','Budget Sonar Panel',0,0,0,0,0,0,0,0,5,0),(3,'energy','Big nuclear plant',0,0,0,0,0,0,20,0,0,40),(3,'engine','Big Motor',0,0,0,0,0,0,0,9,0,0),(3,'gearbox','Hard steel cog wheles',0,0,0,0,0,0,0,5,0,0),(3,'navigation','Computer',0,0,0,0,0,0,0,0,3,0),(3,'propulsion','Advanced propeller',0,0,0,0,0,0,0,6,0,0),(3,'sonar','Decent Sonar panel',0,0,0,0,0,0,0,0,10,0),(4,'energy','Tiny fusion reactor',0,0,0,0,0,0,40,0,0,60),(4,'engine','Twin Motor',0,0,0,0,0,0,0,21,0,0),(4,'gearbox','Titanium cog wheels',0,0,0,0,0,0,0,20,0,0),(4,'navigation','Super copmuter',0,0,0,0,0,0,0,0,5,0),(4,'propulsion','Basic impeller',0,0,0,0,0,0,0,10,0,0),(5,'energy','Small fusion reactor',0,0,0,0,0,0,60,0,0,100),(5,'navigation','Autopilot',0,0,0,0,0,0,0,0,10,0),(5,'propulsion','Big impeller',0,0,0,0,0,0,0,20,0,0),(6,'energy','Medium fusion reactor',0,0,0,0,0,0,100,0,0,127),(6,'propulsion','Advanced impeller',0,0,0,0,0,0,0,35,0,0),(7,'energy','Huge fusion reactor',0,0,0,0,0,0,127,0,0,127),(8,'energy','Perpetuum Mobile',0,0,0,0,0,0,127,0,0,127),(8,'propulsion','Big jet',0,0,0,0,0,0,0,50,0,0),(9,'propulsion','Advanced jet',0,0,0,0,0,0,0,70,0,0),(10,'propulsion','Highspeed jet',0,0,0,0,0,0,0,100,0,0);
+INSERT INTO `ship_parts` VALUES (1,'energy','Small nuclear plant',1,1,1,1,1,1,20,0,0,10),(1,'engine','Small Motor',1,1,1,1,1,1,0,4,0,0),(1,'gearbox','Iron cog wheels',1,1,1,1,1,1,0,2,0,0),(1,'navigation','Pen and paper',1,1,1,1,1,1,0,0,0,0),(1,'propulsion','Basic propeller',1,1,1,1,1,1,0,2,0,0),(1,'sonar','Small Microphone',1,1,1,1,1,1,0,0,2,0),(2,'energy','Medium nuclear plant',1,1,1,1,1,1,25,0,0,20),(2,'engine','Medium Motor',1,1,2,1,1,1,0,6,0,0),(2,'gearbox','Steel cog wheels',0,1,1,2,1,1,0,3,0,0),(2,'navigation','Calulator',1,1,1,1,1,1,0,0,1,0),(2,'propulsion','Big propeller',1,2,1,1,1,1,0,3,0,0),(2,'sonar','Budget Sonar Panel',1,1,3,1,1,1,0,0,5,0),(3,'energy','Big nuclear plant',1,1,2,1,1,1,30,0,0,40),(3,'engine','Big Motor',1,1,4,2,1,1,0,9,0,0),(3,'gearbox','Hard steel cog wheles',2,1,1,2,1,1,0,5,0,0),(3,'navigation','Computer',1,1,1,1,2,3,0,0,3,0),(3,'propulsion','Advanced propeller',2,2,1,1,1,1,0,6,0,0),(3,'sonar','Decent Sonar panel',1,1,4,1,1,2,0,0,10,0),(4,'energy','Tiny fusion reactor',1,1,3,1,1,1,40,0,0,60),(4,'engine','Twin Motor',1,1,6,3,1,1,0,21,0,0),(4,'gearbox','Titanium cog wheels',1,3,1,4,1,1,0,20,0,0),(4,'navigation','Super copmuter',5,1,1,1,3,3,0,0,5,0),(4,'propulsion','Basic impeller',3,3,1,1,1,1,0,10,0,0),(5,'energy','Small fusion reactor',1,1,4,1,1,1,60,0,0,100),(5,'navigation','Autopilot',9,1,1,1,4,3,0,0,10,0),(5,'propulsion','Big impeller',4,3,1,1,1,1,0,20,0,0),(6,'energy','Medium fusion reactor',1,1,5,1,1,1,100,0,0,127),(6,'propulsion','Advanced impeller',5,3,5,1,1,1,0,35,0,0),(7,'energy','Huge fusion reactor',1,4,6,1,1,1,127,0,0,127),(8,'energy','Perpetuum Mobile',1,1,7,1,1,1,127,0,0,127),(8,'propulsion','Big jet',7,3,6,1,1,1,0,50,0,0),(9,'propulsion','Advanced jet',8,3,6,7,1,1,1,70,0,0),(10,'propulsion','Highspeed jet',9,3,6,8,1,1,1,100,0,0);
 /*!40000 ALTER TABLE `ship_parts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,14 +403,14 @@ CREATE TABLE `ships` (
   `busy` int(11) NOT NULL,
   `start` int(11) NOT NULL,
   `harvester` tinyint(4) NOT NULL,
-  `missions` text NOT NULL,
+  `missions` text CHARACTER SET latin1 NOT NULL,
   `max_shield` int(11) NOT NULL,
   `shield` int(11) NOT NULL,
   `accuracy` int(11) NOT NULL,
   `speed` int(11) NOT NULL,
-  `bookmarks` text NOT NULL COMMENT 'array',
+  `bookmarks` text CHARACTER SET latin1 NOT NULL COMMENT 'array',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -370,7 +419,7 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,'',0,0,0,0,''),(1003,9216,1395,0,0,1,1,1,1,1,1,1,0,1303881021,1303880975,0,'',15,16,4,8,'');
+INSERT INTO `ships` VALUES (0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,'',0,0,0,0,''),(1003,9216,1395,0,0,1,1,1,1,1,1,1,0,1303881021,1303880975,0,'',20,20,2,6,'');
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,10 +432,10 @@ DROP TABLE IF EXISTS `shouts`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `shouts` (
   `time` int(11) NOT NULL,
-  `from` varchar(50) NOT NULL,
-  `text` text NOT NULL,
+  `from` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `text` text CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`time`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +444,6 @@ CREATE TABLE `shouts` (
 
 LOCK TABLES `shouts` WRITE;
 /*!40000 ALTER TABLE `shouts` DISABLE KEYS */;
-INSERT INTO `shouts` VALUES (1302817944,'?','test'),(1302817957,'?','test'),(1302817976,'test','test'),(1302818844,'test','jetzt gehts!'),(1302818886,'test','und auch zu langer text wird gekÃ¼rzt, weil sonst die shoutbox Ã¼berlÃ¤uft und das will ja auch keine, muss ja auhc net...'),(1302818929,'test','bin mal gespannt, wie es aussieht, wenn man das alles mit maximalen shouts vollpackt, das ist bestimmt mahr als erwartet'),(1302818947,'test','und wenn jetzt noch ein dritter dazu kommt, dann hÃ¤tt ich doch gerne einen Ã¼berlauf drin'),(1302818957,'test','ja, scrollbars werden wohl reinkommen'),(1302823709,'test','schon besser :)'),(1302901310,'Bastian','ui'),(1302947503,'test','this version is ready for testing!'),(1303990955,'test','hahaha');
 /*!40000 ALTER TABLE `shouts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -408,9 +456,9 @@ DROP TABLE IF EXISTS `tutorial`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tutorial` (
   `id` int(11) NOT NULL,
-  `text` text NOT NULL,
+  `text` text CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -432,4 +480,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-05-12 19:39:36
+-- Dump completed on 2011-05-29 11:26:09

@@ -12,6 +12,9 @@ class Module_Puzzles extends Base_Module
     */
     public function start()
     {
+        //Require login
+        requireLogin();
+        $this->tpl->assign('feature','Puzzles');
         $this->tpl->assign('SUBMENU','ship');
         $this->tpl->display('coming_soon.tpl');
     }

@@ -13,12 +13,13 @@ class Module_Library extends Base_Module
      */
     public function start()
     {
-      requireLogin(); // Nur wenn eingelogt anzeigen
-      if (isset($_GET['book'])) $this->show($_GET['book'],$_GET['chapter']);
-      else {
-          $this->tpl->assign('books',$this->db->fetchAll($this->db->execute("SELECT name,id FROM `<ezrpg>library`")));
-          $this->tpl->display('library/book_library.tpl');
-      }
+        //Require login
+        requireLogin();
+	if (isset($_GET['book'])) $this->show($_GET['book'],$_GET['chapter']);
+	else {
+	    $this->tpl->assign('books',$this->db->fetchAll($this->db->execute("SELECT name,id FROM `<ezrpg>library`")));
+	    $this->tpl->display('library/book_library.tpl');
+	}
     }
 
     /**

@@ -18,13 +18,18 @@
 $name[] = "Helm";
 $name[] = "Sword";
 $name[] = "Stone";
-$name[] = "Wand";
+$name[] = "Lump";
 $name[] = "Cartidge";
 $name[] = "Hook";
 $name[] = "Tristar";
 $name[] = "Feather";
 $name[] = "Cap";
 $name[] = "Crystal";
+$name[] = "Wire";
+$name[] = "Disc";
+$name[] = "Tube";
+$name[] = "Book";
+$name[] = "Map";
 
 $adj[] = "great";
 $adj[] = "super";
@@ -36,6 +41,8 @@ $adj[] = "crystalised";
 $adj[] = "normal";
 $adj[] = "greater";
 $adj[] = "materialised";
+$adj[] = "alien";
+$adj[] = "strange";
 
 $nomen[] = "Destiny";
 $nomen[] = "Strength";
@@ -51,6 +58,8 @@ for($i=0; $i<count($name); $i++) {
 	for($j=0; $j<count($adj); $j++) {
 		for($k=0; $k<count($nomen); $k++) {
 		    echo $name[$i]." of ".$adj[$j]." ".$nomen[$k]."\n";
+		    $count++;
+		    echo ucfirst($adj[$j])." ".$name[$i]." of ".$nomen[$k]."\n";
 		    $count++;
 		}
 	}

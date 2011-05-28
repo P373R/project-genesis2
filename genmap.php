@@ -1,4 +1,4 @@
-<?php
+<?php /* DEPRECATED
 $time = time();
 define('IN_EZRPG', true);
 

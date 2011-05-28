@@ -24,11 +24,17 @@ class Module_About extends Base_Module
 						 'energy'     => $item['dep_energy'],
 						 'engine'     => $item['dep_engine'],
 						 'navigation' => $item['dep_navigation'],
-						 'sonar'      => $item['dep_sonar']),true);
+						 'sonar'      => $item['dep_sonar']),
+						 false,
+						 true,
+						 false);
 		$item['properties'] = itemInfo(array('shield'   => $item['shield'],
 						     'speed'    => $item['speed'],
 						     'accuracy' => $item['accuracy'],
-						     'energy'   => $item['energy']),true);
+						     'energy'   => $item['energy']),
+						     false,
+						     false,
+						     false);
 		$this->tpl->append('items',$item);
 	    }
 	    $this->tpl->display('techtree.tpl');

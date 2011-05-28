@@ -12,7 +12,11 @@ class Module_Battle extends Base_Module
     */
     public function start()
     {
-        $this->tpl->assign('SUBMENU','ship');
+        //Require login
+        requireLogin();
+        
+        $this->tpl->assign('feature','Battles'); 
+	$this->tpl->assign('SUBMENU','ship');
         $this->tpl->display('coming_soon.tpl');
     }
 }

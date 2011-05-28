@@ -36,20 +36,17 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
 				 SUM(ship_parts.accuracy) as accuracy, 
 				 SUM(ship_parts.energy) as energy 
 			  FROM  ships, ship_parts
-			  WHERE ships.id=1003 AND (
+			  WHERE ships.id=? AND (
 			      (ships.propulsion = ship_parts.id AND ship_parts.type='propulsion') OR
 			      (ships.engine = ship_parts.id AND ship_parts.type='engine') OR
 			      (ships.energy = ship_parts.id AND ship_parts.type='energy') OR
 			      (ships.navigation = ship_parts.id AND ship_parts.type='navigation') OR
 			      (ships.sonar = ship_parts.id AND ship_parts.type='sonar')
-			)");
+			)",array($args->ship->id));
 
-    $row->max_shield += 15;    
-    $row->speed      += 2;
-    $row->accuracy   += 2;
-    $row->energy     += 10;
     $energy = $row->energy;
     unset($row->energy);
+    // Fill in the attributes created by the city!
     
     $db->update('<ezrpg>ships', (array)$row, array("id" => $args->id));
     $db->update('<ezrpg>players', array("max_energy" => $energy), array("id" => $args->id));

@@ -328,3 +328,7 @@ table.inlist td{
     overflow-y: scroll;
     height:130px;
 }
+
+.badges {
+    width:230px;
+}

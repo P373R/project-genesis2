@@ -49,21 +49,19 @@ define('DB_PREFIX', '');
 define('VERSION', '1.0');
 define('SHOW_ERRORS', 1);
 
-if(!isset($_REQUEST['DEBUG_MODE'])) {
-    define('DEBUG_MODE', 0) ;
-} else {
-    define('DEBUG_MODE', 1);
-}
+// to stisfy kdevelop php parser:
+define('DEBUG_MODE', (isset($_REQUEST['DEBUG_MODE']))? 1 : 0);
 
-define('MAX_X', 10000); // Cardsize is dominated by the image available.
-define('MAX_Y', 3200);
-define('MAP_PICTURE_WIDTH', 120);
-define('MAP_PICTURE_HEIGHT', 120);
-define('MAP_VISIBLE_ROWS',3);
-define('MAP_VISIBLE_COLS',3);
-define('MAP_MAX_ROWS',3);
-define('MAP_MAX_COLS',3);
-define('SYS_VERSION',"0.5.0");
+
+define('MAX_X', 9000); // Cardsize is dominated by the image available.
+define('MAX_Y', 2700);
+define('MAP_PICTURE_WIDTH', 300);
+define('MAP_PICTURE_HEIGHT', 300);
+define('MAP_VISIBLE_ROWS',2);
+define('MAP_VISIBLE_COLS',2);
+define('MAP_MAX_ROWS',2);
+define('MAP_MAX_COLS',2);
+define('SYS_VERSION',"0.6.0");
 
 /* DEPRECATED: As no local city is supplied anymore
 define('ATLANTIS_X',500);
