@@ -16,6 +16,7 @@ class Module_Battle extends Base_Module
         requireLogin();
         
         $this->tpl->assign('feature','Battles'); 
+        $this->tpl->assign('release','2');
 	$this->tpl->assign('SUBMENU','ship');
         $this->tpl->display('coming_soon.tpl');
     }
