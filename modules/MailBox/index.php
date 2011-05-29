@@ -49,7 +49,7 @@ class Module_MailBox extends Base_Module
     
     private function showmail()
     {
-    	$mail = $this->db->execute('SELECT `id`, `to`, `from`, `subject`, `date`, `isread`, `message` FROM `<ezrpg>mail` WHERE `to`=? AND `isread` != 3 ORDER BY `date` DESC', array($this->player->username));
+    	$mail = $this->db->execute('SELECT `id`, `to`, `from`, `subject`, `date`, `isread`, `message` FROM `<ezrpg>mail` WHERE `to`=? AND `isread` != 3 ORDER BY `date` DESC', array($this->player->username),60);
     	
         $mailbox = Array();
         while ($m = $this->db->fetch($mail))

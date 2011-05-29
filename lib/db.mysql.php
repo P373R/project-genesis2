@@ -98,7 +98,7 @@ class Db_Mysql
       See Also:
       - <connect>
     */
-    public function execute($query, $params=0, $onlyCode=false)
+    public function execute($query, $params=0, $cacheTime=0, $onlyCode=false)
     {
         if ($this->isConnected === false)
             $this->connect();
@@ -122,8 +122,10 @@ class Db_Mysql
 		
                 if ($count1 > ($count2 + 1)) //Too little parameters, add extra '?' symbols
                 { //OR throw an SQL exception?
-                    $diff = $count2 - $count1;
-                    array_fill($params, $diff, '?');
+/*                    $diff = $count2 - $count1;
+                    array_fill($params, $diff, '?');*/
+		    $error_msg = '<strong>Query:</strong> <em>' . $this->query . '</em><br /><strong>Parameters missing</strong>';
+		    throw new DbException($error_msg, SQL_ERROR);
                 }
 		
                 //Sanitize parameters
@@ -176,27 +178,57 @@ class Db_Mysql
             
             $this->query = $query;
             
-            if (DEBUG_MODE === 1)
-                echo $query, '<br />';;
-            
+            if (DEBUG_MODE === 1) {
+		if($cacheTime != 0) echo "Cached: ";
+                echo $query, '<br />';
+	    }
+	    
 	    if(!$onlyCode)
 	    {
 		//Execute query
 		if(DEBUG_MODE) file_put_contents('mysql.log',$query."\n",FILE_APPEND);
-		$result = mysql_query($query, $this->db);
-		if ($result === false)
-		{ //If there was an error with the query
-		    $this->error = mysql_error();
-		    
-		    //If in debug mode, send exception, otherwise ignore
-		    if (SHOW_ERRORS === 1)
-		    {
-			//Feature: admin logging of errors?
-			$error_msg = '<strong>Query:</strong> <em>' . $this->query . '</em><br /><strong>' . $this->error . '</strong>';
-			throw new DbException($error_msg, SQL_ERROR);
+		$doQuery = true;
+		
+		// load from cache
+		if($cacheTime != 0) {
+		    $cacheFile = 'smarty/templates_c/'.sha1($query).'.mysql';
+		    if(file_exists($cacheFile)) {
+			$cache = file_get_contents($cacheFile);
+			$cache = explode('--',$cache);
+			if ($cache[0] >= time() - $cacheTime) {
+			    $result = unserialize($cache[1]);
+			    $doQuery = false;
+			    if (DEBUG_MODE === 1) {
+				if($cacheTime != 0) echo "Cache found for: ";
+				echo $query, '<br />';
+			    }
+			} 
+		    }
+		}
+		
+		// laod from db
+		if($doQuery) {
+		    $result = mysql_query($query, $this->db);
+		    if ($result === false)
+		    { //If there was an error with the query
+			$this->error = mysql_error();
+			
+			//If in debug mode, send exception, otherwise ignore
+			if (SHOW_ERRORS === 1)
+			{
+			    //Feature: admin logging of errors?
+			    $error_msg = '<strong>Query:</strong> <em>' . $this->query . '</em><br /><strong>' . $this->error . '</strong>';
+			    throw new DbException($error_msg, SQL_ERROR);
+			}
+			
+			return false;
 		    }
 		    
-		    return false;
+		    // generate cache file
+		    if ($cacheTime != 0) {
+			$cachedQuery = serialize($result);
+			file_put_contents($cacheFile,time().'--'.$cachedQuery);
+		    }
 		}
 	    }
 	    else 
