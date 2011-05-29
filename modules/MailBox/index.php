@@ -49,7 +49,7 @@ class Module_MailBox extends Base_Module
     
     private function showmail()
     {
-    	$mail = $this->db->execute('SELECT `id`, `to`, `from`, `subject`, `date`, `isread`, `message` FROM `<ezrpg>mail` WHERE `to`=? ORDER BY `date` ASC', array($this->player->username));
+    	$mail = $this->db->execute('SELECT `id`, `to`, `from`, `subject`, `date`, `isread`, `message` FROM `<ezrpg>mail` WHERE `to`=? AND `isread` != 3 ORDER BY `date` DESC', array($this->player->username));
     	
         $mailbox = Array();
         while ($m = $this->db->fetch($mail))
@@ -72,7 +72,7 @@ class Module_MailBox extends Base_Module
     	}
     	else
     	{
-		$res=$this->db->execute('DELETE FROM `mail` WHERE `id`=? AND `to`=?', array($_GET['id']), $this->player->username);
+		$res=$this->db->execute('UPDATE `<ezrpg>mail` SET `isread`=3 WHERE `id`=? AND `to`=?', array($_GET['id'], $this->player->username));
         	$msg=$this->db->numRows($res)." Message Deleted";
         	Header("Location: index.php?mod=MailBox&msg=" . urlencode($msg));
         	exit;
@@ -89,8 +89,8 @@ class Module_MailBox extends Base_Module
     	}
     	else
     	{
-    		$mailbox2 = $this->db->fetchRow('SELECT `id`, `to`, `from`, `subject`, `date`, `isread`, `message` FROM `<ezrpg>mail` WHERE `id`=?', array($_GET['id']));
-	    	
+    		$mailbox2 = $this->db->fetchRow('SELECT `id`, `to`, `from`, `subject`, `date`, `isread`, `message` FROM `<ezrpg>mail` WHERE `id`=? AND `to`=?', array($_GET['id'], $this->player->username));
+	    	$this->db->execute('UPDATE `<ezrpg>mail` SET `isread`=1 WHERE `id`=? AND `to`=?', array($_GET['id'], $this->player->username));
 	        $this->tpl->assign('mailbox2', $mailbox2);
 	        $this->tpl->display('mail/readmail.tpl');
     	}
@@ -99,6 +99,7 @@ class Module_MailBox extends Base_Module
     private function compose()
     {
         if (isset($_GET['rec'])) $this->tpl->assign('rec',$_GET['rec']);
+        if (isset($_GET['sub'])) $this->tpl->assign('sub',$_GET['sub']);
         else $this->tpl->assign('rec','Name');
     	$this->tpl->display('mail/sendmail.tpl');
     }
