@@ -1,6 +1,6 @@
 {include file="header.tpl" TITLE="Ship"}
 
-<h1>Ship</h1>
+<h1>Dock</h1>
 
 <img src="static/images/gui/sub.png" width="330" height="74" align="left"/>
 {$shipvalues}

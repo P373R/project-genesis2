@@ -2,6 +2,10 @@
 
 <h1>City</h1>
 
+<img src="static/images/gui/city.png" width="330" height="74" align="left"/><br />
+
+<p>Welcome to your city! </p>
+
 {literal}
 	<script> 
 	$(function() {
@@ -13,59 +17,44 @@
 <div id="tabs">
 
 	<ul> 
-		<li><a href="#tabs-mining">Mining</a></li> 
-		<li><a href="#tabs-world">World</a></li> 
-		<li><a href="index.php?mod=AccountSettings">Accounts Settings</a></li> 
+		<li><a href="#tabs-habitats">Habitats</a></li> 
+		<li><a href="#tabs-factories">Factories</a></li> 
+		<li><a href="#tabs-farms">Farms</a></li> 
+		<li><a href="#tabs-university">University</a></li> 
+		<li><a href="#tabs-storage">Storage</a></li> 
+		<li><a href="#tabs-power">Power</a></li> 
 	</ul> 
 
-    <div id="tabs-world">
-	<p>
-	    <a href="index.php?mod=EventLog">Event Log</a><br />
-	    <a href="index.php?mod=Library">Library</a><br />
-	    <a href="index.php?mod=Members">Members List</a><br />
-	    <a href="index.php?mod=Members&amp;sort=top">Top Players</a><br />
-	    Game Statistics<br />
+    <div id="tabs-habitats">
+	<p>Habitats
+	{$views->habitat}
 	</p>
     </div>
-
-    <div id="tabs-mining">
-	<p><form action="index.php?mod=City" method="POST">
-	    <table>
-	    <tr>
-		<td>Oxygen Mine</td>
-		<td>
-		    <input class="shortinput" type="text" name="mine_oxygen]" value="{$player->city->mine_oxygen}" />
-		</td>
-	    </tr>
-	    <tr>
-		<td>Water Mine</td>
-		<td>
-		    <input class="shortinput" type="text" name="mine_water" value="{$player->city->mine_water}" />
-		</td>
-	    </tr>
-	    <tr>
-		<td>Iron Mine</td>
-		<td>
-		    <input class="shortinput" type="text" name="mine_iron" value="{$player->city->mine_iron}" />
-		</td>
-	    </tr>
-	    <tr>
-		<td>Aluminium Mine</td>
-		<td>
-		    <input class="shortinput" type="text" name="mine_aluminium" value="{$player->city->mine_aluminium}" />
-		</td>
-	    </tr>
-	    <tr>
-		<td>Titanium Mine</td>
-		<td>
-		    <input class="shortinput" type="text" name="mine_titan" value="{$player->city->mine_titan}" />
-		</td>
-	    </tr>
-	    </table>
-	    </form>
+    <div id="tabs-factories">
+	<p>Factories
+	{$views->factories}
+	</p>
+    </div>
+    <div id="tabs-farms">
+	<p>Farms
+	{$views->farms}
+	</p>
+    </div>
+    <div id="tabs-university">
+	<p>University
+	{$views->university}
+	</p>
+    </div>
+    <div id="tabs-storage">
+	<p>Storage
+	{$views->storage}
+	</p>
+    </div>
+    <div id="tabs-power">
+	<p>Power
+	{$views->power}
 	</p>
     </div>
 
 </div>
-
 {include file="footer.tpl"}

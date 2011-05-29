@@ -13,3 +13,4 @@ ticktime
 *.kdev4
 mysql.log
 .kdev4
+*.mysql
