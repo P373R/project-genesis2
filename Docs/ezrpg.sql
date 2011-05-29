@@ -178,7 +178,7 @@ CREATE TABLE `map_cities` (
 
 LOCK TABLES `map_cities` WRITE;
 /*!40000 ALTER TABLE `map_cities` DISABLE KEYS */;
-INSERT INTO `map_cities` VALUES (1216,895,'New Atlantis',1003,0,0,0,0,0,0,0,0,0,0,0,15,15);
+INSERT INTO `map_cities` VALUES (1216,895,'New Atlantis',1003,0,0,0,0,0,0,0,0,0,0,0,20,15);
 /*!40000 ALTER TABLE `map_cities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,6 +267,29 @@ INSERT INTO `player_badges` VALUES (1003,1),(1003,2),(1003,3),(1003,4),(1003,5),
 UNLOCK TABLES;
 
 --
+-- Table structure for table `player_library`
+--
+
+DROP TABLE IF EXISTS `player_library`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `player_library` (
+  `pid` int(11) NOT NULL,
+  `bid` int(11) NOT NULL,
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `player_library`
+--
+
+LOCK TABLES `player_library` WRITE;
+/*!40000 ALTER TABLE `player_library` DISABLE KEYS */;
+/*!40000 ALTER TABLE `player_library` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `player_log`
 --
 
@@ -327,6 +350,8 @@ CREATE TABLE `players` (
   `facebook` bigint(15) NOT NULL DEFAULT '0',
   `tutorial` tinyint(4) NOT NULL DEFAULT '0',
   `ban` tinyint(4) NOT NULL DEFAULT '0',
+  `messages` int(11) NOT NULL,
+  `puzzles_solved` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
@@ -339,7 +364,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','','',10,1286231120,1300603731,1300562123,166,17,989,62,330,20,20,18,21,'0',100,0,0,0),(1003,'test','64e6526a73933671d06840b017afba65762b3159','test@test.de','wioUQ0kCB,AjveAz','','',1,1303877800,1306624647,1306620652,100,1,0,0,10,10,10,0,0,'',50,0,4,0);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','','',10,1286231120,1300603731,1300562123,166,17,989,62,330,20,20,18,21,'0',100,0,0,0,0,0),(1003,'test','64e6526a73933671d06840b017afba65762b3159','test@test.de','wioUQ0kCB,AjveAz','','',1,1303877800,1306626578,1306620652,100,1,0,0,10,10,10,0,0,'',50,0,4,0,0,0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,6 +434,7 @@ CREATE TABLE `ships` (
   `accuracy` int(11) NOT NULL,
   `speed` int(11) NOT NULL,
   `bookmarks` text CHARACTER SET latin1 NOT NULL COMMENT 'array',
+  `distance` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -419,7 +445,7 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,'',0,0,0,0,''),(1003,9216,1395,0,0,1,1,1,1,1,1,1,0,1303881021,1303880975,0,'',20,20,2,6,'');
+INSERT INTO `ships` VALUES (0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,'',0,0,0,0,'',0),(1003,9216,1395,0,0,1,1,1,1,1,1,1,0,1303881021,1303880975,0,'',20,22,2,6,'',0);
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,4 +506,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-05-29 11:26:09
+-- Dump completed on 2011-05-29 12:13:12
