@@ -332,3 +332,18 @@ table.inlist td{
 .badges {
     width:230px;
 }
+
+.worldTile {
+  padding:0px;
+  margin:0px;
+}
+
+#worldPicture {
+  padding-top:20px;
+}
+
+#worldPicture p {
+  margin:0px;
+  margin-top:-3px;
+  padding:0px;
+}

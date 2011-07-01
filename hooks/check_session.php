@@ -43,15 +43,17 @@ function hook_check_session($db, &$tpl, $player, $args = 0)
             $player->ship = $db->fetchRow('SELECT * FROM `<ezrpg>ships` WHERE `id`=?', array($_SESSION['userid']));
             $player->ship->bookmarks = unserialize($player->ship->bookmarks);
             $player->city = $db->fetchRow('SELECT * FROM map_cities WHERE `owner`=?',array($_SESSION['userid']));
-            
-            
+
+	    // No valid Database Result!
+            if($player->id == 0) header("Location: index.php");
+
             $player->city->water      = intval($player->city->water);
             $player->city->oxygen     = intval($player->city->oxygen);
             $player->city->iron       = intval($player->city->iron);
             $player->city->titan      = intval($player->city->titan);
             $player->city->alluminium = intval($player->city->alluminium);
             
-            $tpl->assign_by_ref('player', $player);
+            $tpl->assignByRef('player', $player);
             
             //Set logged-in flag
             define('LOGGED_IN', true);

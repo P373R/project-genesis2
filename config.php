@@ -18,8 +18,8 @@ defined('IN_EZRPG') or exit;
   $config_driver - Contains the database driver to use to connect to the database.
 */
 $config_server = 'localhost';
-$config_dbname = 'ezrpg';
-$config_username = 'ezrpg';
+$config_dbname = 'genesis';
+$config_username = 'genesis';
 $config_password = '';
 $config_driver = 'mysql';
 
@@ -49,24 +49,23 @@ define('DB_PREFIX', '');
 define('VERSION', '1.0');
 define('SHOW_ERRORS', 1);
 
-// to stisfy kdevelop php parser:
-define('DEBUG_MODE', (isset($_REQUEST['DEBUG_MODE']))? 1 : 0);
+(!isset($_REQUEST['DEBUG_MODE']))? define('DEBUG_MODE', 0) : define('DEBUG_MODE', 1);
+
+define('MAX_X', 1000); // Kartengröße
+define('MAX_Y', 1000);
+
+define('WORLD_IMG_X', 120);
+define('WORLD_IMG_Y', 120);
+define('WORLD_MAP_X', 5);
+define('WORLD_MAP_Y', 4);
 
 
-define('MAX_X', 9000); // Cardsize is dominated by the image available.
-define('MAX_Y', 2700);
-define('MAP_PICTURE_WIDTH', 300);
-define('MAP_PICTURE_HEIGHT', 300);
-define('MAP_VISIBLE_ROWS',2);
-define('MAP_VISIBLE_COLS',2);
-define('MAP_MAX_ROWS',2);
-define('MAP_MAX_COLS',2);
-define('SYS_VERSION',"0.6.0");
 
-/* DEPRECATED: As no local city is supplied anymore
-define('ATLANTIS_X',500);
+define('SYS_VERSION',"0.4.0");
+
+// Koordinaten auf denen Atlantis gebaut wurde
+define('ATLANTIS_X',50);
 define('ATLANTIS_Y',50);
-*/
 
 define('RECAPTCHA_KEY','6Lf8YsESAAAAAKDSjCPqC5-JwepeeYsDB9Hnetlz');
 define('RECAPTCHA_PRIVATE','6Lf8YsESAAAAAJ5meoyIjm94OI2iSXEYLhBa900C');
@@ -78,9 +77,13 @@ define('RECAPTCHA_PRIVATE','6Lf8YsESAAAAAJ5meoyIjm94OI2iSXEYLhBa900C');
 
 $id2names = array(
   "field"=>array("Unknown","Shallow water (50m)","Water (100m)","Water (200m)","Water (500m)","Deep sea (1000m)",99=>"Atlantis"),
-  "items"=>array("Nothing","Water","Iron","Aluminium","Titanium","Oxygen"),
+  "items"=>array("Nothing","Water","Iron","Aluminium","Titan","Oxygen"),
   "db_fields"=>array("","water","iron","aluminium","titan","oxygen"),
   "weapons"=>array("","Mine")
 );
 
+$shop = array(
+  array("name"=>"Mine", "price"=>10, "weight"=>10),
+  array("name"=>"Big Mine", "price"=>20, "weight"=>15)
+);
 ?>

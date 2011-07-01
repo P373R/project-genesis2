@@ -10,6 +10,10 @@
 {/foreach}
 </div>
 
-<object class="worldMap" name="worldMap" data="modules/World/map.php?x={$player->ship->x}&amp;y={$player->ship->y}" type="text/html" width="500" height="500"></object>
+<div id="worldPicture">
+  {$worldcode}
+</div>
+
+{*<object class="worldMap" name="worldMap" data="modules/World/map.php?x={$player->ship->x}&amp;y={$player->ship->y}" type="text/html" width="500" height="500"></object>*}
 
 {include file="footer.tpl"}

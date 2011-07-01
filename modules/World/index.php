@@ -23,7 +23,7 @@ class Module_World extends Base_Module
 	switch ($_GET['action']) {
 	    case 'entities':
 		// return the entities around the requested area
-		$this->entities();
+		$this->entities(true);
 		break;
 	    case 'move':
 		// move the ship to this points
@@ -39,24 +39,59 @@ class Module_World extends Base_Module
      */
     private function renderWorld() 
     {
+	// Get the entities around the position from the db
+	$x = $this->player->ship->x;
+	$y = $this->player->ship->y;
+	$html = $this->renderMap($x,$y);
+
+	$this->tpl->assign('worldcode',$html);
+	$this->tpl->assign('entities', $this->entities());
+	//$pos = $this->db->fetchRow("SELECT * FROM ` world` WHERE");
 	$this->tpl->display('world/site.tpl');
     }
     
     /**
+     * rendering the world map html code
+     */
+    private function renderMap($x,$y)
+    {
+	// cast in grid
+	$load_x = ($x - $x % WORLD_IMG_X) / WORLD_IMG_X; 
+	$load_y = ($y - $y % WORLD_IMG_Y) / WORLD_IMG_Y; 
+	if($load_x < ceil(WORLD_MAP_X/2)) $load_x = 3;
+	if($load_y < ceil(WORLD_MAP_Y/2)) $load_y = 3;
+
+	  $worldcode = '';
+	for($count_y = 0; $count_y < (WORLD_MAP_Y); $count_y++) {
+	  $worldcode .= '<p>';
+	  for($count_x = 0; $count_x < (WORLD_MAP_X); $count_x++) {
+	    	$worldcode .= '<img class="worldTile" src="/static/images/map2/'.($load_x-floor(WORLD_MAP_X/2)+$count_x).'-'.($load_y-floor(WORLD_MAP_Y/2)+$count_y).'.gif" />';
+	  }
+	  $worldcode .= '</p>';
+	}
+	return $worldcode;
+      
+    }
+
+      
+    /**
      * return a JSON object of all the entities around the current point of view.
      */
-    private function entities() 
+    private function entities($json = false) 
     {
-	// search in a 500 pixel area around the map
-	$smallx = $_GET['x']-250;
-	$bigx = $smallx + 500;
-	$smally = $_GET['y']-250;
-	$bigy = $smally + 500;
+	$offset_x = $this->player->ship->x % WORLD_IMG_X;
+	$offset_y = $this->player->ship->y % WORLD_IMG_Y;
+
 	
-	$response['meta'] = array('token'=>$_GET['token']);
-	$response['entities'] = $this->db->fetchAll($this->db->execute("SELECT * FROM `<ezrpg>map_entities` WHERE '$smallx' < `x` < '$bigx' AND '$smally' < `y` < '$bigy'"));
-	$response['cities'] = $this->db->fetchAll($this->db->execute("SELECT `x`,`y`,`name`,`owner` FROM `<ezrpg>map_cities` WHERE `x` > $smallx AND `x` < $bigx AND `y` > $smally AND `y` < $bigy"));
- 	echo json_encode($response);
+
+
+	$response = array("ship" => array("x" => $this->player->ship->x, 
+					  "y" => $this->player->ship->y));
+ 	if($json) {
+	  echo json_encode($response);
+	} else {
+	  return $response;
+	}
     }
 }
 ?>
