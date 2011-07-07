@@ -80,7 +80,7 @@ function hook_check_stats($db, &$tpl, $player, $args = 0)
 
     if ($changedcity === true)
     {
-	$db->execute('UPDATE `<ezrpg>map_cities` SET `shield`=? WHERE `owner`=?', array($args->city->shield, $args->id));
+	$db->execute('UPDATE `<ezrpg>cities` SET `shield`=? WHERE `owner`=?', array($args->city->shield, $args->id));
     }
 
     if ($changedship === true)

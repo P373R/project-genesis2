@@ -29,7 +29,7 @@ class Module_Dock extends Base_Module
     {
         $ship = array();
 
-        $this->tpl->assign($ship,'ship');
+        $this->tpl->assign('ship',$ship);
         $this->tpl->assign('shipvalues',itemInfo(array('shield'   => $this->player->ship->shield,
 						       'speed'    => $this->player->ship->speed,
 						       'accuracy' => $this->player->ship->accuracy),

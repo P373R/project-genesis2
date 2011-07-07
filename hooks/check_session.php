@@ -42,7 +42,7 @@ function hook_check_session($db, &$tpl, $player, $args = 0)
             $player = $db->fetchRow('SELECT * FROM `<ezrpg>players` WHERE `id`=?', array($_SESSION['userid']));
             $player->ship = $db->fetchRow('SELECT * FROM `<ezrpg>ships` WHERE `id`=?', array($_SESSION['userid']));
             $player->ship->bookmarks = unserialize($player->ship->bookmarks);
-            $player->city = $db->fetchRow('SELECT * FROM map_cities WHERE `owner`=?',array($_SESSION['userid']));
+            $player->city = $db->fetchRow('SELECT * FROM cities WHERE `owner_id`=?',array($_SESSION['userid']));
 
 	    // No valid Database Result!
             if($player->id == 0) header("Location: index.php");

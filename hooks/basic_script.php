@@ -31,6 +31,7 @@ function hook_javascript(&$db, &$tpl, &$player, $args = 0)
     $tpl->append('javascript','jquery-ui-1.8.12.custom.min.js');
     $tpl->append('javascript','jquery-ui-numeric-min.js');
     $tpl->append('javascript','system.js');
+    $tpl->append('javascript','world.js');
     
     return $args;
 }

@@ -45,7 +45,7 @@ class Module_World extends Base_Module
 	$html = $this->renderMap($x,$y);
 
 	$this->tpl->assign('worldcode',$html);
-	$this->tpl->assign('entities', $this->entities());
+	$this->tpl->assign('entities', json_encode($this->entities()));
 	//$pos = $this->db->fetchRow("SELECT * FROM ` world` WHERE");
 	$this->tpl->display('world/site.tpl');
     }
@@ -53,7 +53,7 @@ class Module_World extends Base_Module
     /**
      * rendering the world map html code
      */
-    private function renderMap($x,$y)
+    public function renderMap($x,$y)
     {
 	// cast in grid
 	$load_x = ($x - $x % WORLD_IMG_X) / WORLD_IMG_X; 
@@ -65,7 +65,9 @@ class Module_World extends Base_Module
 	for($count_y = 0; $count_y < (WORLD_MAP_Y); $count_y++) {
 	  $worldcode .= '<p>';
 	  for($count_x = 0; $count_x < (WORLD_MAP_X); $count_x++) {
-	    	$worldcode .= '<img class="worldTile" src="/static/images/map2/'.($load_x-floor(WORLD_MAP_X/2)+$count_x).'-'.($load_y-floor(WORLD_MAP_Y/2)+$count_y).'.gif" />';
+	    	$worldcode .= '<img ';
+		if($count_x + $count_y == 0) $worldcode .= 'id="worldLeftCorner" ';
+		$worldcode .= 'class = "worldTile" src="/static/images/map2/'.($load_x-floor(WORLD_MAP_X/2)+$count_x).'-'.($load_y-floor(WORLD_MAP_Y/2)+$count_y).'.gif" width="'.WORLD_IMG_X.'" height="'.WORLD_IMG_Y.'"/>';
 	  }
 	  $worldcode .= '</p>';
 	}
@@ -85,8 +87,8 @@ class Module_World extends Base_Module
 	
 
 
-	$response = array("ship" => array("x" => $this->player->ship->x, 
-					  "y" => $this->player->ship->y));
+	$response = array("ship" => array("x" => $offset_x, 
+					  "y" => $offset_y));
  	if($json) {
 	  echo json_encode($response);
 	} else {

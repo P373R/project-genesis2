@@ -161,7 +161,7 @@ img {
 #sidebar {
 	display: block;
 	float: left;
-	width: 15%;
+	width: 12%;
 	border: 1px solid #3399FF;
 	border-top: 3px solid #3399FF;
 	margin: 0px;
@@ -178,7 +178,7 @@ img {
 #gamebody {
 	display: block;
 	float: right;
-	width: 81%;
+	width: 84%;
 	margin: 5px;
 	padding: 5px;
         overflow: auto;
@@ -326,7 +326,7 @@ table.inlist td{
 
 #shoutbox {
     overflow-y: scroll;
-    height:130px;
+    height:300px;
 }
 
 .badges {
@@ -340,6 +340,7 @@ table.inlist td{
 
 #worldPicture {
   padding-top:20px;
+ /* position:relative;*/
 }
 
 #worldPicture p {

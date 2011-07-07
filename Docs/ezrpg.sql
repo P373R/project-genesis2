@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.1.54, for debian-linux-gnu (i686)
 --
--- Host: localhost    Database: ezrpg
+-- Host: localhost    Database: genesis
 -- ------------------------------------------------------
--- Server version	5.1.54-1ubuntu4-log
+-- Server version	5.1.54-1ubuntu4
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,6 +38,48 @@ LOCK TABLES `badges` WRITE;
 /*!40000 ALTER TABLE `badges` DISABLE KEYS */;
 INSERT INTO `badges` VALUES (1,'Unbeatable Bronze','The player was not defeated while doing the first 10 kills.'),(2,'Rich As Bronze','The player owned more than 1.000.000$ once'),(3,'Genesis Foundation','The player once hit the 100 GWP mark'),(4,'Unstopable','The ship has a Perpetuum Mobile as energy source!'),(5,'Levelmaster Bronze','Level 30 was reached within a month'),(6,'The Traveler','The ship did more than 1.000.000 miles'),(7,'Metropolis','One of the players city has 1.000.000 inhabitants'),(8,'Bookworm','The Library contains more than 50 books'),(9,'Busy Typer','The player send more then 100 Messages'),(10,'Puzzle Solver','5 Puzzles have been solved!'),(11,'Rich As Silver','The player owned more than 10.000.000$ once'),(12,'Rich As Gold','The player owned more than 100.000.000$ once'),(13,'Unbeatable Silver','The player was not defeated while doing the first 50 kills.'),(14,'Unbeatable Gold','The player was not defeated while doing the first 100 kills.'),(15,'Levelmaster Silver','Level 50 was reached within a month'),(16,'Levelmaster Gold','Level 80 was reached within a month'),(17,'The Long Traveler','The ship did more than 4.000.000 miles'),(18,'The Incredible Long Traveler','The ship did more than 10.000.000 miles'),(19,'Bookworm Extrem','The Library contains more than 100 books'),(20,'Bookworms Paradies','The Library contains more than 150 books');
 /*!40000 ALTER TABLE `badges` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cities`
+--
+
+DROP TABLE IF EXISTS `cities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cities` (
+  `x` int(11) NOT NULL,
+  `y` int(11) NOT NULL,
+  `name` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `owner_id` int(11) NOT NULL,
+  `habitat` int(11) NOT NULL,
+  `factory_mining` int(11) NOT NULL,
+  `factory_defence` int(11) NOT NULL,
+  `factory_offence` int(11) NOT NULL,
+  `farm` int(11) NOT NULL,
+  `school` int(11) NOT NULL,
+  `storage_resources` int(11) NOT NULL,
+  `storage_weapon` int(11) NOT NULL,
+  `power_plant` int(11) NOT NULL,
+  `mine_oxygen` int(11) NOT NULL,
+  `mine_water` int(11) NOT NULL,
+  `mine_iron` int(11) NOT NULL,
+  `mine_aluminium` int(11) NOT NULL,
+  `mine_titan` int(11) NOT NULL,
+  `max_shield` int(11) NOT NULL,
+  `shield` int(11) NOT NULL,
+  PRIMARY KEY (`owner_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cities`
+--
+
+LOCK TABLES `cities` WRITE;
+/*!40000 ALTER TABLE `cities` DISABLE KEYS */;
+INSERT INTO `cities` VALUES (1216,895,'New Atlantis',1003,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+/*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -139,47 +181,8 @@ CREATE TABLE `mail` (
 
 LOCK TABLES `mail` WRITE;
 /*!40000 ALTER TABLE `mail` DISABLE KEYS */;
-INSERT INTO `mail` VALUES (3,'test','test','No Subject','2011-05-11 21:55:16',0,'sgd');
+INSERT INTO `mail` VALUES (3,'test','test','No Subject','2011-05-11 21:55:16',3,'sgd');
 /*!40000 ALTER TABLE `mail` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `map_cities`
---
-
-DROP TABLE IF EXISTS `map_cities`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `map_cities` (
-  `x` int(11) NOT NULL,
-  `y` int(11) NOT NULL,
-  `name` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `owner` int(11) NOT NULL,
-  `inhabitants` int(11) NOT NULL,
-  `mine_water` float NOT NULL,
-  `mine_oxygen` float NOT NULL,
-  `mine_iron` float NOT NULL,
-  `mine_titan` float NOT NULL,
-  `mine_aluminium` float NOT NULL,
-  `water` float NOT NULL,
-  `oxygen` float NOT NULL,
-  `iron` float NOT NULL,
-  `titan` float NOT NULL,
-  `aluminium` float NOT NULL,
-  `shield` int(11) NOT NULL,
-  `max_shield` int(11) NOT NULL,
-  PRIMARY KEY (`x`,`y`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `map_cities`
---
-
-LOCK TABLES `map_cities` WRITE;
-/*!40000 ALTER TABLE `map_cities` DISABLE KEYS */;
-INSERT INTO `map_cities` VALUES (1216,895,'New Atlantis',1003,0,0,0,0,0,0,0,0,0,0,0,20,15);
-/*!40000 ALTER TABLE `map_cities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -277,7 +280,7 @@ CREATE TABLE `player_library` (
   `pid` int(11) NOT NULL,
   `bid` int(11) NOT NULL,
   KEY `pid` (`pid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,7 +308,7 @@ CREATE TABLE `player_log` (
   PRIMARY KEY (`id`),
   KEY `player_log` (`player`,`time`),
   KEY `new_logs` (`player`,`status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,6 +317,7 @@ CREATE TABLE `player_log` (
 
 LOCK TABLES `player_log` WRITE;
 /*!40000 ALTER TABLE `player_log` DISABLE KEYS */;
+INSERT INTO `player_log` VALUES (1,0,1309507866,'You have leveled up! You gained +1 stat point!',1),(2,0,1309507875,'You have leveled up! You gained +1 stat point!',1),(3,0,1309507884,'You have leveled up! You gained +1 stat point!',1),(4,0,1309508093,'You have leveled up! You gained +1 stat point!',1),(5,0,1309508155,'You have leveled up! You gained +1 stat point!',1),(6,0,1309508285,'You have leveled up! You gained +1 stat point!',1),(7,0,1309508288,'You have leveled up! You gained +1 stat point!',1),(8,0,1309508291,'You have leveled up! You gained +1 stat point!',1),(9,0,1309508293,'You have leveled up! You gained +1 stat point!',1),(10,0,1309508294,'You have leveled up! You gained +1 stat point!',1),(11,0,1309508295,'You have leveled up! You gained +1 stat point!',1),(12,0,1309508297,'You have leveled up! You gained +1 stat point!',1),(13,0,1309508310,'You have leveled up! You gained +1 stat point!',1),(14,0,1309508428,'You have leveled up! You gained +1 stat point!',1),(15,0,1309508514,'You have leveled up! You gained +1 stat point!',0);
 /*!40000 ALTER TABLE `player_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,7 +368,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','','',10,1286231120,1300603731,1300562123,166,17,989,62,330,20,20,18,21,'0',100,0,0,0,0,0),(1003,'test','64e6526a73933671d06840b017afba65762b3159','test@test.de','wioUQ0kCB,AjveAz','','',1,1303877800,1306626578,1306620652,100,1,0,0,10,10,10,0,0,'',50,0,4,0,0,0);
+INSERT INTO `players` VALUES (1,'Genesis Foundation','e882a6c125e8527a22ebe06502036756c0ecf831','neumann.bastian@gmail.com','#[LraAn8E9^k5`[g','','',10,1286231120,1300603731,1300562123,166,17,989,62,330,20,20,18,21,'0',100,0,0,0,0,0),(1003,'test','64e6526a73933671d06840b017afba65762b3159','test@test.de','wioUQ0kCB,AjveAz','','',1,1303877800,1310073398,1310066648,100,1,0,0,10,10,10,0,0,'',50,0,4,0,0,0);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,7 +449,7 @@ CREATE TABLE `ships` (
 
 LOCK TABLES `ships` WRITE;
 /*!40000 ALTER TABLE `ships` DISABLE KEYS */;
-INSERT INTO `ships` VALUES (0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,'',0,0,0,0,'',0),(1003,9216,1395,0,0,1,1,1,1,1,1,1,0,1303881021,1303880975,0,'',20,22,2,6,'',0);
+INSERT INTO `ships` VALUES (0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,'',20,0,2,6,'',0),(1003,7216,1395,7286,1334,1,1,1,1,1,1,1,0,1303881021,1303880975,0,'',20,20,2,6,'',0);
 /*!40000 ALTER TABLE `ships` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -506,4 +510,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-05-29 12:13:12
+-- Dump completed on 2011-07-07 23:59:47

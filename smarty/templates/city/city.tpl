@@ -26,33 +26,35 @@
 	</ul> 
 
     <div id="tabs-habitats">
-	<p>Habitats
-	{$views->habitat}
+	<p>Habitats<br />
+		A Habitat gives room to 50 Inhabitants. Those people will be able o do waork in your city.<br />
+		<br />
+		You have {$player->city->habitats} habitats wich will come to a total of {$player->city->habitats*50} habitants.
 	</p>
     </div>
     <div id="tabs-factories">
-	<p>Factories
-	{$views->factories}
+	<p>Factories<br />
+		Factories are used to create stuff. When people are working here they will produce goods out of resources.
 	</p>
     </div>
     <div id="tabs-farms">
-	<p>Farms
-	{$views->farms}
+	<p>Farms<br />
+		To feed the people in your habitats you need food that is produced here.
 	</p>
     </div>
     <div id="tabs-university">
-	<p>University
-	{$views->university}
+	<p>University<br />
+		You have to teach you Habitants to produce better stuff. You can educate them here.
 	</p>
     </div>
     <div id="tabs-storage">
-	<p>Storage
-	{$views->storage}
+	<p>Storage<br />
+		To store resources, goods and food you have to build storage space.
 	</p>
     </div>
     <div id="tabs-power">
-	<p>Power
-	{$views->power}
+	<p>Power<br />
+		To power your city you have to build a power plant.
 	</p>
     </div>
 

@@ -47,7 +47,7 @@ You can upgrade your ship! You have {$player->stat_points} points left.
 <td><strong>Name</strong></td><td>{$player->city->name}</td>
 </tr>
 <tr>
-<td><strong>Inhabitants</strong></td><td>{$player->city->inhabitants}</td>
+<td><strong>Inhabitants</strong></td><td>{$player->city->habitats * 500}</td>
 </tr>
 <tr>
 <td><strong>Shield</strong></td><td>{$player->city->shield}</td>

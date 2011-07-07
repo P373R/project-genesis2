@@ -57,7 +57,7 @@ define('MAX_Y', 1000);
 define('WORLD_IMG_X', 120);
 define('WORLD_IMG_Y', 120);
 define('WORLD_MAP_X', 5);
-define('WORLD_MAP_Y', 4);
+define('WORLD_MAP_Y', 5);
 
 
 

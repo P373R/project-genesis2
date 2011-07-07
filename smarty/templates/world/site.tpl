@@ -7,13 +7,21 @@
 {/if}
 {foreach $player->ship->bookmarks as $bookmark}
 <a href="javascript:parent.worldMap.jumpTo({$bookmark->x},{$bookmark->y});">{$bookmark->name}</a>
-{/foreach}
+{/foreach} 
 </div>
 
 <div id="worldPicture">
   {$worldcode}
 </div>
+<img id="worldShipEntity" src="/static/images/entities/sub.png" width="64" height="15" style="position:absolute;" />
 
-{*<object class="worldMap" name="worldMap" data="modules/World/map.php?x={$player->ship->x}&amp;y={$player->ship->y}" type="text/html" width="500" height="500"></object>*}
+<script>
+var entities =  jQuery.parseJSON('{$entities}');
+var offset = $("#worldLeftCorner").offset();
+var bigoffset = jQuery.parseJSON('{$worldPictureOffset}');
+$(".worldTile").dblclick(function(e) { worldMoveShip(e.pageX , e.pageY);  });
+$("#worldShipEntity").css('top',(entities.ship.y+offset.top+240-($("#worldShipEntity").height()/2)));
+$("#worldShipEntity").css('left',(entities.ship.x+offset.left+240-($("#worldShipEntity").width()/2)));
+</script>
 
 {include file="footer.tpl"}
